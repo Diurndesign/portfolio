@@ -80,16 +80,11 @@
   }
 
   &__row {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: clamp(1.5rem, 4vw, 4rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
     padding: clamp(1.75rem, 3.5vh, 2.75rem) 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.16);
-
-    @include until($bp-md) {
-      grid-template-columns: 1fr;
-      gap: 0.75rem;
-    }
   }
 
   &__label {
@@ -98,7 +93,6 @@
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: $color-white;
-    padding-top: 0.35rem;
   }
 
   &__text {
