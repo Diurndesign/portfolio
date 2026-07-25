@@ -84,6 +84,19 @@
 
           <ul class="projets__grid">
             <li class="card">
+              <button class="card__btn" type="button" data-project="freakshow" aria-haspopup="dialog">
+                <span class="card__media">
+                  <img src="/img/projets/freakshow1.jpg" alt="Le livre Freakshow tenu en main, page Fred Wilson avec dorure rouge" loading="lazy" width="1600" height="1067" />
+                </span>
+                <span class="card__meta">
+                  <span class="card__cat">Édition · Direction artistique</span>
+                  <span class="card__title">Freakshow</span>
+                  <span class="card__cta">Voir le projet</span>
+                </span>
+              </button>
+            </li>
+
+            <li class="card">
               <button class="card__btn" type="button" data-project="atelier" aria-haspopup="dialog">
                 <span class="card__media">
                   <img src="/img/projets/atelier-1.svg" alt="Aperçu du projet Atelier Lumen" loading="lazy" width="1200" height="900" />
@@ -125,6 +138,31 @@
         </div>
 
         <!-- Contenu des modals (masqué, cloné à l'ouverture) -->
+        <template id="detail-freakshow">
+          <article class="project">
+            <header class="project__head">
+              <p class="project__cat">Édition · Direction artistique</p>
+              <h3 class="project__title" id="modal-title">Freakshow</h3>
+              <ul class="project__tags">
+                <li>Mise en page</li>
+                <li>Retouche photo</li>
+                <li>Montage photo</li>
+                <li>Impression</li>
+              </ul>
+            </header>
+            <div class="project__text">
+              <p>Freakshow est un livre consacré aux figures des foires aux monstres du XIX<sup>e</sup> siècle — Fred Wilson, Fanny Loak et les autres. Un objet imprimé qui raconte ces vies hors normes avec gravité, sans jamais verser dans le voyeurisme.</p>
+              <p>Direction artistique complète : une mise en page à la composition verticale, la retouche et le montage des photographies d'archive tramées, et une dorure rouge à chaud qui vient percuter le noir et blanc. Un travail mené jusqu'à l'impression et le façonnage.</p>
+            </div>
+            <div class="project__gallery">
+              <img src="/img/projets/freakshow1.jpg" alt="Le livre tenu en main, page Fred Wilson" loading="lazy" width="1600" height="1067" />
+              <img src="/img/projets/freakshow2.jpg" alt="Double page avec photographie en pleine hauteur" loading="lazy" width="1600" height="1067" />
+              <img src="/img/projets/freakshow3.jpg" alt="Gros plan sur la dorure rouge — Fanny Loak (1860-1892)" loading="lazy" width="1600" height="1067" />
+              <img src="/img/projets/freakshow4.jpg" alt="Le livre ouvert, page en cours de tournage" loading="lazy" width="1600" height="1067" />
+            </div>
+          </article>
+        </template>
+
         <template id="detail-atelier">
           <article class="project">
             <header class="project__head">
