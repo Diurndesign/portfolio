@@ -123,5 +123,10 @@
     font-size: clamp(0.98rem, 1.1vw, 1.05rem);
     line-height: 1.75;
     color: $color-text-soft;
+
+    strong {
+      color: $color-white;
+      font-weight: 600;
+    }
   }
 }
