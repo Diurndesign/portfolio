@@ -13,7 +13,9 @@
 
 // 3. Layout
 @use "layout/navbar";
+@use "layout/modal";
 
 // 4. Sections
 @use "sections/hero";
 @use "sections/sections";
+@use "sections/projets";

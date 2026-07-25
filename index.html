@@ -75,8 +75,124 @@
 
     <!-- ===================== SECTIONS (placeholders) ===================== -->
     <main>
-      <section id="projets" class="section">
-        <h2 class="section__title">Projets</h2>
+      <section id="projets" class="section section--projets">
+        <div class="projets">
+          <header class="projets__head">
+            <p class="section__eyebrow">Sélection de travaux</p>
+            <h2 class="section__title">Projets</h2>
+          </header>
+
+          <ul class="projets__grid">
+            <li class="card">
+              <button class="card__btn" type="button" data-project="atelier" aria-haspopup="dialog">
+                <span class="card__media">
+                  <img src="/img/projets/atelier-1.svg" alt="Aperçu du projet Atelier Lumen" loading="lazy" width="1200" height="900" />
+                </span>
+                <span class="card__meta">
+                  <span class="card__cat">Identité de marque</span>
+                  <span class="card__title">Atelier Lumen</span>
+                  <span class="card__cta">Voir le projet</span>
+                </span>
+              </button>
+            </li>
+
+            <li class="card">
+              <button class="card__btn" type="button" data-project="rivage" aria-haspopup="dialog">
+                <span class="card__media">
+                  <img src="/img/projets/rivage-1.svg" alt="Aperçu du site Rivage" loading="lazy" width="1200" height="900" />
+                </span>
+                <span class="card__meta">
+                  <span class="card__cat">Site vitrine · Front-end</span>
+                  <span class="card__title">Rivage</span>
+                  <span class="card__cta">Voir le projet</span>
+                </span>
+              </button>
+            </li>
+
+            <li class="card">
+              <button class="card__btn" type="button" data-project="nuance" aria-haspopup="dialog">
+                <span class="card__media">
+                  <img src="/img/projets/nuance-1.svg" alt="Aperçu du design system Nuance" loading="lazy" width="1200" height="900" />
+                </span>
+                <span class="card__meta">
+                  <span class="card__cat">Design system · Figma</span>
+                  <span class="card__title">Nuance</span>
+                  <span class="card__cta">Voir le projet</span>
+                </span>
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contenu des modals (masqué, cloné à l'ouverture) -->
+        <template id="detail-atelier">
+          <article class="project">
+            <header class="project__head">
+              <p class="project__cat">Identité de marque</p>
+              <h3 class="project__title" id="modal-title">Atelier Lumen</h3>
+              <ul class="project__tags">
+                <li>Logotype</li>
+                <li>Charte graphique</li>
+                <li>Papeterie</li>
+              </ul>
+            </header>
+            <div class="project__text">
+              <p>Atelier Lumen est un studio de céramique niçois. La commande : une identité chaleureuse et artisanale, capable de vivre aussi bien sur un tampon encreur que sur un compte Instagram.</p>
+              <p>J'ai construit un logotype dessiné à la main, une palette de terres douces et un système typographique simple, pensé pour être décliné par l'atelier lui-même, sans mon intervention.</p>
+            </div>
+            <div class="project__gallery">
+              <img src="/img/projets/atelier-1.svg" alt="Logotype Atelier Lumen" loading="lazy" width="1200" height="900" />
+              <img src="/img/projets/atelier-2.svg" alt="Palette et typographie" loading="lazy" width="1200" height="900" />
+              <img src="/img/projets/atelier-3.svg" alt="Papeterie" loading="lazy" width="1200" height="900" />
+            </div>
+          </article>
+        </template>
+
+        <template id="detail-rivage">
+          <article class="project">
+            <header class="project__head">
+              <p class="project__cat">Site vitrine · Front-end</p>
+              <h3 class="project__title" id="modal-title">Rivage</h3>
+              <ul class="project__tags">
+                <li>UI Design</li>
+                <li>Intégration</li>
+                <li>Responsive</li>
+              </ul>
+            </header>
+            <div class="project__text">
+              <p>Rivage est une maison d'hôtes face à la Méditerranée. L'objectif : un site vitrine lent, contemplatif, qui donne envie de rester — à l'opposé des tunnels de réservation agressifs.</p>
+              <p>Direction artistique, maquettes puis intégration front-end : une seule personne du premier croquis à la mise en ligne, pour garder l'intention intacte jusqu'au pixel.</p>
+            </div>
+            <div class="project__gallery">
+              <img src="/img/projets/rivage-1.svg" alt="Page d'accueil Rivage" loading="lazy" width="1200" height="900" />
+              <img src="/img/projets/rivage-2.svg" alt="Version mobile" loading="lazy" width="1200" height="900" />
+              <img src="/img/projets/rivage-3.svg" alt="Détails d'interface" loading="lazy" width="1200" height="900" />
+            </div>
+          </article>
+        </template>
+
+        <template id="detail-nuance">
+          <article class="project">
+            <header class="project__head">
+              <p class="project__cat">Design system · Figma</p>
+              <h3 class="project__title" id="modal-title">Nuance</h3>
+              <ul class="project__tags">
+                <li>Composants</li>
+                <li>Tokens</li>
+                <li>Documentation</li>
+              </ul>
+            </header>
+            <div class="project__text">
+              <p>Nuance est le design system d'une jeune application de bien-être. Le but : une bibliothèque Figma unique, où design et développement parlent enfin la même langue.</p>
+              <p>Composants à variantes, tokens de couleur et de typographie, et une documentation intégrée pour que l'équipe produise vite sans casser la cohérence.</p>
+            </div>
+            <div class="project__gallery">
+              <img src="/img/projets/nuance-1.svg" alt="Bibliothèque de composants" loading="lazy" width="1200" height="900" />
+              <img src="/img/projets/nuance-2.svg" alt="Tokens et styles" loading="lazy" width="1200" height="900" />
+              <img src="/img/projets/nuance-3.svg" alt="Écrans produit" loading="lazy" width="1200" height="900" />
+            </div>
+          </article>
+        </template>
       </section>
       <section id="creations" class="section">
         <h2 class="section__title">Créations</h2>
@@ -88,6 +204,19 @@
         <h2 class="section__title">Contact</h2>
       </section>
     </main>
+
+    <!-- Modal réutilisable -->
+    <div class="modal" id="modal" aria-hidden="true">
+      <div class="modal__overlay" data-close></div>
+      <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal__close" type="button" data-close aria-label="Fermer la fenêtre">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" />
+          </svg>
+        </button>
+        <div class="modal__body" id="modal-body"></div>
+      </div>
+    </div>
 
     <script type="module" src="/src/main.js"></script>
   </body>

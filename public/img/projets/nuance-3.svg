@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900">
+  <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#d9d2e6"/><stop offset="1" stop-color="#9186b0"/>
+  </linearGradient></defs>
+  <rect width="1200" height="900" fill="url(#g)"/>
+  <text x="80" y="150" fill="#2e2740" font-family="Georgia, serif" font-size="30" letter-spacing="6" opacity="0.7">NUANCE</text>
+  <text x="80" y="470" fill="#2e2740" font-family="Georgia, serif" font-size="72" font-style="italic">Écrans produit</text>
+  <text x="80" y="820" fill="#2e2740" font-family="Arial, sans-serif" font-size="22" letter-spacing="3" opacity="0.55">PLACEHOLDER — remplace par ton visuel</text>
+</svg>
