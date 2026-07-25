@@ -160,3 +160,70 @@
     }
   }
 }
+
+// ============================================================
+//  Logo fixe (coin haut-gauche) — révélé au scroll
+// ============================================================
+.site-logo {
+  position: fixed;
+  top: clamp(1rem, 2.4vh, 1.6rem);
+  left: clamp(1rem, 2vw, 1.6rem);
+  z-index: 40;
+  display: block;
+
+  // masqué tant que le hero est visible
+  opacity: 0;
+  transform: translateY(-14px) scale(0.96);
+  pointer-events: none;
+  transition: opacity 0.55s $ease, transform 0.55s $ease, filter $transition;
+
+  // blanc sur fond bleu (le logo source est noir)
+  filter: invert(1);
+
+  img {
+    display: block;
+    height: clamp(38px, 6vh, 52px);
+    width: auto;
+  }
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(0) scale(1.04);
+  }
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 6px;
+  }
+
+  // état visible (activé au scroll par le JS)
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  // sur une section claire (nav en mode foncé) : logo noir
+  .nav--light & {
+    filter: none;
+  }
+
+  @include until($bp-md) {
+    top: 0.75rem;
+    left: 0.75rem;
+    img {
+      height: 34px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-logo {
+    transition: opacity 0.2s linear;
+    transform: none;
+
+    &.is-visible {
+      transform: none;
+    }
+  }
+}
