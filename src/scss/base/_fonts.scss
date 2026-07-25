@@ -1,0 +1,48 @@
+// ============================================================
+//  @font-face — Hello Paris (fournies en woff2)
+// ============================================================
+
+// Serif — ExtraLight
+@font-face {
+  font-family: "Hello Paris Serif";
+  src: url("/src/fonts/HelloParisSerifExtraLight.woff2") format("woff2");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Serif — Light
+@font-face {
+  font-family: "Hello Paris Serif";
+  src: url("/src/fonts/HelloParisSerifLight.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Serif — Medium
+@font-face {
+  font-family: "Hello Paris Serif";
+  src: url("/src/fonts/HelloParisSerifMedium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Serif — Bold
+@font-face {
+  font-family: "Hello Paris Serif";
+  src: url("/src/fonts/HelloParisSerifBold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Script (usage décoratif ponctuel)
+@font-face {
+  font-family: "Hello Paris Script";
+  src: url("/src/fonts/HelloParisScript.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

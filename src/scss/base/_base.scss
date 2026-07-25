@@ -1,0 +1,16 @@
+// ============================================================
+//  BASE — styles globaux
+// ============================================================
+@use "../abstracts/variables" as *;
+
+body {
+  font-family: $font-body;
+  background-color: $color-blue;
+  color: $color-white;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: $color-white;
+  color: $color-blue;
+}

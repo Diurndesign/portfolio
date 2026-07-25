@@ -1,0 +1,19 @@
+// ============================================================
+//  MAIN — point d'entrée SCSS (architecture 7-1 simplifiée)
+// ============================================================
+
+// 1. Abstracts (aucun CSS généré)
+@use "abstracts/variables";
+@use "abstracts/mixins";
+
+// 2. Base
+@use "base/fonts";
+@use "base/reset";
+@use "base/base";
+
+// 3. Layout
+@use "layout/navbar";
+
+// 4. Sections
+@use "sections/hero";
+@use "sections/sections";
