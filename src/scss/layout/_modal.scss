@@ -42,6 +42,7 @@ $modal-panel: #060f6b;
     width: min(960px, 100%);
     max-height: 90vh;
     overflow: hidden;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
     background: $modal-panel;
@@ -86,6 +87,16 @@ $modal-panel: #060f6b;
   &__body {
     overflow-y: auto;
     padding: clamp(2rem, 5vw, 3.5rem);
+
+    // masque la barre de scroll (défilement conservé)
+    scrollbar-width: none; // Firefox
+    -ms-overflow-style: none; // Edge ancien
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+      display: none; // Chrome, Safari, Brave
+    }
   }
 }
 
@@ -152,6 +163,7 @@ $modal-panel: #060f6b;
       width: 100%;
       height: auto;
       display: block;
+      border-radius: 10px;
     }
   }
 }
