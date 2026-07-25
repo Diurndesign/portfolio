@@ -9,6 +9,32 @@
   display: block;
   padding-top: clamp(5rem, 12vh, 9rem);
   padding-bottom: clamp(5rem, 12vh, 9rem);
+
+  // fond clair pour marquer le changement de section
+  background: $color-cream;
+  color: $color-ink;
+  border-top: none;
+
+  // texte adapté au fond clair
+  .section__title {
+    color: $color-ink;
+  }
+  .section__eyebrow,
+  .card__cat {
+    color: rgba($color-ink, 0.55);
+  }
+  .card__title {
+    color: $color-ink;
+  }
+  .card__cta {
+    color: rgba($color-ink, 0.75);
+  }
+  .card__media {
+    background: rgba($color-ink, 0.06);
+  }
+  .card__btn:focus-visible {
+    outline-color: $color-ink;
+  }
 }
 
 .projets {

@@ -107,4 +107,18 @@
       writing-mode: horizontal-tb;
     }
   }
+
+  // --- Variante foncée : quand une section claire passe sous la nav ---
+  &--light &__link {
+    color: rgba($color-ink, 0.6);
+
+    &::after {
+      background: $color-ink;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: $color-ink;
+    }
+  }
 }
