@@ -140,6 +140,22 @@
             </li>
 
             <li class="card">
+              <a class="card__btn" href="#murmure" aria-label="Murmure — voir l'application (section dédiée plus bas)">
+                <span class="card__media card__media--app">
+                  <span class="phone phone--tile" aria-hidden="true">
+                    <span class="phone__screen-wrap">
+                      <img class="phone__screen" src="/img/murmure-screen.svg" alt="" loading="lazy" width="390" height="844" />
+                    </span>
+                  </span>
+                  <span class="card__overlay">
+                    <span class="card__cat">Application web · React</span>
+                    <span class="card__title">Murmure</span>
+                  </span>
+                </span>
+              </a>
+            </li>
+
+            <li class="card">
               <button class="card__btn" type="button" data-project="tijm" aria-haspopup="dialog">
                 <span class="card__media">
                   <img src="/img/projets/tijm-4.jpg" alt="Combat de judo en noir et blanc — Tournoi International de Judo de Monaco" loading="lazy" width="1600" height="1065" />
@@ -378,6 +394,97 @@
           </article>
         </template>
       </section>
+
+      <!-- ===================== MURMURE (pièce dev vedette) ===================== -->
+      <section id="murmure" class="section section--murmure" aria-labelledby="murmure-title">
+        <div class="murmure">
+          <p class="murmure__eyebrow">Et parce que je code aussi ce que je conçois —</p>
+
+          <header class="murmure__head">
+            <h2 class="murmure__title" id="murmure-title">Murmure</h2>
+            <p class="murmure__baseline">
+              Une question par jour. Des réponses d'inconnus. Rien d'autre.
+            </p>
+          </header>
+
+          <div class="murmure__body">
+            <figure class="murmure__demo">
+              <div class="phone phone--demo">
+                <div class="phone__screen-wrap" id="murmure-frame">
+                  <img
+                    class="phone__screen"
+                    src="/img/murmure-screen.svg"
+                    alt="Aperçu de l'interface de Murmure : la question anonyme du jour"
+                    loading="lazy"
+                    width="390"
+                    height="844"
+                  />
+                  <button
+                    class="phone__play"
+                    type="button"
+                    data-murmure-play
+                    aria-label="Lancer la démo interactive de Murmure dans le cadre"
+                  >
+                    <span class="phone__play-icon" aria-hidden="true"></span>
+                    Lancer la démo
+                  </button>
+                </div>
+              </div>
+              <figcaption class="murmure__hint">
+                Démo intégrée — si elle ne s'affiche pas, ouvre l'app en plein
+                écran.
+              </figcaption>
+            </figure>
+
+            <div class="murmure__info">
+              <p class="murmure__desc">
+                Murmure est une application web que j'ai
+                <strong>conçue et développée seul</strong> — du design
+                d'interface à la logique, la base de données et le déploiement.
+                Une question anonyme par jour, la même pour tous : pas de
+                compte, pas de like, volontairement anti-addictive. J'ai utilisé
+                l'<strong>IA comme accélérateur de développement</strong>, pour
+                aller plus vite sans jamais lui laisser le volant.
+              </p>
+
+              <ul class="murmure__stack" aria-label="Technologies utilisées">
+                <li>React 18</li>
+                <li>Vite</li>
+                <li>Supabase</li>
+                <li>Vercel</li>
+              </ul>
+
+              <div class="murmure__actions">
+                <a
+                  class="murmure__cta"
+                  href="https://murmure-orpin.vercel.app/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Ouvrir l'app en plein écran
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a
+                  class="murmure__source"
+                  href="https://github.com/Diurndesign/Murmure"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Voir le code source
+                </a>
+              </div>
+
+              <div class="murmure__qr">
+                <!-- QR CODE : remplace la boîte ci-dessous par ton image, ex. :
+                     <img src="/img/murmure-qr.svg" alt="QR code vers l'application Murmure" width="112" height="112" /> -->
+                <div class="murmure__qr-box" aria-hidden="true">QR</div>
+                <p class="murmure__qr-label">Scanne pour l'ouvrir<br />sur ton mobile</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section id="a-propos" class="section section--about">
         <div class="about">
           <div class="about__top">
