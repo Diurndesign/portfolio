@@ -73,18 +73,42 @@
     }
   }
 
-  // --- Blocs (fiche éditoriale) ----------------------------
+  // --- Blocs ------------------------------------------------
   &__blocks {
     margin-top: clamp(3.5rem, 9vh, 7rem);
     border-top: 1px solid rgba(255, 255, 255, 0.16);
   }
 
-  &__row {
+  // Mon approche : intro pleine largeur
+  &__approach {
     display: flex;
     flex-direction: column;
     gap: 0.9rem;
     padding: clamp(1.75rem, 3.5vh, 2.75rem) 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+
+    .about__text {
+      max-width: 68ch;
+    }
+  }
+
+  // Services : colonnes côte à côte
+  &__services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.75rem, 4vw, 3.5rem);
+    padding-top: clamp(2rem, 4vh, 3rem);
+
+    @include until($bp-md) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
   }
 
   &__label {
@@ -96,7 +120,6 @@
   }
 
   &__text {
-    max-width: 62ch;
     font-size: clamp(0.98rem, 1.1vw, 1.05rem);
     line-height: 1.75;
     color: $color-text-soft;
