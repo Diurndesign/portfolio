@@ -155,15 +155,21 @@ $modal-panel: #060f6b;
   }
 
   &__gallery {
-    display: flex;
-    flex-direction: column;
-    gap: clamp(1rem, 2.5vw, 1.75rem);
+    // Mosaïque (masonry) : les images gardent leur ratio, hauteurs variées
+    columns: 2;
+    column-gap: clamp(0.75rem, 2vw, 1.25rem);
 
     img {
       width: 100%;
       height: auto;
       display: block;
       border-radius: 10px;
+      margin-bottom: clamp(0.75rem, 2vw, 1.25rem);
+      break-inside: avoid;
+    }
+
+    @include until($bp-sm) {
+      columns: 1;
     }
   }
 }
