@@ -21,6 +21,12 @@ function initModal() {
     body.appendChild(tpl.content.cloneNode(true));
     body.scrollTop = 0;
 
+    // couleur de fond propre au projet (data-bg), sinon défaut CSS
+    const detail = body.querySelector(".project");
+    const bg = detail && detail.getAttribute("data-bg");
+    if (bg) modal.style.setProperty("--modal-bg", bg);
+    else modal.style.removeProperty("--modal-bg");
+
     lastFocused = document.activeElement;
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
