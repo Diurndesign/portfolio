@@ -129,31 +129,6 @@
   }
 }
 
-// --- Vignette « app » dans la grille de projets --------------
-.section--projets .card__media--app {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(160deg, #262a35, #14171f);
-}
-
-// neutralise le flou/zoom d'image hérité des autres cartes
-.card__media--app .phone__screen {
-  transition: none;
-}
-.card__btn:hover .card__media--app .phone__screen,
-.card__btn:focus-visible .card__media--app .phone__screen {
-  transform: none;
-  filter: none;
-}
-.card__media--app .phone {
-  transition: transform 0.5s $ease;
-}
-.card__btn:hover .card__media--app .phone,
-.card__btn:focus-visible .card__media--app .phone {
-  transform: translateY(-4px);
-}
-
 // --- Section Murmure -----------------------------------------
 .section--murmure {
   display: block;
@@ -341,7 +316,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .card__media--app .phone,
   .murmure__cta {
     transition: none;
   }
