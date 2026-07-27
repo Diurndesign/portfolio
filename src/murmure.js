@@ -20,8 +20,8 @@ function initMurmure() {
     iframe.title = "Murmure — l'application en direct";
     iframe.loading = "lazy";
     iframe.className = "phone__iframe";
-    // limite les capacités de l'iframe tout en gardant l'app fonctionnelle
-    iframe.setAttribute("referrerpolicy", "no-referrer");
+    // pas de sandbox (l'app garde tous ses droits) ; on laisse le Referer
+    // par défaut au cas où l'API le vérifie.
 
     frame.appendChild(iframe);
     frame.classList.add("is-live"); // masque le poster + le bouton (CSS)
