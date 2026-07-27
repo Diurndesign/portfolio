@@ -294,18 +294,12 @@
     margin-top: 2.5rem;
   }
 
-  &__qr-box {
+  &__qr img {
     flex-shrink: 0;
-    width: 84px;
-    height: 84px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px dashed rgba(255, 255, 255, 0.32);
+    width: 96px;
+    height: 96px;
+    display: block;
     border-radius: 12px;
-    color: $color-text-muted;
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
   }
 
   &__qr-label {
