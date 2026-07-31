@@ -177,6 +177,50 @@ $modal-panel: #ece7dd;
   }
 }
 
+// --- Contenu « Mentions légales » dans le modal --------------
+.legal {
+  color: $color-ink;
+
+  &__title {
+    font-family: $font-display;
+    font-weight: 300;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1;
+    margin-bottom: 2rem;
+    padding-right: 3rem; // place pour la croix
+  }
+
+  &__block {
+    max-width: 62ch;
+
+    & + & {
+      margin-top: 1.75rem;
+      padding-top: 1.75rem;
+      border-top: 1px solid rgba($color-ink, 0.15);
+    }
+
+    h4 {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba($color-ink, 0.55);
+      margin-bottom: 0.65rem;
+    }
+
+    p {
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: rgba($color-ink, 0.82);
+    }
+
+    strong {
+      color: $color-ink;
+      font-weight: 600;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .modal,
   .modal__dialog {

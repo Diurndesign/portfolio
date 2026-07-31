@@ -8,6 +8,45 @@
       content="Diurn Studio — développeur créatif & designer graphique à Nice. Du logo au référencement, une seule personne du concept à la mise en ligne."
     />
     <title>Diurn Studio — Designer & développeur créatif à Nice</title>
+
+    <!-- Favicon (carré bleu de marque) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0a1fd4" />
+
+    <!-- Open Graph (aperçu de partage : LinkedIn, Instagram, WhatsApp, iMessage…) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Diurn Studio" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:url" content="https://www.diurnstudio.fr/" />
+    <meta
+      property="og:title"
+      content="Diurn Studio — Designer & développeur créatif à Nice"
+    />
+    <meta
+      property="og:description"
+      content="Du logo au référencement, une seule personne du concept à la mise en ligne."
+    />
+    <meta property="og:image" content="https://www.diurnstudio.fr/img/og-cover.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Diurn Studio — développeur-créatif à Nice" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Diurn Studio — Designer & développeur créatif à Nice"
+    />
+    <meta
+      name="twitter:description"
+      content="Du logo au référencement, une seule personne du concept à la mise en ligne."
+    />
+    <meta name="twitter:image" content="https://www.diurnstudio.fr/img/og-cover.png" />
+
+    <link rel="canonical" href="https://www.diurnstudio.fr/" />
   </head>
   <body>
     <!-- ===================== NAVBAR ===================== -->
@@ -608,10 +647,81 @@
             <a href="https://www.linkedin.com/in/diurnstudio/" target="_blank" rel="noopener">LinkedIn</a>
             <span aria-hidden="true">·</span>
             <a href="https://www.instagram.com/diurn.studio/" target="_blank" rel="noopener">Instagram</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://github.com/Diurndesign" target="_blank" rel="noopener">GitHub</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://www.malt.fr/profile/jeremybendenoun" target="_blank" rel="noopener">Malt</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://www.cosmos.so/diurn/collections" target="_blank" rel="noopener">Cosmos</a>
           </p>
         </div>
       </section>
     </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer">
+      <p class="site-footer__copy">
+        © 2026 Diurn Studio — Jérémy Bendenoun. Tous droits réservés.
+      </p>
+      <button class="site-footer__legal" type="button" data-project="legal">
+        Mentions légales
+      </button>
+    </footer>
+
+    <!-- Contenu du modal « Mentions légales » (cloné à l'ouverture) -->
+    <template id="detail-legal">
+      <div class="legal">
+        <h3 class="legal__title" id="modal-title">Mentions légales</h3>
+
+        <div class="legal__block">
+          <h4>Éditeur du site</h4>
+          <p>
+            Ce site est édité par Jérémy Bendenoun, exerçant sous le nom
+            commercial <strong>Diurn Studio</strong>.<br />
+            Nice, Côte d'Azur — France<br />
+            Contact : hello@diurnstudio.fr<br />
+            Statut juridique : [à compléter — ex. micro-entreprise / EI]<br />
+            SIRET : [à compléter]
+          </p>
+        </div>
+
+        <div class="legal__block">
+          <h4>Directeur de la publication</h4>
+          <p>Jérémy Bendenoun.</p>
+        </div>
+
+        <div class="legal__block">
+          <h4>Hébergement</h4>
+          <p>
+            Le site est hébergé par <strong>Vercel Inc.</strong><br />
+            340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis<br />
+            vercel.com
+          </p>
+        </div>
+
+        <div class="legal__block">
+          <h4>Propriété intellectuelle</h4>
+          <p>
+            L'ensemble des contenus de ce site (textes, visuels, projets, code)
+            sont la propriété exclusive de Diurn Studio, sauf mention contraire.
+            Toute reproduction, représentation ou diffusion, totale ou
+            partielle, sans autorisation écrite préalable est interdite.
+          </p>
+        </div>
+
+        <div class="legal__block">
+          <h4>Données personnelles</h4>
+          <p>
+            Ce site ne collecte aucune donnée personnelle via un formulaire :
+            les échanges se font par e-mail, à votre initiative. Une mesure
+            d'audience anonyme et sans cookie est réalisée via Vercel Analytics.
+            Conformément au RGPD, vous disposez d'un droit d'accès, de
+            rectification et de suppression de vos données en écrivant à
+            hello@diurnstudio.fr.
+          </p>
+        </div>
+      </div>
+    </template>
 
     <!-- Modal réutilisable -->
     <div class="modal" id="modal" aria-hidden="true">
