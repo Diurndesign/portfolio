@@ -74,6 +74,41 @@
     }
   }
 
+  // --- Maillage interne (autres villes) --------------------
+  &__zones {
+    margin-top: clamp(3rem, 7vh, 5rem);
+  }
+
+  &__zones-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+
+    a {
+      display: inline-block;
+      padding: 0.5rem 1.1rem;
+      border: 1px solid rgba($color-white, 0.3);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      color: $color-text-soft;
+      transition: color $transition, border-color $transition,
+        background $transition;
+
+      &:hover,
+      &:focus-visible {
+        color: $color-blue;
+        background: $color-white;
+        border-color: $color-white;
+      }
+
+      &:focus-visible {
+        outline: 2px solid $color-white;
+        outline-offset: 3px;
+      }
+    }
+  }
+
   // --- Bloc d'appel à l'action -----------------------------
   &__cta {
     margin-top: clamp(3.5rem, 9vh, 6rem);

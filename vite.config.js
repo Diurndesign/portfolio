@@ -20,6 +20,9 @@ export default defineConfig(() => ({
       input: {
         main: resolve(root, "index.html"),
         creationNice: resolve(root, "creation-site-internet-nice.html"),
+        creationCannes: resolve(root, "creation-site-internet-cannes.html"),
+        creationAntibes: resolve(root, "creation-site-internet-antibes.html"),
+        creationMonaco: resolve(root, "creation-site-internet-monaco.html"),
       },
     },
   },
