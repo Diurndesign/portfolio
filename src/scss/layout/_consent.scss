@@ -1,0 +1,126 @@
+// ============================================================
+//  BANDEAU DE CONSENTEMENT COOKIES
+// ============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.cookie-consent {
+  position: fixed;
+  left: clamp(0.75rem, 3vw, 1.5rem);
+  right: clamp(0.75rem, 3vw, 1.5rem);
+  bottom: clamp(0.75rem, 3vw, 1.5rem);
+  z-index: 200;
+
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+
+  max-width: 720px;
+  margin-inline: auto;
+  padding: clamp(1.1rem, 2.5vw, 1.5rem) clamp(1.25rem, 3vw, 1.75rem);
+
+  background: #0b1560; // bleu encore plus profond que le fond, pour se détacher
+  border: 1px solid rgba($color-white, 0.14);
+  border-radius: 14px;
+  box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.7);
+  color: $color-text-soft;
+
+  // masqué par défaut (aucun flash pour qui a déjà choisi)
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity $transition, transform $transition, visibility $transition;
+
+  &.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  &__text {
+    flex: 1 1 320px;
+    font-size: 0.85rem;
+    line-height: 1.55;
+  }
+
+  &__link {
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    color: $color-white;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-size: inherit;
+
+    &:focus-visible {
+      outline: 2px solid $color-white;
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  &__btn {
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    transition: transform $transition, background $transition, color $transition;
+
+    &:focus-visible {
+      outline: 2px solid $color-white;
+      outline-offset: 3px;
+    }
+
+    &--solid {
+      background: $color-white;
+      color: $color-blue;
+      border: 1px solid $color-white;
+
+      &:hover,
+      &:focus-visible {
+        transform: translateY(-2px);
+      }
+    }
+
+    &--ghost {
+      background: transparent;
+      color: $color-text-soft;
+      border: 1px solid rgba($color-white, 0.35);
+
+      &:hover,
+      &:focus-visible {
+        color: $color-white;
+        border-color: $color-white;
+      }
+    }
+  }
+
+  @include until($bp-sm) {
+    &__actions {
+      width: 100%;
+    }
+    &__btn {
+      flex: 1;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cookie-consent {
+    transition: opacity 0.2s linear;
+    transform: none;
+  }
+}

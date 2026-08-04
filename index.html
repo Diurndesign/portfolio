@@ -3,18 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Analytics (G-FGQXLJR38H) est chargé après consentement — voir /src/consent.js -->
 
-    <!-- Google tag (gtag.js) — Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FGQXLJR38H"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-FGQXLJR38H");
-    </script>
     <meta
       name="description"
       content="Diurn Studio — développeur créatif & designer graphique à Nice. Du logo au référencement, une seule personne du concept à la mise en ligne."
@@ -718,10 +708,49 @@
       <p class="site-footer__copy">
         © 2026 Diurn Studio — Jérémy Bendenoun. Tous droits réservés.
       </p>
-      <button class="site-footer__legal" type="button" data-project="legal">
-        Mentions légales
-      </button>
+      <nav class="site-footer__links" aria-label="Liens légaux">
+        <button class="site-footer__legal" type="button" data-project="legal">
+          Mentions légales
+        </button>
+        <button class="site-footer__legal" type="button" data-consent-manage>
+          Gérer les cookies
+        </button>
+      </nav>
     </footer>
+
+    <!-- ===================== BANDEAU COOKIES ===================== -->
+    <div
+      class="cookie-consent"
+      id="cookie-consent"
+      role="dialog"
+      aria-label="Consentement aux cookies"
+      aria-live="polite"
+    >
+      <p class="cookie-consent__text">
+        Ce site utilise des cookies de mesure d'audience (Google Analytics)
+        pour comprendre sa fréquentation. Vous pouvez les accepter ou les
+        refuser.
+        <button class="cookie-consent__link" type="button" data-project="legal">
+          En savoir plus
+        </button>
+      </p>
+      <div class="cookie-consent__actions">
+        <button
+          class="cookie-consent__btn cookie-consent__btn--ghost"
+          type="button"
+          data-consent-refuse
+        >
+          Refuser
+        </button>
+        <button
+          class="cookie-consent__btn cookie-consent__btn--solid"
+          type="button"
+          data-consent-accept
+        >
+          Accepter
+        </button>
+      </div>
+    </div>
 
     <!-- Contenu du modal « Mentions légales » (cloné à l'ouverture) -->
     <template id="detail-legal">
