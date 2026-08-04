@@ -95,6 +95,10 @@
       font-size: 0.95rem;
       transition: border-color $transition, background $transition;
 
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.4);
+      }
+
       &:focus {
         outline: none;
         border-color: $color-white;
