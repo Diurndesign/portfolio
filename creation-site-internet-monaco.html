@@ -200,17 +200,19 @@
       <p class="site-footer__copy">
         © 2026 Diurn Studio — Jérémy Bendenoun. Tous droits réservés.
       </p>
-      <nav class="site-footer__links" aria-label="Liens du pied de page">
-        <a class="site-footer__legal" href="/creation-site-internet-nice"
-          >Création de site à Nice</a
-        >
-        <button class="site-footer__legal" type="button" data-project="legal">
-          Mentions légales
-        </button>
-        <button class="site-footer__legal" type="button" data-consent-manage>
-          Gérer les cookies
-        </button>
-      </nav>
+      <div class="site-footer__nav">
+        <nav class="site-footer__group" aria-label="Création de site internet">
+          <span class="site-footer__label">Création de site internet</span>
+          <a class="site-footer__legal" href="/creation-site-internet-nice">Nice</a>
+          <a class="site-footer__legal" href="/creation-site-internet-cannes">Cannes</a>
+          <a class="site-footer__legal" href="/creation-site-internet-antibes">Antibes</a>
+          <a class="site-footer__legal" href="/creation-site-internet-monaco">Monaco</a>
+        </nav>
+        <nav class="site-footer__group" aria-label="Informations légales">
+          <button class="site-footer__legal" type="button" data-project="legal">Mentions légales</button>
+          <button class="site-footer__legal" type="button" data-consent-manage>Gérer les cookies</button>
+        </nav>
+      </div>
     </footer>
 
     <!-- ===================== BANDEAU COOKIES ===================== -->
