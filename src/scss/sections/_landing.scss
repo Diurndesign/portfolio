@@ -79,34 +79,11 @@
     margin-top: clamp(3rem, 7vh, 5rem);
   }
 
-  &__zones-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 1.5rem;
-
-    a {
-      display: inline-block;
-      padding: 0.5rem 1.1rem;
-      border: 1px solid rgba($color-white, 0.3);
-      border-radius: 999px;
-      font-size: 0.9rem;
-      color: $color-text-soft;
-      transition: color $transition, border-color $transition,
-        background $transition;
-
-      &:hover,
-      &:focus-visible {
-        color: $color-blue;
-        background: $color-white;
-        border-color: $color-white;
-      }
-
-      &:focus-visible {
-        outline: 2px solid $color-white;
-        outline-offset: 3px;
-      }
-    }
+  &__cities {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1.75rem;
   }
 
   // --- Bloc d'appel à l'action -----------------------------
@@ -178,8 +155,65 @@
   }
 }
 
+// --- Carte ville (maillage local) ---------------------------
+.city-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.3rem 1.5rem;
+  border: 1px solid rgba($color-white, 0.2);
+  border-radius: 12px;
+  transition: transform $transition, border-color $transition,
+    background $transition;
+
+  &__name {
+    font-family: $font-display;
+    font-weight: 300;
+    font-size: 1.7rem;
+    line-height: 1;
+    color: $color-white;
+  }
+
+  &__desc {
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: $color-text-muted;
+    max-width: 22ch;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 1.15rem;
+    right: 1.35rem;
+    color: $color-text-soft;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity $transition, transform $transition;
+  }
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-3px);
+    border-color: rgba($color-white, 0.55);
+    background: rgba($color-white, 0.06);
+  }
+
+  &:hover &__arrow,
+  &:focus-visible &__arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-white;
+    outline-offset: 3px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .landing__btn {
+  .landing__btn,
+  .city-card {
     transition: none;
   }
 }
