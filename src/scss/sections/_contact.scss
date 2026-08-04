@@ -48,7 +48,8 @@
   // --- Coordonnées -----------------------------------------
   &__details {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1.3fr 0.9fr;
+    align-items: start;
     gap: clamp(2rem, 5vw, 4rem);
     margin-top: clamp(3rem, 7vh, 5rem);
     padding-top: clamp(2rem, 4vh, 3rem);
@@ -56,8 +57,108 @@
 
     @include until($bp-md) {
       grid-template-columns: 1fr;
-      gap: 2rem;
+      gap: 2.5rem;
     }
+  }
+
+  // --- Formulaire de contact -------------------------------
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    max-width: 36rem;
+  }
+
+  &__botcheck {
+    display: none !important;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+
+    label {
+      font-size: 0.8rem;
+      color: $color-text-soft;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.8rem 0.95rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 8px;
+      color: $color-white;
+      font-family: $font-body;
+      font-size: 0.95rem;
+      transition: border-color $transition, background $transition;
+
+      &:focus {
+        outline: none;
+        border-color: $color-white;
+        background: rgba(255, 255, 255, 0.1);
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+  }
+
+  &__submit {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.3rem;
+    padding: 0.85rem 1.6rem;
+    border: 0;
+    border-radius: 999px;
+    background: $color-white;
+    color: $color-blue;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: transform $transition, box-shadow $transition, opacity $transition;
+
+    &:hover:not(:disabled),
+    &:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px -14px rgba(0, 0, 0, 0.55);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: default;
+      transform: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-white;
+      outline-offset: 3px;
+    }
+  }
+
+  &__status {
+    font-size: 0.9rem;
+    line-height: 1.5;
+
+    &.is-success {
+      color: #8ef0c0;
+    }
+
+    &.is-error {
+      color: #ffb3b3;
+    }
+  }
+
+  &__privacy {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: $color-text-muted;
   }
 
   &__label {
