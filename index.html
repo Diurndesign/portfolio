@@ -679,9 +679,57 @@
           <div class="contact__details">
             <div class="contact__block">
               <p class="contact__label">Me contacter directement</p>
-              <a class="contact__email" href="mailto:hello@diurnstudio.fr"
-                >hello@diurnstudio.fr</a
+              <form
+                class="contact__form"
+                id="contact-form"
+                action="https://api.web3forms.com/submit"
+                method="POST"
               >
+                <input type="hidden" name="access_key" value="WEB3FORMS_ACCESS_KEY" />
+                <input
+                  type="hidden"
+                  name="subject"
+                  value="Nouveau message depuis diurnstudio.fr"
+                />
+                <input type="hidden" name="from_name" value="Formulaire diurnstudio.fr" />
+                <!-- Anti-spam (pot de miel) : masqué, ne doit jamais être coché -->
+                <input
+                  type="checkbox"
+                  name="botcheck"
+                  class="contact__botcheck"
+                  tabindex="-1"
+                  autocomplete="off"
+                  aria-hidden="true"
+                />
+
+                <div class="contact__field">
+                  <label for="cf-name">Nom</label>
+                  <input type="text" id="cf-name" name="name" required autocomplete="name" />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-email">Email</label>
+                  <input
+                    type="email"
+                    id="cf-email"
+                    name="email"
+                    required
+                    autocomplete="email"
+                  />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-message">Votre projet en quelques mots</label>
+                  <textarea id="cf-message" name="message" rows="5" required></textarea>
+                </div>
+
+                <button type="submit" class="contact__submit">
+                  Envoyer le message <span aria-hidden="true">↗</span>
+                </button>
+                <p class="contact__status" role="status" aria-live="polite"></p>
+                <p class="contact__privacy">
+                  Vos informations servent uniquement à vous répondre et ne sont
+                  jamais revendues.
+                </p>
+              </form>
             </div>
             <div class="contact__block">
               <p class="contact__label">Où me trouver</p>
@@ -806,14 +854,7 @@
         <div class="legal__block">
           <h4>Données personnelles &amp; cookies</h4>
           <p>
-            Ce site ne collecte aucune donnée via un formulaire : les échanges
-            se font par e-mail, à votre initiative. Une mesure d'audience est
-            réalisée via Google Analytics (Google Ireland Ltd), qui dépose des
-            cookies et collecte des données de navigation à des fins
-            statistiques. Ces données ne sont pas revendues à des tiers.
-            Conformément au RGPD, vous disposez d'un droit d'accès, de
-            rectification et de suppression de vos données en écrivant à
-            hello@diurnstudio.fr.
+            Les données que vous transmettez via le formulaire de contact (nom, e-mail, message) servent uniquement à traiter votre demande et à vous répondre ; elles ne sont jamais revendues à des tiers. L'envoi du formulaire est assuré par le service Web3Forms. Une mesure d'audience est réalisée via Google Analytics (Google Ireland Ltd), qui dépose des cookies et collecte des données de navigation à des fins statistiques. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données en écrivant à hello@diurnstudio.fr.
           </p>
         </div>
       </div>

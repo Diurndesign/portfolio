@@ -5,3 +5,4 @@ import "./scroll-nav.js";
 import "./site-logo.js";
 import "./murmure.js";
 import "./consent.js";
+import "./contact-form.js";
