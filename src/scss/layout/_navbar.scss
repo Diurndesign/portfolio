@@ -1,0 +1,229 @@
+// ============================================================
+//  NAVBAR — barres latérales verticales
+// ============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.nav {
+  &__side {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 20;
+    width: $sidebar-width;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(1.5rem, 4vh, 3.5rem);
+
+    @include until($bp-md) {
+      position: static;
+      flex-direction: row;
+      width: auto;
+      height: auto;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1rem;
+    }
+  }
+
+  &__side--left {
+    left: 0;
+  }
+
+  &__side--right {
+    right: 0;
+  }
+
+  // --- Liens verticaux -------------------------------------
+  &__link {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: $color-text-soft;
+    white-space: nowrap;
+
+    // Texte à la verticale (lecture de bas en haut)
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+
+    position: relative;
+    transition: color $transition;
+
+    // Petit trait animé au survol
+    &::after {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: 50%;
+      width: 1px;
+      height: 0;
+      background: $color-white;
+      transform: translateY(-50%);
+      transition: height $transition;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: $color-white;
+
+      &::after {
+        height: 100%;
+      }
+    }
+
+    @include until($bp-md) {
+      writing-mode: horizontal-tb;
+      transform: none;
+
+      &::after {
+        left: 50%;
+        top: auto;
+        bottom: -6px;
+        width: 0;
+        height: 1px;
+        transform: translateX(-50%);
+        transition: width $transition;
+      }
+
+      &:hover::after,
+      &:focus-visible::after {
+        width: 100%;
+        height: 1px;
+      }
+    }
+  }
+
+  // La barre droite lit de haut en bas
+  &__side--right &__link {
+    writing-mode: vertical-rl;
+    transform: none;
+
+    @include until($bp-md) {
+      writing-mode: horizontal-tb;
+    }
+  }
+
+  // --- Icônes réseaux (sidebar droite) ---------------------
+  &__social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    color: $color-text-soft;
+    transition: color $transition, transform $transition;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      fill: currentColor;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: $color-white;
+      transform: translateY(-2px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-white;
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+  }
+
+  // --- Variante foncée : quand une section claire passe sous la nav ---
+  &--light &__link {
+    color: rgba($color-ink, 0.6);
+
+    &::after {
+      background: $color-ink;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: $color-ink;
+    }
+  }
+
+  &--light &__social {
+    color: rgba($color-ink, 0.6);
+
+    &:hover,
+    &:focus-visible {
+      color: $color-ink;
+    }
+  }
+}
+
+// ============================================================
+//  Logo fixe (coin haut-gauche) — révélé au scroll
+// ============================================================
+.site-logo {
+  position: fixed;
+  top: clamp(1rem, 2.4vh, 1.6rem);
+  left: clamp(1rem, 2vw, 1.6rem);
+  z-index: 40;
+  display: block;
+
+  // masqué tant que le hero est visible
+  opacity: 0;
+  transform: translateY(-14px) scale(0.96);
+  pointer-events: none;
+  transition: opacity 0.55s $ease, transform 0.55s $ease, filter $transition;
+
+  // blanc sur fond bleu (le logo source est noir)
+  filter: invert(1);
+
+  img {
+    display: block;
+    height: 100px;
+    width: auto;
+  }
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(0) scale(1.04);
+  }
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 6px;
+  }
+
+  // état visible (activé au scroll par le JS)
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  // sur une section claire (nav en mode foncé) : logo noir
+  .nav--light & {
+    filter: none;
+  }
+
+  @include until($bp-md) {
+    top: 0.75rem;
+    left: 0.75rem;
+    img {
+      height: 64px;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-logo {
+    transition: opacity 0.2s linear;
+    transform: none;
+
+    &.is-visible {
+      transform: none;
+    }
+  }
+}

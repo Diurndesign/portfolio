@@ -1,0 +1,157 @@
+// ============================================================
+//  SECTION À PROPOS
+// ============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.section--about {
+  // annule le centrage flex hérité de .section
+  display: block;
+  padding-top: clamp(5rem, 12vh, 9rem);
+  padding-bottom: clamp(5rem, 12vh, 9rem);
+}
+
+.about {
+  max-width: $content-max;
+  margin: 0 auto;
+
+  // --- Haut : texte + photo --------------------------------
+  &__top {
+    display: grid;
+    grid-template-columns: 1.35fr 0.75fr;
+    align-items: center;
+    gap: clamp(2.5rem, 6vw, 6rem);
+
+    @include until($bp-lg) {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  &__headline {
+    font-family: $font-display;
+    font-weight: 300;
+    font-size: clamp(2.1rem, 4.4vw, 3.6rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: $color-white;
+    max-width: 18ch;
+    text-wrap: balance;
+    margin-top: 0.4rem;
+  }
+
+  &__bio {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 46ch;
+    margin-top: clamp(1.5rem, 3vh, 2.25rem);
+
+    p {
+      font-size: clamp(0.98rem, 1.1vw, 1.08rem);
+      line-height: 1.75;
+      color: $color-text-soft;
+    }
+
+    strong {
+      color: $color-white;
+      font-weight: 600;
+    }
+  }
+
+  &__photo {
+    @include until($bp-lg) {
+      max-width: 340px;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 4;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  }
+
+  // --- Blocs ------------------------------------------------
+  &__blocks {
+    margin-top: clamp(3.5rem, 9vh, 7rem);
+    border-top: 1px solid rgba(255, 255, 255, 0.16);
+  }
+
+  // Mon approche : intro pleine largeur
+  &__approach {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding: clamp(1.75rem, 3.5vh, 2.75rem) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+
+    .about__text {
+      max-width: 68ch;
+    }
+  }
+
+  // Services : colonnes côte à côte
+  &__services {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1.75rem, 4vw, 3.5rem);
+    padding-top: clamp(2rem, 4vh, 3rem);
+
+    @include until($bp-md) {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  &__col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  &__label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: $color-white;
+  }
+
+  &__text {
+    font-size: clamp(0.98rem, 1.1vw, 1.05rem);
+    line-height: 1.75;
+    color: $color-text-soft;
+
+    strong {
+      color: $color-white;
+      font-weight: 600;
+    }
+  }
+
+  // Lien contextuel vers la landing SEO (maillage interne)
+  &__more {
+    display: inline-block;
+    margin-top: 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: $color-white;
+
+    span {
+      transition: transform $transition;
+      display: inline-block;
+    }
+
+    &:hover span,
+    &:focus-visible span {
+      transform: translateX(3px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-white;
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+  }
+}

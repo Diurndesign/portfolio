@@ -1,0 +1,185 @@
+// ============================================================
+//  LANDING SEO — « Création de site internet à Nice »
+//  Page éditoriale : reprend la typo et les couleurs du site.
+// ============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.landing {
+  // marge pour dégager les barres latérales fixes (64px) + le logo
+  padding: clamp(7rem, 15vh, 11rem) $sidebar-width clamp(5rem, 12vh, 8rem);
+
+  @include until($bp-md) {
+    padding: 3rem 1.25rem 4rem;
+  }
+
+  &__article {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  // --- En-tête ---------------------------------------------
+  &__head {
+    margin-bottom: clamp(3rem, 8vh, 5rem);
+  }
+
+  &__eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: $color-text-muted;
+    margin-bottom: 1.25rem;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-weight: 300;
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    color: $color-white;
+    text-wrap: balance;
+  }
+
+  &__lede {
+    margin-top: clamp(1.5rem, 3vh, 2.25rem);
+    font-size: clamp(1.1rem, 1.6vw, 1.4rem);
+    line-height: 1.6;
+    color: $color-text-soft;
+    max-width: 60ch;
+  }
+
+  // --- Sections rédactionnelles ----------------------------
+  &__section {
+    & + & {
+      margin-top: clamp(2.5rem, 6vh, 4rem);
+    }
+
+    h2 {
+      font-family: $font-display;
+      font-weight: 300;
+      font-size: clamp(1.7rem, 3.4vw, 2.5rem);
+      line-height: 1.15;
+      color: $color-white;
+      text-wrap: balance;
+      margin-bottom: 1.1rem;
+    }
+
+    p {
+      font-size: clamp(1rem, 1.15vw, 1.1rem);
+      line-height: 1.8;
+      color: $color-text-soft;
+      max-width: 68ch;
+    }
+  }
+
+  // --- Maillage interne (autres villes) --------------------
+  &__zones {
+    margin-top: clamp(3rem, 7vh, 5rem);
+  }
+
+  &__zones-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+
+    a {
+      display: inline-block;
+      padding: 0.5rem 1.1rem;
+      border: 1px solid rgba($color-white, 0.3);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      color: $color-text-soft;
+      transition: color $transition, border-color $transition,
+        background $transition;
+
+      &:hover,
+      &:focus-visible {
+        color: $color-blue;
+        background: $color-white;
+        border-color: $color-white;
+      }
+
+      &:focus-visible {
+        outline: 2px solid $color-white;
+        outline-offset: 3px;
+      }
+    }
+  }
+
+  // --- Bloc d'appel à l'action -----------------------------
+  &__cta {
+    margin-top: clamp(3.5rem, 9vh, 6rem);
+    padding-top: clamp(2.5rem, 6vh, 4rem);
+    border-top: 1px solid rgba($color-white, 0.16);
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.1rem 1.75rem;
+    margin-top: 2rem;
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 1.6rem;
+    border-radius: 999px;
+    background: $color-white;
+    color: $color-blue;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform $transition, box-shadow $transition;
+
+    &:hover,
+    &:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px -14px rgba(0, 0, 0, 0.55);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-white;
+      outline-offset: 3px;
+    }
+  }
+
+  &__contact-link {
+    position: relative;
+    font-size: 0.95rem;
+    color: $color-text-soft;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform $transition;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: $color-white;
+    }
+
+    &:hover::after,
+    &:focus-visible::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .landing__btn {
+    transition: none;
+  }
+}

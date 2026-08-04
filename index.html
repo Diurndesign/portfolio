@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Analytics (G-FGQXLJR38H) est chargé après consentement — voir /src/consent.js -->
+
+    <meta
+      name="description"
+      content="Diurn Studio — développeur créatif & designer graphique à Nice. Du logo au référencement, une seule personne du concept à la mise en ligne."
+    />
+    <title>Diurn Studio — Designer & développeur créatif à Nice</title>
+
+    <!-- Favicon (carré bleu de marque) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#010d94" />
+
+    <!-- Open Graph (aperçu de partage : LinkedIn, Instagram, WhatsApp, iMessage…) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Diurn Studio" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:url" content="https://www.diurnstudio.fr/" />
+    <meta
+      property="og:title"
+      content="Diurn Studio — Designer & développeur créatif à Nice"
+    />
+    <meta
+      property="og:description"
+      content="Du logo au référencement, une seule personne du concept à la mise en ligne."
+    />
+    <meta property="og:image" content="https://www.diurnstudio.fr/img/og-cover.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="2400" />
+    <meta property="og:image:height" content="1260" />
+    <meta property="og:image:alt" content="Diurn Studio — développeur-créatif à Nice" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Diurn Studio — Designer & développeur créatif à Nice"
+    />
+    <meta
+      name="twitter:description"
+      content="Du logo au référencement, une seule personne du concept à la mise en ligne."
+    />
+    <meta name="twitter:image" content="https://www.diurnstudio.fr/img/og-cover.png" />
+
+    <link rel="canonical" href="https://www.diurnstudio.fr/" />
+
+    <!-- Données structurées (SEO) : activité de design & développement à Nice -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "@id": "https://www.diurnstudio.fr/#diurnstudio",
+        "name": "Diurn Studio",
+        "url": "https://www.diurnstudio.fr/",
+        "image": "https://www.diurnstudio.fr/img/og-cover.png",
+        "email": "hello@diurnstudio.fr",
+        "description": "Diurn Studio — développeur créatif & designer graphique à Nice. Du logo au référencement, une seule personne du concept à la mise en ligne.",
+        "founder": {
+          "@type": "Person",
+          "name": "Jérémy Bendenoun",
+          "jobTitle": "Développeur créatif & designer graphique"
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Nice" },
+          { "@type": "Country", "name": "France" }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Nice",
+          "addressRegion": "Provence-Alpes-Côte d'Azur",
+          "addressCountry": "FR"
+        },
+        "knowsAbout": [
+          "Identité de marque",
+          "Design graphique",
+          "Développement web",
+          "Référencement naturel (SEO)"
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/diurnstudio/",
+          "https://www.instagram.com/diurn.studio/",
+          "https://github.com/Diurndesign",
+          "https://www.malt.fr/profile/jeremybendenoun",
+          "https://www.cosmos.so/diurn/collections"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <!-- ===================== NAVBAR ===================== -->
+    <nav class="nav" aria-label="Navigation principale">
+      <!-- Logo fixe : apparaît au scroll, ramène en haut -->
+      <a href="#accueil" class="site-logo" aria-label="Diurn Studio — retour en haut de la page">
+        <img src="/img/logo-diurn.png" alt="Logo de Diurn Studio" width="320" height="400" />
+      </a>
+
+      <!-- Sidebar gauche : sections -->
+      <ul class="nav__side nav__side--left">
+        <li><a href="#projets" class="nav__link">Projets</a></li>
+        <li><a href="#a-propos" class="nav__link">À propos</a></li>
+        <li><a href="#contact" class="nav__link">Contact</a></li>
+      </ul>
+
+      <!-- Sidebar droite : réseaux -->
+      <ul class="nav__side nav__side--right">
+        <li>
+          <a href="mailto:hello@diurnstudio.fr" class="nav__social" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/diurn.studio/" target="_blank" rel="noopener" class="nav__social" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/Diurndesign" target="_blank" rel="noopener" class="nav__social" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/diurnstudio/" target="_blank" rel="noopener" class="nav__social" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.malt.fr/profile/jeremybendenoun" target="_blank" rel="noopener" class="nav__social" aria-label="Malt — mon profil freelance">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M20.195 8.581c-.069 0-.285.026-.484.113-.432.181-.597.311-.597.58v5.023c0 .277.26.355.735.355.467 0 .649-.087.649-.355V8.858c0-.173-.113-.277-.303-.277zm3.502 4.903c-.345.087-.45.113-.57.113-.147 0-.2-.044-.2-.2v-2.161h.788c.207 0 .285-.078.285-.285 0-.173-.078-.26-.285-.26h-.787v-.839c0-.259-.087-.363-.268-.363-.173 0-.415.156-.934.597-.528.45-.83.744-.83.951 0 .121.086.199.224.199h.424v2.335c0 .683.337 1.08.925 1.08.39 0 .675-.146 1.012-.406.311-.242.51-.432.51-.596 0-.139-.103-.217-.294-.165zm-15.21-3.078c-.13 0-.285.026-.484.112-.433.19-.597.312-.597.58v3.2c0 .276.26.354.735.354.467 0 .649-.087.649-.355v-3.614c0-.173-.113-.277-.303-.277Zm1.816 0c-.355 0-.675.121-.986.363-.173.138-.32.294-.32.424 0 .112.078.173.19.173.19 0 .251-.078.416-.078.164 0 .25.173.25.476v2.533c0 .277.26.355.735.355.467 0 .649-.087.649-.355v-2.776c0-.657-.39-1.115-.934-1.115zm2.43 0c-.337 0-.692.121-1.003.363-.173.138-.32.294-.32.424 0 .112.078.173.19.173.19 0 .25-.078.432-.078s.268.173.268.476v2.533c0 .277.26.355.735.355.467 0 .649-.087.649-.355v-2.776c0-.657-.39-1.115-.951-1.115zm5.335 0a1.29 1.29 0 0 0-.484.112c-.26.113-.398.2-.467.312-.26-.303-.597-.398-.977-.398-1.116 0-1.911.942-1.911 2.283 0 1.124.605 1.954 1.461 1.954.26 0 .493-.104.77-.363.216-.2.32-.329.32-.45a.14.14 0 0 0-.147-.147c-.121 0-.251.104-.416.104-.354 0-.596-.545-.596-1.35 0-.803.32-1.348.804-1.348.32 0 .562.242.562.657v2.525c0 .277.26.355.735.355.467 0 .649-.087.649-.355v-3.614c0-.173-.113-.277-.303-.277ZM3.499 13.563l-.21.21.619.618c.304.304.79.598 1.244.144.339-.34.26-.695.073-.98-.06.004-1.726.008-1.726.008zm-.963-2.325.21-.21-.608-.607c-.304-.303-.765-.621-1.243-.143-.351.35-.273.692-.087.97Zm2.86.416c-.037.043-1.511 1.524-1.511 1.524h1.154c.43 0 .981-.101.981-.777 0-.496-.296-.683-.624-.747zm-3.244-.031H.981c-.43 0-.981.135-.981.778 0 .479.307.676.641.745.04-.046 1.511-1.523 1.511-1.523zm1.484 3.04-.618-.618-.608.607a2.613 2.613 0 0 1-.137.128c.07.333.266.639.745.639s.676-.307.745-.641c-.043-.037-.085-.073-.127-.115zM2.41 10.15l.608.607.618-.618a2.25 2.25 0 0 1 .128-.118c-.065-.327-.251-.623-.747-.623s-.682.297-.746.625c.046.04.092.08.14.127zm2.742.117c-.455-.454-.94-.16-1.244.144l-2.87 2.87c-.303.303-.621.765-.143 1.243.478.478.94.16 1.243-.143l2.87-2.87c.304-.304.598-.79.144-1.244Z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.cosmos.so/diurn/collections" target="_blank" rel="noopener" class="nav__social" aria-label="Cosmos">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ===================== HERO ===================== -->
+    <header class="hero" id="accueil">
+      <div class="hero__inner">
+        <p class="hero__eyebrow">
+          Développeur-créatif <span class="hero__eyebrow-sep">— Du logo au SEO ·</span> Nice
+        </p>
+
+        <div class="hero__content">
+          <div class="hero__text">
+            <h1 class="hero__title">
+              <span>DiUrN</span>
+              <span>sTudio</span>
+            </h1>
+
+            <p class="hero__intro">
+              Développeur créatif à Nice, je conçois l'identité des marques
+              et je code les sites qui les portent. Du logo au référencement.
+              Une seule personne, du concept à la mise en ligne.
+            </p>
+          </div>
+
+          <figure class="hero__portrait">
+            <a href="#a-propos" class="hero__portrait-link" aria-label="En savoir plus — aller à la section À propos">
+              <img
+                src="/img/photo-profil.webp"
+                alt="Portrait de Diurn, développeur créatif à Nice"
+                loading="eager"
+                width="896"
+                height="1195"
+              />
+            </a>
+          </figure>
+        </div>
+      </div>
+
+      <a href="#projets" class="hero__scroll" aria-label="Défiler vers les projets">
+        <span class="hero__scroll-line"></span>
+        <span class="hero__scroll-label">Scroll</span>
+      </a>
+    </header>
+
+    <!-- ===================== SECTIONS (placeholders) ===================== -->
+    <main>
+      <section id="projets" class="section section--projets" data-nav-light>
+        <div class="projets">
+          <header class="projets__head">
+            <p class="section__eyebrow">Sélection de travaux</p>
+            <h2 class="section__title">Projets</h2>
+          </header>
+
+          <ul class="projets__grid">
+            <li class="card">
+              <button class="card__btn" type="button" data-project="gdunan" aria-haspopup="dialog">
+                <span class="card__media">
+                  <img src="/img/projets/gd-2.webp" alt="Site internet Gdunan présenté sur un ordinateur portable" loading="lazy" width="1080" height="1080" />
+                  <span class="card__overlay">
+                    <span class="card__cat">Identité · Site web</span>
+                    <span class="card__title">GdunaN</span>
+                  </span>
+                </span>
+              </button>
+            </li>
+
+            <li class="card">
+              <button class="card__btn" type="button" data-project="azureco" aria-haspopup="dialog">
+                <span class="card__media">
+                  <img src="/img/projets/az-5.webp" alt="Emblème du Pressing Azur Eco" loading="lazy" width="500" height="500" />
+                  <span class="card__overlay">
+                    <span class="card__cat">Logo · Mascotte</span>
+                    <span class="card__title">Azur Eco</span>
+                  </span>
+                </span>
+              </button>
+            </li>
+
+            <li class="card">
+              <a class="card__btn" href="#murmure" aria-label="Murmure — voir l'application (section dédiée plus bas)">
+                <span class="card__media">
+                  <img src="/img/projets/murmure-app.webp" alt="L'application Murmure ouverte sur un téléphone" loading="lazy" width="703" height="509" />
+                  <span class="card__overlay">
+                    <span class="card__cat">Application web · React</span>
+                    <span class="card__title">Murmure</span>
+                  </span>
+                </span>
+              </a>
+            </li>
+
+            <li class="card">
+              <button class="card__btn" type="button" data-project="tijm" aria-haspopup="dialog">
+                <span class="card__media">
+                  <img src="/img/projets/tijm-4.webp" alt="Combat de judo en noir et blanc — Tournoi International de Judo de Monaco" loading="lazy" width="1600" height="1065" />
+                  <span class="card__overlay">
+                    <span class="card__cat">Affiche & édition</span>
+                    <span class="card__title">TijM</span>
+                  </span>
+                </span>
+              </button>
+            </li>
+
+            <li class="card">
+              <button class="card__btn" type="button" data-project="elo" aria-haspopup="dialog">
+                <span class="card__media">
+                  <img src="/img/projets/elo-2.webp" alt="Logo Elo posé sur du marbre avec un ruban gansé griffé" loading="lazy" width="1184" height="912" />
+                  <span class="card__overlay">
+                    <span class="card__cat">Refonte · Couture</span>
+                    <span class="card__title">Elo Ab</span>
+                  </span>
+                </span>
+              </button>
+            </li>
+
+            <li class="card">
+              <button class="card__btn" type="button" data-project="ewaflr" aria-haspopup="dialog">
+                <span class="card__media">
+                  <img src="/img/projets/ewa-5.webp" alt="Univers de marque Ewa FLR : tote bag, menu et légumes de saison" loading="lazy" width="1264" height="842" />
+                  <span class="card__overlay">
+                    <span class="card__cat">Identité de marque</span>
+                    <span class="card__title">Ewa FLR</span>
+                  </span>
+                </span>
+              </button>
+            </li>
+
+            <li class="card">
+              <button class="card__btn" type="button" data-project="longwy" aria-haspopup="dialog">
+                <span class="card__media">
+                  <img src="/img/projets/lw-2.webp" alt="Arts de la table aux couleurs d'Esprit de Longwy" loading="lazy" width="1024" height="878" />
+                  <span class="card__overlay">
+                    <span class="card__cat">Refonte de logo</span>
+                    <span class="card__title">Longwy</span>
+                  </span>
+                </span>
+              </button>
+            </li>
+
+            <li class="card">
+              <button class="card__btn" type="button" data-project="freakshow" aria-haspopup="dialog">
+                <span class="card__media">
+                  <img src="/img/projets/freakshow1.webp" alt="Le livre Freakshow tenu en main, page Fred Wilson avec dorure rouge" loading="lazy" width="1600" height="1067" />
+                  <span class="card__overlay">
+                    <span class="card__cat">Édition · Direction artistique</span>
+                    <span class="card__title">Freakshow</span>
+                  </span>
+                </span>
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Contenu des modals (masqué, cloné à l'ouverture) -->
+        <template id="detail-freakshow">
+          <article class="project" data-bg="#e8e7e3">
+            <header class="project__head">
+              <p class="project__cat">Édition · Direction artistique</p>
+              <h3 class="project__title" id="modal-title">Freakshow</h3>
+              <ul class="project__tags">
+                <li>Mise en page</li>
+                <li>Retouche photo</li>
+                <li>Montage photo</li>
+                <li>Impression</li>
+              </ul>
+            </header>
+            <div class="project__text">
+              <p>Freakshow est un livre consacré aux figures des foires aux monstres du XIX<sup>e</sup> siècle — Fred Wilson, Fanny Loak et les autres. Un objet imprimé qui raconte ces vies hors normes avec gravité, sans jamais verser dans le voyeurisme.</p>
+              <p>Direction artistique complète : une mise en page à la composition verticale, la retouche et le montage des photographies d'archive tramées, et une dorure rouge à chaud qui vient percuter le noir et blanc. Un travail mené jusqu'à l'impression et le façonnage.</p>
+            </div>
+            <div class="project__gallery">
+              <img src="/img/projets/freakshow1.webp" alt="Le livre tenu en main, page Fred Wilson" loading="lazy" width="1600" height="1067" />
+              <img src="/img/projets/freakshow2.webp" alt="Double page avec photographie en pleine hauteur" loading="lazy" width="1600" height="1067" />
+              <img src="/img/projets/freakshow3.webp" alt="Gros plan sur la dorure rouge — Fanny Loak (1860-1892)" loading="lazy" width="1600" height="1067" />
+              <img src="/img/projets/freakshow4.webp" alt="Le livre ouvert, page en cours de tournage" loading="lazy" width="1600" height="1067" />
+            </div>
+          </article>
+        </template>
+
+        <template id="detail-tijm">
+          <article class="project" data-bg="#efe7d7">
+            <header class="project__head">
+              <p class="project__cat">Affiche & édition</p>
+              <h3 class="project__title" id="modal-title">TijM 2017</h3>
+              <ul class="project__tags">
+                <li>Affiche</li>
+                <li>Mise en page</li>
+                <li>Magazine</li>
+                <li>Direction artistique</li>
+              </ul>
+            </header>
+            <div class="project__text">
+              <p>Identité visuelle du 24<sup>e</sup> Tournoi International de Judo de Monaco — Trophée Gérard Bertrand, 2017. Une affiche pensée pour tenir aussi bien sur un panneau urbain de la Principauté que dans le hall du Stade Louis II.</p>
+              <p>Au-delà de l'affiche : la conception et la mise en page du magazine officiel du tournoi — doubles pages, hiérarchie typographique et intégration des photographies de combat, jusqu'au bon à tirer.</p>
+            </div>
+            <div class="project__gallery">
+              <img src="/img/projets/tijm-affiche.webp" alt="Affiche à plat du 24e Tournoi International de Judo de Monaco" loading="lazy" width="1300" height="1839" />
+              <img src="/img/projets/tijm-1.webp" alt="Affiche TijM sur un panneau urbain à Monaco" loading="lazy" width="864" height="1222" />
+              <img src="/img/projets/tijm-3.webp" alt="Double page du magazine officiel du tournoi" loading="lazy" width="1600" height="1600" />
+              <img src="/img/projets/tijm-4.webp" alt="Photographie de combat de judo en noir et blanc" loading="lazy" width="1600" height="1065" />
+            </div>
+          </article>
+        </template>
+
+        <template id="detail-gdunan">
+          <article class="project" data-bg="#f0efe8">
+            <header class="project__head">
+              <p class="project__cat">Identité · Site web</p>
+              <h3 class="project__title" id="modal-title">Gdunan</h3>
+              <ul class="project__tags">
+                <li>Logo</li>
+                <li>Site web</li>
+                <li>Carte gaufrée</li>
+                <li>Shooting photo</li>
+              </ul>
+            </header>
+            <div class="project__text">
+              <p>Identité globale de Gdunan : un monogramme « GD » épuré, pensé pour une marque haut de gamme où la matière et le geste priment. Le logo se décline du web au print, jusqu'à une carte de visite gaufrée à froid, sans encre.</p>
+              <p>Le projet couvre la création du logo, la conception et la direction artistique du site internet, ainsi qu'un shooting photo dédié à son travail — des visuels sombres et texturés qui mettent la matière en lumière.</p>
+            </div>
+            <div class="project__gallery">
+              <img src="/img/projets/gd-1.webp" alt="Composition de marque Gdunan avec le monogramme GD" loading="lazy" width="1080" height="1350" />
+              <img src="/img/projets/gd-2.webp" alt="Site internet Gdunan sur ordinateur portable" loading="lazy" width="1080" height="1080" />
+              <img src="/img/projets/gd-3.webp" alt="Site internet Gdunan sur mobile" loading="lazy" width="1600" height="900" />
+              <img src="/img/projets/gd-4.webp" alt="Carte de visite gaufrée avec le monogramme GD" loading="lazy" width="1080" height="1080" />
+              <img src="/img/projets/gd-5.webp" alt="Macro du travail de la matière — shooting" loading="lazy" width="1080" height="1350" />
+            </div>
+          </article>
+        </template>
+
+        <template id="detail-ewaflr">
+          <article class="project" data-bg="#e7e7e6">
+            <header class="project__head">
+              <p class="project__cat">Identité de marque</p>
+              <h3 class="project__title" id="modal-title">Ewa FLR</h3>
+              <ul class="project__tags">
+                <li>Logo</li>
+                <li>Charte graphique</li>
+                <li>Papeterie</li>
+                <li>Direction artistique</li>
+              </ul>
+            </header>
+            <div class="project__text">
+              <p>Identité de marque pour Ewa FLR, cheffe. Un univers minimal et végétal, structuré autour d'un logotype vertical tout en finesse (Modenica light) et d'une couleur unique, le « bleu béton ».</p>
+              <p>La charte se décline sur l'ensemble des supports — papeterie, carte de visite, tablier — pour une image de marque sobre et éditoriale, au service de sa cuisine.</p>
+            </div>
+            <div class="project__gallery">
+              <img src="/img/projets/ewa-5.webp" alt="Univers de marque Ewa FLR : tote bag, menu et légumes de saison" loading="lazy" width="1264" height="842" />
+              <img src="/img/projets/ewa-1.webp" alt="Image de situation : la cheffe Ewa avec une cagette de légumes" loading="lazy" width="1080" height="1350" />
+              <img src="/img/projets/ewa-2.webp" alt="Cartes de visite recto-verso" loading="lazy" width="1600" height="1200" />
+              <img src="/img/projets/ewa-3.webp" alt="Tablier bleu béton avec le logo" loading="lazy" width="1600" height="1067" />
+              <img src="/img/projets/ewa-4.webp" alt="Planche d'identité : couleur, situation et typographie" loading="lazy" width="1600" height="2263" />
+            </div>
+          </article>
+        </template>
+
+        <template id="detail-longwy">
+          <article class="project" data-bg="#efe9df">
+            <header class="project__head">
+              <p class="project__cat">Refonte de logo</p>
+              <h3 class="project__title" id="modal-title">Esprit de Longwy</h3>
+              <ul class="project__tags">
+                <li>Logo</li>
+                <li>Refonte</li>
+                <li>Déclinaisons</li>
+                <li>Direction artistique</li>
+              </ul>
+            </header>
+            <div class="project__text">
+              <p>Refonte du logo d'Esprit de Longwy, marque inspirée des célèbres émaux de Longwy. Un emblème floral aux courbes ondulées, dans une palette de terre, d'or et de crème, associé à un wordmark serif élégant.</p>
+              <p>Le nouveau logo se décline sur l'ensemble des supports de la marque — arts de la table, coffrets, papeterie à tranche dorée — pour un positionnement haut de gamme et artisanal.</p>
+            </div>
+            <div class="project__gallery">
+              <img src="/img/projets/lw-1.webp" alt="Logo Esprit de Longwy — emblème et wordmark" loading="lazy" width="1080" height="422" />
+              <img src="/img/projets/lw-2.webp" alt="Déclinaison sur les arts de la table" loading="lazy" width="1024" height="878" />
+              <img src="/img/projets/lw-3.webp" alt="Cartes de visite à tranche dorée" loading="lazy" width="1024" height="932" />
+            </div>
+          </article>
+        </template>
+
+        <template id="detail-elo">
+          <article class="project" data-bg="#f2efe8">
+            <header class="project__head">
+              <p class="project__cat">Refonte · Couture</p>
+              <h3 class="project__title" id="modal-title">Elo Ab</h3>
+              <ul class="project__tags">
+                <li>Logo</li>
+                <li>Refonte</li>
+                <li>Couture</li>
+                <li>Direction artistique</li>
+              </ul>
+            </header>
+            <div class="project__text">
+              <p>Refonte de l'identité d'Elo Ab, couturière. Un logotype tout en rondeurs où l'aiguille et le fil s'invitent dans les lettres — un clin d'œil direct à son métier — posé sur une palette douce de crème et de noir.</p>
+              <p>La marque se décline avec délicatesse : ruban gansé griffé « Elo », compositions florales et matières textiles, pour une image à la fois artisanale et raffinée.</p>
+            </div>
+            <div class="project__gallery">
+              <img src="/img/projets/elo-1.webp" alt="Logotype Elo Ab avec l'aiguille et le fil dans les lettres" loading="lazy" width="1006" height="775" />
+              <img src="/img/projets/elo-2.webp" alt="Logo Elo sur marbre avec un ruban gansé griffé" loading="lazy" width="1184" height="912" />
+              <img src="/img/projets/elo-3.webp" alt="Composition florale avec le logo Elo Ab" loading="lazy" width="1062" height="1332" />
+            </div>
+          </article>
+        </template>
+
+        <template id="detail-azureco">
+          <article class="project" data-bg="#eef0ea">
+            <header class="project__head">
+              <p class="project__cat">Logo · Mascotte</p>
+              <h3 class="project__title" id="modal-title">Azur Eco</h3>
+              <ul class="project__tags">
+                <li>Logo</li>
+                <li>Mascotte</li>
+                <li>Recherche typo</li>
+                <li>Étiquette</li>
+              </ul>
+            </header>
+            <div class="project__text">
+              <p>Création du logo de Pressing Azur Eco dans un univers de mascotte rétro — le style « rubber hose » des années 30. Un personnage-boîte joyeux, chapeau et nœud papillon, qui incarne le pressing avec malice.</p>
+              <p>Le projet comprend une recherche typographique (un alphabet display sur mesure), la création du personnage et sa mise en situation, notamment sur l'étiquette. Palette sauge, bleu nuit et crème.</p>
+            </div>
+            <div class="project__gallery">
+              <img src="/img/projets/az-1.webp" alt="La mascotte Azur Eco" loading="lazy" width="1024" height="1024" />
+              <img src="/img/projets/az-2.webp" alt="Logo complet Pressing Azur Eco" loading="lazy" width="500" height="500" />
+              <img src="/img/projets/az-5.webp" alt="Emblème Azur Eco" loading="lazy" width="500" height="500" />
+              <img src="/img/projets/az-3.webp" alt="Planche : recherche typo, couleurs et déclinaisons" loading="lazy" width="1080" height="1350" />
+              <img src="/img/projets/az-4.webp" alt="Mise en situation du logo sur une étiquette" loading="lazy" width="1080" height="1350" />
+            </div>
+          </article>
+        </template>
+      </section>
+
+      <!-- ===================== MURMURE (pièce dev vedette) ===================== -->
+      <section id="murmure" class="section section--murmure" aria-labelledby="murmure-title">
+        <div class="murmure">
+          <p class="murmure__eyebrow">Et parce que je code aussi ce que je conçois —</p>
+
+          <header class="murmure__head">
+            <h2 class="murmure__title" id="murmure-title">Murmure</h2>
+            <p class="murmure__baseline">
+              Une question par jour. Des réponses d'inconnus. Rien d'autre.
+            </p>
+          </header>
+
+          <div class="murmure__body">
+            <figure class="murmure__demo">
+              <div class="phone phone--demo">
+                <div class="phone__screen-wrap" id="murmure-frame">
+                  <img
+                    class="phone__screen"
+                    src="/img/murmure-screen.svg"
+                    alt="Aperçu de l'interface de Murmure : la question anonyme du jour"
+                    loading="lazy"
+                    width="390"
+                    height="844"
+                  />
+                  <button
+                    class="phone__play"
+                    type="button"
+                    data-murmure-play
+                    aria-label="Lancer la démo interactive de Murmure dans le cadre"
+                  >
+                    <span class="phone__play-icon" aria-hidden="true"></span>
+                    Lancer la démo
+                  </button>
+                </div>
+              </div>
+              <figcaption class="murmure__hint">
+                Démo en lecture/écriture.<br />
+                Certains navigateurs ou bloqueurs empêchent l'enregistrement
+                depuis l'aperçu.<br />
+                Ouvrez en plein écran pour enregistrer un message.
+              </figcaption>
+            </figure>
+
+            <div class="murmure__info">
+              <p class="murmure__desc">
+                Murmure est une application web que j'ai
+                <strong>conçue et développée seul</strong> — du design
+                d'interface à la logique, la base de données et le déploiement.
+                Une question anonyme par jour, la même pour tous : pas de
+                compte, pas de like, volontairement anti-addictive. J'ai utilisé
+                l'<strong>IA comme accélérateur de développement</strong>, pour
+                aller plus vite sans jamais lui laisser le volant.
+              </p>
+
+              <ul class="murmure__stack" aria-label="Technologies utilisées">
+                <li>React 18</li>
+                <li>Vite</li>
+                <li>Supabase</li>
+                <li>Vercel</li>
+              </ul>
+
+              <div class="murmure__actions">
+                <a
+                  class="murmure__cta"
+                  href="https://murmure-orpin.vercel.app/"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Ouvrir l'app en plein écran
+                  <span aria-hidden="true">↗</span>
+                </a>
+                <a
+                  class="murmure__source"
+                  href="https://github.com/Diurndesign/Murmure"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Voir le code source
+                </a>
+              </div>
+
+              <div class="murmure__qr">
+                <img src="/img/murmure-qr.png" alt="QR code : ouvrir l'application Murmure sur mobile" loading="lazy" width="96" height="96" />
+                <p class="murmure__qr-label">Scanne pour l'ouvrir<br />sur ton mobile</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="a-propos" class="section section--about">
+        <div class="about">
+          <div class="about__top">
+            <div class="about__intro">
+              <p class="section__eyebrow">À propos</p>
+              <h2 class="about__headline">
+                Un seul interlocuteur, du concept à la mise en ligne.
+              </h2>
+              <div class="about__bio">
+                <p>
+                  Diurn est un studio indépendant à Nice, fondé par
+                  <strong>Jérémy Bendenoun</strong>.
+                </p>
+                <p>
+                  Designer de formation, développeur par passion :
+                  <strong>je réunis dans un même atelier ce que la plupart
+                  séparent</strong>. Créer la marque, puis coder le site qui la
+                  porte.
+                </p>
+              </div>
+            </div>
+
+            <figure class="about__photo">
+              <img
+                src="/img/photo-presentation.webp"
+                alt="Jérémy Bendenoun, fondateur de Diurn Studio"
+                loading="lazy"
+                width="896"
+                height="1195"
+              />
+            </figure>
+          </div>
+
+          <div class="about__blocks">
+            <div class="about__approach">
+              <p class="about__label">Mon approche</p>
+              <p class="about__text">
+                Chaque projet part d'une écoute, je conçois l'identité, je la
+                déploie sur tous les supports, puis je développe le site
+                moi-même, <strong>codé sur mesure, pas assemblé à partir d'un
+                thème</strong>. <strong>Une seule personne suit le fil, de
+                l'idée à la première page Google.</strong> J'intègre les outils
+                d'IA à mon flux de travail pour explorer plus vite et produire
+                mieux, <strong>comme un accélérateur, jamais comme un pilote
+                automatique</strong>.
+              </p>
+            </div>
+
+            <div class="about__services">
+              <div class="about__col">
+                <p class="about__label">Identité de marque</p>
+                <p class="about__text">
+                  Logo, charte graphique, système visuel complet et
+                  déclinaisons print et numériques. Une identité
+                  <strong>pensée pour vivre partout</strong> et pas seulement
+                  pour être belle.
+                </p>
+              </div>
+
+              <div class="about__col">
+                <p class="about__label">Site &amp; développement</p>
+                <p class="about__text">
+                  Conception et développement front-end <strong>sur
+                  mesure</strong> (HTML, CSS, JavaScript, React). Des sites
+                  rapides, responsives et codés proprement avec
+                  <strong>le référencement intégré dès la structure</strong>,
+                  pas ajouté après coup.
+                </p>
+                <a class="about__more" href="/creation-site-internet-nice">
+                  En savoir plus <span aria-hidden="true">→</span> Création de
+                  site internet à Nice
+                </a>
+              </div>
+
+              <div class="about__col">
+                <p class="about__label">Image &amp; contenu</p>
+                <p class="about__text">
+                  Direction photo, vidéo, retouche et mise en valeur produit ;
+                  <strong>animation et création assistées par IA</strong>. De
+                  quoi nourrir la marque une fois le site en ligne.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="contact" class="section section--contact">
+        <div class="contact">
+          <p class="section__eyebrow">Contact</p>
+          <h2 class="contact__headline">Parlons de votre projet.</h2>
+
+          <div class="contact__intro">
+            <p>
+              Chaque marque commence par une conversation. Que vous lanciez
+              votre activité ou que vous vouliez donner un nouveau souffle à une
+              image existante, j'aime comprendre le projet avant d'en dessiner
+              la première ligne.
+            </p>
+            <p>
+              Une idée à concrétiser, une question, ou juste l'envie d'échanger ?
+              <strong>Écrivez-moi — je réponds à chaque message.</strong>
+            </p>
+          </div>
+
+          <div class="contact__details">
+            <div class="contact__block">
+              <p class="contact__label">Me contacter directement</p>
+              <a class="contact__email" href="mailto:hello@diurnstudio.fr"
+                >hello@diurnstudio.fr</a
+              >
+            </div>
+            <div class="contact__block">
+              <p class="contact__label">Où me trouver</p>
+              <p class="contact__location">
+                Nice, Côte d'Azur — disponible sur toute la France et en visio.
+              </p>
+            </div>
+          </div>
+
+          <p class="contact__social">
+            Retrouvez aussi mon travail sur
+            <a href="https://www.linkedin.com/in/diurnstudio/" target="_blank" rel="noopener">LinkedIn</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://www.instagram.com/diurn.studio/" target="_blank" rel="noopener">Instagram</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://github.com/Diurndesign" target="_blank" rel="noopener">GitHub</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://www.malt.fr/profile/jeremybendenoun" target="_blank" rel="noopener">Malt</a>
+            <span aria-hidden="true">·</span>
+            <a href="https://www.cosmos.so/diurn/collections" target="_blank" rel="noopener">Cosmos</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer">
+      <p class="site-footer__copy">
+        © 2026 Diurn Studio — Jérémy Bendenoun. Tous droits réservés.
+      </p>
+      <div class="site-footer__nav">
+        <nav class="site-footer__group" aria-label="Création de site internet">
+          <span class="site-footer__label">Création de site internet</span>
+          <a class="site-footer__legal" href="/creation-site-internet-nice">Nice</a>
+          <a class="site-footer__legal" href="/creation-site-internet-cannes">Cannes</a>
+          <a class="site-footer__legal" href="/creation-site-internet-antibes">Antibes</a>
+          <a class="site-footer__legal" href="/creation-site-internet-monaco">Monaco</a>
+        </nav>
+        <nav class="site-footer__group" aria-label="Informations légales">
+          <button class="site-footer__legal" type="button" data-project="legal">Mentions légales</button>
+          <button class="site-footer__legal" type="button" data-consent-manage>Gérer les cookies</button>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- ===================== BANDEAU COOKIES ===================== -->
+    <div
+      class="cookie-consent"
+      id="cookie-consent"
+      role="dialog"
+      aria-label="Consentement aux cookies"
+      aria-live="polite"
+    >
+      <p class="cookie-consent__text">
+        Ce site utilise des cookies de mesure d'audience (Google Analytics)
+        pour comprendre sa fréquentation. Vous pouvez les accepter ou les
+        refuser.
+        <button class="cookie-consent__link" type="button" data-project="legal">
+          En savoir plus
+        </button>
+      </p>
+      <div class="cookie-consent__actions">
+        <button
+          class="cookie-consent__btn cookie-consent__btn--ghost"
+          type="button"
+          data-consent-refuse
+        >
+          Refuser
+        </button>
+        <button
+          class="cookie-consent__btn cookie-consent__btn--solid"
+          type="button"
+          data-consent-accept
+        >
+          Accepter
+        </button>
+      </div>
+    </div>
+
+    <!-- Contenu du modal « Mentions légales » (cloné à l'ouverture) -->
+    <template id="detail-legal">
+      <div class="legal">
+        <h3 class="legal__title" id="modal-title">Mentions légales</h3>
+
+        <div class="legal__block">
+          <h4>Éditeur du site</h4>
+          <p>
+            Ce site est édité par Jérémy Bendenoun, exerçant sous le nom
+            commercial <strong>Diurn Studio</strong>.<br />
+            Siège social : 13 Rue du Serre, 06440 L'Escarène — France<br />
+            Contact : hello@diurnstudio.fr<br />
+            Statut juridique : micro-entreprise (freelance)<br />
+            SIRET : 842 741 928 000 27<br />
+            TVA non applicable, art. 293 B du CGI
+          </p>
+        </div>
+
+        <div class="legal__block">
+          <h4>Directeur de la publication</h4>
+          <p>Jérémy Bendenoun.</p>
+        </div>
+
+        <div class="legal__block">
+          <h4>Hébergement</h4>
+          <p>
+            Le site est hébergé par <strong>Vercel Inc.</strong><br />
+            340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis<br />
+            vercel.com
+          </p>
+        </div>
+
+        <div class="legal__block">
+          <h4>Propriété intellectuelle</h4>
+          <p>
+            L'ensemble des contenus de ce site (textes, visuels, projets, code)
+            sont la propriété exclusive de Diurn Studio, sauf mention contraire.
+            Toute reproduction, représentation ou diffusion, totale ou
+            partielle, sans autorisation écrite préalable est interdite.
+          </p>
+        </div>
+
+        <div class="legal__block">
+          <h4>Données personnelles &amp; cookies</h4>
+          <p>
+            Ce site ne collecte aucune donnée via un formulaire : les échanges
+            se font par e-mail, à votre initiative. Une mesure d'audience est
+            réalisée via Google Analytics (Google Ireland Ltd), qui dépose des
+            cookies et collecte des données de navigation à des fins
+            statistiques. Ces données ne sont pas revendues à des tiers.
+            Conformément au RGPD, vous disposez d'un droit d'accès, de
+            rectification et de suppression de vos données en écrivant à
+            hello@diurnstudio.fr.
+          </p>
+        </div>
+      </div>
+    </template>
+
+    <!-- Modal réutilisable -->
+    <div class="modal" id="modal" aria-hidden="true">
+      <div class="modal__overlay" data-close></div>
+      <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal__close" type="button" data-close aria-label="Fermer la fenêtre">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" />
+          </svg>
+        </button>
+        <div class="modal__body" id="modal-body"></div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

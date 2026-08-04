@@ -1,0 +1,35 @@
+// ============================================================
+//  VARIABLES
+// ============================================================
+
+// --- Couleurs -------------------------------------------------
+$color-blue: #010d94; // bleu roi du fond
+$color-white: #ffffff;
+$color-black: #000000;
+
+// Sections claires (ex. Projets)
+$color-cream: #ebe6db; // gris crème
+$color-ink: #17193a; // encre profonde (bleu très sombre) pour texte sur crème
+
+// Nuances de texte (blanc translucide sur fond bleu)
+$color-text-muted: rgba(255, 255, 255, 0.55);
+$color-text-soft: rgba(255, 255, 255, 0.82);
+
+// --- Typographie ---------------------------------------------
+$font-display: "Hello Paris Serif", Georgia, "Times New Roman", serif;
+$font-script: "Hello Paris Script", cursive;
+$font-body: "Inter", "Helvetica Neue", -apple-system, BlinkMacSystemFont,
+  "Segoe UI", Roboto, Arial, sans-serif;
+
+// --- Layout ---------------------------------------------------
+$sidebar-width: 64px; // largeur des barres latérales de nav
+$content-max: 1180px; // largeur max du contenu central
+
+// --- Transitions ---------------------------------------------
+$ease: cubic-bezier(0.4, 0, 0.2, 1);
+$transition: 0.35s $ease;
+
+// --- Breakpoints ---------------------------------------------
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;

@@ -1,0 +1,25 @@
+// ============================================================
+//  MIXINS
+// ============================================================
+@use "variables" as *;
+
+// Media query "à partir de" (mobile-first)
+@mixin from($bp) {
+  @media (min-width: $bp) {
+    @content;
+  }
+}
+
+// Media query "jusqu'à"
+@mixin until($bp) {
+  @media (max-width: $bp - 1) {
+    @content;
+  }
+}
+
+// Centrage flex
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

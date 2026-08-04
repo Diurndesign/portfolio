@@ -1,0 +1,26 @@
+// ============================================================
+//  SECTIONS — placeholders (Projets, Créations, À propos, Contact)
+//  À développer par la suite.
+// ============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.section {
+  min-height: 100vh;
+  padding: 6rem $sidebar-width;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  &__title {
+    font-family: $font-display;
+    font-weight: 200;
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    color: $color-white;
+  }
+
+  @include until($bp-md) {
+    padding: 4rem 1.25rem;
+  }
+}

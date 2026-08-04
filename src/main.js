@@ -1,0 +1,7 @@
+// Point d'entrée JS — importe les styles pour que Vite les compile.
+import "./scss/main.scss";
+import "./modal.js";
+import "./scroll-nav.js";
+import "./site-logo.js";
+import "./murmure.js";
+import "./consent.js";
