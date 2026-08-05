@@ -76,14 +76,20 @@
 
   // --- Maillage interne (autres villes) --------------------
   &__zones {
-    margin-top: clamp(3rem, 7vh, 5rem);
+    margin-top: clamp(2.5rem, 5vh, 3.5rem);
+
+    h2 {
+      font-size: clamp(1.05rem, 2vw, 1.4rem);
+      margin-bottom: 1.1rem;
+    }
   }
 
   &__cities {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    margin-top: 1.75rem;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.6rem;
+    margin-top: 0;
+    max-width: 34rem;
   }
 
   // --- Bloc d'appel à l'action -----------------------------
@@ -157,52 +163,41 @@
 
 // --- Carte ville (maillage local) ---------------------------
 .city-card {
-  position: relative;
   display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  padding: 1.3rem 1.5rem;
-  border: 1px solid rgba($color-white, 0.2);
-  border-radius: 12px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid rgba($color-white, 0.18);
+  border-radius: 10px;
   transition: transform $transition, border-color $transition,
     background $transition;
 
   &__name {
     font-family: $font-display;
     font-weight: 300;
-    font-size: 1.7rem;
+    font-size: 1.15rem;
     line-height: 1;
     color: $color-white;
   }
 
-  &__desc {
-    font-size: 0.82rem;
-    line-height: 1.4;
-    color: $color-text-muted;
-    max-width: 22ch;
-  }
-
   &__arrow {
-    position: absolute;
-    top: 1.15rem;
-    right: 1.35rem;
     color: $color-text-soft;
-    opacity: 0;
-    transform: translateX(-4px);
+    opacity: 0.45;
     transition: opacity $transition, transform $transition;
   }
 
   &:hover,
   &:focus-visible {
-    transform: translateY(-3px);
-    border-color: rgba($color-white, 0.55);
+    transform: translateY(-2px);
+    border-color: rgba($color-white, 0.5);
     background: rgba($color-white, 0.06);
   }
 
   &:hover &__arrow,
   &:focus-visible &__arrow {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateX(2px);
   }
 
   &:focus-visible {
