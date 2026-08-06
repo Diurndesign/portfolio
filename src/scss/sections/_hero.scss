@@ -194,16 +194,16 @@
   }
 }
 
-// Révélage « flou → net », montée de bas en haut, au chargement du hero
+// Révélage en fondu + montée de bas en haut, au chargement du hero.
+// Uniquement opacity + transform : animation compositée (GPU), fluide,
+// sans repaint coûteux (le filter: blur, non composité, a été retiré).
 @keyframes hero-reveal {
   from {
     opacity: 0;
-    filter: blur(16px);
     transform: translateY(34px);
   }
   to {
     opacity: 1;
-    filter: blur(0);
     transform: translateY(0);
   }
 }
