@@ -20,7 +20,9 @@
     color: $color-ink;
   }
   .section__eyebrow {
-    color: rgba($color-ink, 0.55);
+    // 0.7 d'opacité pour rester au-dessus du contraste WCAG AA (4.5:1)
+    // sur le fond crème — 0.55 tombait à ~3.6:1 (texte petit, illisible).
+    color: rgba($color-ink, 0.7);
   }
   .card__media {
     background: rgba($color-ink, 0.06);
