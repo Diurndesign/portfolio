@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Google Analytics (G-FGQXLJR38H) est chargé après consentement — voir /src/consent.js -->
+
+    <meta
+      name="description"
+      content="Graphiste à Nice : création d'identité de marque et refonte graphique, déclinées sur tous les supports, du print au web. Un seul interlocuteur, du logo au site."
+    />
+    <title>Graphiste à Nice | Identité de marque — Diurn Studio</title>
+
+    <!-- Favicon (carré bleu de marque) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#010d94" />
+
+    <!-- Open Graph (aperçu de partage) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Diurn Studio" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:url" content="https://www.diurnstudio.fr/graphiste-nice" />
+    <meta
+      property="og:title"
+      content="Graphiste à Nice | Identité de marque — Diurn Studio"
+    />
+    <meta
+      property="og:description"
+      content="Création d'identité de marque et refonte graphique à Nice, déclinées du print au web par un seul interlocuteur, du logo au site."
+    />
+    <meta property="og:image" content="https://www.diurnstudio.fr/img/og-cover.png" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="2400" />
+    <meta property="og:image:height" content="1260" />
+    <meta
+      property="og:image:alt"
+      content="Diurn Studio — graphiste & identité de marque à Nice"
+    />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Graphiste à Nice | Identité de marque — Diurn Studio"
+    />
+    <meta
+      name="twitter:description"
+      content="Création d'identité de marque et refonte graphique à Nice, déclinées du print au web par un seul interlocuteur."
+    />
+    <meta name="twitter:image" content="https://www.diurnstudio.fr/img/og-cover.png" />
+
+    <link rel="canonical" href="https://www.diurnstudio.fr/graphiste-nice" />
+
+    <!-- Données structurées (SEO local) : graphiste / identité de marque à Nice -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "@id": "https://www.diurnstudio.fr/#diurnstudio",
+        "name": "Diurn Studio",
+        "url": "https://www.diurnstudio.fr/graphiste-nice",
+        "image": "https://www.diurnstudio.fr/img/og-cover.png",
+        "email": "hello@diurnstudio.fr",
+        "description": "Graphiste à Nice spécialisé dans l'identité de marque : création et refonte de logos et de chartes graphiques, déclinées du print au web par un seul interlocuteur.",
+        "founder": {
+          "@type": "Person",
+          "name": "Jérémy Bendenoun",
+          "jobTitle": "Développeur créatif & designer graphique"
+        },
+        "areaServed": [
+          { "@type": "City", "name": "Nice" },
+          { "@type": "AdministrativeArea", "name": "Alpes-Maritimes" },
+          { "@type": "AdministrativeArea", "name": "Côte d'Azur" },
+          { "@type": "Country", "name": "France" }
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Nice",
+          "addressRegion": "Provence-Alpes-Côte d'Azur",
+          "addressCountry": "FR"
+        },
+        "knowsAbout": [
+          "Identité de marque",
+          "Logo",
+          "Direction artistique",
+          "Charte graphique",
+          "Refonte de marque"
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/diurnstudio/",
+          "https://www.instagram.com/diurn.studio/",
+          "https://github.com/Diurndesign",
+          "https://www.malt.fr/profile/jeremybendenoun",
+          "https://www.cosmos.so/diurn/collections"
+        ]
+      }
+    </script>
+    <!-- TODO : ajouter "aggregateRating" / "review" ici quand de vrais avis clients seront disponibles. Aucun avis fictif. -->
+  </head>
+  <body>
+    <!-- ===================== NAVBAR ===================== -->
+    <nav class="nav" aria-label="Navigation principale">
+      <!-- Logo : ramène à l'accueil (toujours visible sur cette page) -->
+      <a href="/" class="site-logo is-visible" aria-label="Diurn Studio — retour à l'accueil">
+        <img src="/img/logo-diurn.png" alt="Logo de Diurn Studio" width="320" height="400" />
+      </a>
+
+      <!-- Sidebar gauche : sections de l'accueil -->
+      <ul class="nav__side nav__side--left">
+        <li><a href="/#projets" class="nav__link">Projets</a></li>
+        <li><a href="/#a-propos" class="nav__link">À propos</a></li>
+        <li><a href="/#contact" class="nav__link">Contact</a></li>
+      </ul>
+
+      <!-- Sidebar droite : réseaux -->
+      <ul class="nav__side nav__side--right">
+        <li>
+          <a href="mailto:hello@diurnstudio.fr" class="nav__social" aria-label="Email">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/diurn.studio/" target="_blank" rel="noopener" class="nav__social" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/Diurndesign" target="_blank" rel="noopener" class="nav__social" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/in/diurnstudio/" target="_blank" rel="noopener" class="nav__social" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.malt.fr/profile/jeremybendenoun" target="_blank" rel="noopener" class="nav__social" aria-label="Malt — mon profil freelance">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M20.195 8.581c-.069 0-.285.026-.484.113-.432.181-.597.311-.597.58v5.023c0 .277.26.355.735.355.467 0 .649-.087.649-.355V8.858c0-.173-.113-.277-.303-.277zm3.502 4.903c-.345.087-.45.113-.57.113-.147 0-.2-.044-.2-.2v-2.161h.788c.207 0 .285-.078.285-.285 0-.173-.078-.26-.285-.26h-.787v-.839c0-.259-.087-.363-.268-.363-.173 0-.415.156-.934.597-.528.45-.83.744-.83.951 0 .121.086.199.224.199h.424v2.335c0 .683.337 1.08.925 1.08.39 0 .675-.146 1.012-.406.311-.242.51-.432.51-.596 0-.139-.103-.217-.294-.165zm-15.21-3.078c-.13 0-.285.026-.484.112-.433.19-.597.312-.597.58v3.2c0 .276.26.354.735.354.467 0 .649-.087.649-.355v-3.614c0-.173-.113-.277-.303-.277Zm1.816 0c-.355 0-.675.121-.986.363-.173.138-.32.294-.32.424 0 .112.078.173.19.173.19 0 .251-.078.416-.078.164 0 .25.173.25.476v2.533c0 .277.26.355.735.355.467 0 .649-.087.649-.355v-2.776c0-.657-.39-1.115-.934-1.115zm2.43 0c-.337 0-.692.121-1.003.363-.173.138-.32.294-.32.424 0 .112.078.173.19.173.19 0 .25-.078.432-.078s.268.173.268.476v2.533c0 .277.26.355.735.355.467 0 .649-.087.649-.355v-2.776c0-.657-.39-1.115-.951-1.115zm5.335 0a1.29 1.29 0 0 0-.484.112c-.26.113-.398.2-.467.312-.26-.303-.597-.398-.977-.398-1.116 0-1.911.942-1.911 2.283 0 1.124.605 1.954 1.461 1.954.26 0 .493-.104.77-.363.216-.2.32-.329.32-.45a.14.14 0 0 0-.147-.147c-.121 0-.251.104-.416.104-.354 0-.596-.545-.596-1.35 0-.803.32-1.348.804-1.348.32 0 .562.242.562.657v2.525c0 .277.26.355.735.355.467 0 .649-.087.649-.355v-3.614c0-.173-.113-.277-.303-.277ZM3.499 13.563l-.21.21.619.618c.304.304.79.598 1.244.144.339-.34.26-.695.073-.98-.06.004-1.726.008-1.726.008zm-.963-2.325.21-.21-.608-.607c-.304-.303-.765-.621-1.243-.143-.351.35-.273.692-.087.97Zm2.86.416c-.037.043-1.511 1.524-1.511 1.524h1.154c.43 0 .981-.101.981-.777 0-.496-.296-.683-.624-.747zm-3.244-.031H.981c-.43 0-.981.135-.981.778 0 .479.307.676.641.745.04-.046 1.511-1.523 1.511-1.523zm1.484 3.04-.618-.618-.608.607a2.613 2.613 0 0 1-.137.128c.07.333.266.639.745.639s.676-.307.745-.641c-.043-.037-.085-.073-.127-.115zM2.41 10.15l.608.607.618-.618a2.25 2.25 0 0 1 .128-.118c-.065-.327-.251-.623-.747-.623s-.682.297-.746.625c.046.04.092.08.14.127zm2.742.117c-.455-.454-.94-.16-1.244.144l-2.87 2.87c-.303.303-.621.765-.143 1.243.478.478.94.16 1.243-.143l2.87-2.87c.304-.304.598-.79.144-1.244Z" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.cosmos.so/diurn/collections" target="_blank" rel="noopener" class="nav__social" aria-label="Cosmos">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 0c.6 6.4 5.6 11.4 12 12-6.4.6-11.4 5.6-12 12-.6-6.4-5.6-11.4-12-12C6.4 11.4 11.4 6.4 12 0z" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ===================== LANDING : Graphiste à Nice ===================== -->
+    <main class="landing">
+      <article class="landing__article">
+        <header class="landing__head">
+          <p class="landing__eyebrow">Graphiste · Identité de marque · Nice</p>
+          <h1 class="landing__title">
+            Graphiste à Nice : identité de marque et refonte graphique
+          </h1>
+          <p class="landing__lede">
+            Je suis Jérémy Bendenoun, graphiste à Nice. Je conçois des identités
+            de marque — de la création complète à la refonte — et je les décline
+            ensuite sur tous les supports, aussi bien imprimés que numériques.
+            Parce qu'une marque ne se résume pas à un logo : c'est un système
+            visuel cohérent, qui doit tenir de la carte de visite jusqu'à
+            l'écran, et raconter la même histoire partout.
+          </p>
+        </header>
+
+        <section class="landing__section">
+          <h2>Créer ou refondre une identité de marque</h2>
+          <p>
+            Deux situations reviennent le plus souvent. Soit une marque part de
+            zéro et cherche sa première identité : un nom à incarner, une
+            personnalité à traduire en images. Soit une marque existe déjà mais a
+            vieilli, s'est éparpillée, ou ne ressemble plus à ce qu'elle est
+            devenue — et il faut alors la refondre sans lui faire perdre son âme.
+          </p>
+          <p>
+            Dans les deux cas, je commence par comprendre ce que la marque veut
+            dire avant de dessiner quoi que ce soit. Une refonte réussie, ce
+            n'est pas tout jeter : c'est garder ce qui fait sens, clarifier le
+            reste, et donner à l'ensemble une direction lisible. Une création,
+            c'est poser des fondations solides sur lesquelles la marque pourra
+            grandir pendant des années.
+          </p>
+        </section>
+
+        <section class="landing__section">
+          <h2>Une identité déclinée sur tous les supports, du print au web</h2>
+          <p>
+            Un logo seul ne suffit pas à faire une identité. Ce qui fait qu'une
+            marque devient reconnaissable, c'est la cohérence de tous ses points
+            de contact : le logo, bien sûr, mais aussi la palette de couleurs, la
+            typographie, la mise en page, la photographie, et la façon dont tout
+            cela se répond d'un support à l'autre.
+          </p>
+          <p>
+            Je conçois donc l'identité pour qu'elle vive partout : papeterie,
+            carte de visite, packaging, étiquettes, supports imprimés — mais
+            aussi site internet, réseaux sociaux et interfaces. Le fait de
+            maîtriser à la fois le print et le web me permet de penser dès le
+            départ une identité qui ne se déformera pas une fois passée à
+            l'écran, et qui gardera la même exigence sur un panneau comme sur un
+            smartphone.
+          </p>
+        </section>
+
+        <section class="landing__section">
+          <h2>Ma méthode : de la recherche à la déclinaison</h2>
+          <p>
+            Chaque projet suit une progression simple mais rigoureuse. Je commence
+            par une phase de recherche : comprendre votre univers, votre marché,
+            ce qui vous distingue. Vient ensuite l'exploration — pistes
+            typographiques, chromatiques, formes — pour tester plusieurs
+            directions avant d'en retenir une. Une fois la direction validée, je
+            construis le logo et le système qui l'entoure, puis je décline le tout
+            sur l'ensemble de vos supports.
+          </p>
+          <p>
+            Ce qui compte, à chaque étape, c'est que vous compreniez pourquoi
+            chaque choix est fait. Une identité n'est pas une question de goût :
+            c'est une suite de décisions au service de ce que la marque veut
+            transmettre.
+          </p>
+        </section>
+
+        <section class="landing__section">
+          <h2>Une sélection de projets d'identité</h2>
+          <p>
+            <a href="/">Le portfolio</a> montre concrètement ce type de travail.
+            Pour <strong>Gdunan</strong>, j'ai créé une identité globale haut de
+            gamme autour d'un monogramme « GD » épuré, décliné du web au print
+            jusqu'à une carte de visite gaufrée à froid, sans encre — avec la
+            direction artistique du site et un shooting photo dédié.
+          </p>
+          <p>
+            Pour <strong>Ewa FLR</strong>, cheffe, j'ai construit une identité de
+            marque minimale et végétale : un logotype vertical tout en finesse,
+            une couleur unique — le « bleu béton » — et une charte déclinée sur
+            toute la papeterie, de la carte de visite au tablier.
+          </p>
+          <p>
+            Côté refonte, <strong>Esprit de Longwy</strong> a reçu un nouvel
+            emblème floral inspiré des célèbres émaux, dans une palette de terre,
+            d'or et de crème, décliné sur les arts de la table, les coffrets et la
+            papeterie à tranche dorée. Pour <strong>Elo Ab</strong>, couturière,
+            j'ai refondu l'identité autour d'un logotype tout en rondeurs où
+            l'aiguille et le fil s'invitent dans les lettres. Et pour
+            <strong>Azur Eco</strong>, j'ai imaginé un logo-mascotte rétro dans le
+            style « rubber hose » des années 30, avec une recherche typographique
+            sur mesure.
+          </p>
+        </section>
+
+        <section class="landing__section">
+          <h2>Graphiste et développeur : une identité pensée pour le numérique</h2>
+          <p>
+            C'est ce qui me distingue de la plupart des graphistes : je code aussi
+            ce que je conçois. Quand je crée une identité, je sais déjà comment
+            elle <a href="/creation-site-internet-nice">vivra sur un site</a>,
+            comment le logo se comportera en responsive, comment la typographie se
+            chargera à l'écran. Vous n'avez pas à faire le pont entre un graphiste
+            et un développeur qui ne se parlent pas — je suis les deux, et votre
+            marque reste cohérente du premier croquis jusqu'à la mise en ligne.
+          </p>
+        </section>
+
+        <section class="landing__section landing__cta">
+          <h2>Travaillons votre image de marque à Nice</h2>
+          <p>
+            Que vous souhaitiez créer une identité de A à Z ou redonner du souffle
+            à une marque existante, parlons-en. Je travaille depuis Nice, sur
+            toute la Côte d'Azur — et à distance partout ailleurs.
+          </p>
+          <div class="landing__actions">
+            <a
+              class="landing__btn"
+              href="mailto:hello@diurnstudio.fr?subject=Demande%20de%20devis%20%E2%80%94%20identit%C3%A9%20de%20marque"
+            >
+              Demander un devis
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a class="landing__contact-link" href="/#contact">Me contacter</a>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer">
+      <p class="site-footer__copy">
+        © 2026 Diurn Studio — Jérémy Bendenoun. Tous droits réservés.
+      </p>
+      <div class="site-footer__nav">
+        <nav class="site-footer__group" aria-label="Création de site internet">
+          <span class="site-footer__label">Création de site internet</span>
+          <a class="site-footer__legal" href="/creation-site-internet-nice">Nice</a>
+          <a class="site-footer__legal" href="/creation-site-internet-cannes">Cannes</a>
+          <a class="site-footer__legal" href="/creation-site-internet-antibes">Antibes</a>
+          <a class="site-footer__legal" href="/creation-site-internet-monaco">Monaco</a>
+        </nav>
+        <nav class="site-footer__group" aria-label="Design &amp; identité">
+          <span class="site-footer__label">Design &amp; identité</span>
+          <a class="site-footer__legal" href="/graphiste-nice">Graphiste à Nice</a>
+          <a class="site-footer__legal" href="/studio-design-nice">Studio de design</a>
+        </nav>
+        <nav class="site-footer__group" aria-label="Informations légales">
+          <button class="site-footer__legal" type="button" data-project="legal">Mentions légales</button>
+          <button class="site-footer__legal" type="button" data-consent-manage>Gérer les cookies</button>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- ===================== BANDEAU COOKIES ===================== -->
+    <div
+      class="cookie-consent"
+      id="cookie-consent"
+      role="dialog"
+      aria-label="Consentement aux cookies"
+      aria-live="polite"
+    >
+      <p class="cookie-consent__text">
+        Ce site utilise des cookies de mesure d'audience (Google Analytics)
+        pour comprendre sa fréquentation. Vous pouvez les accepter ou les
+        refuser.
+        <button class="cookie-consent__link" type="button" data-project="legal">
+          En savoir plus
+        </button>
+      </p>
+      <div class="cookie-consent__actions">
+        <button
+          class="cookie-consent__btn cookie-consent__btn--ghost"
+          type="button"
+          data-consent-refuse
+        >
+          Refuser
+        </button>
+        <button
+          class="cookie-consent__btn cookie-consent__btn--solid"
+          type="button"
+          data-consent-accept
+        >
+          Accepter
+        </button>
+      </div>
+    </div>
+
+    <!-- Contenu du modal « Mentions légales » (cloné à l'ouverture) -->
+    <template id="detail-legal">
+      <div class="legal">
+        <h3 class="legal__title" id="modal-title">Mentions légales</h3>
+
+        <div class="legal__block">
+          <h4>Éditeur du site</h4>
+          <p>
+            Ce site est édité par Jérémy Bendenoun, exerçant sous le nom
+            commercial <strong>Diurn Studio</strong>.<br />
+            Siège social : 13 Rue du Serre, 06440 L'Escarène — France<br />
+            Contact : hello@diurnstudio.fr<br />
+            Statut juridique : micro-entreprise (freelance)<br />
+            SIRET : 842 741 928 000 27<br />
+            TVA non applicable, art. 293 B du CGI
+          </p>
+        </div>
+
+        <div class="legal__block">
+          <h4>Directeur de la publication</h4>
+          <p>Jérémy Bendenoun.</p>
+        </div>
+
+        <div class="legal__block">
+          <h4>Hébergement</h4>
+          <p>
+            Le site est hébergé par <strong>Vercel Inc.</strong><br />
+            340 S Lemon Ave #4133, Walnut, CA 91789, États-Unis<br />
+            vercel.com
+          </p>
+        </div>
+
+        <div class="legal__block">
+          <h4>Propriété intellectuelle</h4>
+          <p>
+            L'ensemble des contenus de ce site (textes, visuels, projets, code)
+            sont la propriété exclusive de Diurn Studio, sauf mention contraire.
+            Toute reproduction, représentation ou diffusion, totale ou
+            partielle, sans autorisation écrite préalable est interdite.
+          </p>
+        </div>
+
+        <div class="legal__block">
+          <h4>Données personnelles &amp; cookies</h4>
+          <p>
+            Les données que vous transmettez via le formulaire de contact (nom, e-mail, message) servent uniquement à traiter votre demande et à vous répondre ; elles ne sont jamais revendues à des tiers. L'envoi du formulaire est assuré par le service Web3Forms. Une mesure d'audience est réalisée via Google Analytics (Google Ireland Ltd), qui dépose des cookies et collecte des données de navigation à des fins statistiques. Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données en écrivant à hello@diurnstudio.fr.
+          </p>
+        </div>
+      </div>
+    </template>
+
+    <!-- Modal réutilisable -->
+    <div class="modal" id="modal" aria-hidden="true">
+      <div class="modal__overlay" data-close></div>
+      <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button class="modal__close" type="button" data-close aria-label="Fermer la fenêtre">
+          <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false">
+            <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" />
+          </svg>
+        </button>
+        <div class="modal__body" id="modal-body"></div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
