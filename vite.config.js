@@ -23,6 +23,8 @@ export default defineConfig(() => ({
         creationCannes: resolve(root, "creation-site-internet-cannes.html"),
         creationAntibes: resolve(root, "creation-site-internet-antibes.html"),
         creationMonaco: resolve(root, "creation-site-internet-monaco.html"),
+        graphisteNice: resolve(root, "graphiste-nice.html"),
+        studioDesignNice: resolve(root, "studio-design-nice.html"),
       },
     },
   },
