@@ -59,6 +59,19 @@
       }
     </script>
     <!-- TODO : ajouter "aggregateRating" / "review" ici quand de vrais avis clients seront disponibles. Aucun avis fictif. -->
+    <!-- Données structurées : questions fréquentes (FAQPage) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Je suis artisan ou PME à Antibes, un site est-il vraiment utile ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui : même une petite structure gagne en crédibilité et en visibilité locale avec un site clair. Tes clients te trouvent, comprennent ce que tu proposes et te contactent." } },
+          { "@type": "Question", "name": "Mon site sera-t-il impeccable sur mobile ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, c'est le point de départ : tes clients te cherchent souvent en déplacement, sur le port ou en terrasse. Chaque page est pensée mobile d'abord, avec un chargement quasi instantané." } },
+          { "@type": "Question", "name": "Pourrai-je faire évoluer mon site plus tard ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Je code des sites évolutifs : on part d'une vitrine simple aujourd'hui et on ajoute des fonctionnalités demain, sans tout reconstruire." } },
+          { "@type": "Question", "name": "Travaillez-vous avec le nautisme et le tourisme ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, l'approche s'adapte à ton métier (services, galerie, réservation), y compris pour les activités saisonnières autour de Juan-les-Pins." } }
+        ]
+      }
+    </script>
   </head>
   <body>
     <nav class="nav" aria-label="Navigation principale">
@@ -189,20 +202,61 @@
           </ul>
         </section>
 
-        <section class="landing__section landing__cta">
+        <section class="landing__section landing__cta landing__contact" id="contact">
           <h2>Construisons votre projet antibois</h2>
           <p>
             PME, artisan, acteur du nautisme ou du tourisme entre Port Vauban et
             Sophia Antipolis : parlons de votre activité antiboise. Je conçois un site
             clair, rapide et pensé pour vos clients, que vous partiez de zéro ou d'un
             site à refondre.
+            <a href="/#projets">Voir des exemples de réalisations →</a>
           </p>
-          <div class="landing__actions">
-            <a class="landing__btn" href="mailto:hello@diurnstudio.fr?subject=Demande%20de%20devis%20%E2%80%94%20cr%C3%A9ation%20de%20site%20Antibes">
-              Demander un devis
-              <span aria-hidden="true">↗</span>
-            </a>
-            <a class="landing__contact-link" href="/#contact">Me contacter</a>
+          <div class="landing__contact-grid">
+            <div class="landing__form">
+              <form class="contact__form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="e5c89c34-54c5-4f3a-8c1f-6a8d4c359c75" />
+                <input type="hidden" name="from_name" value="Formulaire diurnstudio.fr (page Antibes)" />
+                <input type="checkbox" name="botcheck" class="contact__botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                <div class="contact__field">
+                  <label for="cf-name">Nom et prénom</label>
+                  <input type="text" id="cf-name" name="name" required autocomplete="name" />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-email">Email</label>
+                  <input type="email" id="cf-email" name="email" required autocomplete="email" />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-subject">Objet</label>
+                  <input type="text" id="cf-subject" name="subject" required placeholder="Ex. : création d'un site internet" />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-message">Votre projet en quelques mots</label>
+                  <textarea id="cf-message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="contact__submit">Envoyer ma demande <span aria-hidden="true">↗</span></button>
+                <p class="contact__status" role="status" aria-live="polite"></p>
+                <p class="contact__privacy">Vos informations servent uniquement à vous répondre et ne sont jamais revendues.</p>
+              </form>
+            </div>
+            <div class="landing__faq" aria-label="Questions fréquentes">
+              <h3 class="landing__faq-title">Questions fréquentes</h3>
+              <details class="landing__faq-item" open>
+                <summary>Je suis artisan ou PME à Antibes, un site est-il vraiment utile&nbsp;?</summary>
+                <p>Oui&nbsp;: même une petite structure gagne en crédibilité et en visibilité locale avec un site clair. Tes clients te trouvent, comprennent ce que tu proposes et te contactent.</p>
+              </details>
+              <details class="landing__faq-item">
+                <summary>Mon site sera-t-il impeccable sur mobile&nbsp;?</summary>
+                <p>Oui, c'est le point de départ&nbsp;: tes clients te cherchent souvent en déplacement, sur le port ou en terrasse. Chaque page est pensée mobile d'abord, avec un chargement quasi instantané.</p>
+              </details>
+              <details class="landing__faq-item">
+                <summary>Pourrai-je faire évoluer mon site plus tard&nbsp;?</summary>
+                <p>Oui. Je code des sites évolutifs&nbsp;: on part d'une vitrine simple aujourd'hui et on ajoute des fonctionnalités demain, sans tout reconstruire.</p>
+              </details>
+              <details class="landing__faq-item">
+                <summary>Travaillez-vous avec le nautisme et le tourisme&nbsp;?</summary>
+                <p>Oui, l'approche s'adapte à ton métier (services, galerie, réservation), y compris pour les activités saisonnières autour de Juan-les-Pins.</p>
+              </details>
+            </div>
           </div>
         </section>
       </article>
