@@ -269,9 +269,131 @@
   }
 }
 
+// --- Bloc « formulaire + FAQ » côte à côte -------------------
+.landing__contact-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+  margin-top: 2.25rem;
+
+  @include until($bp-lg) {
+    grid-template-columns: 1fr;
+    gap: 2.75rem;
+  }
+
+  // Le bloc vit dans une .landing__section : on neutralise le style
+  // de paragraphe éditorial hérité (largeur, taille) pour le formulaire.
+  p {
+    max-width: none;
+  }
+
+  .contact__privacy {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: $color-text-muted;
+  }
+
+  .contact__status {
+    font-size: 0.9rem;
+  }
+}
+
+.landing__form {
+  min-width: 0;
+}
+
+// --- FAQ en accordéon (<details>/<summary>) ------------------
+.landing__faq {
+  min-width: 0;
+}
+
+.landing__faq-title {
+  font-family: $font-display;
+  font-weight: 300;
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+  line-height: 1.1;
+  color: $color-white;
+  margin-bottom: 1.25rem;
+}
+
+.landing__faq-item {
+  border-top: 1px solid rgba($color-white, 0.16);
+
+  &:last-child {
+    border-bottom: 1px solid rgba($color-white, 0.16);
+  }
+
+  summary {
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: $color-white;
+
+    &::-webkit-details-marker {
+      display: none;
+    }
+
+    &::after {
+      content: "+";
+      flex-shrink: 0;
+      font-size: 1.35rem;
+      line-height: 1;
+      color: $color-text-soft;
+      transition: transform $transition;
+    }
+  }
+
+  &[open] summary::after {
+    transform: rotate(45deg);
+  }
+
+  summary:focus-visible {
+    outline: 2px solid $color-white;
+    outline-offset: 3px;
+  }
+
+  p {
+    margin: 0 0 1.1rem;
+    padding-right: 1.25rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: $color-text-soft;
+  }
+}
+
+// --- Grille « réalisations » sur les landings ----------------
+.landing__work {
+  .projets__grid {
+    margin-top: 1.75rem;
+  }
+}
+
+// Variante 2 colonnes de la grille projets (réutilisable au besoin).
+.projets__grid--duo {
+  grid-template-columns: repeat(2, 1fr);
+
+  @include until($bp-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.landing__work-more {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .landing__btn,
-  .city-card {
+  .city-card,
+  .landing__faq-item summary::after {
     transition: none;
   }
 }
