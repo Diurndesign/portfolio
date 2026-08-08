@@ -109,6 +109,19 @@
       }
     </script>
     <!-- TODO : ajouter "aggregateRating" / "review" ici quand de vrais avis clients seront disponibles. Aucun avis fictif. -->
+    <!-- Données structurées : questions fréquentes (FAQPage) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Créez-vous des sites sur mesure ou à partir de templates ?", "acceptedAnswer": { "@type": "Answer", "text": "Uniquement sur mesure : chaque site est dessiné et codé pour votre marque, jamais monté sur un thème revendu à des milliers d'autres. Vous obtenez un site réellement à vous, unique et évolutif." } },
+          { "@type": "Question", "name": "Le référencement est-il pris en compte dès la conception ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Le référencement naturel est intégré dès le départ : structure technique propre, balises optimisées et contenu pensé pour Google, pour que vos clients niçois vous trouvent au bon moment." } },
+          { "@type": "Question", "name": "Combien coûte la création d'un site internet à Nice ?", "acceptedAnswer": { "@type": "Answer", "text": "Chaque projet est unique : le tarif dépend du nombre de pages et des fonctionnalités. Après un premier échange pour cerner vos besoins, je vous envoie un devis clair et sans engagement." } },
+          { "@type": "Question", "name": "Aurai-je un seul interlocuteur du début à la fin ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Je gère votre projet de bout en bout, du design au développement jusqu'à la mise en ligne, sans intermédiaires ni allers-retours entre prestataires. Un contact direct et unique." } }
+        ]
+      }
+    </script>
   </head>
   <body>
     <!-- ===================== NAVBAR ===================== -->
@@ -326,23 +339,61 @@
           </ul>
         </section>
 
-        <section class="landing__section landing__cta">
+        <section class="landing__section landing__cta landing__contact" id="contact">
           <h2>Lançons votre projet à Nice</h2>
           <p>
             À Nice, je conçois et je code chaque site sur mesure, du premier croquis
             à la mise en ligne, sans template ni sous-traitance. Dites-moi où vous en
             êtes et ce que vous voulez atteindre : je vous réponds personnellement et
             on cadre votre projet ensemble.
+            <a href="/#projets">Voir des exemples de réalisations →</a>
           </p>
-          <div class="landing__actions">
-            <a
-              class="landing__btn"
-              href="mailto:hello@diurnstudio.fr?subject=Demande%20de%20devis%20%E2%80%94%20cr%C3%A9ation%20de%20site%20internet"
-            >
-              Demander un devis
-              <span aria-hidden="true">↗</span>
-            </a>
-            <a class="landing__contact-link" href="/#contact">Me contacter</a>
+          <div class="landing__contact-grid">
+            <div class="landing__form">
+              <form class="contact__form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="e5c89c34-54c5-4f3a-8c1f-6a8d4c359c75" />
+                <input type="hidden" name="from_name" value="Formulaire diurnstudio.fr (page Nice)" />
+                <input type="checkbox" name="botcheck" class="contact__botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                <div class="contact__field">
+                  <label for="cf-name">Nom et prénom</label>
+                  <input type="text" id="cf-name" name="name" required autocomplete="name" />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-email">Email</label>
+                  <input type="email" id="cf-email" name="email" required autocomplete="email" />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-subject">Objet</label>
+                  <input type="text" id="cf-subject" name="subject" required placeholder="Ex. : création d'un site internet" />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-message">Votre projet en quelques mots</label>
+                  <textarea id="cf-message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="contact__submit">Envoyer ma demande <span aria-hidden="true">↗</span></button>
+                <p class="contact__status" role="status" aria-live="polite"></p>
+                <p class="contact__privacy">Vos informations servent uniquement à vous répondre et ne sont jamais revendues.</p>
+              </form>
+            </div>
+            <div class="landing__faq" aria-label="Questions fréquentes">
+              <h3 class="landing__faq-title">Questions fréquentes</h3>
+              <details class="landing__faq-item" open>
+                <summary>Créez-vous des sites sur mesure ou à partir de templates&nbsp;?</summary>
+                <p>Uniquement sur mesure&nbsp;: chaque site est dessiné et codé pour votre marque, jamais monté sur un thème revendu à des milliers d'autres. Vous obtenez un site réellement à vous, unique et évolutif.</p>
+              </details>
+              <details class="landing__faq-item">
+                <summary>Le référencement est-il pris en compte dès la conception&nbsp;?</summary>
+                <p>Oui. Le référencement naturel est intégré dès le départ&nbsp;: structure technique propre, balises optimisées et contenu pensé pour Google, pour que vos clients niçois vous trouvent au bon moment.</p>
+              </details>
+              <details class="landing__faq-item">
+                <summary>Combien coûte la création d'un site internet à Nice&nbsp;?</summary>
+                <p>Chaque projet est unique&nbsp;: le tarif dépend du nombre de pages et des fonctionnalités. Après un premier échange pour cerner vos besoins, je vous envoie un devis clair et sans engagement.</p>
+              </details>
+              <details class="landing__faq-item">
+                <summary>Aurai-je un seul interlocuteur du début à la fin&nbsp;?</summary>
+                <p>Oui. Je gère votre projet de bout en bout, du design au développement jusqu'à la mise en ligne, sans intermédiaires ni allers-retours entre prestataires. Un contact direct et unique.</p>
+              </details>
+            </div>
           </div>
         </section>
       </article>
