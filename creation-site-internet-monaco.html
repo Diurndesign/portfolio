@@ -59,6 +59,19 @@
       }
     </script>
     <!-- TODO : ajouter "aggregateRating" / "review" ici quand de vrais avis clients seront disponibles. Aucun avis fictif. -->
+    <!-- Données structurées : questions fréquentes (FAQPage) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Proposez-vous des sites multilingues ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. La clientèle monégasque est internationale ; le multilingue (français, anglais, italien) est prévu dès la structure, pas rajouté après coup." } },
+          { "@type": "Question", "name": "La finition sera-t-elle à la hauteur des standards monégasques ?", "acceptedAnswer": { "@type": "Answer", "text": "C'est l'exigence de base : sites sobres et précis, chaque détail maîtrisé, de la typographie au temps de chargement. Design et code par la même personne, sans compromis." } },
+          { "@type": "Question", "name": "Comment sont traitées les données de mes clients ?", "acceptedAnswer": { "@type": "Answer", "text": "Sites conçus proprement, hébergement fiable et formulaires conformes au RGPD. La discrétion et la solidité font partie du cahier des charges." } },
+          { "@type": "Question", "name": "Êtes-vous disponible pour un rendez-vous près de Monaco ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, je suis à quelques minutes de la Principauté, et disponible en visio si tu préfères." } }
+        ]
+      }
+    </script>
   </head>
   <body>
     <nav class="nav" aria-label="Navigation principale">
@@ -189,20 +202,61 @@
           </ul>
         </section>
 
-        <section class="landing__section landing__cta">
+        <section class="landing__section landing__cta landing__contact" id="contact">
           <h2>Parlons de votre projet monégasque</h2>
           <p>
             Un site à la hauteur des standards monégasques, multilingue et pensé pour
             une clientèle exigeante, ça se prépare avec soin. Décrivez-moi votre projet
             et vos marchés : je vous accompagne personnellement, de la stratégie
             jusqu'à une mise en ligne irréprochable.
+            <a href="/#projets">Voir des exemples de réalisations →</a>
           </p>
-          <div class="landing__actions">
-            <a class="landing__btn" href="mailto:hello@diurnstudio.fr?subject=Demande%20de%20devis%20%E2%80%94%20cr%C3%A9ation%20de%20site%20Monaco">
-              Demander un devis
-              <span aria-hidden="true">↗</span>
-            </a>
-            <a class="landing__contact-link" href="/#contact">Me contacter</a>
+          <div class="landing__contact-grid">
+            <div class="landing__form">
+              <form class="contact__form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="e5c89c34-54c5-4f3a-8c1f-6a8d4c359c75" />
+                <input type="hidden" name="from_name" value="Formulaire diurnstudio.fr (page Monaco)" />
+                <input type="checkbox" name="botcheck" class="contact__botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                <div class="contact__field">
+                  <label for="cf-name">Nom et prénom</label>
+                  <input type="text" id="cf-name" name="name" required autocomplete="name" />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-email">Email</label>
+                  <input type="email" id="cf-email" name="email" required autocomplete="email" />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-subject">Objet</label>
+                  <input type="text" id="cf-subject" name="subject" required placeholder="Ex. : création d'un site internet" />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-message">Votre projet en quelques mots</label>
+                  <textarea id="cf-message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="contact__submit">Envoyer ma demande <span aria-hidden="true">↗</span></button>
+                <p class="contact__status" role="status" aria-live="polite"></p>
+                <p class="contact__privacy">Vos informations servent uniquement à vous répondre et ne sont jamais revendues.</p>
+              </form>
+            </div>
+            <div class="landing__faq" aria-label="Questions fréquentes">
+              <h3 class="landing__faq-title">Questions fréquentes</h3>
+              <details class="landing__faq-item" open>
+                <summary>Proposez-vous des sites multilingues&nbsp;?</summary>
+                <p>Oui. La clientèle monégasque est internationale&nbsp;; le multilingue (français, anglais, italien) est prévu dès la structure, pas rajouté après coup.</p>
+              </details>
+              <details class="landing__faq-item">
+                <summary>La finition sera-t-elle à la hauteur des standards monégasques&nbsp;?</summary>
+                <p>C'est l'exigence de base&nbsp;: sites sobres et précis, chaque détail maîtrisé, de la typographie au temps de chargement. Design et code par la même personne, sans compromis.</p>
+              </details>
+              <details class="landing__faq-item">
+                <summary>Comment sont traitées les données de mes clients&nbsp;?</summary>
+                <p>Sites conçus proprement, hébergement fiable et formulaires conformes au RGPD. La discrétion et la solidité font partie du cahier des charges.</p>
+              </details>
+              <details class="landing__faq-item">
+                <summary>Êtes-vous disponible pour un rendez-vous près de Monaco&nbsp;?</summary>
+                <p>Oui, je suis à quelques minutes de la Principauté, et disponible en visio si tu préfères.</p>
+              </details>
+            </div>
           </div>
         </section>
       </article>
