@@ -94,6 +94,19 @@
       }
     </script>
     <!-- TODO : ajouter "aggregateRating" / "review" ici quand de vrais avis clients seront disponibles. Aucun avis fictif. -->
+    <!-- Données structurées : questions fréquentes (FAQPage) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Qu'est-ce qu'un studio de design, concrètement ?", "acceptedAnswer": { "@type": "Answer", "text": "Un seul endroit et un seul interlocuteur pour plusieurs besoins : identité, supports et site pensés ensemble, plutôt que répartis entre des prestataires qui ne se parlent pas." } },
+          { "@type": "Question", "name": "Puis-je ne demander qu'une partie (juste le logo, ou juste le site) ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. On peut travailler sur un besoin précis ou sur l'ensemble ; le studio s'adapte à ton projet et à ton budget." } },
+          { "@type": "Question", "name": "Travaillez-vous à distance ou seulement à Nice ?", "acceptedAnswer": { "@type": "Answer", "text": "Les deux : basé à Nice et sur la Côte d'Azur, je travaille aussi à distance partout en France, en visioconférence." } },
+          { "@type": "Question", "name": "Par quoi commence-t-on ?", "acceptedAnswer": { "@type": "Answer", "text": "Par un échange, puis un rendez-vous pour cadrer ton projet et vérifier la faisabilité, avant un devis clair et sans engagement." } }
+        ]
+      }
+    </script>
   </head>
   <body>
     <!-- ===================== NAVBAR ===================== -->
@@ -293,7 +306,17 @@
           </p>
         </section>
 
-        <section class="landing__section landing__cta">
+        <section class="landing__section landing__work" aria-label="Réalisations">
+          <h2>Un aperçu de mon travail</h2>
+          <ul class="projets__grid">
+            <li class="card"><a class="card__btn" href="/#projets" aria-label="Gdunan, identité et site"><span class="card__media"><img src="/img/projets/gd-2.webp" alt="Identité et site Gdunan" loading="lazy" width="1080" height="1080" /><span class="card__overlay"><span class="card__cat">Identité · Site web</span><span class="card__title">GdunaN</span></span></span></a></li>
+            <li class="card"><a class="card__btn" href="/#murmure" aria-label="Murmure, application web"><span class="card__media"><img src="/img/projets/murmure-app.webp" alt="Application web Murmure" loading="lazy" width="703" height="509" /><span class="card__overlay"><span class="card__cat">Application web · React</span><span class="card__title">Murmure</span></span></span></a></li>
+            <li class="card"><a class="card__btn" href="/#projets" aria-label="Ewa FLR, identité de marque"><span class="card__media"><img src="/img/projets/ewa-1.webp" alt="Identité de marque Ewa FLR" loading="lazy" width="1080" height="1080" /><span class="card__overlay"><span class="card__cat">Identité de marque</span><span class="card__title">Ewa FLR</span></span></span></a></li>
+          </ul>
+          <p class="landing__work-more"><a href="/#projets">Voir tout le portfolio →</a></p>
+        </section>
+
+        <section class="landing__section landing__cta landing__contact" id="contact">
           <h2>Rencontrons-nous à Nice</h2>
           <p>
             Si l'idée d'un studio de design à Nice qui prend en charge votre
@@ -301,15 +324,52 @@
             on discute de votre projet, et on voit ensemble ce qu'on peut
             construire.
           </p>
-          <div class="landing__actions">
-            <a
-              class="landing__btn"
-              href="mailto:hello@diurnstudio.fr?subject=Prise%20de%20contact%20%E2%80%94%20projet%20de%20marque"
-            >
-              Prendre rendez-vous
-              <span aria-hidden="true">↗</span>
-            </a>
-            <a class="landing__contact-link" href="/#contact">Me contacter</a>
+          <div class="landing__contact-grid">
+            <div class="landing__form">
+              <form class="contact__form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="e5c89c34-54c5-4f3a-8c1f-6a8d4c359c75" />
+                <input type="hidden" name="from_name" value="Formulaire diurnstudio.fr (page Studio design)" />
+                <input type="checkbox" name="botcheck" class="contact__botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                <div class="contact__field">
+                  <label for="cf-name">Nom et prénom</label>
+                  <input type="text" id="cf-name" name="name" required autocomplete="name" />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-email">Email</label>
+                  <input type="email" id="cf-email" name="email" required autocomplete="email" />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-subject">Objet</label>
+                  <input type="text" id="cf-subject" name="subject" required placeholder="Ex. : identité + site" />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-message">Votre projet en quelques mots</label>
+                  <textarea id="cf-message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="contact__submit">Envoyer ma demande <span aria-hidden="true">↗</span></button>
+                <p class="contact__status" role="status" aria-live="polite"></p>
+                <p class="contact__privacy">Vos informations servent uniquement à vous répondre et ne sont jamais revendues.</p>
+              </form>
+            </div>
+            <div class="landing__faq" aria-label="Questions fréquentes">
+              <h3 class="landing__faq-title">Questions fréquentes</h3>
+              <details class="landing__faq-item" open>
+                <summary>Qu'est-ce qu'un studio de design, concrètement&nbsp;?</summary>
+                <p>Un seul endroit et un seul interlocuteur pour plusieurs besoins&nbsp;: identité, supports et site pensés ensemble, plutôt que répartis entre des prestataires qui ne se parlent pas.</p>
+              </details>
+              <details class="landing__faq-item">
+                <summary>Puis-je ne demander qu'une partie (juste le logo, ou juste le site)&nbsp;?</summary>
+                <p>Oui. On peut travailler sur un besoin précis ou sur l'ensemble&nbsp;; le studio s'adapte à ton projet et à ton budget.</p>
+              </details>
+              <details class="landing__faq-item">
+                <summary>Travaillez-vous à distance ou seulement à Nice&nbsp;?</summary>
+                <p>Les deux&nbsp;: basé à Nice et sur la Côte d'Azur, je travaille aussi à distance partout en France, en visioconférence.</p>
+              </details>
+              <details class="landing__faq-item">
+                <summary>Par quoi commence-t-on&nbsp;?</summary>
+                <p>Par un échange, puis un rendez-vous pour cadrer ton projet et vérifier la faisabilité, avant un devis clair et sans engagement.</p>
+              </details>
+            </div>
           </div>
         </section>
       </article>
