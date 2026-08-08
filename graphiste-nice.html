@@ -101,6 +101,19 @@
       }
     </script>
     <!-- TODO : ajouter "aggregateRating" / "review" ici quand de vrais avis clients seront disponibles. Aucun avis fictif. -->
+    <!-- Données structurées : questions fréquentes (FAQPage) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Quelle différence entre un logo et une identité de marque ?", "acceptedAnswer": { "@type": "Answer", "text": "Le logo n'est qu'une partie. Une identité, c'est un système complet (logo, couleurs, typographies, supports) qui rend ta marque reconnaissable partout, du print au web." } },
+          { "@type": "Question", "name": "Pouvez-vous refondre une identité existante sans tout changer ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Une refonte garde ce qui fait sens dans ta marque et clarifie le reste, pour la moderniser sans lui faire perdre son âme." } },
+          { "@type": "Question", "name": "Combien de temps pour créer une identité de marque ?", "acceptedAnswer": { "@type": "Answer", "text": "Cela dépend du périmètre (logo seul ou identité complète et déclinaisons) ; le délai est précisé dans le devis, après notre échange." } },
+          { "@type": "Question", "name": "Faites-vous aussi le site, en plus de l'identité ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, et c'est mon atout : je conçois l'identité ET je code le site qui la porte, pour une cohérence parfaite entre ton image et ta présence en ligne." } }
+        ]
+      }
+    </script>
   </head>
   <body>
     <!-- ===================== NAVBAR ===================== -->
@@ -281,22 +294,71 @@
           </p>
         </section>
 
-        <section class="landing__section landing__cta">
+        <section class="landing__section landing__work" aria-label="Réalisations">
+          <h2>Identités que j'ai créées</h2>
+          <ul class="projets__grid">
+            <li class="card"><a class="card__btn" href="/#projets" aria-label="Gdunan, identité globale"><span class="card__media"><img src="/img/projets/gd-2.webp" alt="Identité et site Gdunan" loading="lazy" width="1080" height="1080" /><span class="card__overlay"><span class="card__cat">Identité · Site web</span><span class="card__title">GdunaN</span></span></span></a></li>
+            <li class="card"><a class="card__btn" href="/#projets" aria-label="Ewa FLR, identité de marque"><span class="card__media"><img src="/img/projets/ewa-1.webp" alt="Identité de marque Ewa FLR" loading="lazy" width="1080" height="1080" /><span class="card__overlay"><span class="card__cat">Identité de marque</span><span class="card__title">Ewa FLR</span></span></span></a></li>
+            <li class="card"><a class="card__btn" href="/#projets" aria-label="Esprit de Longwy, refonte de logo"><span class="card__media"><img src="/img/projets/lw-1.webp" alt="Refonte du logo Esprit de Longwy" loading="lazy" width="1080" height="422" /><span class="card__overlay"><span class="card__cat">Refonte de logo</span><span class="card__title">Esprit de Longwy</span></span></span></a></li>
+            <li class="card"><a class="card__btn" href="/#projets" aria-label="Elo Ab, refonte d'identité"><span class="card__media"><img src="/img/projets/elo-1.webp" alt="Refonte de l'identité Elo Ab" loading="lazy" width="1080" height="1080" /><span class="card__overlay"><span class="card__cat">Refonte · Couture</span><span class="card__title">Elo Ab</span></span></span></a></li>
+            <li class="card"><a class="card__btn" href="/#projets" aria-label="Azur Eco, logo mascotte"><span class="card__media"><img src="/img/projets/az-5.webp" alt="Logo mascotte Pressing Azur Eco" loading="lazy" width="500" height="500" /><span class="card__overlay"><span class="card__cat">Logo · Mascotte</span><span class="card__title">Azur Eco</span></span></span></a></li>
+          </ul>
+          <p class="landing__work-more"><a href="/#projets">Voir tout le portfolio →</a></p>
+        </section>
+
+        <section class="landing__section landing__cta landing__contact" id="contact">
           <h2>Travaillons votre image de marque à Nice</h2>
           <p>
             Que vous souhaitiez créer une identité de A à Z ou redonner du souffle
             à une marque existante, parlons-en. Je travaille depuis Nice, sur
             toute la Côte d'Azur, et à distance partout ailleurs.
           </p>
-          <div class="landing__actions">
-            <a
-              class="landing__btn"
-              href="mailto:hello@diurnstudio.fr?subject=Demande%20de%20devis%20%E2%80%94%20identit%C3%A9%20de%20marque"
-            >
-              Demander un devis
-              <span aria-hidden="true">↗</span>
-            </a>
-            <a class="landing__contact-link" href="/#contact">Me contacter</a>
+          <div class="landing__contact-grid">
+            <div class="landing__form">
+              <form class="contact__form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="e5c89c34-54c5-4f3a-8c1f-6a8d4c359c75" />
+                <input type="hidden" name="from_name" value="Formulaire diurnstudio.fr (page Graphiste)" />
+                <input type="checkbox" name="botcheck" class="contact__botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                <div class="contact__field">
+                  <label for="cf-name">Nom et prénom</label>
+                  <input type="text" id="cf-name" name="name" required autocomplete="name" />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-email">Email</label>
+                  <input type="email" id="cf-email" name="email" required autocomplete="email" />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-subject">Objet</label>
+                  <input type="text" id="cf-subject" name="subject" required placeholder="Ex. : création d'un logo" />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-message">Votre projet en quelques mots</label>
+                  <textarea id="cf-message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="contact__submit">Envoyer ma demande <span aria-hidden="true">↗</span></button>
+                <p class="contact__status" role="status" aria-live="polite"></p>
+                <p class="contact__privacy">Vos informations servent uniquement à vous répondre et ne sont jamais revendues.</p>
+              </form>
+            </div>
+            <div class="landing__faq" aria-label="Questions fréquentes">
+              <h3 class="landing__faq-title">Questions fréquentes</h3>
+              <details class="landing__faq-item" open>
+                <summary>Quelle différence entre un logo et une identité de marque&nbsp;?</summary>
+                <p>Le logo n'est qu'une partie. Une identité, c'est un système complet (logo, couleurs, typographies, supports) qui rend ta marque reconnaissable partout, du print au web.</p>
+              </details>
+              <details class="landing__faq-item">
+                <summary>Pouvez-vous refondre une identité existante sans tout changer&nbsp;?</summary>
+                <p>Oui. Une refonte garde ce qui fait sens dans ta marque et clarifie le reste, pour la moderniser sans lui faire perdre son âme.</p>
+              </details>
+              <details class="landing__faq-item">
+                <summary>Combien de temps pour créer une identité de marque&nbsp;?</summary>
+                <p>Cela dépend du périmètre (logo seul ou identité complète et déclinaisons)&nbsp;; le délai est précisé dans le devis, après notre échange.</p>
+              </details>
+              <details class="landing__faq-item">
+                <summary>Faites-vous aussi le site, en plus de l'identité&nbsp;?</summary>
+                <p>Oui, et c'est mon atout&nbsp;: je conçois l'identité ET je code le site qui la porte, pour une cohérence parfaite entre ton image et ta présence en ligne.</p>
+              </details>
+            </div>
           </div>
         </section>
       </article>
