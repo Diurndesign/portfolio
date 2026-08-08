@@ -59,6 +59,19 @@
       }
     </script>
     <!-- TODO : ajouter "aggregateRating" / "review" ici quand de vrais avis clients seront disponibles. Aucun avis fictif. -->
+    <!-- Données structurées : questions fréquentes (FAQPage) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          { "@type": "Question", "name": "Combien de temps faut-il pour créer mon site à Cannes ?", "acceptedAnswer": { "@type": "Answer", "text": "Cela dépend de l'ampleur (vitrine ou site plus complet) ; je t'annonce un délai clair dans le devis. À Cannes, je privilégie la qualité d'exécution attendue plutôt que la précipitation." } },
+          { "@type": "Question", "name": "Mon site restera-t-il rapide pendant le Festival ou les périodes de forte affluence ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Chaque site est codé léger et optimisé pour rester rapide même lors des pics de trafic, quand chaque seconde de chargement compte." } },
+          { "@type": "Question", "name": "Gérez-vous aussi l'identité visuelle, pas seulement le site ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, l'identité et le site sont conçus par la même personne : cohérence totale entre ton image de marque et ta présence en ligne." } },
+          { "@type": "Question", "name": "Comment ressortir sur « création site internet Cannes » ?", "acceptedAnswer": { "@type": "Answer", "text": "Le référencement local est intégré dès la conception (structure propre, contenu pensé pour les recherches cannoises), pour te faire remonter au bon moment." } }
+        ]
+      }
+    </script>
   </head>
   <body>
     <nav class="nav" aria-label="Navigation principale">
@@ -189,20 +202,61 @@
           </ul>
         </section>
 
-        <section class="landing__section landing__cta">
+        <section class="landing__section landing__cta landing__contact" id="contact">
           <h2>Donnons vie à votre projet cannois</h2>
           <p>
             Hôtellerie, boutique de la Croisette, événementiel ou marque de luxe :
             votre site doit être aussi soigné que votre enseigne et parler à une
             clientèle internationale. Présentez-moi votre activité cannoise et l'image
             que vous voulez donner, on en fait un site à la hauteur.
+            <a href="/#projets">Voir des exemples de réalisations →</a>
           </p>
-          <div class="landing__actions">
-            <a class="landing__btn" href="mailto:hello@diurnstudio.fr?subject=Demande%20de%20devis%20%E2%80%94%20cr%C3%A9ation%20de%20site%20Cannes">
-              Demander un devis
-              <span aria-hidden="true">↗</span>
-            </a>
-            <a class="landing__contact-link" href="/#contact">Me contacter</a>
+          <div class="landing__contact-grid">
+            <div class="landing__form">
+              <form class="contact__form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="e5c89c34-54c5-4f3a-8c1f-6a8d4c359c75" />
+                <input type="hidden" name="from_name" value="Formulaire diurnstudio.fr (page Cannes)" />
+                <input type="checkbox" name="botcheck" class="contact__botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" />
+                <div class="contact__field">
+                  <label for="cf-name">Nom et prénom</label>
+                  <input type="text" id="cf-name" name="name" required autocomplete="name" />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-email">Email</label>
+                  <input type="email" id="cf-email" name="email" required autocomplete="email" />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-subject">Objet</label>
+                  <input type="text" id="cf-subject" name="subject" required placeholder="Ex. : création d'un site internet" />
+                </div>
+                <div class="contact__field">
+                  <label for="cf-message">Votre projet en quelques mots</label>
+                  <textarea id="cf-message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="contact__submit">Envoyer ma demande <span aria-hidden="true">↗</span></button>
+                <p class="contact__status" role="status" aria-live="polite"></p>
+                <p class="contact__privacy">Vos informations servent uniquement à vous répondre et ne sont jamais revendues.</p>
+              </form>
+            </div>
+            <div class="landing__faq" aria-label="Questions fréquentes">
+              <h3 class="landing__faq-title">Questions fréquentes</h3>
+              <details class="landing__faq-item" open>
+                <summary>Combien de temps faut-il pour créer mon site à Cannes&nbsp;?</summary>
+                <p>Cela dépend de l'ampleur (vitrine ou site plus complet)&nbsp;; je t'annonce un délai clair dans le devis. À Cannes, je privilégie la qualité d'exécution attendue plutôt que la précipitation.</p>
+              </details>
+              <details class="landing__faq-item">
+                <summary>Mon site restera-t-il rapide pendant le Festival ou les périodes de forte affluence&nbsp;?</summary>
+                <p>Oui. Chaque site est codé léger et optimisé pour rester rapide même lors des pics de trafic, quand chaque seconde de chargement compte.</p>
+              </details>
+              <details class="landing__faq-item">
+                <summary>Gérez-vous aussi l'identité visuelle, pas seulement le site&nbsp;?</summary>
+                <p>Oui, l'identité et le site sont conçus par la même personne&nbsp;: cohérence totale entre ton image de marque et ta présence en ligne.</p>
+              </details>
+              <details class="landing__faq-item">
+                <summary>Comment ressortir sur «&nbsp;création site internet Cannes&nbsp;»&nbsp;?</summary>
+                <p>Le référencement local est intégré dès la conception (structure propre, contenu pensé pour les recherches cannoises), pour te faire remonter au bon moment.</p>
+              </details>
+            </div>
           </div>
         </section>
       </article>
