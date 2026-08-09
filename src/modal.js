@@ -39,6 +39,12 @@ function initModal() {
 
   function close() {
     if (!isOpen()) return;
+
+    // Nettoie le deep-link (#projet-…) pour ne pas rouvrir au rechargement.
+    if (/^#projet-/i.test(location.hash)) {
+      history.replaceState(null, "", location.pathname + location.search);
+    }
+
     modal.classList.remove("is-open");
     modal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("no-scroll");
@@ -89,6 +95,15 @@ function initModal() {
   modal.querySelectorAll("[data-close]").forEach((el) => {
     el.addEventListener("click", close);
   });
+
+  // Deep-link : ouverture directe d'un projet via l'URL (#projet-<id>),
+  // utilisé par les cartes « réalisations » des pages landing.
+  function openFromHash() {
+    const m = location.hash.match(/^#projet-([a-z0-9-]+)$/i);
+    if (m) open(m[1]);
+  }
+  openFromHash();
+  window.addEventListener("hashchange", openFromHash);
 }
 
 if (document.readyState === "loading") {
