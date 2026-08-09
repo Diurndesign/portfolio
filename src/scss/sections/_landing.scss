@@ -80,7 +80,8 @@
     }
 
     // Liens contextuels dans le corps de texte (maillage interne).
-    p a {
+    // On exclut .landing__btn (bouton) pour ne pas écraser ses couleurs.
+    p a:not(.landing__btn) {
       color: $color-white;
       text-decoration: underline;
       text-underline-offset: 3px;
@@ -388,6 +389,160 @@
 .landing__work-more {
   margin-top: 1.5rem;
   font-size: 0.95rem;
+}
+
+// --- Bloc « 3 piliers » (résumé scannable en haut de page) ---
+.landing__pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1rem, 2.5vw, 1.75rem);
+  margin-top: clamp(2rem, 5vh, 3rem);
+
+  @include until($bp-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pillar {
+  padding: 1.5rem;
+  border: 1px solid rgba($color-white, 0.16);
+  border-radius: 10px;
+
+  &__icon {
+    width: 32px;
+    height: 32px;
+    color: $color-text-soft;
+    margin-bottom: 0.9rem;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-weight: 300;
+    font-size: 1.25rem;
+    line-height: 1.15;
+    color: $color-white;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: $color-text-soft;
+  }
+}
+
+// --- Bandeau de chiffres-repères -----------------------------
+.landing__stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: clamp(1.5rem, 3vh, 2rem);
+}
+
+.stat {
+  flex: 1 1 0;
+  min-width: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.3rem;
+  padding: 1.1rem 0.75rem;
+  border: 1px solid rgba($color-white, 0.16);
+  border-radius: 10px;
+
+  @include until($bp-sm) {
+    flex: 1 1 40%;
+  }
+
+  &__num {
+    font-family: $font-display;
+    font-weight: 300;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    line-height: 1;
+    color: $color-white;
+  }
+
+  &__label {
+    font-size: 0.8rem;
+    line-height: 1.3;
+    color: $color-text-soft;
+  }
+}
+
+// --- Tableau comparatif --------------------------------------
+.compare-wrap {
+  overflow-x: auto;
+  margin-top: 1.75rem;
+}
+
+.compare {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+
+  th,
+  td {
+    text-align: left;
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid rgba($color-white, 0.16);
+    vertical-align: top;
+  }
+
+  thead th {
+    font-family: $font-display;
+    font-weight: 300;
+    font-size: 1.1rem;
+    color: $color-white;
+  }
+
+  tbody th {
+    font-weight: 600;
+    color: $color-white;
+    white-space: nowrap;
+  }
+
+  tbody td {
+    color: $color-text-soft;
+  }
+
+  // colonne « Diurn Studio » légèrement mise en avant
+  thead th:nth-child(2),
+  tbody td:nth-child(2) {
+    background: rgba($color-white, 0.05);
+  }
+}
+
+// --- Listes à puces récapitulatives --------------------------
+.landing__list {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  li {
+    position: relative;
+    padding-left: 1.6rem;
+    font-size: 0.98rem;
+    line-height: 1.6;
+    color: $color-text-soft;
+
+    &::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: $color-white;
+      opacity: 0.6;
+    }
+  }
+}
+
+// --- CTA intermédiaire ---------------------------------------
+.landing__midcta {
+  margin: clamp(2rem, 5vh, 3rem) 0;
 }
 
 @media (prefers-reduced-motion: reduce) {
