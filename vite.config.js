@@ -25,6 +25,7 @@ export default defineConfig(() => ({
         creationMonaco: resolve(root, "creation-site-internet-monaco.html"),
         graphisteNice: resolve(root, "graphiste-nice.html"),
         studioDesignNice: resolve(root, "studio-design-nice.html"),
+        coutSiteNice: resolve(root, "combien-coute-site-internet-nice.html"),
       },
     },
   },
