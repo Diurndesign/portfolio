@@ -49,6 +49,10 @@ function initContactForm() {
           "Merci ! Votre message est bien parti — je vous réponds au plus vite.";
         status.classList.add("is-success");
         form.reset();
+
+        if (typeof gtag === "function") {
+          gtag("event", "generate_lead", { method: "contact_form" });
+        }
       } else {
         throw new Error(json.message || "Échec de l'envoi");
       }
