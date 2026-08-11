@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.diurnstudio.fr/sitemap.xml
+
+# llms.txt: https://www.diurnstudio.fr/llms.txt
