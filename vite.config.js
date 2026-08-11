@@ -4,29 +4,32 @@ import { fileURLToPath } from "url";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
 
-// Inline la feuille de style dans chaque page : supprime la requête CSS
-// bloquant le rendu (elle ne fait que ~8 Ko) et laisse les polices démarrer
-// plus tôt. Aucune dépendance npm.
-function inlineCss() {
+// Optimise le rendu de chaque page au build (aucune dépendance npm) :
+//  1. Inline la feuille de style : supprime la requête CSS bloquant le rendu
+//     (elle ne fait que ~8 Ko).
+//  2. Précharge les 2 polices d'affichage utilisées au-dessus de la ligne de
+//     flottaison (titre ExtraLight + gros titres Light) pour raccourcir la
+//     chaîne critique et accélérer le LCP.
+function optimizeHtml() {
   const inlined = new Set();
+  // Polices réellement utilisées above-the-fold sur toutes les pages.
+  const preloadFonts = ["HelloParisSerifExtraLight", "HelloParisSerifLight"];
+
   return {
-    name: "inline-css",
+    name: "optimize-html",
     enforce: "post",
     apply: "build",
     transformIndexHtml(html, ctx) {
       if (!ctx || !ctx.bundle) return html;
-
-      // Retrouve les fichiers CSS émis dans le bundle.
-      const cssFiles = Object.keys(ctx.bundle).filter((f) => f.endsWith(".css"));
-      if (!cssFiles.length) return html;
-
       let out = html;
+
+      // --- 1. Inline du CSS ---------------------------------------------
+      const cssFiles = Object.keys(ctx.bundle).filter((f) => f.endsWith(".css"));
       for (const file of cssFiles) {
         const asset = ctx.bundle[file];
         const css = typeof asset.source === "string" ? asset.source : "";
         if (!css) continue;
 
-        // Remplace <link rel="stylesheet" href="/assets/xxx.css"> par le CSS inline.
         const base = file.split("/").pop().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
         const linkRe = new RegExp(
           '<link[^>]*rel="stylesheet"[^>]*href="[^"]*' + base + '"[^>]*>',
@@ -37,6 +40,23 @@ function inlineCss() {
           inlined.add(file);
         }
       }
+
+      // --- 2. Preload des polices critiques -----------------------------
+      const tags = [];
+      for (const name of preloadFonts) {
+        const file = Object.keys(ctx.bundle).find(
+          (f) => f.includes(name) && f.endsWith(".woff2")
+        );
+        if (file) {
+          tags.push(
+            `<link rel="preload" as="font" type="font/woff2" crossorigin href="/${file}">`
+          );
+        }
+      }
+      if (tags.length) {
+        out = out.replace(/<head(\s[^>]*)?>/i, (m) => m + tags.join(""));
+      }
+
       return out;
     },
     // Une fois toutes les pages transformées, le CSS est inline partout :
@@ -52,7 +72,7 @@ function inlineCss() {
 export default defineConfig(() => ({
   // Le site est servi à la racine du domaine (Vercel).
   base: "/",
-  plugins: [inlineCss()],
+  plugins: [optimizeHtml()],
   css: {
     preprocessorOptions: {
       scss: {
