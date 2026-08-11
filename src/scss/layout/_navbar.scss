@@ -39,6 +39,13 @@
       justify-content: center;
       align-items: center;
       gap: 0.75rem 1.75rem;
+
+      // Le dernier item (« Audit gratuit »), seul sur sa ligne, est centré
+      // sur les deux colonnes plutôt que collé à gauche.
+      li:last-child {
+        grid-column: 1 / -1;
+        justify-self: center;
+      }
     }
   }
 
