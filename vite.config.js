@@ -27,6 +27,7 @@ export default defineConfig(() => ({
         studioDesignNice: resolve(root, "studio-design-nice.html"),
         coutSiteNice: resolve(root, "combien-coute-site-internet-nice.html"),
         codeVsPlateforme: resolve(root, "site-sur-mesure-ou-wix-squarespace.html"),
+        siteIaOuDev: resolve(root, "site-avec-ia-ou-developpeur.html"),
       },
     },
   },
