@@ -4,9 +4,55 @@ import { fileURLToPath } from "url";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
 
+// Inline la feuille de style dans chaque page : supprime la requête CSS
+// bloquant le rendu (elle ne fait que ~8 Ko) et laisse les polices démarrer
+// plus tôt. Aucune dépendance npm.
+function inlineCss() {
+  const inlined = new Set();
+  return {
+    name: "inline-css",
+    enforce: "post",
+    apply: "build",
+    transformIndexHtml(html, ctx) {
+      if (!ctx || !ctx.bundle) return html;
+
+      // Retrouve les fichiers CSS émis dans le bundle.
+      const cssFiles = Object.keys(ctx.bundle).filter((f) => f.endsWith(".css"));
+      if (!cssFiles.length) return html;
+
+      let out = html;
+      for (const file of cssFiles) {
+        const asset = ctx.bundle[file];
+        const css = typeof asset.source === "string" ? asset.source : "";
+        if (!css) continue;
+
+        // Remplace <link rel="stylesheet" href="/assets/xxx.css"> par le CSS inline.
+        const base = file.split("/").pop().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const linkRe = new RegExp(
+          '<link[^>]*rel="stylesheet"[^>]*href="[^"]*' + base + '"[^>]*>',
+          "g"
+        );
+        if (linkRe.test(out)) {
+          out = out.replace(linkRe, `<style>${css}</style>`);
+          inlined.add(file);
+        }
+      }
+      return out;
+    },
+    // Une fois toutes les pages transformées, le CSS est inline partout :
+    // on retire le fichier désormais orphelin du bundle.
+    generateBundle(_options, bundle) {
+      for (const file of inlined) {
+        delete bundle[file];
+      }
+    },
+  };
+}
+
 export default defineConfig(() => ({
   // Le site est servi à la racine du domaine (Vercel).
   base: "/",
+  plugins: [inlineCss()],
   css: {
     preprocessorOptions: {
       scss: {
