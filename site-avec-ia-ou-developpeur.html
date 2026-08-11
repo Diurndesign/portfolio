@@ -76,7 +76,13 @@
       </a>
 
       <!-- Sidebar gauche : sections de l'accueil -->
-      <ul class="nav__side nav__side--left">
+      <button class="nav__burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
+        <span class="nav__burger-line"></span>
+        <span class="nav__burger-line"></span>
+        <span class="nav__burger-line"></span>
+      </button>
+
+      <ul class="nav__side nav__side--left" id="nav-menu">
         <li><a href="/#projets" class="nav__link">Projets</a></li>
         <li><a href="/#a-propos" class="nav__link">À propos</a></li>
         <li><a href="/#contact" class="nav__link">Contact</a></li>
