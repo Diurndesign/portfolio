@@ -1,5 +1,5 @@
 // ============================================================
-//  Formulaire de contact — envoi via Web3Forms (AJAX)
+//  Formulaire de contact : envoi via Web3Forms (AJAX)
 //  On reste sur la page : états chargement / succès / erreur.
 // ============================================================
 
@@ -22,7 +22,7 @@ function initContactForm() {
     // on n'envoie pas dans le vide et on oriente vers l'e-mail.
     if (!accessKey || accessKey === "WEB3FORMS_ACCESS_KEY") {
       status.textContent =
-        "Le formulaire sera actif très bientôt — en attendant, écrivez-moi à hello@diurnstudio.fr.";
+        "Le formulaire sera actif très bientôt, en attendant, écrivez-moi à hello@diurnstudio.fr.";
       status.className = "contact__status is-error";
       return;
     }
@@ -46,7 +46,7 @@ function initContactForm() {
 
       if (json.success) {
         status.textContent =
-          "Merci ! Votre message est bien parti — je vous réponds au plus vite.";
+          "Merci ! Votre message est bien parti, je vous réponds au plus vite.";
         status.classList.add("is-success");
         form.reset();
 
