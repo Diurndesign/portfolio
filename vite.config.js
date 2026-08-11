@@ -57,6 +57,21 @@ function optimizeHtml() {
         out = out.replace(/<head(\s[^>]*)?>/i, (m) => m + tags.join(""));
       }
 
+      // --- 3. Reveal immediat du bandeau cookies ------------------------
+      // Le bandeau est masque par defaut et n'etait revele qu'apres le
+      // chargement complet du bundle JS (~800 ms + transition), ce qui en
+      // faisait un element LCP tres tardif. Ce script inline, execute des
+      // que le bandeau est parse, l'affiche immediatement pour qui n'a pas
+      // encore choisi. La logique de consentement (chargement de GA sur
+      // « Accepter ») reste dans consent.js : rien ne change cote RGPD.
+      if (out.includes('id="cookie-consent"')) {
+        const reveal =
+          '<script>try{var c=localStorage.getItem("diurn-cookie-consent");' +
+          'if(c!=="granted"&&c!=="denied"){var b=document.getElementById("cookie-consent");' +
+          "if(b)b.classList.add(\"is-visible\");}}catch(e){}</script>";
+        out = out.replace(/<\/body>/i, reveal + "</body>");
+      }
+
       return out;
     },
     // Une fois toutes les pages transformées, le CSS est inline partout :
