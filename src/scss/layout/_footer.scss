@@ -12,9 +12,8 @@
   border-top: 1px solid rgba($color-white, 0.14);
   color: $color-text-muted;
 
-  // Grille de colonnes régulières (villes, design, guides, services, légal)
+  // Grille de colonnes régulières (villes, design, guides, services)
   &__nav {
-    order: 1;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: clamp(1.75rem, 3vw, 2.75rem);
@@ -79,12 +78,30 @@
     }
   }
 
-  // Copyright : sa propre ligne, sous les colonnes, séparé par un filet
-  &__copy {
-    order: 2;
+  // Barre du bas : copyright à gauche, liens légaux à droite
+  &__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 1.5rem;
     padding-top: clamp(1.5rem, 3vh, 2rem);
     border-top: 1px solid rgba($color-white, 0.08);
+  }
+
+  &__copy {
     font-size: 0.8rem;
     letter-spacing: 0.02em;
+  }
+
+  &__legal-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+
+    span {
+      color: rgba($color-white, 0.3);
+    }
   }
 }
