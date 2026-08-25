@@ -175,6 +175,37 @@
     }
   }
 
+  // Ligne « Retrouvez aussi mon travail sur … »
+  &__social {
+    font-size: 0.85rem;
+    line-height: 1.9;
+    color: $color-text-muted;
+
+    a {
+      color: $color-text-soft;
+      text-decoration: underline;
+      text-decoration-color: transparent;
+      text-underline-offset: 3px;
+      transition: color $transition, text-decoration-color $transition;
+
+      &:hover,
+      &:focus-visible {
+        color: $color-white;
+        text-decoration-color: currentColor;
+      }
+
+      &:focus-visible {
+        outline: 2px solid $color-white;
+        outline-offset: 3px;
+        border-radius: 2px;
+      }
+    }
+
+    span {
+      color: rgba($color-white, 0.3);
+    }
+  }
+
   // Barre du bas : copyright à gauche, liens légaux à droite
   &__bottom {
     display: flex;
