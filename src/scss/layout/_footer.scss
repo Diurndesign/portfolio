@@ -19,21 +19,90 @@
     gap: clamp(1.75rem, 3vw, 2.75rem);
   }
 
-  // Chaque groupe : un titre puis ses liens empilés verticalement
+  // Chaque groupe : un titre cliquable + un panneau de liens repliable
   &__group {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 0.6rem;
   }
 
-  &__label {
-    margin-bottom: 0.35rem;
+  // Titre toujours visible
+  &__title {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: $color-text-muted;
+    transition: color $transition;
+
+    &::after {
+      content: "+";
+      font-size: 1rem;
+      line-height: 1;
+      color: $color-text-soft;
+      transition: transform $transition, color $transition;
+    }
+
+    &:hover,
+    &:focus-visible {
+      color: $color-white;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-white;
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+  }
+
+  // Panneau de liens : replié par défaut, animé à l'ouverture
+  &__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    overflow: hidden;
+    transition: grid-template-rows 0.35s $ease, opacity 0.3s ease;
+  }
+
+  &__panel-inner {
+    min-height: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding-top: 0.85rem;
+  }
+
+  // Révélation au survol / focus clavier (appareils avec souris)
+  @media (hover: hover) {
+    &__group:hover &__panel,
+    &__group:focus-within &__panel {
+      grid-template-rows: 1fr;
+      opacity: 1;
+    }
+
+    &__group:hover &__title::after,
+    &__group:focus-within &__title::after {
+      transform: rotate(45deg);
+    }
+  }
+
+  // Révélation au clic / tap (surtout mobile)
+  &__group.is-open &__panel {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+
+  &__group.is-open &__title::after {
+    transform: rotate(45deg);
   }
 
   &__legal {
