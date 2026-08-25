@@ -108,7 +108,7 @@
     transform: rotate(45deg);
   }
 
-  // --- Mobile : accordéon pleine largeur, bien aligné ------
+  // --- Mobile : accordéon pleine largeur, zones tactiles >= 48px ------
   @include until($bp-md) {
     &__nav {
       grid-template-columns: 1fr;
@@ -126,13 +126,30 @@
     &__title {
       width: 100%;
       justify-content: space-between;
-      padding: 0.95rem 0;
+      min-height: 48px;
+      padding: 0.6rem 0;
     }
 
     &__panel-inner {
       padding-top: 0;
-      padding-bottom: 1rem;
-      gap: 0.75rem;
+      padding-bottom: 0.5rem;
+      gap: 0;
+    }
+
+    // Zones tactiles confortables (accessibilité) : liens de colonne
+    // pleine largeur et hauts d'au moins 48px.
+    &__panel-inner &__legal {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      min-height: 48px;
+    }
+
+    // Liens légaux de la barre du bas : même hauteur de cible.
+    &__legal-links &__legal {
+      display: inline-flex;
+      align-items: center;
+      min-height: 48px;
     }
   }
 
