@@ -24,3 +24,17 @@
     padding: 4rem 1.25rem;
   }
 }
+
+// --- Bloc FAQ (accueil) : réutilise l'accordéon .landing__faq --------
+.faq {
+  width: 100%;
+  max-width: 760px;
+
+  &__lead {
+    margin: 1.25rem 0 2.5rem;
+    max-width: 62ch;
+    font-size: 1rem;
+    line-height: 1.75;
+    color: $color-text-soft;
+  }
+}
