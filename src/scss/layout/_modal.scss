@@ -157,6 +157,43 @@ $modal-panel: #ece7dd;
     }
   }
 
+  // Lien « Voir le site en ligne » (projets avec un site livré)
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    padding: 0.7rem 1.4rem;
+    border: 1px solid rgba($color-ink, 0.3);
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: $color-ink;
+    transition: background $transition, color $transition,
+      border-color $transition, transform $transition;
+
+    span {
+      transition: transform $transition;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background: $color-ink;
+      color: $color-white;
+      border-color: $color-ink;
+
+      span {
+        transform: translate(2px, -2px);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-ink;
+      outline-offset: 3px;
+    }
+  }
+
   &__gallery {
     // Mosaïque (masonry) : les images gardent leur ratio, hauteurs variées
     columns: 2;

@@ -219,6 +219,18 @@
 
           <ul class="projets__grid">
             <li class="card">
+              <button class="card__btn" type="button" data-project="beautycorner" aria-haspopup="dialog">
+                <span class="card__media">
+                  <img src="/img/projets/bcorner-1.webp" alt="Page d'accueil du site The Beauty Corner by Alex, institut de beauté à Nice" loading="lazy" width="1559" height="748" />
+                  <span class="card__overlay">
+                    <span class="card__cat">Site internet</span>
+                    <span class="card__title">Beauty Corner</span>
+                  </span>
+                </span>
+              </button>
+            </li>
+
+            <li class="card">
               <button class="card__btn" type="button" data-project="gdunan" aria-haspopup="dialog">
                 <span class="card__media">
                   <img src="/img/projets/gd-2.webp" alt="Site internet Gdunan présenté sur un ordinateur portable" loading="lazy" width="1080" height="1080" />
@@ -317,6 +329,32 @@
         </div>
 
         <!-- Contenu des modals (masqué, cloné à l'ouverture) -->
+        <template id="detail-beautycorner">
+          <article class="project" data-bg="#efe8df">
+            <header class="project__head">
+              <p class="project__cat">Site internet · Sur mesure</p>
+              <h3 class="project__title" id="modal-title">The Beauty Corner</h3>
+              <ul class="project__tags">
+                <li>Design web</li>
+                <li>Développement</li>
+                <li>Espace admin</li>
+                <li>Supabase</li>
+                <li>SEO local</li>
+              </ul>
+            </header>
+            <div class="project__text">
+              <p>The Beauty Corner by Alex est un institut de beauté niçois où la dermopigmentation, le soin des ongles et les soirées beauté entre amies se vivent comme des moments d'exception. À partir du logo existant de la marque, la mise en page et l'univers du site prolongent cette douceur : une atmosphère naturelle et sensorielle, des appels à l'action clairs, l'Instagram de la cliente et un espace contact intégrés.</p>
+              <p>Le cœur du projet est un espace d'administration sur mesure : la cliente ajoute et modifie ses photos elle-même, hébergées sur Supabase, pour montrer l'évolution de son travail au fil des années en toute autonomie. Un site codé main, responsive et facile à maintenir, avec la réservation en ligne via Planity et un référencement local soigné à Nice.</p>
+            </div>
+            <a class="project__link" href="https://thebeautycornerbyalex.fr" target="_blank" rel="noopener">Voir le site en ligne <span aria-hidden="true">↗</span></a>
+            <div class="project__gallery">
+              <img src="/img/projets/bcorner-1.webp" alt="Page d'accueil du site sur ordinateur, hero Sublimez votre beauté naturelle" loading="lazy" width="1559" height="748" />
+              <img src="/img/projets/bcorner-2.webp" alt="Section des prestations de l'institut, soirée beauté entre amies" loading="lazy" width="1543" height="753" />
+              <img src="/img/projets/bcorner-3.webp" alt="Le site sur mobile : carte cadeau et questions fréquentes" loading="lazy" width="378" height="668" />
+            </div>
+          </article>
+        </template>
+
         <template id="detail-freakshow">
           <article class="project" data-bg="#e8e7e3">
             <header class="project__head">
