@@ -175,10 +175,12 @@
     }
   }
 
-  // Ligne « Retrouvez aussi mon travail sur … »
+  // Ligne « Retrouvez aussi mon travail sur … » (centrée dans la barre du bas)
   &__social {
-    font-size: 0.85rem;
-    line-height: 1.9;
+    flex: 1 1 auto;
+    text-align: center;
+    font-size: 0.82rem;
+    line-height: 1.7;
     color: $color-text-muted;
 
     a {
@@ -230,6 +232,18 @@
 
     span {
       color: rgba($color-white, 0.3);
+    }
+  }
+
+  // Mobile : la barre du bas s'empile, tout centré
+  @include until($bp-sm) {
+    &__bottom {
+      justify-content: center;
+      text-align: center;
+    }
+
+    &__legal-links {
+      justify-content: center;
     }
   }
 }
