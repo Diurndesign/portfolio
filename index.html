@@ -150,6 +150,26 @@
               "areaServed": { "@type": "AdministrativeArea", "name": "Côte d'Azur" }
             }
           }
+        ],
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5",
+          "reviewCount": "4",
+          "bestRating": "5"
+        },
+        "review": [
+          {
+            "@type": "Review",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+            "author": { "@type": "Person", "name": "Le Ben" },
+            "reviewBody": "J'ai récemment travaillé avec Diurn Studio pour une collaboration sur plusieurs vidéos et du montage. Je lui fais confiance à 100 %, il est très professionnel, a du bon matériel et prend le temps de comprendre votre vision. Je recommande."
+          },
+          {
+            "@type": "Review",
+            "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+            "author": { "@type": "Person", "name": "Aurélien" },
+            "reviewBody": "Une personne très professionnelle, sérieuse et amicale."
+          }
         ]
       }
     </script>
@@ -791,6 +811,31 @@
           </div>
         </div>
       </section>
+
+      <section id="avis" class="section" aria-labelledby="avis-title">
+        <div class="reviews">
+          <p class="section__eyebrow">Avis clients</p>
+          <h2 class="section__title" id="avis-title">Ils en parlent</h2>
+          <div class="reviews__rating">
+            <span class="reviews__score">5,0</span>
+            <span class="reviews__stars" aria-hidden="true">★★★★★</span>
+            <a class="reviews__source" href="https://share.google/iNXmDD4h4sXeVodC5" target="_blank" rel="noopener">4 avis sur Google</a>
+          </div>
+          <div class="reviews__grid">
+            <figure class="reviews__card">
+              <span class="reviews__stars" role="img" aria-label="5 étoiles sur 5">★★★★★</span>
+              <blockquote>J'ai récemment travaillé avec Diurn Studio pour une collaboration sur plusieurs vidéos et du montage. Je lui fais confiance à 100 %, il est très professionnel, a du bon matériel et prend le temps de comprendre votre vision. Merci énormément, je recommande&nbsp;!</blockquote>
+              <figcaption>Le Ben <span>· Avis Google</span></figcaption>
+            </figure>
+            <figure class="reviews__card">
+              <span class="reviews__stars" role="img" aria-label="5 étoiles sur 5">★★★★★</span>
+              <blockquote>Une personne très professionnelle, sérieuse et amicale&nbsp;!</blockquote>
+              <figcaption>Aurélien <span>· Avis Google</span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" class="section section--contact">
         <div class="contact">
           <p class="section__eyebrow">Contact</p>
