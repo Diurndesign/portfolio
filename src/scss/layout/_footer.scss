@@ -8,15 +8,18 @@
   display: flex;
   flex-direction: column;
   gap: clamp(2rem, 5vh, 3rem);
-  padding: clamp(2.5rem, 6vh, 4rem) clamp(1.25rem, 5vw, 4rem) clamp(1.75rem, 4vh, 2.5rem);
-  border-top: 1px solid rgba($color-white, 0.14);
+  padding: 0 clamp(1.25rem, 5vw, 4rem) clamp(1.75rem, 4vh, 2.5rem);
   color: $color-text-muted;
 
   // Grille de colonnes régulières (villes, design, guides, services)
+  // Le filet du haut est en retrait (dans le padding), aligné avec celui
+  // du bas, pour ne pas traverser le texte de la barre latérale.
   &__nav {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: clamp(1.75rem, 3vw, 2.75rem);
+    padding-top: clamp(2.5rem, 6vh, 4rem);
+    border-top: 1px solid rgba($color-white, 0.14);
   }
 
   // Chaque groupe : un titre cliquable + un panneau de liens repliable
