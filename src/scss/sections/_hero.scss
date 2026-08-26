@@ -7,13 +7,15 @@
 .hero {
   position: relative;
   min-height: 100vh;
-  padding: 2rem $sidebar-width;
+  // padding-bottom à 0 : le dégradé .hero__fade doit toucher directement
+  // la section Projets, sans bande bleue résiduelle en dessous.
+  padding: 2rem $sidebar-width 0;
   display: flex;
   flex-direction: column;
 
   @include until($bp-md) {
     min-height: auto;
-    padding: 1rem 1.25rem 3rem;
+    padding: 1rem 1.25rem 0;
   }
 
   &__inner {
@@ -25,6 +27,31 @@
     flex-direction: column;
     justify-content: center;
     padding-top: 3.5rem;
+  }
+
+  // --- Dégradé de transition vers la section Projets -------
+  // Bande pleine largeur, poussée en bas du hero par le flex:1 de
+  // .hero__inner : elle reste donc toujours SOUS le contenu (aucun
+  // souci de contraste avec les CTA). Le bleu s'évapore vers le crème
+  // exact de .section--projets pour un raccord invisible.
+  &__fade {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: clamp(2.5rem, 8vh, 6rem);
+    height: clamp(120px, 22vh, 260px);
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      rgba($color-blue, 0),
+      $color-cream
+    );
+
+    @include until($bp-md) {
+      margin-top: 2.5rem;
+      height: 110px;
+    }
   }
 
   // --- Label du haut ---------------------------------------
