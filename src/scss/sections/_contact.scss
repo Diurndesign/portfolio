@@ -25,16 +25,18 @@
     text-wrap: balance;
   }
 
-  // Grille : formulaire (avec titre) à gauche, avis à droite
+  // Grille : formulaire (avec titre) à gauche, avis à droite.
+  // Carte d'avis centrée verticalement sur la colonne du formulaire.
   &__grid {
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
-    align-items: start;
+    align-items: center;
     gap: clamp(2rem, 5vw, 4.5rem);
     margin-top: clamp(1.5rem, 3.5vh, 2.5rem);
 
     @include until($bp-lg) {
       grid-template-columns: 1fr;
+      align-items: start;
       gap: 2.5rem;
     }
   }
