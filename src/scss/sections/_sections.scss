@@ -26,6 +26,24 @@
 }
 
 // --- Section FAQ (accordéon, réutilise .landing__faq) ---------
+// Le filet de séparation pleine largeur de .section traversait la
+// navbar de gauche : on le remplace par un filet court et centré.
+#faq {
+  position: relative;
+  border-top: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: clamp(120px, 28vw, 340px);
+    height: 1px;
+    background: rgba(255, 255, 255, 0.14);
+  }
+}
+
 .faq {
   width: 100%;
   max-width: 760px;
