@@ -106,46 +106,6 @@
     }
   }
 
-  // Services : colonnes côte à côte
-  &__services {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: clamp(1.75rem, 4vw, 3.5rem);
-    padding-top: clamp(2rem, 4vh, 3rem);
-
-    @include until($bp-md) {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-  }
-
-  &__col {
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
-  }
-
-  // Visuel en tête de chaque carte service
-  &__col-media {
-    margin: 0 0 0.15rem;
-    overflow: hidden;
-    border-radius: 12px;
-    aspect-ratio: 4 / 3;
-
-    img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s $ease;
-    }
-  }
-
-  &__col:hover &__col-media img,
-  &__col:focus-within &__col-media img {
-    transform: scale(1.05);
-  }
-
   &__label {
     font-size: 0.78rem;
     font-weight: 600;
