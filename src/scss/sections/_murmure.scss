@@ -134,6 +134,8 @@
   display: block;
   padding-top: clamp(5rem, 12vh, 9rem);
   padding-bottom: clamp(5rem, 12vh, 9rem);
+  // raccord invisible avec le dégradé de fin de la section Projets
+  border-top: none;
 }
 
 .murmure {

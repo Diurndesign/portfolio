@@ -8,7 +8,9 @@
   // on annule le centrage flex hérité de .section
   display: block;
   padding-top: clamp(5rem, 12vh, 9rem);
-  padding-bottom: clamp(5rem, 12vh, 9rem);
+  // padding-bottom à 0 : le dégradé .projets__fade doit toucher directement
+  // la section suivante, sans bande crème résiduelle en dessous.
+  padding-bottom: 0;
 
   // fond clair pour marquer le changement de section
   background: $color-cream;
@@ -61,6 +63,37 @@
   text-transform: uppercase;
   color: $color-text-muted;
   margin-bottom: 0.9rem;
+}
+
+// --- Dégradé de fin de section (symétrique du hero) -----------
+// Le crème s'évapore vers le bleu de la section suivante. Même rampe
+// d'opacité adoucie que .hero__fade : dissolution sans limite perceptible.
+.projets__fade {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: clamp(4rem, 11vh, 8rem);
+  height: clamp(240px, 38vh, 480px);
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba($color-blue, 0) 0%,
+    rgba($color-blue, 0.03) 16%,
+    rgba($color-blue, 0.1) 30%,
+    rgba($color-blue, 0.22) 43%,
+    rgba($color-blue, 0.38) 55%,
+    rgba($color-blue, 0.56) 66%,
+    rgba($color-blue, 0.74) 77%,
+    rgba($color-blue, 0.89) 88%,
+    rgba($color-blue, 0.97) 95%,
+    $color-blue 100%
+  );
+
+  @include until($bp-md) {
+    margin-top: 3rem;
+    height: clamp(200px, 34vh, 340px);
+  }
 }
 
 // --- Carte ---------------------------------------------------
