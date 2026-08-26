@@ -114,6 +114,41 @@
     color: $color-white;
   }
 
+  // CTA principal (fin de « Mon approche ») vers le formulaire
+  &__cta {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    background: $color-white;
+    color: $color-blue;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform $transition, box-shadow $transition;
+
+    span {
+      transition: transform $transition;
+    }
+
+    &:hover,
+    &:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px -14px rgba(0, 0, 0, 0.55);
+
+      span {
+        transform: translate(2px, -2px);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-white;
+      outline-offset: 4px;
+    }
+  }
+
   &__text {
     font-size: clamp(0.98rem, 1.1vw, 1.05rem);
     line-height: 1.75;
