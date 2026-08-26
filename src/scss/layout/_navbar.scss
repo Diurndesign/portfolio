@@ -255,19 +255,24 @@
   z-index: 40;
   display: block;
 
+  // Couleur du rond de fond (mobile) : suit le fond de la section
+  // survolée pour rester invisible tout en masquant le texte derrière.
+  --logo-bg: #{$color-blue};
+
   // masqué tant que le hero est visible
   opacity: 0;
   transform: translateY(-14px) scale(0.96);
   pointer-events: none;
-  transition: opacity 0.55s $ease, transform 0.55s $ease, filter $transition;
-
-  // blanc sur fond bleu (le logo source est noir)
-  filter: invert(1);
+  transition: opacity 0.55s $ease, transform 0.55s $ease, background $transition;
 
   img {
     display: block;
     height: 100px;
     width: auto;
+    // blanc sur fond bleu (le logo source est noir) — le filtre est sur
+    // l'image, pas sur le lien, pour ne pas inverser le rond de fond.
+    filter: invert(1);
+    transition: filter $transition;
   }
 
   &:hover,
@@ -287,16 +292,30 @@
     pointer-events: auto;
   }
 
-  // sur une section claire (nav en mode foncé) : logo noir
+  // sur une section claire (nav en mode foncé) : logo noir + rond crème
   .nav--light & {
-    filter: none;
+    --logo-bg: #{$color-cream};
+
+    img {
+      filter: none;
+    }
   }
 
   @include until($bp-md) {
-    top: 0.75rem;
-    left: 0.75rem;
+    top: 0.5rem;
+    left: 0.5rem;
+
+    // Rond plein derrière le logo : il ne se perd plus dans le texte au scroll.
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--logo-bg);
+
     img {
-      height: 64px;
+      height: 50px;
     }
   }
 }

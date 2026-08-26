@@ -214,6 +214,23 @@
   border: 1px solid rgba($color-white, 0.12);
   border-radius: 14px;
 
+  // Deux emplacements selon l'écran : à côté du formulaire (desktop),
+  // avant la FAQ (mobile) — cf. index.html.
+  &--desktop {
+    @include until($bp-lg) {
+      display: none;
+    }
+  }
+
+  &--mobile {
+    display: none;
+
+    @include until($bp-lg) {
+      display: block;
+      margin-bottom: clamp(2rem, 6vh, 3rem);
+    }
+  }
+
   &__head {
     display: flex;
     align-items: center;
