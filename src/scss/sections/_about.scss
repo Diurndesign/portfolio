@@ -178,6 +178,20 @@
       outline: 2px solid $color-white;
       outline-offset: 4px;
     }
+
+    // Variante secondaire (audit gratuit) : contour discret
+    &--ghost {
+      background: transparent;
+      color: $color-white;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+
+      &:hover,
+      &:focus-visible {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.6);
+        box-shadow: none;
+      }
+    }
   }
 
   &__text {
