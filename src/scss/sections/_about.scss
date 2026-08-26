@@ -90,17 +90,27 @@
   // --- Blocs ------------------------------------------------
   &__blocks {
     margin-top: clamp(3.5rem, 9vh, 7rem);
-    border-top: 1px solid rgba(255, 255, 255, 0.16);
   }
 
   // Mon approche : deux colonnes — actions à gauche, texte à droite
   &__approach {
+    position: relative;
     display: grid;
     grid-template-columns: minmax(210px, 0.8fr) 1.7fr;
     align-items: start;
     gap: clamp(2rem, 5vw, 4.5rem);
     padding: clamp(1.75rem, 3.5vh, 2.75rem) 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+
+    // Filet de séparation raccourci (aligné à gauche) sous le bloc
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: clamp(90px, 14vw, 170px);
+      height: 1px;
+      background: rgba(255, 255, 255, 0.22);
+    }
 
     @include until($bp-lg) {
       grid-template-columns: 1fr;
