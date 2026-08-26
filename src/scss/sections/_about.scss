@@ -93,16 +93,50 @@
     border-top: 1px solid rgba(255, 255, 255, 0.16);
   }
 
-  // Mon approche : intro pleine largeur
+  // Mon approche : deux colonnes — actions à gauche, texte à droite
   &__approach {
-    display: flex;
-    flex-direction: column;
-    gap: 0.9rem;
+    display: grid;
+    grid-template-columns: minmax(210px, 0.8fr) 1.7fr;
+    align-items: start;
+    gap: clamp(2rem, 5vw, 4.5rem);
     padding: clamp(1.75rem, 3.5vh, 2.75rem) 0;
     border-bottom: 1px solid rgba(255, 255, 255, 0.16);
 
+    @include until($bp-lg) {
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+    }
+  }
+
+  // Colonne texte (à droite) — reste 1re dans le DOM pour un ordre de
+  // lecture naturel sur mobile (texte puis actions).
+  &__approach-body {
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+
     .about__text {
-      max-width: 68ch;
+      max-width: 60ch;
+    }
+
+    @include until($bp-lg) {
+      grid-column: auto;
+    }
+  }
+
+  // Colonne actions (à gauche) — les deux CTA empilés
+  &__approach-actions {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.1rem;
+
+    @include until($bp-lg) {
+      grid-column: auto;
+      grid-row: auto;
     }
   }
 
@@ -120,7 +154,6 @@
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 1.5rem;
     padding: 0.85rem 1.6rem;
     border-radius: 999px;
     background: $color-white;
@@ -163,7 +196,6 @@
   // Lien contextuel vers la landing SEO (maillage interne)
   &__more {
     display: inline-block;
-    margin-top: 1.1rem;
     font-size: 0.9rem;
     font-weight: 600;
     color: $color-white;
