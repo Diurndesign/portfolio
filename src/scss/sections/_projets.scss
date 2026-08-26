@@ -69,10 +69,10 @@
 // Le crème s'évapore vers le bleu de la section suivante. Même rampe
 // d'opacité adoucie que .hero__fade : dissolution sans limite perceptible.
 .projets__fade {
+  // Pleine largeur robuste : calc(50% - 50vw) tient compte du padding
+  // horizontal de la section (le translateX laissait un liseré crème au bord).
   width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-left: calc(50% - 50vw);
   margin-top: clamp(4rem, 11vh, 8rem);
   height: clamp(240px, 38vh, 480px);
   pointer-events: none;

@@ -35,10 +35,10 @@
   // souci de contraste avec les CTA). Le bleu s'évapore vers le crème
   // exact de .section--projets pour un raccord invisible.
   &__fade {
+    // Pleine largeur robuste : calc(50% - 50vw) tient compte du padding
+    // horizontal de la section (le translateX laissait un liseré au bord).
     width: 100vw;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    margin-left: calc(50% - 50vw);
     margin-top: clamp(1.5rem, 5vh, 3.5rem);
     height: clamp(240px, 38vh, 480px);
     pointer-events: none;
