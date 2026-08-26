@@ -16,6 +16,11 @@
   &__article {
     max-width: 760px;
     margin: 0 auto;
+
+    // Variante large (pages en grille de cartes, ex. Guides)
+    &--wide {
+      max-width: 1080px;
+    }
   }
 
   // --- En-tête ---------------------------------------------
@@ -70,7 +75,13 @@
       font-size: clamp(1rem, 1.15vw, 1.1rem);
       line-height: 1.8;
       color: $color-text-soft;
-      max-width: 68ch;
+      max-width: 66ch;
+    }
+
+    // Espace entre paragraphes successifs (sinon ils se collent, car le
+    // reset met margin:0) — respiration et lisibilité du corps de texte.
+    & > p + p {
+      margin-top: 1.15em;
     }
 
     // Emphase (noms de projets, mots-clés) : ressort en blanc.
@@ -545,9 +556,132 @@
   margin: clamp(2rem, 5vh, 3rem) 0;
 }
 
+// --- Hub Guides : grille de cartes scannables ----------------
+.guide-grid {
+  list-style: none;
+  margin: clamp(2.5rem, 6vh, 4rem) 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.guide-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: clamp(1.5rem, 3vw, 2.1rem);
+  border: 1px solid rgba($color-white, 0.16);
+  border-radius: 14px;
+  transition: transform $transition, border-color $transition,
+    background $transition;
+
+  &__kicker {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: $color-text-muted;
+    margin-bottom: 1rem;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-weight: 300;
+    font-size: clamp(1.35rem, 2vw, 1.7rem);
+    line-height: 1.12;
+    color: $color-white;
+    text-wrap: balance;
+    margin-bottom: 0.75rem;
+  }
+
+  &__desc {
+    flex: 1;
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: $color-text-soft;
+    margin-bottom: 1.5rem;
+  }
+
+  &__more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: $color-white;
+
+    span {
+      display: inline-block;
+      transition: transform $transition;
+    }
+  }
+
+  &:hover,
+  &:focus-visible {
+    transform: translateY(-3px);
+    border-color: rgba($color-white, 0.42);
+    background: rgba($color-white, 0.05);
+  }
+
+  &:hover &__more span,
+  &:focus-visible &__more span {
+    transform: translateX(3px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-white;
+    outline-offset: 3px;
+  }
+}
+
+// --- Hub Guides : bannière audit (pleine largeur) ------------
+.guide-audit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+  margin-top: clamp(1rem, 2vw, 1.5rem);
+  padding: clamp(1.75rem, 3.5vw, 2.5rem);
+  border: 1px solid rgba($color-white, 0.16);
+  border-radius: 16px;
+  background: rgba($color-white, 0.04);
+
+  &__text {
+    max-width: 46ch;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-weight: 300;
+    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+    line-height: 1.1;
+    color: $color-white;
+    margin-bottom: 0.6rem;
+  }
+
+  p {
+    font-size: 0.98rem;
+    line-height: 1.65;
+    color: $color-text-soft;
+  }
+
+  .landing__btn {
+    flex-shrink: 0;
+  }
+}
+
+.guide-byline {
+  margin-top: clamp(2.5rem, 6vh, 4rem);
+  font-size: 0.9rem;
+  color: $color-text-muted;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .landing__btn,
   .city-card,
+  .guide-card,
   .landing__faq-item summary::after {
     transition: none;
   }
