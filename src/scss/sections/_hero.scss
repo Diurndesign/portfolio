@@ -120,6 +120,7 @@
   }
 
   &__cta {
+    position: relative;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -131,6 +132,19 @@
     font-size: 0.95rem;
     transition: transform $transition, box-shadow $transition,
       background $transition, color $transition;
+
+    // Halo pulsant (derrière le bouton) pour capter l'attention.
+    // Sur un pseudo-élément : n'entre pas en conflit avec l'ombre du survol.
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border-radius: inherit;
+      pointer-events: none;
+      animation: cta-glow 2.6s $ease infinite;
+      animation-delay: 1.8s;
+    }
 
     span {
       transition: transform $transition;
@@ -156,6 +170,11 @@
       background: transparent;
       color: $color-white;
       border: 1px solid rgba(255, 255, 255, 0.35);
+
+      // halo plus discret que le CTA principal (hiérarchie préservée)
+      &::after {
+        opacity: 0.5;
+      }
 
       &:hover,
       &:focus-visible {
@@ -205,54 +224,17 @@
     }
   }
 
-  // --- Indicateur de scroll --------------------------------
-  &__scroll {
-    align-self: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-    margin-top: 1.5rem;
-    color: $color-text-muted;
-    transition: color $transition;
-
-    animation: hero-reveal 1s $ease both;
-    animation-delay: 1s;
-
-    &:hover {
-      color: $color-white;
-    }
-
-    @include until($bp-md) {
-      display: none;
-    }
-  }
-
-  &__scroll-line {
-    width: 1px;
-    height: 42px;
-    background: currentColor;
-    animation: scroll-pulse 2s $ease infinite;
-  }
-
-  &__scroll-label {
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.22em;
-    text-transform: uppercase;
-  }
 }
 
-@keyframes scroll-pulse {
+// Halo lumineux qui pulse doucement sous le CTA principal : attire l'œil
+// vers la zone d'action une fois l'animation d'entrée terminée.
+@keyframes cta-glow {
   0%,
   100% {
-    transform: scaleY(1);
-    transform-origin: top;
-    opacity: 0.4;
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
   }
   50% {
-    transform: scaleY(0.6);
-    opacity: 1;
+    box-shadow: 0 0 26px 4px rgba(255, 255, 255, 0.55);
   }
 }
 
@@ -276,8 +258,8 @@
   .hero__title span,
   .hero__intro,
   .hero__actions,
-  .hero__portrait,
-  .hero__scroll {
+  .hero__cta::after,
+  .hero__portrait {
     animation: none;
   }
 }
