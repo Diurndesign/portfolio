@@ -818,6 +818,39 @@
         </div>
       </section>
 
+      <section id="faq" class="section" aria-labelledby="faq-title">
+        <div class="faq">
+          <p class="section__eyebrow">Questions fréquentes</p>
+          <h2 class="section__title" id="faq-title">FAQ</h2>
+          <div class="landing__faq" aria-label="Questions fréquentes">
+            <details class="landing__faq-item" open>
+              <summary>Qui est Diurn Studio&nbsp;?</summary>
+              <p>Diurn Studio est un studio indépendant de design et de développement web basé à Nice, fondé par Jérémy Bendenoun. Designer de formation et développeur par passion, il réunit dans un même atelier la création d'identité de marque et le développement de sites codés sur mesure. Un seul interlocuteur suit votre projet du concept à la mise en ligne, sans sous-traitance.</p>
+            </details>
+            <details class="landing__faq-item">
+              <summary>Quels services proposez-vous&nbsp;?</summary>
+              <p>Trois domaines complémentaires&nbsp;: l'identité de marque (logo, charte graphique, système visuel), la création de sites internet sur mesure (vitrine, one-page, application web, codés main en HTML, CSS, JavaScript et React) et le référencement local intégré dès la structure. S'ajoutent la direction photo et la production de contenu pour nourrir la marque après la mise en ligne.</p>
+            </details>
+            <details class="landing__faq-item">
+              <summary>Travaillez-vous avec des clients hors de Nice&nbsp;?</summary>
+              <p>Oui. Diurn Studio est basé à Nice et connaît le tissu local de la Côte d'Azur (Cannes, Antibes, Monaco), mais le travail se fait à distance aussi bien qu'en présentiel. Les projets d'identité et de site web se pilotent très bien par visioconférence et partage de fichiers, partout en France. La proximité est un plus, jamais une condition.</p>
+            </details>
+            <details class="landing__faq-item">
+              <summary>Combien coûte un site internet&nbsp;?</summary>
+              <p>Le prix dépend de vos besoins plutôt que du nombre de pages. À titre indicatif, un site one-page sur mesure démarre autour de 900 €, un site vitrine multi-pages à partir de 3 500 €, et une application web se chiffre sur devis. Le tarif comprend le design, le développement et le référencement local. Voyez le <a href="/combien-coute-site-internet-nice">guide des prix</a> pour comparer les formules.</p>
+            </details>
+            <details class="landing__faq-item">
+              <summary>Combien de temps faut-il pour créer un site&nbsp;?</summary>
+              <p>Comptez en général de deux à six semaines selon l'ampleur du projet et la rapidité des retours. Un site one-page se livre plus vite qu'un site vitrine complet avec identité. Dès le premier échange, vous recevez un rétroplanning clair&nbsp;: cadrage, design, développement, puis mise en ligne et référencement.</p>
+            </details>
+            <details class="landing__faq-item">
+              <summary>Qu'est-ce qui différencie Diurn Studio d'une agence&nbsp;?</summary>
+              <p>La même personne conçoit la marque et code le site&nbsp;: aucune perte d'information entre un studio de design et une agence de développement. Vous gagnez un interlocuteur unique, un devis sans coûts d'intermédiaires, et un site sur mesure dont vous restez propriétaire, jamais un thème assemblé.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" class="section section--contact">
         <div class="contact">
           <p class="section__eyebrow">Contact</p>
@@ -855,102 +888,64 @@
             </aside>
           </div>
 
-          <div class="contact__details">
-            <div class="contact__block">
-              <p class="contact__label">Me contacter directement</p>
-              <form
-                class="contact__form"
-                id="contact-form"
-                action="https://api.web3forms.com/submit"
-                method="POST"
-              >
-                <input type="hidden" name="access_key" value="e5c89c34-54c5-4f3a-8c1f-6a8d4c359c75" />
-                <input type="hidden" name="from_name" value="Formulaire diurnstudio.fr" />
-                <!-- Anti-spam (pot de miel) : masqué, ne doit jamais être coché -->
-                <input
-                  type="checkbox"
-                  name="botcheck"
-                  class="contact__botcheck"
-                  tabindex="-1"
-                  autocomplete="off"
-                  aria-hidden="true"
-                />
+          <div class="contact__form-block">
+            <p class="contact__label">Me contacter directement</p>
+            <form
+              class="contact__form"
+              id="contact-form"
+              action="https://api.web3forms.com/submit"
+              method="POST"
+            >
+              <input type="hidden" name="access_key" value="e5c89c34-54c5-4f3a-8c1f-6a8d4c359c75" />
+              <input type="hidden" name="from_name" value="Formulaire diurnstudio.fr" />
+              <!-- Anti-spam (pot de miel) : masqué, ne doit jamais être coché -->
+              <input
+                type="checkbox"
+                name="botcheck"
+                class="contact__botcheck"
+                tabindex="-1"
+                autocomplete="off"
+                aria-hidden="true"
+              />
 
-                <div class="contact__field">
-                  <label for="cf-name">Nom et prénom</label>
-                  <input type="text" id="cf-name" name="name" required autocomplete="name" />
-                </div>
-                <div class="contact__field">
-                  <label for="cf-email">Email</label>
-                  <input
-                    type="email"
-                    id="cf-email"
-                    name="email"
-                    required
-                    autocomplete="email"
-                  />
-                </div>
-                <div class="contact__field">
-                  <label for="cf-subject">Objet</label>
-                  <input
-                    type="text"
-                    id="cf-subject"
-                    name="subject"
-                    required
-                    placeholder="Ex. : création d'un site vitrine"
-                  />
-                </div>
-                <div class="contact__field">
-                  <label for="cf-message">Votre projet en quelques mots</label>
-                  <textarea id="cf-message" name="message" rows="5" required></textarea>
-                </div>
-
-                <button type="submit" class="contact__submit">
-                  Envoyer le message <span aria-hidden="true">↗</span>
-                </button>
-                <p class="contact__status" role="status" aria-live="polite"></p>
-                <p class="contact__privacy">
-                  Vos informations servent uniquement à vous répondre et ne sont
-                  jamais revendues.
-                </p>
-              </form>
-            </div>
-            <div class="contact__block">
-              <p class="contact__label">Où me trouver</p>
-              <p class="contact__location">
-                Nice, Côte d'Azur, disponible sur toute la France et en visio.
-              </p>
-
-              <div class="contact__faq" id="faq">
-                <h3 class="contact__label">Questions fréquentes</h3>
-                <div class="landing__faq" aria-label="Questions fréquentes">
-                  <details class="landing__faq-item" open>
-                    <summary>Qui est Diurn Studio&nbsp;?</summary>
-                    <p>Diurn Studio est un studio indépendant de design et de développement web basé à Nice, fondé par Jérémy Bendenoun. Designer de formation et développeur par passion, il réunit dans un même atelier la création d'identité de marque et le développement de sites codés sur mesure. Un seul interlocuteur suit votre projet du concept à la mise en ligne, sans sous-traitance.</p>
-                  </details>
-                  <details class="landing__faq-item">
-                    <summary>Quels services proposez-vous&nbsp;?</summary>
-                    <p>Trois domaines complémentaires&nbsp;: l'identité de marque (logo, charte graphique, système visuel), la création de sites internet sur mesure (vitrine, one-page, application web, codés main en HTML, CSS, JavaScript et React) et le référencement local intégré dès la structure. S'ajoutent la direction photo et la production de contenu pour nourrir la marque après la mise en ligne.</p>
-                  </details>
-                  <details class="landing__faq-item">
-                    <summary>Travaillez-vous avec des clients hors de Nice&nbsp;?</summary>
-                    <p>Oui. Diurn Studio est basé à Nice et connaît le tissu local de la Côte d'Azur (Cannes, Antibes, Monaco), mais le travail se fait à distance aussi bien qu'en présentiel. Les projets d'identité et de site web se pilotent très bien par visioconférence et partage de fichiers, partout en France. La proximité est un plus, jamais une condition.</p>
-                  </details>
-                  <details class="landing__faq-item">
-                    <summary>Combien coûte un site internet&nbsp;?</summary>
-                    <p>Le prix dépend de vos besoins plutôt que du nombre de pages. À titre indicatif, un site one-page sur mesure démarre autour de 900 €, un site vitrine multi-pages à partir de 3 500 €, et une application web se chiffre sur devis. Le tarif comprend le design, le développement et le référencement local. Voyez le <a href="/combien-coute-site-internet-nice">guide des prix</a> pour comparer les formules.</p>
-                  </details>
-                  <details class="landing__faq-item">
-                    <summary>Combien de temps faut-il pour créer un site&nbsp;?</summary>
-                    <p>Comptez en général de deux à six semaines selon l'ampleur du projet et la rapidité des retours. Un site one-page se livre plus vite qu'un site vitrine complet avec identité. Dès le premier échange, vous recevez un rétroplanning clair&nbsp;: cadrage, design, développement, puis mise en ligne et référencement.</p>
-                  </details>
-                  <details class="landing__faq-item">
-                    <summary>Qu'est-ce qui différencie Diurn Studio d'une agence&nbsp;?</summary>
-                    <p>La même personne conçoit la marque et code le site&nbsp;: aucune perte d'information entre un studio de design et une agence de développement. Vous gagnez un interlocuteur unique, un devis sans coûts d'intermédiaires, et un site sur mesure dont vous restez propriétaire, jamais un thème assemblé.</p>
-                  </details>
-                </div>
+              <div class="contact__field">
+                <label for="cf-name">Nom et prénom</label>
+                <input type="text" id="cf-name" name="name" required autocomplete="name" />
               </div>
-            </div>
+              <div class="contact__field">
+                <label for="cf-email">Email</label>
+                <input
+                  type="email"
+                  id="cf-email"
+                  name="email"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+              <div class="contact__field">
+                <label for="cf-subject">Objet</label>
+                <input
+                  type="text"
+                  id="cf-subject"
+                  name="subject"
+                  required
+                  placeholder="Ex. : création d'un site vitrine"
+                />
+              </div>
+              <div class="contact__field">
+                <label for="cf-message">Votre projet en quelques mots</label>
+                <textarea id="cf-message" name="message" rows="5" required></textarea>
+              </div>
+
+              <button type="submit" class="contact__submit">
+                Envoyer le message <span aria-hidden="true">↗</span>
+              </button>
+              <p class="contact__status" role="status" aria-live="polite"></p>
+              <p class="contact__privacy">
+                Vos informations servent uniquement à vous répondre et ne sont
+                jamais revendues.
+              </p>
+            </form>
           </div>
 
         </div>

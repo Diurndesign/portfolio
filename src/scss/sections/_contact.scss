@@ -59,19 +59,12 @@
   }
 
   // --- Coordonnées -----------------------------------------
-  &__details {
-    display: grid;
-    grid-template-columns: 1.3fr 0.9fr;
-    align-items: start;
-    gap: clamp(2rem, 5vw, 4rem);
+  // Formulaire seul, sous le bandeau intro + avis
+  &__form-block {
+    max-width: 40rem;
     margin-top: clamp(3rem, 7vh, 5rem);
     padding-top: clamp(2rem, 4vh, 3rem);
     border-top: 1px solid rgba(255, 255, 255, 0.16);
-
-    @include until($bp-md) {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
   }
 
   // --- Formulaire de contact -------------------------------
@@ -204,57 +197,6 @@
     }
   }
 
-  &__location {
-    font-size: clamp(1rem, 1.3vw, 1.2rem);
-    line-height: 1.6;
-    color: $color-text-soft;
-    max-width: 34ch;
-  }
-
-  // --- FAQ intégrée à la colonne de droite -----------------
-  &__faq {
-    margin-top: clamp(2.5rem, 6vh, 4rem);
-
-    .contact__label {
-      margin-bottom: 1rem;
-    }
-  }
-
-  // --- Réseaux ---------------------------------------------
-  &__social {
-    margin-top: clamp(2.5rem, 6vh, 4rem);
-    font-size: 0.95rem;
-    color: $color-text-muted;
-
-    a {
-      color: $color-white;
-      position: relative;
-      transition: opacity $transition;
-
-      &::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -2px;
-        width: 100%;
-        height: 1px;
-        background: currentColor;
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform $transition;
-      }
-
-      &:hover::after,
-      &:focus-visible::after {
-        transform: scaleX(1);
-      }
-    }
-
-    span {
-      margin: 0 0.4rem;
-      color: $color-text-muted;
-    }
-  }
 }
 
 // ============================================================
