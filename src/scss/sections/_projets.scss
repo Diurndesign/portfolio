@@ -97,81 +97,58 @@
     }
   }
 
-  // Overlay titre + sous-titre — révélé au survol
+  // Légende permanente : catégorie + titre, en bas de chaque carte.
+  // Un dégradé uniforme unifie toutes les cartes (fonds clairs comme sombres)
+  // et rend la grille lisible d'un coup d'œil.
   &__overlay {
     position: absolute;
     inset: 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 1.5rem;
-    text-align: center;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 0.3rem;
+    padding: 1.1rem 1.25rem;
+    text-align: left;
 
-    background: rgba(8, 12, 46, 0.4);
-    opacity: 0;
-    transition: opacity 0.45s $ease;
+    background: linear-gradient(
+      to top,
+      rgba(8, 12, 46, 0.78),
+      rgba(8, 12, 46, 0.2) 42%,
+      rgba(8, 12, 46, 0) 68%
+    );
+    transition: background 0.4s $ease;
   }
 
   &__cat {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     font-weight: 600;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.85);
-    transform: translateY(6px);
-    transition: transform 0.45s $ease;
+    color: rgba(255, 255, 255, 0.82);
   }
 
   &__title {
     font-family: $font-display;
     font-weight: 300;
-    font-size: clamp(1.6rem, 2.2vw, 2.1rem);
+    font-size: clamp(1.3rem, 1.9vw, 1.75rem);
     line-height: 1.05;
     color: $color-white;
-    transform: translateY(6px);
-    transition: transform 0.45s $ease;
   }
 
-  // --- Survol / focus clavier : flou de l'image + révélation ---
+  // --- Survol / focus clavier : léger zoom + dégradé un peu plus dense ---
   &__btn:hover &__media img,
   &__btn:focus-visible &__media img {
-    transform: scale(1.06);
-    filter: blur(6px);
+    transform: scale(1.05);
   }
 
   &__btn:hover &__overlay,
   &__btn:focus-visible &__overlay {
-    opacity: 1;
-  }
-
-  &__btn:hover &__cat,
-  &__btn:hover &__title,
-  &__btn:focus-visible &__cat,
-  &__btn:focus-visible &__title {
-    transform: translateY(0);
-  }
-
-  // Appareils sans survol (tactile) : titre toujours visible, sans flou
-  @media (hover: none) {
-    &__media img {
-      filter: none;
-    }
-    &__overlay {
-      opacity: 1;
-      justify-content: flex-end;
-      align-items: flex-start;
-      text-align: left;
-      background: linear-gradient(
-        to top,
-        rgba(8, 12, 46, 0.7),
-        rgba(8, 12, 46, 0) 55%
-      );
-    }
-    &__cat,
-    &__title {
-      transform: none;
-    }
+    background: linear-gradient(
+      to top,
+      rgba(8, 12, 46, 0.9),
+      rgba(8, 12, 46, 0.35) 48%,
+      rgba(8, 12, 46, 0) 75%
+    );
   }
 }
