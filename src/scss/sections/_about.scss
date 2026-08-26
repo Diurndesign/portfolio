@@ -148,6 +148,7 @@
 
   // CTA principal (fin de « Mon approche ») vers le formulaire
   &__cta {
+    position: relative;
     align-self: flex-start;
     display: inline-flex;
     align-items: center;
@@ -159,6 +160,18 @@
     font-weight: 600;
     font-size: 0.95rem;
     transition: transform $transition, box-shadow $transition;
+
+    // Halo pulsant (identique au hero) pour capter l'attention.
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      border-radius: inherit;
+      pointer-events: none;
+      animation: cta-glow 2.6s $ease infinite;
+      animation-delay: 1.8s;
+    }
 
     span {
       transition: transform $transition;
@@ -185,12 +198,24 @@
       color: $color-white;
       border: 1px solid rgba(255, 255, 255, 0.35);
 
+      // halo plus discret que le CTA principal (hiérarchie préservée)
+      &::after {
+        opacity: 0.5;
+      }
+
       &:hover,
       &:focus-visible {
         background: rgba(255, 255, 255, 0.08);
         border-color: rgba(255, 255, 255, 0.6);
         box-shadow: none;
       }
+    }
+  }
+
+  // Accessibilité : pas de halo pulsant si l'utilisateur refuse l'animation
+  @media (prefers-reduced-motion: reduce) {
+    &__cta::after {
+      animation: none;
     }
   }
 
