@@ -92,16 +92,19 @@
     margin-top: clamp(3.5rem, 9vh, 7rem);
   }
 
-  // Mon approche : deux colonnes — actions à gauche, texte à droite
+  // Mon approche : deux colonnes — actions à gauche, texte à droite.
+  // Colonnes centrées verticalement : le groupe de boutons (court)
+  // s'aligne sur le milieu du texte plutôt que de flotter en haut.
   &__approach {
     display: grid;
     grid-template-columns: minmax(210px, 0.8fr) 1.7fr;
-    align-items: start;
+    align-items: center;
     gap: clamp(2rem, 5vw, 4.5rem);
     padding: clamp(1.75rem, 3.5vh, 2.75rem) 0 0;
 
     @include until($bp-lg) {
       grid-template-columns: 1fr;
+      align-items: start;
       gap: 1.75rem;
     }
   }
