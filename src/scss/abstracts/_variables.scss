@@ -12,7 +12,8 @@ $color-cream: #ebe6db; // gris crème
 $color-ink: #17193a; // encre profonde (bleu très sombre) pour texte sur crème
 
 // Nuances de texte (blanc translucide sur fond bleu)
-$color-text-muted: rgba(255, 255, 255, 0.55);
+// 0.65 : contraste AA (>= 4.5:1) sur le bleu, y compris en petit corps.
+$color-text-muted: rgba(255, 255, 255, 0.65);
 $color-text-soft: rgba(255, 255, 255, 0.82);
 
 // --- Typographie ---------------------------------------------

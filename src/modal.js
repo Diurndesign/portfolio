@@ -21,6 +21,14 @@ function initModal() {
     body.appendChild(tpl.content.cloneNode(true));
     body.scrollTop = 0;
 
+    // Nomme la fenêtre avec le titre du projet (accessibilité) ; l'attribut
+    // reste valide au chargement (aria-label statique dans le HTML).
+    const titleEl = body.querySelector(".project__title");
+    dialog.setAttribute(
+      "aria-label",
+      titleEl ? titleEl.textContent.trim() : "Détail du projet"
+    );
+
     // couleur de fond propre au projet (data-bg), sinon défaut CSS
     const detail = body.querySelector(".project");
     const bg = detail && detail.getAttribute("data-bg");
