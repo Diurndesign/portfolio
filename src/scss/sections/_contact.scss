@@ -269,6 +269,18 @@
       color: $color-white;
       text-decoration-color: currentColor;
     }
+
+    // Version statique (carte d'avis dupliquée pour le mobile) : simple
+    // texte, pas de lien — évite un lien redondant vers la même URL.
+    &--plain {
+      text-decoration: none;
+      cursor: default;
+
+      &:hover,
+      &:focus-visible {
+        color: $color-text-soft;
+      }
+    }
   }
 
   &__item {
