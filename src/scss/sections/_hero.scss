@@ -80,7 +80,7 @@
     animation-delay: 0.1s;
 
     @include until($bp-sm) {
-      font-size: 0.62rem;
+      font-size: 0.72rem;
       letter-spacing: 0.14em;
     }
   }
