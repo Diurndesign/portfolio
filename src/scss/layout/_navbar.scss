@@ -222,15 +222,10 @@
   }
 
   // --- Variante foncée : quand une section claire passe sous la nav ---
-  // Libellés en encre pleine sur un fond crème : contraste largement AA
-  // (~11:1) et invisible sur la section Projets qui est elle-même crème.
-  // Le fond donne aussi à WAVE une couleur d'arrière-plan calculable
-  // (une nav fixe hérite sinon du bleu du body -> faux négatif de contraste).
+  // Libellés en encre pleine (lisibles sur la section Projets crème),
+  // sans fond : pas de cadre visible lors des transitions de section.
   &--light &__link {
     color: $color-ink;
-    background: $color-cream;
-    padding: 0.5rem 0.3rem;
-    border-radius: 7px;
 
     &::after {
       background: $color-ink;
@@ -260,11 +255,18 @@
   top: clamp(1rem, 2.4vh, 1.6rem);
   left: clamp(1rem, 2vw, 1.6rem);
   z-index: 40;
-  display: block;
 
-  // Couleur du rond de fond (mobile) : suit le fond de la section
-  // survolée pour rester invisible tout en masquant le texte derrière.
+  // Rond de fond derrière le logo, sur TOUTES les tailles d'écran : le
+  // logo ne se perd jamais dans le texte au scroll (iPad, portables…).
+  // La couleur suit la section survolée pour rester invisible.
   --logo-bg: #{$color-blue};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--logo-bg);
 
   // masqué tant que le hero est visible
   opacity: 0;
@@ -274,7 +276,7 @@
 
   img {
     display: block;
-    height: 100px;
+    height: 60px;
     width: auto;
     // blanc sur fond bleu (le logo source est noir) — le filtre est sur
     // l'image, pas sur le lien, pour ne pas inverser le rond de fond.
@@ -311,15 +313,8 @@
   @include until($bp-md) {
     top: 0.5rem;
     left: 0.5rem;
-
-    // Rond plein derrière le logo : il ne se perd plus dans le texte au scroll.
     width: 70px;
     height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background: var(--logo-bg);
 
     img {
       height: 50px;
