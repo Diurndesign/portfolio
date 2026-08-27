@@ -279,7 +279,8 @@
 
   &__arrow {
     color: $color-text-soft;
-    opacity: 0.45;
+    // 0.8 : contraste AA sur le bleu (0.45 tombait bien en dessous).
+    opacity: 0.8;
     transition: opacity $transition, transform $transition;
   }
 
