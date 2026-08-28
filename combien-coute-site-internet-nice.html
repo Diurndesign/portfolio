@@ -63,6 +63,23 @@
       }
     </script>
 
+    <!-- Données structurées : service et prix « à partir de » -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "name": "Création de site internet sur mesure à Nice",
+        "serviceType": "Création de site internet",
+        "provider": { "@type": "Organization", "name": "Diurn Studio", "url": "https://www.diurnstudio.fr/" },
+        "areaServed": { "@type": "City", "name": "Nice" },
+        "url": "https://www.diurnstudio.fr/combien-coute-site-internet-nice",
+        "offers": [
+          { "@type": "Offer", "name": "Site internet sur mesure", "priceCurrency": "EUR", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "900", "priceCurrency": "EUR" } },
+          { "@type": "Offer", "name": "Logo et identité de marque", "priceCurrency": "EUR", "priceSpecification": { "@type": "PriceSpecification", "minPrice": "500", "priceCurrency": "EUR" } }
+        ]
+      }
+    </script>
+
     <!-- Données structurées : questions fréquentes (FAQPage) -->
     <script type="application/ld+json">
       {
@@ -72,7 +89,8 @@
           { "@type": "Question", "name": "Combien coûte un site one-page à Nice ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site one-page sur mesure démarre autour de 900 €, design, développement et référencement local inclus, réalisés par un seul interlocuteur." } },
           { "@type": "Question", "name": "Quel budget pour un site vitrine multi-pages ?", "acceptedAnswer": { "@type": "Answer", "text": "Un site vitrine part du même socle qu'un site one-page, à partir de 900 €. Le budget final dépend du nombre de pages, des fonctionnalités et de l'identité de marque souhaitée ; il est établi dans un devis personnalisé et gratuit." } },
           { "@type": "Question", "name": "Pourquoi un site sur mesure coûte plus cher qu'un template ?", "acceptedAnswer": { "@type": "Answer", "text": "Un template est moins cher au départ mais générique et fragile ; un site codé sur mesure est unique, rapide, durable et évolutif, sans abonnement à une usine à gaz." } },
-          { "@type": "Question", "name": "Comment obtenir un devis pour un site internet à Nice ?", "acceptedAnswer": { "@type": "Answer", "text": "C'est simple et gratuit. On échange sur votre projet, je cerne vos besoins, puis je vous envoie un devis clair et détaillé, sans engagement. Vous savez exactement ce qui est inclus et à quel prix avant de vous lancer." } }
+          { "@type": "Question", "name": "Comment obtenir un devis pour un site internet à Nice ?", "acceptedAnswer": { "@type": "Answer", "text": "C'est simple et gratuit. On échange sur votre projet, je cerne vos besoins, puis je vous envoie un devis clair et détaillé, sans engagement. Vous savez exactement ce qui est inclus et à quel prix avant de vous lancer." } },
+          { "@type": "Question", "name": "Le tarif d'un site à Nice est-il fixe ?", "acceptedAnswer": { "@type": "Answer", "text": "Non, et c'est volontaire. Je pars d'un prix de départ clair (900 € pour un site, 500 € pour un logo) puis j'établis un tarif sur devis, adapté à votre projet. Vous connaissez le prix exact avant de vous engager." } }
         ]
       }
     </script>
@@ -160,7 +178,53 @@
         </figure>
 
         <section class="landing__section">
-          <h2>Ce qui fait varier le prix</h2>
+          <h2>Prix et tarifs d'un site internet à Nice</h2>
+          <p>
+            Le tarif d'un site dépend surtout de ce qu'il doit faire, bien plus que de
+            son nombre de pages. Voici les fourchettes de prix par type de projet, puis
+            ce qui fait bouger le devis.
+          </p>
+          <div class="compare-wrap">
+            <table class="compare">
+              <thead>
+                <tr>
+                  <th scope="col">Type de projet</th>
+                  <th scope="col">Prix de départ</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Site one-page sur mesure</th><td>À partir de 900 €</td></tr>
+                <tr><th scope="row">Site vitrine multi-pages</th><td>Sur devis (même socle, selon les pages et fonctionnalités)</td></tr>
+                <tr><th scope="row">Logo</th><td>À partir de 500 €</td></tr>
+                <tr><th scope="row">Identité de marque complète ou refonte</th><td>Sur devis</td></tr>
+                <tr><th scope="row">Application web sur mesure</th><td>Sur devis</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Le logo démarre à 500 € (logo et fichiers). Une identité complète ou une
+            refonte se chiffrent selon l'ampleur, d'où le devis. Un site sur mesure part
+            de 900 €, référencement local inclus.
+          </p>
+        </section>
+
+        <section class="landing__section">
+          <h2>Un exemple concret : The Beauty Corner</h2>
+          <p>
+            Pour cet institut de beauté niçois, j'ai conçu un site one-page sur mesure
+            avec un espace d'administration : la cliente ajoute et modifie ses textes et
+            ses photos elle-même. J'ai configuré le backend, mis le site en ligne sur son
+            hébergeur et son nom de domaine, puis poussé le référencement sur Google
+            (Search Console et Analytics). Le tout livré en deux semaines : un jour pour
+            cadrer le projet, un pour valider la direction visuelle et lancer
+            l'architecture, puis le montage, un premier jet à valider, et l'intégration
+            des vrais textes et photos. Comme tout est à son nom, elle reste entièrement
+            maîtresse de son site.
+          </p>
+        </section>
+
+        <section class="landing__section">
+          <h2>Ce qui fait varier le devis</h2>
           <p>
             Le nombre de pages compte moins qu'on ne le croit. Ce qui pèse vraiment
             sur le tarif :
@@ -237,6 +301,10 @@
               <summary>Comment obtenir un devis pour un site internet à Nice&nbsp;?</summary>
               <p>C'est simple et gratuit. On échange sur votre projet, je cerne vos besoins, puis je vous envoie un devis clair et détaillé, sans engagement. Vous savez exactement ce qui est inclus et à quel prix avant de vous lancer.</p>
             </details>
+            <details class="landing__faq-item">
+              <summary>Le tarif d'un site à Nice est-il fixe&nbsp;?</summary>
+              <p>Non, et c'est volontaire. Je pars d'un prix de départ clair (900 € pour un site, 500 € pour un logo) puis j'établis un tarif sur devis, adapté à votre projet. Vous connaissez le prix exact avant de vous engager.</p>
+            </details>
           </div>
         </section>
 
@@ -249,7 +317,36 @@
             lance le travail.
           </p>
           <p>Pour un devis de site internet à Nice, écrivez-moi en quelques mots votre projet. Je reviens vers vous rapidement avec une proposition claire, détaillée et sans engagement, où vous savez exactement ce qui est inclus et à quel prix avant de vous décider.</p>
-          <p class="landing__midcta"><a class="landing__btn" href="/creation-site-internet-nice#contact">Discutons de votre projet <span aria-hidden="true">↗</span></a></p>
+          <p class="landing__midcta"><a class="landing__btn" href="#contact">Discutons de votre projet <span aria-hidden="true">↗</span></a></p>
+        </section>
+
+        <section class="landing__section landing__cta landing__contact" id="contact">
+          <h2>Discutons de votre projet et de votre budget</h2>
+          <p>Dites-moi en quelques mots ce que vous voulez et où vous en êtes. Je reviens vers vous rapidement avec un devis clair, détaillé et sans engagement, où vous savez exactement ce qui est inclus et à quel prix.</p>
+          <form class="contact__form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="e5c89c34-54c5-4f3a-8c1f-6a8d4c359c75" />
+            <input type="hidden" name="from_name" value="Formulaire diurnstudio.fr (page Prix Nice)" />
+            <input type="checkbox" name="botcheck" class="contact__botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" aria-label="Ne pas remplir ce champ anti-spam" />
+            <div class="contact__field">
+              <label for="cf-name">Nom et prénom</label>
+              <input type="text" id="cf-name" name="name" required autocomplete="name" />
+            </div>
+            <div class="contact__field">
+              <label for="cf-email">Email</label>
+              <input type="email" id="cf-email" name="email" required autocomplete="email" />
+            </div>
+            <div class="contact__field">
+              <label for="cf-subject">Objet</label>
+              <input type="text" id="cf-subject" name="subject" required placeholder="Ex. : prix d'un site internet" />
+            </div>
+            <div class="contact__field">
+              <label for="cf-message">Votre projet en quelques mots</label>
+              <textarea id="cf-message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="contact__submit">Envoyer ma demande <span aria-hidden="true">↗</span></button>
+            <p class="contact__status" role="status" aria-live="polite"></p>
+            <p class="contact__privacy">Vos informations servent uniquement à vous répondre et ne sont jamais revendues.</p>
+          </form>
           <p>Par Jérémy Bendenoun, Diurn Studio, designer et développeur web à Nice.</p>
         </section>
       </article>
