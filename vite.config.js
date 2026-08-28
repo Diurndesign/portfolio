@@ -109,6 +109,7 @@ export default defineConfig(() => ({
         coutSiteNice: resolve(root, "combien-coute-site-internet-nice.html"),
         codeVsPlateforme: resolve(root, "site-sur-mesure-ou-wix-squarespace.html"),
         siteIaOuDev: resolve(root, "site-avec-ia-ou-developpeur.html"),
+        refonteSiteCharte: resolve(root, "refonte-site-et-charte-graphique.html"),
         auditGratuit: resolve(root, "audit-site-web-gratuit.html"),
         guides: resolve(root, "guides.html"),
       },
