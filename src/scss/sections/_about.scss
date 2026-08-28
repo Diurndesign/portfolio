@@ -59,20 +59,6 @@
     }
   }
 
-  // Ligne « Formation » (crédentials, sous la bio)
-  &__cred {
-    max-width: 46ch;
-    margin-top: clamp(1rem, 2.2vh, 1.5rem);
-    font-size: 0.88rem;
-    line-height: 1.65;
-    color: $color-text-muted;
-
-    strong {
-      color: $color-text-soft;
-      font-weight: 600;
-    }
-  }
-
   // --- Photo : révèle les compétences au survol -------------
   // Idée : la photo (noir & blanc) se floute au survol / focus / tap et
   // laisse apparaître les compétences. Micro-interaction signant le profil
@@ -120,8 +106,9 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: clamp(1.1rem, 3.5vh, 1.9rem);
+      gap: clamp(1.4rem, 4vh, 2.1rem);
       padding: clamp(1.5rem, 7%, 2.5rem);
+      overflow-y: auto;
       background: linear-gradient(
         180deg,
         rgba($color-blue, 0.84),
@@ -131,6 +118,20 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.45s $ease;
+    }
+
+    // Deux sections empilées dans le voile : Compétences puis Formation.
+    &-block {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(0.85rem, 2.4vh, 1.25rem);
+    }
+
+    &-edu {
+      margin: 0;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      color: $color-text-soft;
     }
 
     &-reveal-title {
