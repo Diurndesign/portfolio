@@ -9,6 +9,18 @@ function initAboutPhoto() {
   const fig = document.querySelector(".about__photo");
   if (!fig) return;
 
+  // Sur un appareil tactile (sans survol), les compétences sont affichées
+  // d'office : la photo n'est plus un bouton, on retire donc l'interactivité
+  // et sa sémantique pour ne pas induire les lecteurs d'écran en erreur.
+  const canHover = window.matchMedia("(hover: hover)").matches;
+  if (!canHover) {
+    fig.removeAttribute("role");
+    fig.removeAttribute("tabindex");
+    fig.removeAttribute("aria-expanded");
+    fig.removeAttribute("aria-label");
+    return;
+  }
+
   function toggle() {
     const open = fig.classList.toggle("is-revealed");
     fig.setAttribute("aria-expanded", open ? "true" : "false");

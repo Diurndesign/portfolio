@@ -82,7 +82,6 @@
     position: relative;
     overflow: hidden;
     border-radius: 10px;
-    cursor: pointer;
 
     @include until($bp-lg) {
       max-width: 340px;
@@ -102,24 +101,16 @@
       position: absolute;
       left: 1rem;
       bottom: 1rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.42rem 0.85rem;
+      max-width: calc(100% - 2rem);
+      padding: 0.5rem 0.9rem;
       border-radius: 999px;
-      background: rgba($color-blue, 0.55);
+      background: rgba($color-blue, 0.62);
+      backdrop-filter: blur(3px);
       color: $color-white;
-      font-size: 0.7rem;
+      font-size: 0.74rem;
       font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
+      letter-spacing: 0.02em;
       transition: opacity 0.35s $ease;
-
-      span {
-        font-size: 1.05rem;
-        line-height: 1;
-        font-weight: 400;
-      }
     }
 
     // Voile des compétences, révélé au survol
@@ -170,27 +161,50 @@
       }
     }
 
-    // États révélés : survol souris, focus clavier, ou toggle tactile (JS)
-    &:hover,
-    &:focus-visible,
-    &.is-revealed {
-      img {
-        filter: blur(7px) brightness(0.5);
-        transform: scale(1.05);
+    // Appareils avec survol (souris) : les compétences se révèlent au
+    // survol, au focus clavier, ou au clic (toggle JS). L'indice invite.
+    @media (hover: hover) {
+      cursor: pointer;
+
+      &:hover,
+      &:focus-visible,
+      &.is-revealed {
+        img {
+          filter: blur(7px) brightness(0.5);
+          transform: scale(1.05);
+        }
+
+        .about__photo-cue {
+          opacity: 0;
+        }
+
+        .about__photo-reveal {
+          opacity: 1;
+        }
       }
 
-      .about__photo-cue {
-        opacity: 0;
-      }
-
-      .about__photo-reveal {
-        opacity: 1;
+      &:focus-visible {
+        outline: 2px solid $color-white;
+        outline-offset: 4px;
       }
     }
 
-    &:focus-visible {
-      outline: 2px solid $color-white;
-      outline-offset: 4px;
+    // Appareils tactiles (pas de survol) : pas de mécanique cachée, les
+    // compétences sont affichées d'office sous la photo, qui reste nette.
+    @media (hover: none) {
+      .about__photo-cue {
+        display: none;
+      }
+
+      .about__photo-reveal {
+        position: static;
+        inset: auto;
+        opacity: 1;
+        pointer-events: auto;
+        background: none;
+        padding: 1.5rem 0 0;
+        justify-content: flex-start;
+      }
     }
   }
 
