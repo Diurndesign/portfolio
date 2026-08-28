@@ -54,6 +54,67 @@
       grid-template-columns: 1fr;
     }
   }
+
+  // --- Barre de filtres (grille React) -----------------------
+  &__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem 0.6rem;
+    margin-bottom: clamp(1.75rem, 4vh, 2.75rem);
+  }
+
+  &__filter {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba($color-ink, 0.72);
+    background: transparent;
+    border: 1px solid rgba($color-ink, 0.22);
+    border-radius: 999px;
+    padding: 0.5rem 1.05rem;
+    cursor: pointer;
+    transition: color $transition, background $transition, border-color $transition;
+
+    &:hover {
+      color: $color-ink;
+      border-color: rgba($color-ink, 0.5);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-ink;
+      outline-offset: 3px;
+    }
+
+    &.is-active {
+      color: $color-cream;
+      background: $color-ink;
+      border-color: $color-ink;
+    }
+  }
+}
+
+// Apparition en cascade des cartes de la grille enrichie (React) : rejouée
+// à chaque changement de filtre (la liste est remontée via sa clé).
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.projets__grid--enhanced .card {
+  animation: card-in 0.5s $ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .projets__grid--enhanced .card {
+    animation: none;
+  }
 }
 
 .section__eyebrow {

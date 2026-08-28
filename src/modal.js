@@ -94,9 +94,12 @@ function initModal() {
     }
   }
 
-  // ouverture depuis les cartes
-  document.querySelectorAll("[data-project]").forEach((el) => {
-    el.addEventListener("click", () => open(el.getAttribute("data-project")));
+  // Ouverture depuis les cartes : délégation d'événement au niveau du
+  // document, afin que les cartes rendues dynamiquement (grille React
+  // filtrable) déclenchent le modal au même titre que le HTML statique.
+  document.addEventListener("click", (e) => {
+    const trigger = e.target.closest("[data-project]");
+    if (trigger) open(trigger.getAttribute("data-project"));
   });
 
   // fermeture (croix + overlay)

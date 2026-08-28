@@ -1,4 +1,5 @@
 import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 import { resolve } from "path";
 import { fileURLToPath } from "url";
 
@@ -87,7 +88,7 @@ function optimizeHtml() {
 export default defineConfig(() => ({
   // Le site est servi à la racine du domaine (Vercel).
   base: "/",
-  plugins: [optimizeHtml()],
+  plugins: [react(), optimizeHtml()],
   css: {
     preprocessorOptions: {
       scss: {

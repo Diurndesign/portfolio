@@ -322,6 +322,10 @@
             <h2 class="section__title">Projets</h2>
           </header>
 
+          <!-- Grille filtrable (React) montée dans #projects-root.
+               La grille ci-dessous reste le repli sans JavaScript et le
+               contenu indexable ; React la remplace par la version à filtres. -->
+          <div id="projects-root">
           <ul class="projets__grid">
             <li class="card">
               <button class="card__btn" type="button" data-project="beautycorner" aria-haspopup="dialog">
@@ -431,6 +435,7 @@
               </button>
             </li>
           </ul>
+          </div>
         </div>
 
         <!-- Dégradé de transition : le crème de la section Projets
