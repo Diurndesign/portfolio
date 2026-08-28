@@ -8,6 +8,7 @@ import "./site-logo.js";
 import "./murmure.js";
 import "./consent.js";
 import "./contact-form.js";
+import "./about-photo.js";
 
 // Grille de projets filtrable (React). Chargée à la demande, uniquement sur
 // la page qui la contient : les autres pages n'embarquent pas React.

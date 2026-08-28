@@ -767,7 +767,13 @@
               </p>
             </div>
 
-            <figure class="about__photo">
+            <figure
+              class="about__photo"
+              tabindex="0"
+              role="button"
+              aria-expanded="false"
+              aria-label="Voir mes compétences"
+            >
               <img
                 src="/img/photo-presentation.webp"
                 alt="Jérémy Bendenoun, fondateur de Diurn Studio"
@@ -775,6 +781,24 @@
                 width="896"
                 height="1195"
               />
+              <span class="about__photo-cue" aria-hidden="true">
+                Compétences <span>+</span>
+              </span>
+              <figcaption class="about__photo-reveal">
+                <p class="about__photo-reveal-title">Compétences</p>
+                <div class="about__photo-group">
+                  <span class="about__photo-group-label">Design &amp; identité</span>
+                  <p>Identité de marque · Logo · Charte graphique · Direction artistique · UI/UX · Print</p>
+                </div>
+                <div class="about__photo-group">
+                  <span class="about__photo-group-label">Développement</span>
+                  <p>HTML sémantique · CSS/Sass · JavaScript ES6+ · React · Vite · Git</p>
+                </div>
+                <div class="about__photo-group">
+                  <span class="about__photo-group-label">Web &amp; performance</span>
+                  <p>SEO technique · Accessibilité · Performance · Responsive · Données structurées</p>
+                </div>
+              </figcaption>
             </figure>
           </div>
 
@@ -814,57 +838,6 @@
                   site internet à Nice
                 </a>
               </div>
-            </div>
-
-            <div class="about__skills">
-              <h3 class="about__label">Compétences</h3>
-              <p class="about__skills-lead">Du logo au référencement, d'une seule main.</p>
-
-              <ol class="skills-chain">
-                <li class="skills-chain__phase">
-                  <span class="skills-chain__node" aria-hidden="true"></span>
-                  <span class="skills-chain__index">01</span>
-                  <h4 class="skills-chain__name">Identité &amp; design</h4>
-                  <ul class="skills-chain__list">
-                    <li>Identité de marque</li>
-                    <li>Logo</li>
-                    <li>Charte graphique</li>
-                    <li>Direction artistique</li>
-                    <li>UI / UX</li>
-                    <li>Print &amp; édition</li>
-                  </ul>
-                </li>
-                <li class="skills-chain__phase">
-                  <span class="skills-chain__node" aria-hidden="true"></span>
-                  <span class="skills-chain__index">02</span>
-                  <h4 class="skills-chain__name">Développement</h4>
-                  <ul class="skills-chain__list">
-                    <li>HTML sémantique</li>
-                    <li>CSS / Sass</li>
-                    <li>JavaScript ES6+</li>
-                    <li>React</li>
-                    <li>Vite</li>
-                    <li>Git</li>
-                  </ul>
-                </li>
-                <li class="skills-chain__phase">
-                  <span class="skills-chain__node" aria-hidden="true"></span>
-                  <span class="skills-chain__index">03</span>
-                  <h4 class="skills-chain__name">Mise en ligne</h4>
-                  <ul class="skills-chain__list">
-                    <li>SEO technique</li>
-                    <li>Accessibilité (WCAG)</li>
-                    <li>Performance</li>
-                    <li>Responsive</li>
-                    <li>Données structurées</li>
-                  </ul>
-                </li>
-              </ol>
-
-              <p class="about__skills-soft">
-                <span class="about__skills-soft-label">Méthode</span>
-                Rigueur · Autonomie · Sens du détail · Écoute client
-              </p>
             </div>
           </div>
         </div>
