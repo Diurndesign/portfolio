@@ -92,61 +92,139 @@
     margin-top: clamp(3.5rem, 9vh, 7rem);
   }
 
-  // --- Compétences : chips groupées par domaine -------------
+  // --- Compétences : la chaîne d'un projet (du logo au SEO) --
+  // Plutôt qu'une grille de cartes, les compétences sont posées le long
+  // d'une ligne continue : elle matérialise « d'une seule main », de
+  // l'identité (01) au référencement (03).
   &__skills {
     margin-top: clamp(3rem, 7vh, 5rem);
     padding-top: clamp(2rem, 4vh, 3rem);
     border-top: 1px solid rgba($color-white, 0.12);
+  }
 
-    .about__label {
-      margin-bottom: clamp(1.5rem, 3vh, 2.25rem);
+  &__skills-lead {
+    font-family: $font-display;
+    font-weight: 300;
+    font-size: clamp(1.3rem, 2.6vw, 2rem);
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    color: $color-white;
+    max-width: 22ch;
+    text-wrap: balance;
+    margin: 0.9rem 0 0;
+  }
+
+  &__skills-soft {
+    margin: clamp(2.25rem, 4.5vh, 3.25rem) 0 0;
+    font-size: 0.85rem;
+    line-height: 1.7;
+    color: $color-text-muted;
+  }
+
+  &__skills-soft-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: $color-text-soft;
+    margin-right: 0.85rem;
+  }
+
+  // La chaîne elle-même : ligne continue reliant les étapes.
+  .skills-chain {
+  list-style: none;
+  margin: clamp(2.5rem, 5.5vh, 3.75rem) 0 0;
+  padding: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.75rem, 3vw, 3.25rem);
+
+  // Ligne continue horizontale reliant les trois étapes.
+  &::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba($color-white, 0.18);
+  }
+
+  @include until($bp-md) {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+
+    // Sur mobile, la ligne devient une colonne vertébrale à gauche.
+    &::before {
+      top: 0;
+      bottom: 0;
+      left: 4px;
+      right: auto;
+      width: 1px;
+      height: auto;
     }
   }
 
-  &__skills-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: clamp(1.75rem, 3.5vw, 3rem) clamp(1.75rem, 4vw, 4rem);
+  &__phase {
+    position: relative;
+    padding-top: 1.85rem;
 
     @include until($bp-md) {
-      grid-template-columns: 1fr;
-      gap: 2rem;
+      padding-top: 0;
+      padding-left: 1.85rem;
+    }
+  }
+
+  // Nœud posé sur la ligne, au début de chaque étape.
+  &__node {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: $color-cream;
+    box-shadow: 0 0 0 4px rgba($color-white, 0.06);
+
+    @include until($bp-md) {
+      top: 4px;
+    }
+  }
+
+  &__index {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    color: rgba($color-cream, 0.85);
+  }
+
+  &__name {
+    font-family: $font-display;
+    font-weight: 300;
+    font-size: clamp(1.2rem, 1.9vw, 1.6rem);
+    letter-spacing: -0.01em;
+    color: $color-white;
+    margin: 0.55rem 0 1.15rem;
+  }
+
+  &__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      font-size: 0.9rem;
+      line-height: 1.95;
+      color: $color-text-muted;
+      transition: color $transition;
     }
 
-    .skill-group__title {
-      font-family: $font-display;
-      font-weight: 300;
-      font-size: clamp(1.15rem, 1.7vw, 1.5rem);
-      letter-spacing: -0.01em;
-      color: $color-white;
-      margin: 0 0 1.1rem;
+    li:hover {
+      color: $color-text-soft;
     }
-
-    .skill-tags {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.55rem 0.6rem;
-
-      li {
-        font-size: 0.82rem;
-        font-weight: 500;
-        letter-spacing: 0.02em;
-        color: $color-text-soft;
-        padding: 0.45rem 0.95rem;
-        border: 1px solid rgba($color-white, 0.22);
-        border-radius: 999px;
-        transition: color $transition, border-color $transition, background $transition;
-      }
-
-      li:hover {
-        color: $color-white;
-        border-color: rgba($color-white, 0.5);
-        background: rgba($color-white, 0.05);
-      }
-    }
+  }
   }
 
   // Mon approche : deux colonnes — actions à gauche, texte à droite.
