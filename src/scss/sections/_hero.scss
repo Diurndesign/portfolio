@@ -71,9 +71,14 @@
     text-align: center;
     font-size: 0.72rem;
     font-weight: 600;
-    letter-spacing: 0.22em;
+    // Espacement réduit : l'eyebrow porte désormais le H1 (une phrase),
+    // 0.22em étirait trop un texte long. Reste un kicker discret.
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: $color-text-muted;
+    max-width: 46ch;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: clamp(1rem, 3vh, 2.5rem);
 
     animation: hero-reveal 1s $ease both;
