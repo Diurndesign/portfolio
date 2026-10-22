@@ -212,6 +212,13 @@ $modal-panel: #ece7dd;
       columns: 1;
     }
   }
+
+  // Captures d'interface (projets développement) : rendu « encadré »
+  &__gallery--screens img {
+    border: 1px solid rgba($color-ink, 0.12);
+    box-shadow: 0 14px 34px -16px rgba(0, 0, 0, 0.35);
+    background: $color-white;
+  }
 }
 
 // --- Contenu « Mentions légales » dans le modal --------------
