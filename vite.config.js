@@ -2,8 +2,33 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
 import { fileURLToPath } from "url";
+import { readFileSync } from "fs";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
+
+// Inclusion de fragments HTML partagés (aucune dépendance npm).
+// Dans une page : <!--#include partials/footer.html--> est remplacé par le
+// contenu du fichier. Évite de dupliquer navbar / footer / head sur chaque
+// page : on écrit le bloc une seule fois, modifiable à un seul endroit.
+// Fonctionne en dev et au build ; en dev, modifier un partial recharge la page.
+function htmlPartials() {
+  // Consomme aussi l'indentation devant la directive : le partial porte déjà
+  // sa propre indentation, on évite ainsi de la doubler sur la 1re ligne.
+  const includeRe = /[ \t]*<!--\s*#include\s+(\S+?)\s*-->/g;
+  const render = (html) =>
+    html.replace(includeRe, (_m, file) =>
+      readFileSync(resolve(root, file), "utf8").trimEnd()
+    );
+  return {
+    name: "html-partials",
+    transformIndexHtml: { order: "pre", handler: render },
+    handleHotUpdate(ctx) {
+      if (ctx.file.includes("/partials/")) {
+        ctx.server.ws.send({ type: "full-reload" });
+      }
+    },
+  };
+}
 
 // Optimise le rendu de chaque page au build (aucune dépendance npm) :
 //  1. Inline la feuille de style : supprime la requête CSS bloquant le rendu
@@ -88,7 +113,7 @@ function optimizeHtml() {
 export default defineConfig(() => ({
   // Le site est servi à la racine du domaine (Vercel).
   base: "/",
-  plugins: [react(), optimizeHtml()],
+  plugins: [react(), htmlPartials(), optimizeHtml()],
   css: {
     preprocessorOptions: {
       scss: {
