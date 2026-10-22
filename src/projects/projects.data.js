@@ -241,12 +241,10 @@ export const projects = [
       bg: "#eef0ea",
       stack: ["JavaScript ES6", "API REST", "DOM", "Authentification", "localStorage"],
       body: [
-        "<strong>Contexte :</strong> projet réalisé lors de ma formation de développeur : développer la partie dynamique du site d'une architecte d'intérieur (galerie et espace d'administration) en JavaScript natif, en dialoguant avec une API et une base de données.",
-        "<strong>Objectifs :</strong> afficher la galerie depuis l'API, filtrer les projets par catégorie, authentifier l'administratrice, et permettre l'ajout et la suppression de projets via une fenêtre modale.",
-        "<strong>Stack technique :</strong> JavaScript ES6 sans framework, manipulation du DOM, API REST (fetch), localStorage et FormData.",
-        "<strong>Compétences développées :</strong> chargement parallèle des données (Promise.all), génération dynamique du DOM, filtres par catégorie, authentification par token, upload d'image en FormData avec requête authentifiée, et mise à jour de l'interface sans rechargement.",
-        "<strong>Résultats :</strong> une partie front complète et soignée. Au-delà du cahier des charges, j'ai ajouté la validation du fichier par sa signature binaire (plus fiable que l'extension), une prévisualisation d'image et une gestion fine des erreurs réseau.",
-        "<strong>Perspectives :</strong> externaliser l'URL de l'API, passer en modules ES, ajouter des tests et renforcer l'accessibilité clavier de la modale.",
+        "Le site d'une architecte d'intérieur, avec deux facettes : une galerie publique qui met en valeur ses réalisations, et un espace privé où elle gère elle-même son contenu.",
+        "Côté visiteurs : une galerie que l'on peut filtrer par catégorie, pour retrouver rapidement le type de projet recherché.",
+        "Côté administratrice : une fois connectée, elle ajoute ou supprime ses projets en toute autonomie, directement depuis le site, sans avoir besoin d'un développeur.",
+        "J'ai particulièrement soigné la fiabilité : vérification des images envoyées, aperçu avant publication et messages clairs en cas de souci.",
       ],
       links: [
         { href: "https://sophiebluel-ten.vercel.app/", label: "Voir la démo" },
@@ -279,12 +277,10 @@ export const projects = [
       bg: "#f2e9e6",
       stack: ["React 19", "React Router 7", "Sass", "Vite", "API REST"],
       body: [
-        "<strong>Contexte :</strong> projet réalisé lors de ma formation de développeur, à partir d'un cahier des charges et de maquettes Figma : le front-end d'une plateforme de location de logements entre particuliers, en application monopage React.",
-        "<strong>Objectifs :</strong> une navigation fluide multi-pages, l'affichage dynamique des logements et de leur détail, et la gestion propre des erreurs (page 404, logement inexistant).",
-        "<strong>Stack technique :</strong> React 19, React Router 7, Sass et Vite ; les données sont chargées depuis une API via une variable d'environnement.",
-        "<strong>Compétences développées :</strong> composants réutilisables (carrousel, collapse, note), gestion d'état et d'effets (useState, useEffect), routing dynamique (useParams, route /accommodation/:id), route 404 et redirection programmatique. Carrousel codé main, sans librairie.",
-        "<strong>Résultats :</strong> une application responsive, fidèle aux maquettes, organisée par composants et par pages, et montée aux dernières versions majeures de l'écosystème (React 19, Router 7, Vite 8).",
-        "<strong>Perspectives :</strong> ajouter des tests, un état de chargement pendant les appels réseau, et déployer une démo avec une API hébergée.",
+        "Kasa est une plateforme de location de logements entre particuliers. J'ai conçu et développé l'interface du site : la page d'accueil qui présente tous les logements, et la fiche détaillée de chacun.",
+        "L'expérience se veut fluide et agréable : on passe d'un logement à l'autre sans jamais attendre un rechargement de page. Chaque fiche affiche les photos en diaporama, la description, les équipements et la note du logement.",
+        "J'ai soigné les détails qui font la différence : un diaporama d'images réalisé sur mesure, des rubriques qui se déplient, une note en étoiles, et une page claire lorsqu'un logement n'existe pas.",
+        "Résultat : un site rapide, aussi agréable sur mobile que sur ordinateur, et pensé pour évoluer facilement.",
       ],
       links: [
         { href: "https://kasa-gold-chi.vercel.app/", label: "Voir la démo" },
