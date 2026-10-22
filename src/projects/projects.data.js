@@ -1,12 +1,23 @@
 // ============================================================
-//  Données des projets — source unique de la grille filtrable
+//  Données des projets — SOURCE UNIQUE
 // ============================================================
-// Chaque projet porte un ou plusieurs `tags` qui alimentent les filtres.
-// GdunaN appartient à deux familles (site + identité) : c'est justement ce
-// que le filtrage multi-catégories permet de montrer.
+// Tout un projet (carte de la grille + fiche de la modale) est décrit ici,
+// dans un seul objet. Pour AJOUTER UN PROJET : copie un bloc ci-dessous,
+// change les valeurs, mets les images dans public/img/projets/, puis
+// `git push`. Rien d'autre à toucher (la modale est générée depuis ces data).
 //
-// `kind: "modal"` ouvre la fiche projet (#detail-<id> dans le HTML statique).
-// `kind: "link"`  renvoie vers une section de la page (Murmure, plus bas).
+// Champs d'une carte : id, kind, title, cat, tags, img.
+//   - tags  : catégories de filtre (voir `filters` plus bas).
+//   - kind "modal" → ouvre la fiche `detail` ci-dessous.
+//   - kind "link"  → renvoie vers une section de la page (ex. Murmure).
+//
+// Champs d'une fiche `detail` (projets "modal") :
+//   - bg      : couleur de fond de la modale.
+//   - cat     : (optionnel) titre de catégorie dans la fiche, sinon reprend `cat`.
+//   - stack   : étiquettes techniques affichées en haut de la fiche.
+//   - body    : paragraphes (le HTML <strong> est autorisé).
+//   - links   : (optionnel) boutons (démo, GitHub, site en ligne…).
+//   - gallery : { screens, images[] }. screens:true = rendu "captures encadrées".
 
 export const filters = [
   { id: "all", label: "Tout" },
@@ -28,6 +39,23 @@ export const projects = [
       width: 1080,
       height: 1080,
     },
+    detail: {
+      bg: "#efe8df",
+      cat: "Site internet · Sur mesure",
+      stack: ["Design web", "Développement", "Espace admin", "Supabase", "SEO local"],
+      body: [
+        "The Beauty Corner by Alex est un institut de beauté niçois où la dermopigmentation, le soin des ongles et les soirées beauté entre amies se vivent comme des moments d'exception. À partir du logo existant de la marque, la mise en page et l'univers du site prolongent cette douceur : une atmosphère naturelle et sensorielle, des appels à l'action clairs, l'Instagram de la cliente et un espace contact intégrés.",
+        "Le cœur du projet est un espace d'administration sur mesure : la cliente ajoute et modifie ses photos elle-même, hébergées sur Supabase, pour montrer l'évolution de son travail au fil des années en toute autonomie. Un site codé main, responsive et facile à maintenir, avec la réservation en ligne via Planity et un référencement local soigné à Nice.",
+      ],
+      links: [{ href: "https://thebeautycornerbyalex.fr", label: "Voir le site en ligne" }],
+      gallery: {
+        screens: false,
+        images: [
+          { src: "/img/projets/bcorner-mockup.webp", alt: "Le site The Beauty Corner by Alex présenté sur ordinateur et mobile", width: 1080, height: 1080 },
+          { src: "/img/projets/bcorner-2.webp", alt: "Section des prestations de l'institut, soirée beauté entre amies", width: 1543, height: 753 },
+        ],
+      },
+    },
   },
   {
     id: "gdunan",
@@ -41,6 +69,24 @@ export const projects = [
       width: 1080,
       height: 1080,
     },
+    detail: {
+      bg: "#f0efe8",
+      stack: ["Logo", "Site web", "Carte gaufrée", "Shooting photo"],
+      body: [
+        "Identité globale de Gdunan : un monogramme « GD » épuré, pensé pour une marque haut de gamme où la matière et le geste priment. Le logo se décline du web au print, jusqu'à une carte de visite gaufrée à froid, sans encre.",
+        "Le projet couvre la création du logo, la conception et la direction artistique du site internet, ainsi qu'un shooting photo dédié à son travail : des visuels sombres et texturés qui mettent la matière en lumière.",
+      ],
+      gallery: {
+        screens: false,
+        images: [
+          { src: "/img/projets/gd-1.webp", alt: "Composition de marque Gdunan avec le monogramme GD", width: 1080, height: 1350 },
+          { src: "/img/projets/gd-2.webp", alt: "Site internet Gdunan sur ordinateur portable", width: 1080, height: 1080 },
+          { src: "/img/projets/gd-3.webp", alt: "Site internet Gdunan sur mobile", width: 1600, height: 900 },
+          { src: "/img/projets/gd-4.webp", alt: "Carte de visite gaufrée avec le monogramme GD", width: 1080, height: 1080 },
+          { src: "/img/projets/gd-5.webp", alt: "Macro du travail de la matière, shooting", width: 1080, height: 1350 },
+        ],
+      },
+    },
   },
   {
     id: "azureco",
@@ -53,6 +99,24 @@ export const projects = [
       alt: "Emblème du Pressing Azur Eco",
       width: 500,
       height: 500,
+    },
+    detail: {
+      bg: "#eef0ea",
+      stack: ["Logo", "Mascotte", "Recherche typo", "Étiquette"],
+      body: [
+        "Création du logo de Pressing Azur Eco dans un univers de mascotte rétro : le style « rubber hose » des années 30. Un personnage-boîte joyeux, chapeau et nœud papillon, qui incarne le pressing avec malice.",
+        "Le projet comprend une recherche typographique (un alphabet display sur mesure), la création du personnage et sa mise en situation, notamment sur l'étiquette. Palette sauge, bleu nuit et crème.",
+      ],
+      gallery: {
+        screens: false,
+        images: [
+          { src: "/img/projets/az-1.webp", alt: "La mascotte Azur Eco", width: 1024, height: 1024 },
+          { src: "/img/projets/az-2.webp", alt: "Logo complet Pressing Azur Eco", width: 500, height: 500 },
+          { src: "/img/projets/az-5.webp", alt: "Emblème Azur Eco", width: 500, height: 500 },
+          { src: "/img/projets/az-3.webp", alt: "Planche : recherche typo, couleurs et déclinaisons", width: 1080, height: 1350 },
+          { src: "/img/projets/az-4.webp", alt: "Mise en situation du logo sur une étiquette", width: 1080, height: 1350 },
+        ],
+      },
     },
   },
   {
@@ -82,6 +146,24 @@ export const projects = [
       width: 1600,
       height: 1065,
     },
+    detail: {
+      bg: "#efe7d7",
+      title: "TijM 2017",
+      stack: ["Affiche", "Mise en page", "Magazine", "Direction artistique"],
+      body: [
+        "Identité visuelle du 24<sup>e</sup> Tournoi International de Judo de Monaco (Trophée Gérard Bertrand, 2017). Une affiche pensée pour tenir aussi bien sur un panneau urbain de la Principauté que dans le hall du Stade Louis II.",
+        "Au-delà de l'affiche : la conception et la mise en page du magazine officiel du tournoi : doubles pages, hiérarchie typographique et intégration des photographies de combat, jusqu'au bon à tirer.",
+      ],
+      gallery: {
+        screens: false,
+        images: [
+          { src: "/img/projets/tijm-affiche.webp", alt: "Affiche à plat du 24e Tournoi International de Judo de Monaco", width: 1300, height: 1839 },
+          { src: "/img/projets/tijm-1.webp", alt: "Affiche TijM sur un panneau urbain à Monaco", width: 864, height: 1222 },
+          { src: "/img/projets/tijm-3.webp", alt: "Double page du magazine officiel du tournoi", width: 1600, height: 1600 },
+          { src: "/img/projets/tijm-4.webp", alt: "Photographie de combat de judo en noir et blanc", width: 1600, height: 1065 },
+        ],
+      },
+    },
   },
   {
     id: "elo",
@@ -94,6 +176,22 @@ export const projects = [
       alt: "Logo Elo posé sur du marbre avec un ruban gansé griffé",
       width: 1184,
       height: 912,
+    },
+    detail: {
+      bg: "#f2efe8",
+      stack: ["Logo", "Refonte", "Couture", "Direction artistique"],
+      body: [
+        "Refonte de l'identité d'Elo Ab, couturière. Un logotype tout en rondeurs où l'aiguille et le fil s'invitent dans les lettres (un clin d'œil direct à son métier) posé sur une palette douce de crème et de noir.",
+        "La marque se décline avec délicatesse : ruban gansé griffé « Elo », compositions florales et matières textiles, pour une image à la fois artisanale et raffinée.",
+      ],
+      gallery: {
+        screens: false,
+        images: [
+          { src: "/img/projets/elo-1.webp", alt: "Logotype Elo Ab avec l'aiguille et le fil dans les lettres", width: 1006, height: 775 },
+          { src: "/img/projets/elo-2.webp", alt: "Logo Elo sur marbre avec un ruban gansé griffé", width: 1184, height: 912 },
+          { src: "/img/projets/elo-3.webp", alt: "Composition florale avec le logo Elo Ab", width: 1062, height: 1332 },
+        ],
+      },
     },
   },
   {
@@ -108,6 +206,24 @@ export const projects = [
       width: 1264,
       height: 842,
     },
+    detail: {
+      bg: "#e7e7e6",
+      stack: ["Logo", "Charte graphique", "Papeterie", "Direction artistique"],
+      body: [
+        "Identité de marque pour Ewa FLR, cheffe. Un univers minimal et végétal, structuré autour d'un logotype vertical tout en finesse (Modenica light) et d'une couleur unique, le « bleu béton ».",
+        "La charte se décline sur l'ensemble des supports (papeterie, carte de visite, tablier) pour une image de marque sobre et éditoriale, au service de sa cuisine.",
+      ],
+      gallery: {
+        screens: false,
+        images: [
+          { src: "/img/projets/ewa-5.webp", alt: "Univers de marque Ewa FLR : tote bag, menu et légumes de saison", width: 1264, height: 842 },
+          { src: "/img/projets/ewa-1.webp", alt: "Image de situation : la cheffe Ewa avec une cagette de légumes", width: 1080, height: 1350 },
+          { src: "/img/projets/ewa-2.webp", alt: "Cartes de visite recto-verso", width: 1600, height: 1200 },
+          { src: "/img/projets/ewa-3.webp", alt: "Tablier bleu béton avec le logo", width: 1600, height: 1067 },
+          { src: "/img/projets/ewa-4.webp", alt: "Planche d'identité : couleur, situation et typographie", width: 1600, height: 2263 },
+        ],
+      },
+    },
   },
   {
     id: "sophiebluel",
@@ -121,6 +237,31 @@ export const projects = [
       width: 1280,
       height: 960,
     },
+    detail: {
+      bg: "#eef0ea",
+      stack: ["JavaScript ES6", "API REST", "DOM", "Authentification", "localStorage"],
+      body: [
+        "<strong>Contexte :</strong> projet réalisé lors de ma formation de développeur : développer la partie dynamique du site d'une architecte d'intérieur (galerie et espace d'administration) en JavaScript natif, en dialoguant avec une API et une base de données.",
+        "<strong>Objectifs :</strong> afficher la galerie depuis l'API, filtrer les projets par catégorie, authentifier l'administratrice, et permettre l'ajout et la suppression de projets via une fenêtre modale.",
+        "<strong>Stack technique :</strong> JavaScript ES6 sans framework, manipulation du DOM, API REST (fetch), localStorage et FormData.",
+        "<strong>Compétences développées :</strong> chargement parallèle des données (Promise.all), génération dynamique du DOM, filtres par catégorie, authentification par token, upload d'image en FormData avec requête authentifiée, et mise à jour de l'interface sans rechargement.",
+        "<strong>Résultats :</strong> une partie front complète et soignée. Au-delà du cahier des charges, j'ai ajouté la validation du fichier par sa signature binaire (plus fiable que l'extension), une prévisualisation d'image et une gestion fine des erreurs réseau.",
+        "<strong>Perspectives :</strong> externaliser l'URL de l'API, passer en modules ES, ajouter des tests et renforcer l'accessibilité clavier de la modale.",
+      ],
+      links: [
+        { href: "https://sophiebluel-ten.vercel.app/", label: "Voir la démo" },
+        { href: "https://github.com/Diurndesign/Sophie_Bluel", label: "Voir le code sur GitHub" },
+      ],
+      gallery: {
+        screens: true,
+        images: [
+          { src: "/img/projets/sophiebluel-galerie.png", alt: "Portfolio d'architecte : galerie publique filtrable par catégorie", width: 1440, height: 950 },
+          { src: "/img/projets/sophiebluel-admin.png", alt: "Portfolio d'architecte : mode édition après connexion", width: 1440, height: 950 },
+          { src: "/img/projets/sophiebluel-modal.png", alt: "Portfolio d'architecte : fenêtre modale d'administration avec ajout et suppression de projets", width: 1440, height: 950 },
+          { src: "/img/projets/sophiebluel-login.png", alt: "Portfolio d'architecte : page de connexion de l'administration", width: 1440, height: 900 },
+        ],
+      },
+    },
   },
   {
     id: "kasa",
@@ -133,6 +274,31 @@ export const projects = [
       alt: "Application Kasa : page d'accueil avec bannière et grille de logements, développée en React",
       width: 1280,
       height: 960,
+    },
+    detail: {
+      bg: "#f2e9e6",
+      stack: ["React 19", "React Router 7", "Sass", "Vite", "API REST"],
+      body: [
+        "<strong>Contexte :</strong> projet réalisé lors de ma formation de développeur, à partir d'un cahier des charges et de maquettes Figma : le front-end d'une plateforme de location de logements entre particuliers, en application monopage React.",
+        "<strong>Objectifs :</strong> une navigation fluide multi-pages, l'affichage dynamique des logements et de leur détail, et la gestion propre des erreurs (page 404, logement inexistant).",
+        "<strong>Stack technique :</strong> React 19, React Router 7, Sass et Vite ; les données sont chargées depuis une API via une variable d'environnement.",
+        "<strong>Compétences développées :</strong> composants réutilisables (carrousel, collapse, note), gestion d'état et d'effets (useState, useEffect), routing dynamique (useParams, route /accommodation/:id), route 404 et redirection programmatique. Carrousel codé main, sans librairie.",
+        "<strong>Résultats :</strong> une application responsive, fidèle aux maquettes, organisée par composants et par pages, et montée aux dernières versions majeures de l'écosystème (React 19, Router 7, Vite 8).",
+        "<strong>Perspectives :</strong> ajouter des tests, un état de chargement pendant les appels réseau, et déployer une démo avec une API hébergée.",
+      ],
+      links: [
+        { href: "https://kasa-gold-chi.vercel.app/", label: "Voir la démo" },
+        { href: "https://github.com/Diurndesign/Kasa", label: "Voir le code sur GitHub" },
+      ],
+      gallery: {
+        screens: true,
+        images: [
+          { src: "/img/projets/kasa-accueil.png", alt: "Kasa : page d'accueil avec la bannière et la grille de logements", width: 1440, height: 950 },
+          { src: "/img/projets/kasa-fiche.png", alt: "Kasa : fiche d'un logement avec carrousel, loueur, note et volets dépliants", width: 1440, height: 1050 },
+          { src: "/img/projets/kasa-mobile.png", alt: "Kasa : la page d'accueil en version mobile (responsive)", width: 390, height: 820 },
+          { src: "/img/projets/kasa-fiche-2.png", alt: "Kasa : fiche d'un autre logement", width: 1440, height: 1050 },
+        ],
+      },
     },
   },
 ];

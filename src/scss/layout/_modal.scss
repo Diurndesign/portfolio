@@ -194,6 +194,18 @@ $modal-panel: #ece7dd;
     }
   }
 
+  // Plusieurs boutons de liens (démo, GitHub…) alignés
+  &__links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+
+    .project__link {
+      margin-bottom: 0;
+    }
+  }
+
   &__gallery {
     // Mosaïque (masonry) : les images gardent leur ratio, hauteurs variées
     columns: 2;

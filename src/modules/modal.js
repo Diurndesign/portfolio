@@ -1,6 +1,47 @@
 // ============================================================
 //  Modal projets — ouverture/fermeture accessible
 // ============================================================
+// La fiche d'un projet est GÉNÉRÉE à partir des données (projects.data.js) :
+// ajouter un projet là-bas suffit, pas besoin de toucher au HTML.
+// Le seul contenu encore en <template> est « Mentions légales » (#detail-legal).
+
+import { projects } from "../projects/projects.data.js";
+
+// Construit le HTML d'une fiche projet à partir de son objet `detail`.
+function renderFiche(proj) {
+  const d = proj.detail;
+  const cat = d.cat || proj.cat || "";
+  const title = d.title || proj.title || "";
+  const tags = (d.stack || []).map((t) => `<li>${t}</li>`).join("");
+  const body = (d.body || []).map((p) => `<p>${p}</p>`).join("");
+  const links = (d.links || [])
+    .map(
+      (l) =>
+        `<a class="project__link" href="${l.href}" target="_blank" rel="noopener">${l.label} <span aria-hidden="true">↗</span></a>`
+    )
+    .join("");
+  const g = d.gallery;
+  const imgs = g
+    ? g.images
+        .map(
+          (im) =>
+            `<img src="${im.src}" alt="${im.alt}" loading="lazy" width="${im.width}" height="${im.height}" />`
+        )
+        .join("")
+    : "";
+
+  return `
+    <article class="project" data-bg="${d.bg || ""}">
+      <header class="project__head">
+        <p class="project__cat">${cat}</p>
+        <h3 class="project__title" id="modal-title">${title}</h3>
+        ${tags ? `<ul class="project__tags">${tags}</ul>` : ""}
+      </header>
+      <div class="project__text">${body}</div>
+      ${links ? `<div class="project__links">${links}</div>` : ""}
+      ${g ? `<div class="project__gallery${g.screens ? " project__gallery--screens" : ""}">${imgs}</div>` : ""}
+    </article>`;
+}
 
 function initModal() {
   const modal = document.getElementById("modal");
@@ -15,10 +56,17 @@ function initModal() {
 
   function open(id) {
     const tpl = document.getElementById("detail-" + id);
-    if (!tpl) return;
+    const proj = projects.find((p) => p.id === id && p.detail);
+    if (!tpl && !proj) return;
 
     body.innerHTML = "";
-    body.appendChild(tpl.content.cloneNode(true));
+    if (tpl) {
+      // Contenu encore en <template> (ex. mentions légales)
+      body.appendChild(tpl.content.cloneNode(true));
+    } else {
+      // Fiche projet générée depuis les données
+      body.innerHTML = renderFiche(proj);
+    }
     body.scrollTop = 0;
 
     // Nomme la fenêtre avec le titre du projet (accessibilité) ; l'attribut
