@@ -28,6 +28,14 @@ function initNavToggle() {
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && nav.classList.contains("is-open")) setOpen(false);
   });
+
+  // Marque la page courante dans le menu (aria-current) à partir de l'URL,
+  // plutôt que de le coder en dur page par page : impossible à désynchroniser.
+  const here = location.pathname.replace(/\/$/, "") || "/";
+  nav.querySelectorAll('.nav__link[href^="/"]').forEach((a) => {
+    const target = new URL(a.href).pathname.replace(/\/$/, "") || "/";
+    if (target !== "/" && target === here) a.setAttribute("aria-current", "page");
+  });
 }
 
 if (document.readyState === "loading") {
