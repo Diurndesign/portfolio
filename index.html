@@ -420,24 +420,24 @@
             </li>
 
             <li class="card">
-              <button class="card__btn" type="button" data-project="longwy" aria-haspopup="dialog">
+              <button class="card__btn" type="button" data-project="sophiebluel" aria-haspopup="dialog">
                 <span class="card__media">
-                  <img src="/img/projets/lw-2.webp" alt="Arts de la table aux couleurs d'Esprit de Longwy" loading="lazy" width="1024" height="878" />
+                  <img src="/img/projets/sophie-bluel.jpg" alt="Portfolio d'architecte : galerie de projets filtrable, développée en JavaScript" loading="lazy" width="1280" height="960" />
                   <span class="card__overlay">
-                    <span class="card__cat">Refonte de logo</span>
-                    <span class="card__title">Longwy</span>
+                    <span class="card__cat">Site dynamique · JavaScript</span>
+                    <span class="card__title">Portfolio d'architecte</span>
                   </span>
                 </span>
               </button>
             </li>
 
             <li class="card">
-              <button class="card__btn" type="button" data-project="freakshow" aria-haspopup="dialog">
+              <button class="card__btn" type="button" data-project="kasa" aria-haspopup="dialog">
                 <span class="card__media">
-                  <img src="/img/projets/freakshow1.webp" alt="Le livre Freakshow tenu en main, page Fred Wilson avec dorure rouge" loading="lazy" width="1600" height="1067" />
+                  <img src="/img/projets/kasa.jpg" alt="Application Kasa : page d'accueil avec bannière et grille de logements, développée en React" loading="lazy" width="1280" height="960" />
                   <span class="card__overlay">
-                    <span class="card__cat">Édition · Direction artistique</span>
-                    <span class="card__title">Freakshow</span>
+                    <span class="card__cat">Application web · React</span>
+                    <span class="card__title">Kasa</span>
                   </span>
                 </span>
               </button>
@@ -476,27 +476,30 @@
           </article>
         </template>
 
-        <template id="detail-freakshow">
-          <article class="project" data-bg="#e8e7e3">
+        <template id="detail-kasa">
+          <article class="project" data-bg="#f2e9e6">
             <header class="project__head">
-              <p class="project__cat">Édition · Direction artistique</p>
-              <h3 class="project__title" id="modal-title">Freakshow</h3>
+              <p class="project__cat">Application web · React</p>
+              <h3 class="project__title" id="modal-title">Kasa</h3>
               <ul class="project__tags">
-                <li>Mise en page</li>
-                <li>Retouche photo</li>
-                <li>Montage photo</li>
-                <li>Impression</li>
+                <li>React 19</li>
+                <li>React Router 7</li>
+                <li>Sass</li>
+                <li>Vite</li>
+                <li>API REST</li>
               </ul>
             </header>
             <div class="project__text">
-              <p>Freakshow est un livre consacré aux figures des foires aux monstres du XIX<sup>e</sup> siècle : Fred Wilson, Fanny Loak et les autres. Un objet imprimé qui raconte ces vies hors normes avec gravité, sans jamais verser dans le voyeurisme.</p>
-              <p>Direction artistique complète : une mise en page à la composition verticale, la retouche et le montage des photographies d'archive tramées, et une dorure rouge à chaud qui vient percuter le noir et blanc. Un travail mené jusqu'à l'impression et le façonnage.</p>
+              <p><strong>Contexte :</strong> projet réalisé lors de ma formation de développeur, à partir d'un cahier des charges et de maquettes Figma : le front-end d'une plateforme de location de logements entre particuliers, en application monopage React.</p>
+              <p><strong>Objectifs :</strong> une navigation fluide multi-pages, l'affichage dynamique des logements et de leur détail, et la gestion propre des erreurs (page 404, logement inexistant).</p>
+              <p><strong>Stack technique :</strong> React 19, React Router 7, Sass et Vite ; les données sont chargées depuis une API via une variable d'environnement.</p>
+              <p><strong>Compétences développées :</strong> composants réutilisables (carrousel, collapse, note), gestion d'état et d'effets (useState, useEffect), routing dynamique (useParams, route /accommodation/:id), route 404 et redirection programmatique. Carrousel codé main, sans librairie.</p>
+              <p><strong>Résultats :</strong> une application responsive, fidèle aux maquettes, organisée par composants et par pages, et montée aux dernières versions majeures de l'écosystème (React 19, Router 7, Vite 8).</p>
+              <p><strong>Perspectives :</strong> ajouter des tests, un état de chargement pendant les appels réseau, et déployer une démo avec une API hébergée.</p>
+              <p><a href="https://github.com/Diurndesign/Kasa" target="_blank" rel="noopener">Voir le code sur GitHub <span aria-hidden="true">↗</span></a></p>
             </div>
             <div class="project__gallery">
-              <img src="/img/projets/freakshow1.webp" alt="Le livre tenu en main, page Fred Wilson" loading="lazy" width="1600" height="1067" />
-              <img src="/img/projets/freakshow2.webp" alt="Double page avec photographie en pleine hauteur" loading="lazy" width="1600" height="1067" />
-              <img src="/img/projets/freakshow3.webp" alt="Gros plan sur la dorure rouge, Fanny Loak (1860-1892)" loading="lazy" width="1600" height="1067" />
-              <img src="/img/projets/freakshow4.webp" alt="Le livre ouvert, page en cours de tournage" loading="lazy" width="1600" height="1067" />
+              <img src="/img/projets/kasa.jpg" alt="Page d'accueil de Kasa : bannière et grille de logements" loading="lazy" width="1280" height="960" />
             </div>
           </article>
         </template>
@@ -578,26 +581,30 @@
           </article>
         </template>
 
-        <template id="detail-longwy">
-          <article class="project" data-bg="#efe9df">
+        <template id="detail-sophiebluel">
+          <article class="project" data-bg="#eef0ea">
             <header class="project__head">
-              <p class="project__cat">Refonte de logo</p>
-              <h3 class="project__title" id="modal-title">Esprit de Longwy</h3>
+              <p class="project__cat">Site dynamique · JavaScript</p>
+              <h3 class="project__title" id="modal-title">Portfolio d'architecte</h3>
               <ul class="project__tags">
-                <li>Logo</li>
-                <li>Refonte</li>
-                <li>Déclinaisons</li>
-                <li>Direction artistique</li>
+                <li>JavaScript ES6</li>
+                <li>API REST</li>
+                <li>DOM</li>
+                <li>Authentification</li>
+                <li>localStorage</li>
               </ul>
             </header>
             <div class="project__text">
-              <p>Refonte du logo d'Esprit de Longwy, marque inspirée des célèbres émaux de Longwy. Un emblème floral aux courbes ondulées, dans une palette de terre, d'or et de crème, associé à un wordmark serif élégant.</p>
-              <p>Le nouveau logo se décline sur l'ensemble des supports de la marque (arts de la table, coffrets, papeterie à tranche dorée) pour un positionnement haut de gamme et artisanal.</p>
+              <p><strong>Contexte :</strong> projet réalisé lors de ma formation de développeur : développer la partie dynamique du site d'une architecte d'intérieur (galerie et espace d'administration) en JavaScript natif, en dialoguant avec une API et une base de données.</p>
+              <p><strong>Objectifs :</strong> afficher la galerie depuis l'API, filtrer les projets par catégorie, authentifier l'administratrice, et permettre l'ajout et la suppression de projets via une fenêtre modale.</p>
+              <p><strong>Stack technique :</strong> JavaScript ES6 sans framework, manipulation du DOM, API REST (fetch), localStorage et FormData.</p>
+              <p><strong>Compétences développées :</strong> chargement parallèle des données (Promise.all), génération dynamique du DOM, filtres par catégorie, authentification par token, upload d'image en FormData avec requête authentifiée, et mise à jour de l'interface sans rechargement.</p>
+              <p><strong>Résultats :</strong> une partie front complète et soignée. Au-delà du cahier des charges, j'ai ajouté la validation du fichier par sa signature binaire (plus fiable que l'extension), une prévisualisation d'image et une gestion fine des erreurs réseau.</p>
+              <p><strong>Perspectives :</strong> externaliser l'URL de l'API, passer en modules ES, ajouter des tests et renforcer l'accessibilité clavier de la modale.</p>
+              <p><a href="https://github.com/Diurndesign/Sophie_Bluel" target="_blank" rel="noopener">Voir le code sur GitHub <span aria-hidden="true">↗</span></a></p>
             </div>
             <div class="project__gallery">
-              <img src="/img/projets/lw-1.webp" alt="Logo Esprit de Longwy, emblème et wordmark" loading="lazy" width="1080" height="422" />
-              <img src="/img/projets/lw-2.webp" alt="Déclinaison sur les arts de la table" loading="lazy" width="1024" height="878" />
-              <img src="/img/projets/lw-3.webp" alt="Cartes de visite à tranche dorée" loading="lazy" width="1024" height="932" />
+              <img src="/img/projets/sophie-bluel.jpg" alt="Galerie de projets filtrable du portfolio d'architecte" loading="lazy" width="1280" height="960" />
             </div>
           </article>
         </template>
