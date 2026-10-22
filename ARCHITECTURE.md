@@ -20,7 +20,7 @@ pas partout.
 public/               Fichiers servis tels quels : img/, favicons, sitemap.xml, robots.txt
 src/
   main.js             Point d'entrée : importe le CSS et les modules JS
-  *.js                Modules JavaScript vanilla (une responsabilité par fichier)
+  modules/            Modules JavaScript vanilla (une responsabilité par fichier)
   projects/           Composant React (grille filtrable) + données
   scss/               Styles, architecture 7-1
 vite.config.js        Build : entrées multi-pages + plugin d'optimisation

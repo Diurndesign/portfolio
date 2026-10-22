@@ -1,14 +1,14 @@
 // Point d'entrée JS — importe les styles pour que Vite les compile.
 import "./scss/main.scss";
-import "./modal.js";
-import "./nav-toggle.js";
-import "./footer-nav.js";
-import "./scroll-nav.js";
-import "./site-logo.js";
-import "./murmure.js";
-import "./consent.js";
-import "./contact-form.js";
-import "./about-photo.js";
+import "./modules/modal.js";
+import "./modules/nav-toggle.js";
+import "./modules/footer-nav.js";
+import "./modules/scroll-nav.js";
+import "./modules/site-logo.js";
+import "./modules/murmure.js";
+import "./modules/consent.js";
+import "./modules/contact-form.js";
+import "./modules/about-photo.js";
 
 // Grille de projets filtrable (React). Chargée à la demande, uniquement sur
 // la page qui la contient : les autres pages n'embarquent pas React.
