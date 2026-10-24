@@ -284,11 +284,7 @@ export const projects = [
   },
   {
     id: "murmure",
-    kind: "link",
-    href: "https://murmure-orpin.vercel.app/",
-    target: "_blank",
-    rel: "noopener",
-    ariaLabel: "Murmure, ouvrir l'application dans un nouvel onglet",
+    kind: "modal",
     desc: "Une question anonyme par jour, conçue et développée seul.",
     title: "Murmure",
     cat: "Application web · React",
@@ -298,6 +294,27 @@ export const projects = [
       alt: "L'application Murmure ouverte sur un téléphone",
       width: 703,
       height: 509,
+    },
+    detail: {
+      bg: "#e7e8f0",
+      cat: "Application web · React",
+      stack: ["React 18", "Vite", "Supabase", "Vercel"],
+      body: [
+        "Murmure est une application web que j'ai conçue et développée seul, du design de l'interface à la base de données et la mise en ligne.",
+        "Le principe : une seule question anonyme par jour, la même pour tous. Pas de compte, pas de « like », pas de fil infini : une application volontairement calme, à rebours des réseaux sociaux.",
+        "C'est aussi mon terrain d'expérimentation technique : React pour l'interface, Supabase pour les données, et l'IA utilisée comme accélérateur de développement, sans jamais lui laisser le volant.",
+      ],
+      links: [
+        { href: "https://murmure-orpin.vercel.app/", label: "Ouvrir l'application" },
+        { href: "https://github.com/Diurndesign/Murmure", label: "Voir le code sur GitHub" },
+      ],
+      gallery: {
+        screens: false,
+        images: [
+          { src: "/img/projets/murmure-app.webp", alt: "L'application Murmure ouverte sur un téléphone", width: 703, height: 509 },
+          { src: "/img/murmure-screen.svg", alt: "Aperçu de l'interface de Murmure : la question anonyme du jour", width: 390, height: 844 },
+        ],
+      },
     },
   },
 ];
