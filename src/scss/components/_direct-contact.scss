@@ -1,0 +1,97 @@
+// ============================================================
+//  CONTACT DIRECT — lien téléphone + bouton de réservation
+// ============================================================
+// Bloc réutilisable (section Contact de l'accueil et page prix).
+// Boutons tactiles (hauteur ≥ 44px), cohérents avec les CTA existants,
+// pensés pour le thème sombre du site.
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.direct-contact {
+  margin: clamp(1.25rem, 3vh, 1.75rem) 0;
+
+  &__text {
+    font-size: clamp(1rem, 1.15vw, 1.1rem);
+    line-height: 1.7;
+    color: $color-text-soft;
+    margin-bottom: 1rem;
+    max-width: 60ch;
+  }
+
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem;
+  }
+}
+
+// --- Lien téléphone cliquable (zone tactile ≥ 44px) ---------
+.btn-phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 44px;
+  padding: 0.7rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: $color-white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background $transition, border-color $transition;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  &:hover,
+  &:focus-visible {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-white;
+    outline-offset: 3px;
+  }
+}
+
+// --- Bouton « Réserver un appel » (secondaire, type ghost) --
+// Reprend le style du bouton secondaire « Audit gratuit ».
+.btn-reserve {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  padding: 0.7rem 1.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: transparent;
+  color: $color-white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background $transition, border-color $transition,
+    transform $transition;
+
+  &:hover,
+  &:focus-visible {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.6);
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-white;
+    outline-offset: 3px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-reserve:hover,
+  .btn-reserve:focus-visible {
+    transform: none;
+  }
+}

@@ -592,6 +592,104 @@
   margin: clamp(2rem, 5vh, 3rem) 0;
 }
 
+// Rangée de deux CTA côte à côte (devis + réservation d'appel).
+.landing__cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.85rem;
+  margin: clamp(2rem, 5vh, 3rem) 0;
+}
+
+// --- Exemple projet : texte + image côte à côte ---------------
+// Ordinateur : texte à gauche, image à droite. Mobile : image au-dessus.
+.landing__example {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  margin-top: 1.5rem;
+
+  &-text {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &-media {
+    flex: 0 0 clamp(240px, 40%, 360px);
+    margin: 0;
+    border-radius: 14px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      // même parti pris noir & blanc que les autres visuels du site
+      filter: grayscale(100%) contrast(1.03);
+    }
+  }
+
+  @include until($bp-md) {
+    flex-direction: column-reverse; // image au-dessus du texte
+    align-items: stretch;
+
+    &-media {
+      flex: none;
+    }
+  }
+}
+
+// --- Étapes du devis : 4 cartes (grille) ----------------------
+.devis-steps {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+
+  @include until($bp-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.devis-step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  padding: 1.5rem;
+  border: 1px solid rgba($color-white, 0.16);
+  border-radius: 12px;
+
+  &__num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 999px;
+    border: 1px solid rgba($color-white, 0.32);
+    font-family: $font-display;
+    font-size: 0.95rem;
+    line-height: 1;
+    color: $color-white;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.15;
+    color: $color-white;
+  }
+
+  p {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: $color-text-soft;
+  }
+}
+
 // --- Note secondaire (ex. mention TVA sous un tableau) -------
 .landing__note {
   margin-top: 0.9rem;

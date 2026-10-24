@@ -30,7 +30,8 @@ function initTracking() {
 
     // Clic sur un numéro de téléphone (tel:)
     if (/^tel:/i.test(href)) {
-      track("contact_phone", { method: "phone" });
+      track("clic_telephone", { page: location.pathname });
+      track("contact_phone", { method: "phone" }); // événement historique conservé
       return;
     }
 
