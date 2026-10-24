@@ -6,40 +6,46 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
-// --- Fil d'Ariane -------------------------------------------
-.breadcrumb {
-  display: flex;
-  flex-wrap: wrap;
+// --- Lien de retour « ← Retour aux projets » ----------------
+.case-study__back {
+  display: inline-flex;
   align-items: center;
-  gap: 0.4rem 0.5rem;
-  margin-bottom: clamp(1.25rem, 3vh, 2rem);
-  font-size: 0.8rem;
+  gap: 0.5rem;
+  font-size: 0.85rem;
   letter-spacing: 0.02em;
-  color: $color-text-muted;
+  color: $color-text-soft;
+  transition: color $transition;
 
-  a {
-    color: $color-text-soft;
-    transition: color $transition;
-
-    &:hover,
-    &:focus-visible {
-      color: $color-white;
-    }
-
-    &:focus-visible {
-      outline: 2px solid $color-white;
-      outline-offset: 3px;
-      border-radius: 2px;
-    }
+  &-arrow {
+    display: inline-block;
+    transition: transform $transition;
   }
 
-  &__sep {
-    color: rgba($color-white, 0.4);
-  }
-
-  [aria-current="page"] {
+  &:hover,
+  &:focus-visible {
     color: $color-white;
   }
+
+  &:hover .case-study__back-arrow,
+  &:focus-visible .case-study__back-arrow {
+    transform: translateX(-3px);
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-white;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+// En haut de page (au-dessus du H1)
+.case-study > .case-study__back {
+  margin-bottom: clamp(1.25rem, 3vh, 2rem);
+}
+
+// En bas de page (sous les boutons du CTA final)
+.case-study__back-bottom {
+  margin-top: 1.75rem;
 }
 
 .case-study {

@@ -174,13 +174,9 @@ ${JSON.stringify(breadcrumbJsonLd, null, 2)}
     <!-- ===================== ÉTUDE DE CAS ===================== -->
     <main class="landing">
       <article class="landing__article case-study">
-        <nav class="breadcrumb" aria-label="Fil d'Ariane">
-          <a href="/">Accueil</a>
-          <span class="breadcrumb__sep" aria-hidden="true">›</span>
-          <a href="/#projets">Réalisations</a>
-          <span class="breadcrumb__sep" aria-hidden="true">›</span>
-          <span aria-current="page">${entry.breadcrumb}</span>
-        </nav>
+        <a class="case-study__back" href="/#projets">
+          <span class="case-study__back-arrow" aria-hidden="true">←</span> Retour aux projets
+        </a>
 
         <header class="landing__head">
           <h1 class="landing__title">${entry.h1}</h1>
@@ -202,6 +198,11 @@ ${sections}
             <a class="landing__btn" href="https://calendly.com/diurnstudio/appel-decouvert" target="_blank" rel="noopener" data-calendly>Réserver un appel de 30 min</a>
             <a class="btn-reserve" href="/#contact">Demander un devis</a>
           </div>
+          <p class="case-study__back-bottom">
+            <a class="case-study__back" href="/#projets">
+              <span class="case-study__back-arrow" aria-hidden="true">←</span> Retour aux projets
+            </a>
+          </p>
         </section>
 
 ${renderOthers(entry, allEntries)}
