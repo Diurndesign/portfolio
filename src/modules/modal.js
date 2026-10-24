@@ -35,13 +35,15 @@ function renderFiche(proj) {
   const demo = d.demo
     ? `<div class="project__demo">
          <div class="project__phone">
-           <iframe
-             class="project__iframe"
-             src="${d.demo.url}"
-             title="${d.demo.title || "Démo de l'application"}"
-             loading="lazy"
-             allow="clipboard-write"
-           ></iframe>
+           <div class="project__screen">
+             <iframe
+               class="project__iframe"
+               src="${d.demo.url}"
+               title="${d.demo.title || "Démo de l'application"}"
+               loading="lazy"
+               allow="clipboard-write"
+             ></iframe>
+           </div>
          </div>
          ${
            d.qr

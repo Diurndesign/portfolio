@@ -246,19 +246,30 @@ $modal-panel: #ece7dd;
     flex: 0 0 auto;
     width: min(300px, 100%);
     aspect-ratio: 300 / 600;
-    padding: 10px;
-    border-radius: 30px;
-    background: #15162a;
+    padding: 12px;
+    border-radius: 36px;
+    background: #0b0b0d; // noir (et non bleu nuit)
     box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.55);
+  }
+
+  // Écran : conteneur qui découpe proprement les angles de l'iframe
+  // (les iframes ne respectent pas toujours border-radius seules, surtout
+  // sur Safari/iOS → overflow:hidden + translateZ force le découpage).
+  &__screen {
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #0b0b0d;
+    transform: translateZ(0);
   }
 
   &__iframe {
     width: 100%;
     height: 100%;
     border: 0;
-    border-radius: 22px;
     display: block;
-    background: $color-white;
+    background: #0b0b0d;
   }
 
   &__qr {
