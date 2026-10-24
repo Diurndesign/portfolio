@@ -2,7 +2,6 @@
 import "./scss/main.scss";
 import "./modules/modal.js";
 import "./modules/nav-toggle.js";
-import "./modules/footer-nav.js";
 import "./modules/scroll-nav.js";
 import "./modules/site-logo.js";
 import "./modules/consent.js";

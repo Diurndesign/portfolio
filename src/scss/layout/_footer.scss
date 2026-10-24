@@ -29,54 +29,21 @@
     align-items: flex-start;
   }
 
-  // Titre toujours visible
+  // Titre de colonne : libellé statique (plus d'accordéon)
   &__title {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.45rem;
-    background: none;
-    border: 0;
-    padding: 0;
-    cursor: pointer;
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: $color-text-muted;
-    transition: color $transition;
-
-    &::after {
-      content: "+";
-      font-size: 1rem;
-      line-height: 1;
-      color: $color-text-soft;
-      transition: transform $transition, color $transition;
-    }
-
-    &:hover,
-    &:focus-visible {
-      color: $color-white;
-    }
-
-    &:focus-visible {
-      outline: 2px solid $color-white;
-      outline-offset: 4px;
-      border-radius: 2px;
-    }
   }
 
-  // Panneau de liens : replié par défaut, animé à l'ouverture
+  // Panneau de liens : toujours visible
   &__panel {
-    display: grid;
-    grid-template-rows: 0fr;
-    opacity: 0;
-    overflow: hidden;
-    transition: grid-template-rows 0.35s $ease, opacity 0.3s ease;
+    display: block;
   }
 
   &__panel-inner {
-    min-height: 0;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -84,31 +51,7 @@
     padding-top: 0.85rem;
   }
 
-  // Révélation au survol / focus clavier (appareils avec souris)
-  @media (hover: hover) {
-    &__group:hover &__panel,
-    &__group:focus-within &__panel {
-      grid-template-rows: 1fr;
-      opacity: 1;
-    }
-
-    &__group:hover &__title::after,
-    &__group:focus-within &__title::after {
-      transform: rotate(45deg);
-    }
-  }
-
-  // Révélation au clic / tap (surtout mobile)
-  &__group.is-open &__panel {
-    grid-template-rows: 1fr;
-    opacity: 1;
-  }
-
-  &__group.is-open &__title::after {
-    transform: rotate(45deg);
-  }
-
-  // --- Mobile : accordéon pleine largeur, zones tactiles >= 48px ------
+  // --- Mobile : colonnes empilées, zones tactiles >= 48px ------------
   @include until($bp-md) {
     &__nav {
       grid-template-columns: 1fr;
@@ -117,6 +60,7 @@
 
     &__group {
       border-top: 1px solid rgba($color-white, 0.1);
+      padding: 0.75rem 0;
 
       &:last-of-type {
         border-bottom: 1px solid rgba($color-white, 0.1);
@@ -124,15 +68,11 @@
     }
 
     &__title {
-      width: 100%;
-      justify-content: space-between;
-      min-height: 48px;
-      padding: 0.6rem 0;
+      padding: 0.3rem 0;
     }
 
     &__panel-inner {
-      padding-top: 0;
-      padding-bottom: 0.5rem;
+      padding-top: 0.25rem;
       gap: 0;
     }
 
