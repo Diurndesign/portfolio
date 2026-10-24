@@ -195,6 +195,17 @@
     }
   }
 
+  // Texte simple dans une colonne (ex. « Nice et Côte d'Azur »)
+  &__meta {
+    font-size: 0.82rem;
+    line-height: 1.5;
+    color: $color-text-muted;
+
+    @include until($bp-md) {
+      padding: 0.5rem 0;
+    }
+  }
+
   // Ligne « Retrouvez aussi mon travail sur … » (centrée dans la barre du bas)
   &__social {
     flex: 1 1 auto;
