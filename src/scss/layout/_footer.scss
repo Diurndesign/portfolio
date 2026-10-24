@@ -51,45 +51,32 @@
     padding-top: 0.85rem;
   }
 
-  // --- Mobile : colonnes empilées, zones tactiles >= 48px ------------
+  // --- Mobile : grille 2 colonnes (footer compact), cibles >= 44px ---
   @include until($bp-md) {
     &__nav {
-      grid-template-columns: 1fr;
-      gap: 0;
-    }
-
-    &__group {
-      border-top: 1px solid rgba($color-white, 0.1);
-      padding: 0.75rem 0;
-
-      &:last-of-type {
-        border-bottom: 1px solid rgba($color-white, 0.1);
-      }
-    }
-
-    &__title {
-      padding: 0.3rem 0;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(1.5rem, 5vw, 2.25rem);
     }
 
     &__panel-inner {
-      padding-top: 0.25rem;
-      gap: 0;
+      padding-top: 0.6rem;
+      gap: 0.25rem;
     }
 
-    // Zones tactiles confortables (accessibilité) : liens de colonne
-    // pleine largeur et hauts d'au moins 48px.
+    // Zones tactiles confortables (accessibilité) : liens pleine largeur
+    // et hauts d'au moins 44px.
     &__panel-inner &__legal {
       display: flex;
       align-items: center;
       width: 100%;
-      min-height: 48px;
+      min-height: 44px;
     }
 
     // Liens légaux de la barre du bas : même hauteur de cible.
     &__legal-links &__legal {
       display: inline-flex;
       align-items: center;
-      min-height: 48px;
+      min-height: 44px;
     }
   }
 
