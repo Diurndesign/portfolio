@@ -8,7 +8,7 @@
 
 // Boutons d'appel à l'action du site (+ data-cta pour en marquer d'autres).
 const CTA_SELECTOR =
-  ".hero__cta, .about__cta, .murmure__cta, .landing__cta, .landing__midcta, [data-cta]";
+  ".hero__cta, .about__cta, .landing__cta, .landing__midcta, [data-cta]";
 
 function track(name, params) {
   if (typeof window.gtag === "function") {

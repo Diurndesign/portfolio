@@ -23,14 +23,22 @@ function Card({ project }) {
       <span className="card__overlay">
         <span className="card__cat">{project.cat}</span>
         <span className="card__title">{project.title}</span>
+        {project.desc && <span className="card__desc">{project.desc}</span>}
       </span>
     </span>
   );
 
-  // Murmure renvoie vers sa section dédiée ; les autres ouvrent une fiche modal.
+  // kind "link" : lien externe (ex. Murmure, ouvert dans un nouvel onglet) ;
+  // les autres cartes ouvrent une fiche modal.
   if (project.kind === "link") {
     return (
-      <a className="card__btn" href={project.href} aria-label={project.ariaLabel}>
+      <a
+        className="card__btn"
+        href={project.href}
+        target={project.target}
+        rel={project.rel}
+        aria-label={project.ariaLabel}
+      >
         {media}
       </a>
     );

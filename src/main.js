@@ -5,7 +5,6 @@ import "./modules/nav-toggle.js";
 import "./modules/footer-nav.js";
 import "./modules/scroll-nav.js";
 import "./modules/site-logo.js";
-import "./modules/murmure.js";
 import "./modules/consent.js";
 import "./modules/contact-form.js";
 import "./modules/about-photo.js";

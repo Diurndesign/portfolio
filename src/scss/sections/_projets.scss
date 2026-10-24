@@ -233,6 +233,15 @@
     color: $color-white;
   }
 
+  // Ligne descriptive courte (optionnelle, ex. carte Murmure)
+  &__desc {
+    margin-top: 0.15rem;
+    font-size: 0.85rem;
+    line-height: 1.35;
+    color: rgba(255, 255, 255, 0.82);
+    max-width: 32ch;
+  }
+
   // --- Survol / focus clavier : léger zoom, retour couleur + voile un peu plus dense ---
   &__btn:hover &__media img,
   &__btn:focus-visible &__media img {
