@@ -6,7 +6,7 @@ Diurn Studio est dirigé par Jérémy Bendenoun, designer et développeur web ba
 
 ## Services
 
-- Création de sites internet sur mesure (vitrine, one-page, application web), codés main en HTML, CSS, JavaScript et React. Un site one-page démarre autour de 900 €, un site vitrine multi-pages à partir de 3 500 €, une application web sur devis.
+- Création de sites internet sur mesure (vitrine, one-page, application web), codés main en HTML, CSS, JavaScript et React. Un site one-page démarre à 900 €, un site vitrine multi-pages à partir de 1 800 €, un logo à partir de 700 €, une application web sur devis.
 - Identité de marque et design graphique : logo, charte graphique, système visuel complet, déclinaisons print et numériques.
 - Référencement local (SEO) intégré dès la conception, pour être visible sur Nice et la Côte d'Azur.
 - Direction photo et production de contenu pour nourrir la marque une fois le site en ligne.
@@ -24,7 +24,7 @@ Diurn Studio est dirigé par Jérémy Bendenoun, designer et développeur web ba
 
 ## Guides
 
-- [Combien coûte un site internet à Nice ?](https://www.diurnstudio.fr/combien-coute-site-internet-nice) : formules et prix (Essentiel dès 900 €, Signature dès 3 500 €, sur-mesure sur devis).
+- [Combien coûte un site internet à Nice ?](https://www.diurnstudio.fr/combien-coute-site-internet-nice) : prix réels par type de projet (one-page dès 900 €, site vitrine dès 1 800 €, logo dès 700 €, sur-mesure sur devis).
 - [Coder son site ou utiliser Wix ou Squarespace ?](https://www.diurnstudio.fr/site-sur-mesure-ou-wix-squarespace) : propriété, SEO, performances et coût sur la durée.
 - [Faire son site avec l'IA ou un développeur ?](https://www.diurnstudio.fr/site-avec-ia-ou-developpeur) : limites du vibe coding, rôle du professionnel.
 - [Tous les guides](https://www.diurnstudio.fr/guides)

@@ -547,6 +547,20 @@
   }
 }
 
+// Variante : tableau à 3 colonnes de données où la colonne à mettre en avant
+// est la 3e (ex. comparatif Agence / Diurn Studio / Wix).
+.compare--highlight3 {
+  thead th:nth-child(2),
+  tbody td:nth-child(2) {
+    background: transparent;
+  }
+
+  thead th:nth-child(3),
+  tbody td:nth-child(3) {
+    background: rgba($color-white, 0.05);
+  }
+}
+
 // --- Listes à puces récapitulatives --------------------------
 .landing__list {
   list-style: none;
@@ -576,6 +590,13 @@
 // --- CTA intermédiaire ---------------------------------------
 .landing__midcta {
   margin: clamp(2rem, 5vh, 3rem) 0;
+}
+
+// --- Note secondaire (ex. mention TVA sous un tableau) -------
+.landing__note {
+  margin-top: 0.9rem;
+  font-size: 0.85rem !important;
+  color: $color-text-muted !important;
 }
 
 // --- Hub Guides : grille de cartes scannables ----------------
