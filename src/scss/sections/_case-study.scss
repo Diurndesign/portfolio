@@ -1,10 +1,122 @@
 // ============================================================
 //  ÉTUDE DE CAS — page /realisations/<slug>
-//  Réutilise la mise en page éditoriale .landing (typo, sections, largeur
-//  de lecture). N'ajoute que les blocs propres aux études de cas.
+//  Thème clair (crème + encre), comme la section Projets : page éditoriale
+//  lumineuse, cohérente avec le reste du site. Réutilise la mise en page
+//  .landing en remappant les couleurs (prévues pour fond sombre) vers l'encre.
 // ============================================================
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
+
+.case-study-page {
+  background: $color-cream;
+  color: $color-ink;
+  // le dégradé .case-study__fade doit toucher directement le footer
+  padding-bottom: 0;
+
+  // Mobile : dégage le lien de retour du logo fixe (coin haut-gauche)
+  @include until($bp-md) {
+    padding-top: 5.5rem;
+  }
+
+  // --- Remap des couleurs héritées de .landing (conçues pour fond bleu) ---
+  .landing__title {
+    color: $color-ink;
+  }
+
+  .landing__lede {
+    color: rgba($color-ink, 0.78);
+  }
+
+  .landing__section {
+    h2 {
+      color: $color-ink;
+    }
+
+    p {
+      color: rgba($color-ink, 0.8);
+    }
+
+    strong {
+      color: $color-ink;
+    }
+
+    p a:not(.landing__btn) {
+      color: $color-ink;
+      text-decoration-color: rgba($color-ink, 0.5);
+
+      &:hover,
+      &:focus-visible {
+        text-decoration-color: $color-ink;
+      }
+    }
+  }
+
+  .landing__work-more a {
+    color: $color-ink;
+  }
+
+  // Filet de séparation du bloc CTA final (blanc à l'origine)
+  .landing__cta {
+    border-top-color: rgba($color-ink, 0.16);
+  }
+
+  // Bouton principal plein : bleu de marque sur crème
+  .landing__btn {
+    background: $color-blue;
+    color: $color-white;
+
+    &:focus-visible {
+      outline-color: $color-blue;
+    }
+  }
+
+  // Bouton secondaire « ghost » : contour encre
+  .btn-reserve {
+    border-color: rgba($color-ink, 0.3);
+    color: $color-ink;
+
+    &:hover,
+    &:focus-visible {
+      background: rgba($color-ink, 0.06);
+      border-color: rgba($color-ink, 0.6);
+    }
+
+    &:focus-visible {
+      outline-color: $color-ink;
+    }
+  }
+
+  // Cartes « autres réalisations » (guide-card) adaptées au crème
+  .guide-card {
+    border-color: rgba($color-ink, 0.18);
+
+    &__kicker {
+      color: rgba($color-ink, 0.55);
+    }
+
+    &__title {
+      color: $color-ink;
+    }
+
+    &__desc {
+      color: rgba($color-ink, 0.75);
+    }
+
+    &__more {
+      color: $color-ink;
+    }
+
+    &:hover,
+    &:focus-visible {
+      border-color: rgba($color-ink, 0.42);
+      background: rgba($color-ink, 0.04);
+    }
+
+    &:focus-visible {
+      outline-color: $color-ink;
+    }
+  }
+}
 
 // --- Lien de retour « ← Retour aux projets » ----------------
 .case-study__back {
@@ -13,7 +125,7 @@
   gap: 0.5rem;
   font-size: 0.85rem;
   letter-spacing: 0.02em;
-  color: $color-text-soft;
+  color: rgba($color-ink, 0.7);
   transition: color $transition;
 
   &-arrow {
@@ -23,7 +135,7 @@
 
   &:hover,
   &:focus-visible {
-    color: $color-white;
+    color: $color-ink;
   }
 
   &:hover .case-study__back-arrow,
@@ -32,29 +144,28 @@
   }
 
   &:focus-visible {
-    outline: 2px solid $color-white;
+    outline: 2px solid $color-ink;
     outline-offset: 3px;
     border-radius: 2px;
   }
 }
 
-// En haut de page (au-dessus du H1)
 .case-study > .case-study__back {
   margin-bottom: clamp(1.25rem, 3vh, 2rem);
 }
 
-// En bas de page (sous les boutons du CTA final)
 .case-study__back-bottom {
   margin-top: 1.75rem;
 }
 
 .case-study {
-  // --- Image principale (le vrai site, sans parti pris N&B) ---
+  // --- Image principale (le vrai site) ------------------------
   &__hero {
     margin: clamp(1.5rem, 4vh, 2.5rem) 0 clamp(1rem, 2vh, 1.5rem);
     border-radius: 14px;
     overflow: hidden;
-    background: rgba($color-white, 0.06);
+    background: rgba($color-ink, 0.06);
+    box-shadow: 0 30px 60px -32px rgba($color-ink, 0.4);
 
     img {
       width: 100%;
@@ -63,7 +174,7 @@
     }
   }
 
-  // --- Repères (client, secteur, prestations, délai + lien live) ---
+  // --- Repères -----------------------------------------------
   &__facts-wrap {
     display: flex;
     flex-wrap: wrap;
@@ -72,8 +183,9 @@
     gap: 1.25rem 2rem;
     margin: clamp(1.5rem, 4vh, 2.5rem) 0;
     padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1.25rem, 3vw, 2rem);
-    border: 1px solid rgba($color-white, 0.16);
+    border: 1px solid rgba($color-ink, 0.16);
     border-radius: 14px;
+    background: rgba($color-ink, 0.03);
   }
 
   &__facts {
@@ -100,7 +212,7 @@
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: $color-text-muted;
+    color: rgba($color-ink, 0.55);
     margin-bottom: 0.35rem;
   }
 
@@ -108,7 +220,7 @@
     margin: 0;
     font-size: 0.95rem;
     line-height: 1.4;
-    color: $color-white;
+    color: $color-ink;
   }
 
   &__live {
@@ -119,20 +231,20 @@
     min-height: 44px;
     padding: 0.6rem 1.3rem;
     border-radius: 999px;
-    border: 1px solid rgba($color-white, 0.3);
+    border: 1px solid rgba($color-ink, 0.3);
     font-size: 0.9rem;
     font-weight: 600;
-    color: $color-white;
+    color: $color-ink;
     transition: background $transition, border-color $transition;
 
     &:hover,
     &:focus-visible {
-      background: rgba($color-white, 0.08);
-      border-color: rgba($color-white, 0.6);
+      background: rgba($color-ink, 0.06);
+      border-color: rgba($color-ink, 0.6);
     }
 
     &:focus-visible {
-      outline: 2px solid $color-white;
+      outline: 2px solid $color-ink;
       outline-offset: 3px;
     }
   }
@@ -153,13 +265,14 @@
 
   &__card {
     padding: 1.5rem;
-    border: 1px solid rgba($color-white, 0.16);
+    border: 1px solid rgba($color-ink, 0.14);
     border-radius: 12px;
+    background: rgba($color-ink, 0.02);
 
     p {
       font-size: 0.95rem;
       line-height: 1.6;
-      color: $color-text-soft;
+      color: rgba($color-ink, 0.78);
       max-width: none;
     }
   }
@@ -168,7 +281,7 @@
     font-size: 1.05rem;
     font-weight: 700;
     line-height: 1.3;
-    color: $color-white;
+    color: $color-ink;
     margin-bottom: 0.5rem;
   }
 
@@ -188,7 +301,9 @@
     margin: 0;
     border-radius: 12px;
     overflow: hidden;
-    background: rgba($color-white, 0.06);
+    background: rgba($color-ink, 0.06);
+    border: 1px solid rgba($color-ink, 0.1);
+    box-shadow: 0 14px 34px -20px rgba($color-ink, 0.35);
 
     img {
       width: 100%;
@@ -201,11 +316,16 @@
     }
   }
 
-  // --- Citation : moment fort de la page ----------------------
+  // --- Citation : moment fort (panneau teinté) ----------------
   &__quote {
     margin: 1.5rem 0 0;
-    padding: clamp(1.5rem, 4vw, 2.5rem) 0;
+    padding: clamp(2rem, 5vw, 3.25rem) clamp(1.5rem, 4vw, 3rem);
     text-align: center;
+    border-radius: 18px;
+    border: 1px solid rgba($color-ink, 0.12);
+    background:
+      radial-gradient(120% 120% at 50% 0%, rgba($color-blue, 0.06), rgba($color-blue, 0) 70%),
+      rgba($color-ink, 0.03);
   }
 
   &__quote-text {
@@ -216,7 +336,7 @@
     font-weight: 300;
     font-size: clamp(1.5rem, 3.4vw, 2.3rem);
     line-height: 1.3;
-    color: $color-white;
+    color: $color-ink;
 
     &::before {
       content: "«\00a0";
@@ -232,7 +352,7 @@
     font-size: 0.85rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: $color-text-muted;
+    color: rgba($color-ink, 0.55);
   }
 
   // --- CTA final ----------------------------------------------
@@ -247,5 +367,27 @@
   // --- Autres réalisations ------------------------------------
   &__others .guide-grid {
     margin-top: 1.75rem;
+  }
+
+  // --- Dégradé de fin : le crème s'évapore vers le bleu du footer ---
+  &__fade {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-top: clamp(3rem, 8vh, 6rem);
+    height: clamp(200px, 32vh, 400px);
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      rgba($color-blue, 0) 0%,
+      rgba($color-blue, 0.03) 16%,
+      rgba($color-blue, 0.1) 30%,
+      rgba($color-blue, 0.22) 43%,
+      rgba($color-blue, 0.38) 55%,
+      rgba($color-blue, 0.56) 66%,
+      rgba($color-blue, 0.74) 77%,
+      rgba($color-blue, 0.89) 88%,
+      rgba($color-blue, 0.97) 95%,
+      $color-blue 100%
+    );
   }
 }

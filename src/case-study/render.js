@@ -172,7 +172,8 @@ ${JSON.stringify(breadcrumbJsonLd, null, 2)}
     <!--#include partials/nav.html-->
 
     <!-- ===================== ÉTUDE DE CAS ===================== -->
-    <main class="landing">
+    <!-- data-nav-light : page claire → la nav passe en encre (comme la section Projets) -->
+    <main class="landing case-study-page" data-nav-light>
       <article class="landing__article case-study">
         <a class="case-study__back" href="/#projets">
           <span class="case-study__back-arrow" aria-hidden="true">←</span> Retour aux projets
@@ -206,6 +207,8 @@ ${sections}
         </section>
 
 ${renderOthers(entry, allEntries)}
+
+        <div class="case-study__fade" aria-hidden="true"></div>
       </article>
     </main>
 
