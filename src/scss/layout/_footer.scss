@@ -29,13 +29,13 @@
     align-items: flex-start;
   }
 
-  // Titre de colonne : libellé statique (plus d'accordéon)
+  // Titre de colonne : libellé statique, en gras pour hiérarchiser
   &__title {
     font-size: 0.72rem;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: $color-text-muted;
+    color: $color-white;
   }
 
   // Panneau de liens : toujours visible
