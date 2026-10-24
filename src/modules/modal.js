@@ -30,6 +30,30 @@ function renderFiche(proj) {
         .join("")
     : "";
 
+  // Démo jouable (iframe) + QR code, pour les projets qui l'exposent (ex. Murmure).
+  // L'iframe n'est créée qu'à l'ouverture de la modale (pas au chargement de la page).
+  const demo = d.demo
+    ? `<div class="project__demo">
+         <div class="project__phone">
+           <iframe
+             class="project__iframe"
+             src="${d.demo.url}"
+             title="${d.demo.title || "Démo de l'application"}"
+             loading="lazy"
+             allow="clipboard-write"
+           ></iframe>
+         </div>
+         ${
+           d.qr
+             ? `<figure class="project__qr">
+                  <img src="${d.qr.src}" alt="QR code pour ouvrir l'application sur mobile" width="235" height="234" loading="lazy" />
+                  <figcaption>${d.qr.label || "Scanne pour tester sur mobile."}</figcaption>
+                </figure>`
+             : ""
+         }
+       </div>`
+    : "";
+
   return `
     <article class="project" data-bg="${d.bg || ""}">
       <header class="project__head">
@@ -38,6 +62,7 @@ function renderFiche(proj) {
         ${tags ? `<ul class="project__tags">${tags}</ul>` : ""}
       </header>
       <div class="project__text">${body}</div>
+      ${demo}
       ${links ? `<div class="project__links">${links}</div>` : ""}
       ${g ? `<div class="project__gallery${g.screens ? " project__gallery--screens" : ""}">${imgs}</div>` : ""}
     </article>`;
