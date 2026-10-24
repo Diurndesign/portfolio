@@ -4,6 +4,9 @@ node_modules/
 # Build output
 dist/
 
+# Pages d'études de cas générées (source : src/data/caseStudies.js)
+/realisations/
+
 # Vite cache
 .vite/
 

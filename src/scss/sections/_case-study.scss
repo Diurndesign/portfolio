@@ -1,0 +1,245 @@
+// ============================================================
+//  ÉTUDE DE CAS — page /realisations/<slug>
+//  Réutilise la mise en page éditoriale .landing (typo, sections, largeur
+//  de lecture). N'ajoute que les blocs propres aux études de cas.
+// ============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+// --- Fil d'Ariane -------------------------------------------
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.5rem;
+  margin-bottom: clamp(1.25rem, 3vh, 2rem);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+  color: $color-text-muted;
+
+  a {
+    color: $color-text-soft;
+    transition: color $transition;
+
+    &:hover,
+    &:focus-visible {
+      color: $color-white;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-white;
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+  }
+
+  &__sep {
+    color: rgba($color-white, 0.4);
+  }
+
+  [aria-current="page"] {
+    color: $color-white;
+  }
+}
+
+.case-study {
+  // --- Image principale (le vrai site, sans parti pris N&B) ---
+  &__hero {
+    margin: clamp(1.5rem, 4vh, 2.5rem) 0 clamp(1rem, 2vh, 1.5rem);
+    border-radius: 14px;
+    overflow: hidden;
+    background: rgba($color-white, 0.06);
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  // --- Repères (client, secteur, prestations, délai + lien live) ---
+  &__facts-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem 2rem;
+    margin: clamp(1.5rem, 4vh, 2.5rem) 0;
+    padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1.25rem, 3vw, 2rem);
+    border: 1px solid rgba($color-white, 0.16);
+    border-radius: 14px;
+  }
+
+  &__facts {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 1rem 2.5rem;
+    margin: 0;
+
+    @include until($bp-md) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include until($bp-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__fact {
+    margin: 0;
+  }
+
+  &__fact-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: $color-text-muted;
+    margin-bottom: 0.35rem;
+  }
+
+  &__fact-value {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: $color-white;
+  }
+
+  &__live {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    min-height: 44px;
+    padding: 0.6rem 1.3rem;
+    border-radius: 999px;
+    border: 1px solid rgba($color-white, 0.3);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: $color-white;
+    transition: background $transition, border-color $transition;
+
+    &:hover,
+    &:focus-visible {
+      background: rgba($color-white, 0.08);
+      border-color: rgba($color-white, 0.6);
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-white;
+      outline-offset: 3px;
+    }
+  }
+
+  // --- « Ce que j'ai fait » : grille de cartes ----------------
+  &__cards {
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
+
+    @include until($bp-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    padding: 1.5rem;
+    border: 1px solid rgba($color-white, 0.16);
+    border-radius: 12px;
+
+    p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: $color-text-soft;
+      max-width: none;
+    }
+  }
+
+  &__card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: $color-white;
+    margin-bottom: 0.5rem;
+  }
+
+  // --- Galerie (demi-largeur + pleine largeur) ----------------
+  &__gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(0.75rem, 2vw, 1.25rem);
+    margin-top: 1.5rem;
+
+    @include until($bp-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__fig {
+    margin: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: rgba($color-white, 0.06);
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    &--full {
+      grid-column: 1 / -1;
+    }
+  }
+
+  // --- Citation : moment fort de la page ----------------------
+  &__quote {
+    margin: 1.5rem 0 0;
+    padding: clamp(1.5rem, 4vw, 2.5rem) 0;
+    text-align: center;
+  }
+
+  &__quote-text {
+    position: relative;
+    margin: 0 auto;
+    max-width: 32ch;
+    font-family: $font-display;
+    font-weight: 300;
+    font-size: clamp(1.5rem, 3.4vw, 2.3rem);
+    line-height: 1.3;
+    color: $color-white;
+
+    &::before {
+      content: "«\00a0";
+    }
+
+    &::after {
+      content: "\00a0»";
+    }
+  }
+
+  &__quote-author {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $color-text-muted;
+  }
+
+  // --- CTA final ----------------------------------------------
+  &__cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.85rem;
+    margin-top: 1.75rem;
+  }
+
+  // --- Autres réalisations ------------------------------------
+  &__others .guide-grid {
+    margin-top: 1.75rem;
+  }
+}

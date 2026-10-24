@@ -3,8 +3,13 @@ import react from "@vitejs/plugin-react";
 import { resolve } from "path";
 import { fileURLToPath } from "url";
 import { readFileSync } from "fs";
+import { generateCaseStudies } from "./src/case-study/generate.js";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
+
+// Génère les pages d'études de cas (realisations/<slug>.html) + l'entrée
+// sitemap à partir des données, AVANT que Vite ne résolve les entrées.
+const caseStudyInput = generateCaseStudies(root);
 
 // Inclusion de fragments HTML partagés (aucune dépendance npm).
 // Dans une page : <!--#include partials/footer.html--> est remplacé par le
@@ -138,6 +143,8 @@ export default defineConfig(() => ({
         refonteSiteCharte: resolve(root, "refonte-site-et-charte-graphique.html"),
         auditGratuit: resolve(root, "audit-site-web-gratuit.html"),
         guides: resolve(root, "guides.html"),
+        // Pages d'études de cas générées depuis src/data/caseStudies.js
+        ...caseStudyInput,
       },
     },
   },

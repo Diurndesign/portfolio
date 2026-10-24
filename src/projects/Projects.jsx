@@ -28,6 +28,16 @@ function Card({ project }) {
     </span>
   );
 
+  // Carte-lien vers une autre page (ex. étude de cas) : prioritaire sur la
+  // modale, pour que la carte de l'accueil mène à /realisations/<slug>.
+  if (project.cardHref) {
+    return (
+      <a className="card__btn" href={project.cardHref} aria-label={project.cardAriaLabel}>
+        {media}
+      </a>
+    );
+  }
+
   // kind "link" : lien externe (ex. Murmure, ouvert dans un nouvel onglet) ;
   // les autres cartes ouvrent une fiche modal.
   if (project.kind === "link") {
