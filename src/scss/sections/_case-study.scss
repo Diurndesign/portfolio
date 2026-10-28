@@ -116,6 +116,31 @@
       outline-color: $color-ink;
     }
   }
+
+  // FAQ adaptée au crème (encre au lieu du blanc)
+  .landing__faq-item {
+    border-top-color: rgba($color-ink, 0.18);
+
+    &:last-child {
+      border-bottom-color: rgba($color-ink, 0.18);
+    }
+
+    summary {
+      color: $color-ink;
+
+      &::after {
+        color: $color-ink-muted;
+      }
+
+      &:focus-visible {
+        outline-color: $color-ink;
+      }
+    }
+
+    p {
+      color: rgba($color-ink, 0.82);
+    }
+  }
 }
 
 // --- Lien de retour « ← Retour aux projets » ----------------

@@ -74,6 +74,23 @@ ${figs}
         </section>`;
   }
 
+  if (section.type === "faq") {
+    const items = section.items
+      .map(
+        (it, i) => `            <details class="landing__faq-item"${i === 0 ? " open" : ""}>
+              <summary>${it.q}</summary>
+              <p>${it.a}</p>
+            </details>`
+      )
+      .join("\n");
+    return `        <section class="landing__section">
+          <h2>${section.heading}</h2>
+          <div class="landing__faq" aria-label="${section.label}">
+${items}
+          </div>
+        </section>`;
+  }
+
   if (section.type === "quote") {
     return `        <section class="landing__section">
           <h2>${section.heading}</h2>

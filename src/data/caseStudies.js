@@ -23,6 +23,7 @@
 //                 "cards"   → { heading, intro?, cards: [{ title, text }] }
 //                 "gallery" → { images: [{ src, alt, width, height, full? }] }
 //                 "quote"   → { heading, quote, author }
+//                 "faq"     → { heading, label, items: [{ q, a }] }
 //   cta         : { heading, text } (bloc d'appel final).
 
 export const caseStudies = [
@@ -154,6 +155,33 @@ export const caseStudies = [
         quote:
           "Merci à Jérémy pour ses compétences et son professionnalisme, il est toujours à l'écoute et bienveillant. Je suis ravie de mon site internet, qui reflète mon image et qui est très complet. Je le recommande vivement.",
         author: "Alexandra, The Beauty Corner by Alex, Nice",
+      },
+      {
+        type: "faq",
+        heading: "Questions fréquentes",
+        label: "Questions fréquentes sur le projet The Beauty Corner",
+        items: [
+          {
+            q: "Combien de temps a pris la création du site&nbsp;?",
+            a: "Deux semaines, du cadrage à la mise en ligne&nbsp;: un jour de cadrage, un jour pour valider la direction visuelle, puis le développement et l'intégration des vrais textes et photos.",
+          },
+          {
+            q: "La gérante peut-elle modifier son site seule&nbsp;?",
+            a: "Oui. Grâce à son interface d'administration, Alexandra ajoute et modifie elle-même ses textes, ses photos et ses avant/après.",
+          },
+          {
+            q: "Le site remplace-t-il Planity&nbsp;?",
+            a: "Non, il le complète. Chaque bouton «&nbsp;Prendre rendez-vous&nbsp;» mène directement à son agenda Planity&nbsp;: il n'y a pas de double gestion des rendez-vous.",
+          },
+          {
+            q: "À qui appartient le site&nbsp;?",
+            a: "À Alexandra. L'hébergement et le nom de domaine sont à son nom&nbsp;: elle est entièrement propriétaire de son site.",
+          },
+          {
+            q: "Pouvez-vous créer un site similaire pour mon institut ou mon salon&nbsp;?",
+            a: "Oui. Chaque site est conçu sur mesure pour votre activité, avec un devis gratuit et sans engagement. Demandez un devis ou réservez un appel de 15&nbsp;min juste en dessous.",
+          },
+        ],
       },
     ],
     cta: {
