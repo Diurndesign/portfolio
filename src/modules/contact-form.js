@@ -50,8 +50,13 @@ function initContactForm() {
         status.classList.add("is-success");
         form.reset();
 
-        if (typeof gtag === "function") {
-          gtag("event", "generate_lead", { method: "contact_form" });
+        // Conversion GA4 au succès réel de l'envoi (pas au clic). Le nom du
+        // formulaire vient de data-form-name (« audit », « devis »), sinon
+        // « contact ». gtag n'existe qu'après consentement (consent.js).
+        if (typeof window.gtag === "function") {
+          window.gtag("event", "generate_lead", {
+            form_name: form.dataset.formName || "contact",
+          });
         }
       } else {
         throw new Error(json.message || "Échec de l'envoi");

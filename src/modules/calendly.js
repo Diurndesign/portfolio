@@ -5,19 +5,12 @@
 // target="_blank"), donc il fonctionne même sans JavaScript. Le script
 // Calendly n'est chargé qu'au PREMIER clic, jamais au chargement des pages
 // (préserve la performance). Si le script échoue, on ouvre l'URL dans un
-// nouvel onglet. Un événement GA4 « clic_reservation » est envoyé au clic.
+// nouvel onglet. L'événement GA4 « click_calendly » est envoyé par track.js.
 
 const CSS_URL = "https://assets.calendly.com/assets/external/widget.css";
 const JS_URL = "https://assets.calendly.com/assets/external/widget.js";
 
 let loadPromise = null;
-
-// RGPD : gtag n'existe qu'après consentement (voir consent.js).
-function track(name, params) {
-  if (typeof window.gtag === "function") {
-    window.gtag("event", name, params || {});
-  }
-}
 
 // Charge le CSS puis le JS Calendly une seule fois par visite.
 function loadCalendly() {
@@ -47,7 +40,6 @@ function initCalendly() {
     if (!trigger) return;
 
     const url = trigger.getAttribute("href");
-    track("clic_reservation", { page: location.pathname });
 
     // Respecte l'intention d'ouvrir dans un nouvel onglet (clic milieu,
     // Cmd/Ctrl/Maj) : on laisse le navigateur suivre le lien normalement.

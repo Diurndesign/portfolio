@@ -1,8 +1,9 @@
 // ============================================================
-//  Suivi des conversions — clics mail / téléphone / CTA
+//  Suivi des conversions — clics mail / téléphone / Calendly / CTA
 // ============================================================
 // Envoie des événements GA4 sur les actions de conversion secondaires
-// (en complément de « generate_lead » déclenché à l'envoi du formulaire).
+// (en complément de « generate_lead », envoyé par contact-form.js au succès
+// réel de l'envoi d'un formulaire).
 // RGPD : gtag n'existe qu'après consentement (voir consent.js), donc rien
 // n'est envoyé tant que l'utilisateur n'a pas accepté les cookies.
 
@@ -30,13 +31,19 @@ function initTracking() {
 
     // Clic sur un numéro de téléphone (tel:)
     if (/^tel:/i.test(href)) {
-      track("clic_telephone", { page: location.pathname });
-      track("contact_phone", { method: "phone" }); // événement historique conservé
+      track("click_call", { page_path: location.pathname });
       return;
     }
 
-    // Clic sur un bouton d'appel à l'action
-    const cta = e.target.closest(CTA_SELECTOR);
+    // Clic sur un lien de réservation Calendly
+    if (/calendly\.com/i.test(href)) {
+      track("click_calendly", { page_path: location.pathname });
+      return;
+    }
+
+    // Clic sur un lien d'appel à l'action. Seuls les liens comptent :
+    // .landing__cta habille aussi des sections entières (ex. contact).
+    const cta = link && link.closest(CTA_SELECTOR);
     if (cta) {
       track("cta_click", {
         cta_label: (cta.textContent || "").trim().slice(0, 80),
