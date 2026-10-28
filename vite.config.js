@@ -95,10 +95,13 @@ function optimizeHtml() {
       // que le bandeau est parse, l'affiche immediatement pour qui n'a pas
       // encore choisi. La logique de consentement (chargement de GA sur
       // « Accepter ») reste dans consent.js : rien ne change cote RGPD.
+      // Même règle que consent.js : un choix sans date ou de plus de 6 mois
+      // (182 jours) est expiré, le bandeau réapparaît.
       if (out.includes('id="cookie-consent"')) {
         const reveal =
           '<script>try{var c=localStorage.getItem("diurn-cookie-consent");' +
-          'if(c!=="granted"&&c!=="denied"){var b=document.getElementById("cookie-consent");' +
+          'var d=Number(localStorage.getItem("diurn-cookie-consent-date"));' +
+          'if((c!=="granted"&&c!=="denied")||!d||Date.now()-d>15724800000){var b=document.getElementById("cookie-consent");' +
           "if(b)b.classList.add(\"is-visible\");}}catch(e){}</script>";
         out = out.replace(/<\/body>/i, reveal + "</body>");
       }
