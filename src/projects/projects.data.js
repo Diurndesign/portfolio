@@ -228,12 +228,16 @@ export const projects = [
     },
     detail: {
       bg: "#eef0ea",
-      stack: ["JavaScript ES6", "API REST", "DOM", "Authentification", "localStorage"],
-      body: [
-        "Le site d'une architecte d'intérieur, avec deux facettes : une galerie publique qui met en valeur ses réalisations, et un espace privé où elle gère elle-même son contenu.",
-        "Côté visiteurs : une galerie que l'on peut filtrer par catégorie, pour retrouver rapidement le type de projet recherché.",
-        "Côté administratrice : une fois connectée, elle ajoute ou supprime ses projets en toute autonomie, directement depuis le site, sans avoir besoin d'un développeur.",
-        "J'ai particulièrement soigné la fiabilité : vérification des images envoyées, aperçu avant publication et messages clairs en cas de souci.",
+      cat: "Projet de formation · JavaScript",
+      tagline: "Une galerie publique, un espace d'administration privé : une architecte qui met à jour son site sans développeur.",
+      tech: ["html", "css", "javascript", "jwt"],
+      sections: [
+        { heading: "Contexte", text: "Sophie Bluel, architecte d'intérieur, veut un site qui présente ses réalisations et qu'elle puisse mettre à jour elle-même. L'API étant fournie, ma mission était de développer tout le front-end." },
+        { heading: "Objectifs", text: "Générer la galerie depuis l'API et la filtrer par catégorie, puis créer une page de connexion et une fenêtre d'administration pour ajouter ou supprimer des projets, sans recharger la page." },
+        { heading: "Stack technique", text: "HTML et CSS pour la structure et la mise en page, JavaScript sans framework pour toute la logique, une API REST et une authentification par jeton JWT conservé dans le navigateur." },
+        { heading: "Compétences développées", text: "Dialoguer avec une API (lecture, envoi de fichier, suppression protégée), manipuler le DOM, et sécuriser l'ajout d'image : vérification du format et du poids, aperçu avant publication, messages d'erreur clairs." },
+        { heading: "Résultats et impact", text: "Un site entièrement piloté par les données, avec un parcours d'administration complet, en ligne et documenté sur GitHub." },
+        { heading: "Perspectives d'amélioration", text: "Gérer l'expiration du jeton de connexion, découper le code en modules ES et rendre la fenêtre d'administration entièrement navigable au clavier." },
       ],
       links: [
         { href: "https://sophiebluel-ten.vercel.app/", label: "Voir la démo" },
@@ -264,12 +268,16 @@ export const projects = [
     },
     detail: {
       bg: "#f2e9e6",
-      stack: ["React 19", "React Router 7", "Sass", "Vite", "API REST"],
-      body: [
-        "Kasa est une plateforme de location de logements entre particuliers. J'ai conçu et développé l'interface du site : la page d'accueil qui présente tous les logements, et la fiche détaillée de chacun.",
-        "L'expérience se veut fluide et agréable : on passe d'un logement à l'autre sans jamais attendre un rechargement de page. Chaque fiche affiche les photos en diaporama, la description, les équipements et la note du logement.",
-        "J'ai soigné les détails qui font la différence : un diaporama d'images réalisé sur mesure, des rubriques qui se déplient, une note en étoiles, et une page claire lorsqu'un logement n'existe pas.",
-        "Résultat : un site rapide, aussi agréable sur mobile que sur ordinateur, et pensé pour évoluer facilement.",
+      cat: "Projet de formation · React",
+      tagline: "Trouver son logement entre particuliers, d'une page à l'autre sans un seul rechargement.",
+      tech: ["react", "reactrouter", "sass", "vite", "docker"],
+      sections: [
+        { heading: "Contexte", text: "Kasa, plateforme de location de logements entre particuliers, refait son site en React. Ma mission : développer toute l'interface à partir des maquettes, en m'appuyant sur l'API des logements." },
+        { heading: "Objectifs", text: "Afficher la liste des logements puis la fiche détaillée de chacun, avec une navigation fluide, une page d'erreur pour les adresses inconnues et un rendu fidèle aux maquettes sur mobile comme sur ordinateur." },
+        { heading: "Stack technique", text: "React 19 et React Router 7 pour l'interface et la navigation, Sass pour les styles, Vite pour le build, et une API Node.js lancée avec Docker." },
+        { heading: "Compétences développées", text: "Découper une interface en composants réutilisables (carrousel d'images, volets dépliants, note en étoiles), gérer leur état, et mettre en place un routage dynamique qui redirige vers la page d'erreur quand un logement n'existe pas." },
+        { heading: "Résultats et impact", text: "Une application complète et responsive, déployée en ligne, avec un code source documenté sur GitHub." },
+        { heading: "Perspectives d'amélioration", text: "Ajouter des tests automatisés sur les composants, précharger les images du carrousel et le rendre pilotable au clavier." },
       ],
       links: [
         { href: "https://kasa-gold-chi.vercel.app/", label: "Voir la démo" },
@@ -301,12 +309,16 @@ export const projects = [
     },
     detail: {
       bg: "#e7e8f0",
-      cat: "Application web · React",
-      stack: ["React 18", "Vite", "Supabase", "Vercel"],
-      body: [
-        "Murmure est une application web que j'ai conçue et développée seul, du design de l'interface à la base de données et la mise en ligne.",
-        "Le principe : une seule question anonyme par jour, la même pour tous. Pas de compte, pas de « like », pas de fil infini : une application volontairement calme, à rebours des réseaux sociaux.",
-        "C'est aussi mon terrain d'expérimentation technique : React pour l'interface, Supabase pour les données, et l'IA utilisée comme accélérateur de développement, sans jamais lui laisser le volant.",
+      cat: "Projet personnel · React + Supabase",
+      tagline: "Une question par jour. Des réponses d'inconnus. Rien d'autre.",
+      tech: ["react", "vite", "supabase", "vercel"],
+      sections: [
+        { heading: "Contexte", text: "Un projet personnel né d'un constat : les réseaux sociaux mettent l'individu au centre, au lieu du sujet. Je l'ai conçu et développé seul, du design de l'interface à la base de données et à la mise en ligne." },
+        { heading: "Objectifs", text: "Créer un rituel quotidien court et anonyme : une seule question par jour, la même pour tous, sans compte, sans « like », sans fil infini, et sans collecter de données personnelles." },
+        { heading: "Stack technique", text: "React 18 et Vite pour l'interface, Supabase (base PostgreSQL hébergée en Europe) pour les réponses, Vercel pour le déploiement." },
+        { heading: "Compétences développées", text: "Concevoir un produit de A à Z avec un vrai back-end : modèle de données, limite d'une réponse par jour vérifiée côté navigateur et côté serveur, signalement avec suppression immédiate, question disponible hors ligne. L'IA m'a servi d'accélérateur, chaque ligne relue et comprise." },
+        { heading: "Résultats et impact", text: "Une application en ligne et jouable ci-dessous, avec 400 questions en rotation, un mode sombre automatique, une page de confidentialité et des numéros d'écoute accessibles depuis l'app." },
+        { heading: "Perspectives d'amélioration", text: "La rendre installable (PWA), puis en faire une application mobile native, avec un tableau de bord de modération et un rappel quotidien optionnel." },
       ],
       // Démo jouable directement dans la modale (iframe chargée à l'ouverture)
       // + QR code pour tester sur mobile.
