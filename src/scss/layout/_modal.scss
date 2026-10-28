@@ -143,6 +143,42 @@ $modal-panel: #ece7dd;
     }
   }
 
+  // Accroche sous le titre (projets de formation et personnels)
+  &__tagline {
+    margin-top: 0.9rem;
+    max-width: 40ch;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    color: rgba($color-ink, 0.75);
+  }
+
+  // Logos des technologies (monochromes, accordés à l'encre du site)
+  &__techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+  }
+
+  &__tech {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.35rem 0.8rem 0.35rem 0.6rem;
+    border: 1px solid rgba($color-ink, 0.25);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    color: rgba($color-ink, 0.8);
+
+    svg {
+      width: 1rem;
+      height: 1rem;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+  }
+
   &__text {
     display: flex;
     flex-direction: column;
@@ -155,6 +191,16 @@ $modal-panel: #ece7dd;
       line-height: 1.75;
       color: rgba($color-ink, 0.78);
     }
+  }
+
+  // Rubrique d'une fiche structurée (Contexte, Objectifs…)
+  &__section-title {
+    margin-bottom: 0.3rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: $color-ink;
   }
 
   // Lien « Voir le site en ligne » (projets avec un site livré)

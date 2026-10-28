@@ -6,6 +6,7 @@
 // Le seul contenu encore en <template> est « Mentions légales » (#detail-legal).
 
 import { projects } from "../projects/projects.data.js";
+import { renderTech } from "../projects/tech-icons.js";
 
 // Construit le HTML d'une fiche projet à partir de son objet `detail`.
 function renderFiche(proj) {
@@ -13,7 +14,18 @@ function renderFiche(proj) {
   const cat = d.cat || proj.cat || "";
   const title = d.title || proj.title || "";
   const tags = (d.stack || []).map((t) => `<li>${t}</li>`).join("");
-  const body = (d.body || []).map((p) => `<p>${p}</p>`).join("");
+  const techs = (d.tech || []).map(renderTech).join("");
+  // Fiche structurée (Contexte, Objectifs…) si `sections`, sinon paragraphes libres.
+  const body = d.sections
+    ? d.sections
+        .map(
+          (s) => `<section class="project__section">
+              <h4 class="project__section-title">${s.heading}</h4>
+              <p>${s.text}</p>
+            </section>`
+        )
+        .join("")
+    : (d.body || []).map((p) => `<p>${p}</p>`).join("");
   const links = (d.links || [])
     .map(
       (l) =>
@@ -61,7 +73,9 @@ function renderFiche(proj) {
       <header class="project__head">
         <p class="project__cat">${cat}</p>
         <h3 class="project__title" id="modal-title">${title}</h3>
+        ${d.tagline ? `<p class="project__tagline">${d.tagline}</p>` : ""}
         ${tags ? `<ul class="project__tags">${tags}</ul>` : ""}
+        ${techs ? `<ul class="project__techs" aria-label="Technologies utilisées">${techs}</ul>` : ""}
       </header>
       <div class="project__text">${body}</div>
       ${demo}
