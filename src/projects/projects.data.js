@@ -270,14 +270,14 @@ export const projects = [
       bg: "#f2e9e6",
       cat: "Projet de formation · React",
       tagline: "Trouver son logement entre particuliers, d'une page à l'autre sans un seul rechargement.",
-      tech: ["react", "reactrouter", "sass", "vite", "docker"],
+      tech: ["react", "reactrouter", "sass", "vite"],
       sections: [
-        { heading: "Contexte", text: "Kasa, plateforme de location de logements entre particuliers, refait son site en React. Ma mission : développer toute l'interface à partir des maquettes, en m'appuyant sur l'API des logements." },
+        { heading: "Contexte", text: "Kasa, plateforme de location de logements entre particuliers, refait son site en React. Ma mission : développer toute l'interface à partir des maquettes et des données des logements." },
         { heading: "Objectifs", text: "Afficher la liste des logements puis la fiche détaillée de chacun, avec une navigation fluide, une page d'erreur pour les adresses inconnues et un rendu fidèle aux maquettes sur mobile comme sur ordinateur." },
-        { heading: "Stack technique", text: "React 19 et React Router 7 pour l'interface et la navigation, Sass pour les styles, Vite pour le build, et une API Node.js lancée avec Docker." },
+        { heading: "Stack technique", text: "React 19 et React Router 7 pour l'interface et la navigation, Sass pour les styles, Vite pour le build ; les données des logements sont lues depuis un fichier JSON." },
         { heading: "Compétences développées", text: "Découper une interface en composants réutilisables (carrousel d'images, volets dépliants, note en étoiles), gérer leur état, et mettre en place un routage dynamique qui redirige vers la page d'erreur quand un logement n'existe pas." },
         { heading: "Résultats et impact", text: "Une application complète et responsive, déployée en ligne, avec un code source documenté sur GitHub." },
-        { heading: "Perspectives d'amélioration", text: "Ajouter des tests automatisés sur les composants, précharger les images du carrousel et le rendre pilotable au clavier." },
+        { heading: "Perspectives d'amélioration", text: "Brancher l'application sur l'API back-end à la place du fichier JSON, ajouter des tests automatisés sur les composants et rendre le carrousel pilotable au clavier." },
       ],
       links: [
         { href: "https://kasa-gold-chi.vercel.app/", label: "Voir la démo" },
