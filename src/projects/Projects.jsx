@@ -32,7 +32,7 @@ function Card({ project }) {
   // modale, pour que la carte de l'accueil mène à /realisations/<slug>.
   if (project.cardHref) {
     return (
-      <a className="card__btn" href={project.cardHref} aria-label={project.cardAriaLabel}>
+      <a className="card__btn" href={project.cardHref}>
         {media}
       </a>
     );

@@ -28,6 +28,10 @@ $modal-panel: $color-panel;
   &.is-open {
     visibility: visible;
     opacity: 1;
+    // À l'ouverture, visible tout de suite (sans attendre la transition) :
+    // sinon le bouton de fermeture n'est pas encore focusable quand le JS
+    // y place le focus, et le clavier reste derrière la modale.
+    transition: opacity 0.3s $ease, visibility 0s;
   }
 
   &__overlay {

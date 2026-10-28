@@ -1,38 +1,19 @@
 // ============================================================
 //  Photo « À propos » — révèle les compétences
 // ============================================================
-// Le survol souris révèle les compétences via le CSS. Ce module ajoute le
-// support clavier et tactile : Entrée / Espace ou un tap basculent l'état,
-// pour les utilisateurs sans souris.
+// Le survol souris révèle les compétences via le CSS. Un vrai <button>,
+// posé sur la photo, ajoute le support clavier et clic : il bascule l'état
+// et tient aria-expanded à jour. Sur tactile, le CSS masque ce bouton et
+// affiche les compétences d'office sous la photo.
 
 function initAboutPhoto() {
   const fig = document.querySelector(".about__photo");
-  if (!fig) return;
+  const btn = fig && fig.querySelector(".about__photo-toggle");
+  if (!btn) return;
 
-  // Sur un appareil tactile (sans survol), les compétences sont affichées
-  // d'office : la photo n'est plus un bouton, on retire donc l'interactivité
-  // et sa sémantique pour ne pas induire les lecteurs d'écran en erreur.
-  const canHover = window.matchMedia("(hover: hover)").matches;
-  if (!canHover) {
-    fig.removeAttribute("role");
-    fig.removeAttribute("tabindex");
-    fig.removeAttribute("aria-expanded");
-    fig.removeAttribute("aria-label");
-    return;
-  }
-
-  function toggle() {
+  btn.addEventListener("click", () => {
     const open = fig.classList.toggle("is-revealed");
-    fig.setAttribute("aria-expanded", open ? "true" : "false");
-  }
-
-  fig.addEventListener("click", toggle);
-
-  fig.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      toggle();
-    }
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
   });
 }
 

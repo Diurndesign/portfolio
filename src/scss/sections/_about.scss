@@ -82,8 +82,27 @@
       transition: filter 0.55s $ease, transform 0.6s $ease;
     }
 
+    // Vrai bouton (clavier, clic) posé sur toute la photo : il pilote
+    // l'affichage des compétences. Invisible ; son libellé est en sr-only.
+    &-toggle {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      cursor: pointer;
+
+      &:focus-visible {
+        outline: 2px solid $color-white;
+        outline-offset: -6px;
+        border-radius: 10px;
+      }
+    }
+
     // Indice discret qui invite à survoler (disparaît une fois révélé)
     &-cue {
+      pointer-events: none;
       position: absolute;
       left: 1rem;
       bottom: 1rem;
@@ -163,12 +182,11 @@
     }
 
     // Appareils avec survol (souris) : les compétences se révèlent au
-    // survol, au focus clavier, ou au clic (toggle JS). L'indice invite.
+    // survol, ou au clic / Entrée sur le bouton (toggle JS). L'indice invite.
     @media (hover: hover) {
       cursor: pointer;
 
       &:hover,
-      &:focus-visible,
       &.is-revealed {
         img {
           filter: blur(7px) brightness(0.5);
@@ -184,16 +202,13 @@
         }
       }
 
-      &:focus-visible {
-        outline: 2px solid $color-white;
-        outline-offset: 4px;
-      }
     }
 
     // Appareils tactiles (pas de survol) : pas de mécanique cachée, les
     // compétences sont affichées d'office sous la photo, qui reste nette.
     @media (hover: none) {
-      .about__photo-cue {
+      .about__photo-cue,
+      .about__photo-toggle {
         display: none;
       }
 

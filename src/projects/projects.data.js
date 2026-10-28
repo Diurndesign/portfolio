@@ -33,7 +33,6 @@ export const projects = [
     // Sur l'accueil, la carte mène à l'étude de cas (les deep-links
     // #projet-beautycorner des pages locales ouvrent toujours la fiche modale).
     cardHref: "/realisations/beauty-corner",
-    cardAriaLabel: "The Beauty Corner, voir l'étude de cas",
     title: "Beauty Corner",
     cat: "Site internet",
     tags: ["web"],
