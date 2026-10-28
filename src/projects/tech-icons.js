@@ -8,7 +8,6 @@
 
 import {
   siCss,
-  siDocker,
   siHtml5,
   siJavascript,
   siJsonwebtokens,
@@ -28,7 +27,6 @@ const icons = {
   reactrouter: { label: "React Router", icon: siReactrouter },
   sass: { label: "Sass", icon: siSass },
   vite: { label: "Vite", icon: siVite },
-  docker: { label: "Docker", icon: siDocker },
   jwt: { label: "JWT", icon: siJsonwebtokens },
   supabase: { label: "Supabase", icon: siSupabase },
   vercel: { label: "Vercel", icon: siVercel },
