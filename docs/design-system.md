@@ -30,7 +30,6 @@ projet », « Audit gratuit » ou « Réserver un appel ».
 ├── #faq                            Questions fréquentes + avis clients
 └── #contact                        Formulaire, téléphone, Calendly, réseaux
 /realisations/beauty-corner         Étude de cas détaillée
-/parcours                           Pitch en 6 actes (lien dans le footer)
 /guides                             Hub des guides
 ├── /combien-coute-site-internet-nice
 ├── /site-sur-mesure-ou-wix-squarespace
@@ -46,10 +45,9 @@ projet », « Audit gratuit » ou « Réserver un appel ».
 | Suggestion | Sur le site |
 |---|---|
 | Accueil / Hero | `#accueil` |
-| À propos (pitch) | `#a-propos` + page `/parcours` |
+| À propos (pitch) | `#a-propos` |
 | Compétences | Révélées au survol / au tap sur la photo de l'À propos |
 | Projets avec filtres | `#projets` (composant React) |
-| Parcours | Page `/parcours` |
 | Blog / Veille | Section Guides (articles) |
 | Contact | `#contact` + liens sociaux dans la barre latérale |
 
@@ -59,7 +57,7 @@ projet », « Audit gratuit » ou « Réserver un appel ».
   pour laisser toute la largeur au contenu. La nav passe en clair sur les
   sections crème.
 - **Mobile** : menu burger (`aria-expanded`), réseaux regroupés dans le menu.
-- **Footer** : maillage vers les pages locales, services, guides et parcours.
+- **Footer** : maillage vers les pages locales, services et guides.
 
 ---
 

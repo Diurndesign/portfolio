@@ -146,7 +146,6 @@ export default defineConfig(() => ({
         refonteSiteCharte: resolve(root, "refonte-site-et-charte-graphique.html"),
         auditGratuit: resolve(root, "audit-site-web-gratuit.html"),
         guides: resolve(root, "guides.html"),
-        parcours: resolve(root, "parcours.html"),
         // Pages d'études de cas générées depuis src/data/caseStudies.js
         ...caseStudyInput,
       },
