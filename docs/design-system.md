@@ -110,7 +110,7 @@ Hiérarchie principale :
 | Niveau | Taille | Exemple |
 |---|---|---|
 | Titre hero | `clamp(4.5rem, 15vw, 13rem)` | DiUrN sTudio |
-| Titre de fiche | `clamp(2.5rem, 6vw, 4rem)` | Kasa |
+| Titre de fiche | `clamp(2.5rem, 6vw, 4rem)` | Nina Carducci |
 | Sous-titre | `clamp(1.4rem, 2.4vw, 1.9rem)` | Accroches |
 | Texte | `0.95rem` à `1rem`, interligne 1,75 | Paragraphes |
 | Surtitre | `0.72rem`, majuscules, espacement 0,18 em | « PROJET DE FORMATION » |

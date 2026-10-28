@@ -7,12 +7,14 @@
 // puis utiliser sa clé dans `detail.tech` (projects.data.js).
 
 import {
+  siBootstrap,
   siCss,
   siHtml5,
   siJavascript,
+  siJquery,
   siJsonwebtokens,
+  siLighthouse,
   siReact,
-  siReactrouter,
   siSass,
   siSupabase,
   siVercel,
@@ -23,8 +25,10 @@ const icons = {
   html: { label: "HTML5", icon: siHtml5 },
   css: { label: "CSS3", icon: siCss },
   javascript: { label: "JavaScript", icon: siJavascript },
+  jquery: { label: "jQuery", icon: siJquery },
+  bootstrap: { label: "Bootstrap", icon: siBootstrap },
+  lighthouse: { label: "Lighthouse", icon: siLighthouse },
   react: { label: "React", icon: siReact },
-  reactrouter: { label: "React Router", icon: siReactrouter },
   sass: { label: "Sass", icon: siSass },
   vite: { label: "Vite", icon: siVite },
   jwt: { label: "JWT", icon: siJsonwebtokens },
