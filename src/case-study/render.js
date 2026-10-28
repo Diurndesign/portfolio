@@ -32,6 +32,35 @@ ${live}
       </div>`;
 }
 
+// Texte brut d'une question ou d'une réponse (sans balises, espaces normaux),
+// pour que le JSON-LD reprenne exactement le texte affiché.
+const plainText = (t) =>
+  t
+    .replace(/<[^>]+>/g, "")
+    .replace(/&nbsp;/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+
+// JSON-LD FAQPage généré depuis la section « faq » de l'étude, s'il y en a une.
+function renderFaqJsonLd(entry) {
+  const faq = (entry.sections || []).find((s) => s.type === "faq");
+  if (!faq) return "";
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faq.items.map((it) => ({
+      "@type": "Question",
+      name: plainText(it.q),
+      acceptedAnswer: { "@type": "Answer", text: plainText(it.a) },
+    })),
+  };
+  return `
+    <!-- Données structurées : questions fréquentes (FAQPage) -->
+    <script type="application/ld+json">
+${JSON.stringify(data, null, 2)}
+    </script>`;
+}
+
 function renderSection(section) {
   if (section.type === "text") {
     const body = section.paragraphs.map((t) => `          ${p(t)}`).join("\n");
@@ -183,6 +212,7 @@ export function renderCaseStudy(entry, allEntries) {
     <script type="application/ld+json">
 ${JSON.stringify(breadcrumbJsonLd, null, 2)}
     </script>
+${renderFaqJsonLd(entry)}
   </head>
   <body>
     <!-- ===================== NAVBAR ===================== -->
