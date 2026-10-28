@@ -261,7 +261,7 @@ export const projects = [
     tags: ["web"],
     img: {
       src: "/img/projets/nina-carducci.webp",
-      alt: "Site de Nina Carducci, photographe à Bordeaux : page d'accueil avec un carrousel de photos de mariage",
+      alt: "Site de Nina Carducci : page d'accueil, illustrée ici avec des photos d'architecture",
       width: 1280,
       height: 960,
     },
@@ -285,8 +285,8 @@ export const projects = [
       gallery: {
         screens: true,
         images: [
-          { src: "/img/projets/nina-accueil.webp", alt: "Nina Carducci : page d'accueil avec le carrousel de photos", width: 1440, height: 900 },
-          { src: "/img/projets/nina-galerie.webp", alt: "Nina Carducci : galerie de photos filtrable par catégorie", width: 1440, height: 900 },
+          { src: "/img/projets/nina-accueil.webp", alt: "Nina Carducci : page d'accueil et son carrousel, illustrés avec des photos d'architecture", width: 1440, height: 900 },
+          { src: "/img/projets/nina-galerie.webp", alt: "Nina Carducci : galerie filtrable par catégorie, illustrée avec des intérieurs", width: 1440, height: 900 },
           { src: "/img/projets/nina-mobile.webp", alt: "Nina Carducci : la page d'accueil en version mobile", width: 390, height: 820 },
         ],
       },
