@@ -96,7 +96,7 @@ ${items}
           <h2>${section.heading}</h2>
           <figure class="case-study__quote">
             <blockquote class="case-study__quote-text">${section.quote}</blockquote>
-            <figcaption class="case-study__quote-author">— ${section.author}</figcaption>
+            <figcaption class="case-study__quote-author">${section.author}</figcaption>
           </figure>
         </section>`;
   }
