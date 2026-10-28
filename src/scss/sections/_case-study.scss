@@ -91,7 +91,7 @@
     border-color: rgba($color-ink, 0.18);
 
     &__kicker {
-      color: rgba($color-ink, 0.55);
+      color: $color-ink-muted;
     }
 
     &__title {
@@ -212,7 +212,7 @@
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba($color-ink, 0.55);
+    color: $color-ink-muted;
     margin-bottom: 0.35rem;
   }
 
@@ -352,7 +352,7 @@
     font-size: 0.85rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: rgba($color-ink, 0.55);
+    color: $color-ink-muted;
   }
 
   // --- CTA final ----------------------------------------------

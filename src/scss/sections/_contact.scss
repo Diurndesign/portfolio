@@ -108,7 +108,7 @@
       transition: border-color $transition, background $transition;
 
       &::placeholder {
-        color: rgba(255, 255, 255, 0.4);
+        color: $color-text-placeholder;
       }
 
       &:focus {
@@ -163,11 +163,11 @@
     line-height: 1.5;
 
     &.is-success {
-      color: #8ef0c0;
+      color: $color-success;
     }
 
     &.is-error {
-      color: #ffb3b3;
+      color: $color-error;
     }
   }
 
@@ -250,7 +250,7 @@
   }
 
   &__stars {
-    color: #ffc65c;
+    color: $color-warning;
     letter-spacing: 0.08em;
     font-size: 0.95rem;
   }
