@@ -307,3 +307,52 @@
     animation: none;
   }
 }
+
+// ============================================================
+//  Hero « gaufré » : Diurn Studio en grand, frappé dans le bleu,
+//  texte en haut (accroche) et en bas (intro + boutons).
+// ============================================================
+.hero {
+  &__content {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  // Gaufrage : lettres de la couleur du papier bleu, révélées seulement
+  // par la lumière (liseré clair en haut à gauche) et l'ombre (en bas à
+  // droite), comme un marquage à froid sans encre.
+  &__title {
+    font-weight: 300;
+    font-size: clamp(5rem, 19vw, 17rem);
+    line-height: 0.86;
+    color: $color-blue;
+    text-shadow:
+      -1px -1px 0 rgba(255, 255, 255, 0.2),
+      -2px -2px 3px rgba(255, 255, 255, 0.08),
+      1px 1px 0 rgba(0, 0, 25, 0.55),
+      2px 3px 5px rgba(0, 0, 25, 0.4);
+
+    @include until($bp-sm) {
+      text-shadow:
+        -1px -1px 0 rgba(255, 255, 255, 0.22),
+        1px 1px 0 rgba(0, 0, 25, 0.6),
+        1px 2px 3px rgba(0, 0, 25, 0.4);
+    }
+  }
+
+  &__intro {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__actions {
+    justify-content: center;
+  }
+}
