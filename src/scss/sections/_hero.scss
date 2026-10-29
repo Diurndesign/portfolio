@@ -35,6 +35,7 @@
   // souci de contraste avec les CTA). Le bleu s'évapore vers le crème
   // exact de .section--projets pour un raccord invisible.
   &__fade {
+    position: relative;
     // Pleine largeur robuste : calc(50% - 50vw) tient compte du padding
     // horizontal de la section (le translateX laissait un liseré au bord).
     width: 100vw;
@@ -355,4 +356,15 @@
   &__actions {
     justify-content: center;
   }
+}
+
+// Texture papier qui apparaît avec le crème du dégradé (le crème opaque
+// recouvre la texture du body, celle-ci prend le relais)
+.hero__fade::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: $paper-texture 0 0 / $paper-texture-size;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000);
+  mask-image: linear-gradient(to bottom, transparent, #000);
 }

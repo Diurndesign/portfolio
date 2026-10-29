@@ -8,7 +8,7 @@
 @use "../abstracts/mixins" as *;
 
 .case-study-page {
-  background: $color-cream;
+  background: $paper-texture 0 0 / $paper-texture-size, $color-cream;
   color: $color-ink;
   // le dégradé .case-study__fade doit toucher directement le footer
   padding-bottom: 0;

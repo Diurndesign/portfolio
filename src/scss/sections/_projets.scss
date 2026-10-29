@@ -130,6 +130,7 @@
 // Le crème s'évapore vers le bleu de la section suivante. Même rampe
 // d'opacité adoucie que .hero__fade : dissolution sans limite perceptible.
 .projets__fade {
+  position: relative;
   // Pleine largeur robuste : calc(50% - 50vw) tient compte du padding
   // horizontal de la section (le translateX laissait un liseré crème au bord).
   width: 100vw;
@@ -270,9 +271,8 @@ $film-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
 $paper: #f6f4ef; // même papier que les vignettes (scripts/trame.py)
 
 .section--projets {
-  // fond crème du site : les vignettes, sur papier plus clair, ressortent
-  // comme des tirages posés sur la page
-  background: $color-cream;
+  // fond crème du site, avec la texture papier
+  background: $paper-texture 0 0 / $paper-texture-size, $color-cream;
 
   .projets__head {
     text-align: center;
@@ -412,4 +412,15 @@ $paper: #f6f4ef; // même papier que les vignettes (scripts/trame.py)
     filter: drop-shadow(0 20px 22px rgba(23, 25, 58, 0.26))
       drop-shadow(0 3px 4px rgba(23, 25, 58, 0.2));
   }
+}
+
+// Texture papier qui suit le bleu du dégradé (le fond texturé de la
+// section disparaît sous le bleu, celle-ci prend le relais)
+.projets__fade::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: $paper-texture 0 0 / $paper-texture-size;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000);
+  mask-image: linear-gradient(to bottom, transparent, #000);
 }
