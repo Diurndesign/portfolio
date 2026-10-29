@@ -307,3 +307,168 @@
     animation: none;
   }
 }
+
+// ============================================================
+//  Carte de visite à retourner (recto gaufré, verso présentation)
+// ============================================================
+$klein: #002fa7; // bleu Klein : plus vif que le bleu roi du fond
+$card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9 -0.35'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+
+.hero {
+  &__inner {
+    align-items: center;
+  }
+
+  &__card {
+    width: min(760px, 100%);
+    aspect-ratio: 85 / 55; // format carte de visite, paysage
+    perspective: 1600px;
+    animation: hero-reveal 1.1s $ease both;
+    animation-delay: 0.25s;
+  }
+
+  &__card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+
+    .hero__card.is-flipped & {
+      transform: rotateY(180deg);
+    }
+  }
+
+  &__card-face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: $card-paper 0 0 / 240px 240px, $klein;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    // carte posée sur le bleu roi : ombre portée + léger relief de tranche
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.14),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.25),
+      0 2px 4px rgba(0, 0, 30, 0.35),
+      0 30px 60px -20px rgba(0, 0, 30, 0.75);
+  }
+
+  &__card-face--back {
+    transform: rotateY(180deg);
+    gap: clamp(0.75rem, 2.2vw, 1.4rem);
+    padding: clamp(1.25rem, 5%, 3rem) clamp(1.25rem, 8%, 4.5rem);
+    text-align: center;
+  }
+
+  // Recto : Diurn Studio gaufré (même couleur que la carte, relief par
+  // la lumière en haut à gauche et l'ombre en bas à droite)
+  &__card-face--front .hero__title {
+    font-weight: 300;
+    font-size: clamp(3.4rem, 12vw, 9.5rem);
+    line-height: 0.86;
+    color: $klein;
+    text-align: center;
+    text-shadow:
+      -1px -1px 0 rgba(255, 255, 255, 0.28),
+      -2px -2px 3px rgba(255, 255, 255, 0.1),
+      1px 1px 0 rgba(0, 0, 30, 0.6),
+      2px 3px 5px rgba(0, 0, 30, 0.45);
+  }
+
+  // Toute la face avant est cliquable
+  &__card-flip {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: 2px solid $color-white;
+      outline-offset: 6px;
+    }
+  }
+
+  &__card-kicker {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  &__card-face--back .hero__intro {
+    margin: 0;
+    max-width: 46ch;
+    font-size: clamp(0.85rem, 1.7vw, 1.15rem);
+    line-height: 1.65;
+    color: $color-white;
+  }
+
+  &__card-back {
+    border: 0;
+    background: none;
+    padding: 0.3rem 0;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.82);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+      color: $color-white;
+      border-bottom-color: $color-white;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-white;
+      outline-offset: 4px;
+    }
+  }
+
+  &__card-hint {
+    margin-top: 1rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: $color-text-muted;
+    animation: hero-reveal 1s $ease both;
+    animation-delay: 0.5s;
+  }
+
+  &__actions {
+    justify-content: center;
+  }
+
+  @include until($bp-sm) {
+    &__card-face--back {
+      gap: 0.5rem;
+      padding: 1rem 1.1rem;
+    }
+
+    &__card-face--back .hero__intro {
+      font-size: 0.78rem;
+      line-height: 1.5;
+    }
+
+    &__card-kicker {
+      font-size: 0.62rem;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__card-inner {
+    transition: none;
+  }
+}

@@ -266,50 +266,52 @@
           Création de site web sur mesure et identité visuelle de marque
         </h1>
 
-        <div class="hero__content">
-          <div class="hero__text">
-            <h2 class="hero__title">
-              <span>DiUrN</span>
-              <span>sTudio</span>
-            </h2>
-
-            <p class="hero__intro">
-              Designer et développeur web à Nice, je conçois l'identité des
-              marques et je code les sites internet sur mesure qui les portent,
-              du logo au référencement local. Un seul interlocuteur, du concept
-              à la mise en ligne.
-            </p>
-
-            <div class="hero__actions">
-              <a class="hero__cta" href="#contact">
-                Discutons de votre projet <span aria-hidden="true">↗</span>
-              </a>
-              <a class="hero__cta hero__cta--ghost" href="/audit-site-web-gratuit">
-                Audit gratuit de votre site
-              </a>
-              <a
-                class="hero__cta hero__cta--ghost"
-                href="https://calendly.com/diurnstudio/appel-decouvert"
-                target="_blank"
-                rel="noopener"
-                data-calendly
-              >
-                Réserver un appel de 15 min
-              </a>
+        <!-- Carte de visite à retourner : recto « Diurn Studio » gaufré,
+             verso la présentation. Le texte du verso reste dans le HTML
+             (lu par Google et les lecteurs d'écran). -->
+        <div class="hero__card">
+          <div class="hero__card-inner">
+            <div class="hero__card-face hero__card-face--front">
+              <h2 class="hero__title">
+                <span>DiUrN</span>
+                <span>sTudio</span>
+              </h2>
+              <button class="hero__card-flip" type="button" aria-pressed="false">
+                <span class="sr-only">Retourner la carte pour lire la présentation</span>
+              </button>
+            </div>
+            <div class="hero__card-face hero__card-face--back" inert>
+              <p class="hero__card-kicker">Diurn Studio · Nice</p>
+              <p class="hero__intro">
+                Designer et développeur web à Nice, je conçois l'identité des
+                marques et je code les sites internet sur mesure qui les portent,
+                du logo au référencement local. Un seul interlocuteur, du concept
+                à la mise en ligne.
+              </p>
+              <button class="hero__card-back" type="button">
+                Retourner la carte <span aria-hidden="true">↺</span>
+              </button>
             </div>
           </div>
+        </div>
+        <p class="hero__card-hint" aria-hidden="true">Retournez la carte <span>↺</span></p>
 
-          <figure class="hero__portrait">
-            <a href="#a-propos" class="hero__portrait-link" aria-label="En savoir plus, aller à la section À propos">
-              <img
-                src="/img/photo-profil.webp"
-                alt="Portrait de Jérémy Bendenoun, designer et développeur web à Nice"
-                loading="eager"
-                width="896"
-                height="1195"
-              />
-            </a>
-          </figure>
+        <div class="hero__actions">
+          <a class="hero__cta" href="#contact">
+            Discutons de votre projet <span aria-hidden="true">↗</span>
+          </a>
+          <a class="hero__cta hero__cta--ghost" href="/audit-site-web-gratuit">
+            Audit gratuit de votre site
+          </a>
+          <a
+            class="hero__cta hero__cta--ghost"
+            href="https://calendly.com/diurnstudio/appel-decouvert"
+            target="_blank"
+            rel="noopener"
+            data-calendly
+          >
+            Réserver un appel de 15 min
+          </a>
         </div>
       </div>
 

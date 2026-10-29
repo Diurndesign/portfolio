@@ -7,6 +7,7 @@ import "./modules/site-logo.js";
 import "./modules/consent.js";
 import "./modules/contact-form.js";
 import "./modules/about-photo.js";
+import "./modules/hero-card.js";
 import "./modules/track.js";
 import "./modules/calendly.js";
 
