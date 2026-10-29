@@ -23,3 +23,6 @@ Thumbs.db
 # Env
 .env
 .env.local
+
+# Cache Python (scripts/trame.py, scripts/alu.py)
+__pycache__/
