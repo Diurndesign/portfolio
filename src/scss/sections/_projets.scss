@@ -259,3 +259,123 @@
     );
   }
 }
+
+// ============================================================
+//  Grille « tirage » (accueil) : vignettes tramées bleu roi,
+//  cadre fin, légende en petites capitales sous l'image.
+// ============================================================
+// Grain pellicule : une texture de bruit SVG de quelques octets, posée
+// sur chaque vignette (mutualisée au lieu d'être cuite dans les images).
+$film-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+$paper: #f6f4ef; // même papier que les vignettes (scripts/trame.py)
+
+.section--projets {
+  background: $paper;
+
+  .projets__head {
+    text-align: center;
+  }
+
+  // Filtres : simples mots en capitales, centrés, le filtre actif souligné
+  .projets__filters {
+    justify-content: center;
+    gap: 0.4rem 1.75rem;
+  }
+
+  .projets__filter {
+    padding: 0.35rem 0;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    border-radius: 0;
+    background: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    color: rgba($color-ink, 0.7);
+
+    &:hover {
+      color: $color-ink;
+      border-bottom-color: rgba($color-ink, 0.4);
+    }
+
+    &.is-active {
+      color: $color-ink;
+      background: none;
+      border-bottom-color: $color-ink;
+    }
+  }
+
+  .projets__grid {
+    gap: clamp(1rem, 2vw, 1.5rem);
+  }
+
+  .card__media {
+    aspect-ratio: 4 / 5;
+    border-radius: 0;
+    border: 1px solid #111;
+    background: $paper;
+
+    img {
+      filter: none; // l'image est déjà tramée
+      transition: transform 0.8s $ease;
+    }
+
+    // grain pellicule par-dessus la trame
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: $film-grain;
+      background-size: 160px 160px;
+      mix-blend-mode: multiply;
+      opacity: 0.32;
+      pointer-events: none;
+    }
+  }
+
+  .card__caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding-top: 0.7rem;
+  }
+
+  .card__title,
+  .card__cat {
+    font-family: $font-body;
+    font-size: 0.7rem;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .card__title {
+    color: $color-ink;
+  }
+
+  .card__cat {
+    color: rgba($color-ink, 0.7);
+    text-align: right;
+  }
+
+  // Survol : la trame se rapproche légèrement, le titre se souligne
+  .card__btn:hover .card__media img,
+  .card__btn:focus-visible .card__media img {
+    transform: scale(1.04);
+    filter: none;
+  }
+
+  .card__btn:hover .card__title,
+  .card__btn:focus-visible .card__title {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section--projets .card__media img {
+    transition: none;
+  }
+}

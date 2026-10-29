@@ -11,21 +11,23 @@ import { useMemo, useState } from "react";
 import { filters, projects } from "./projects.data.js";
 
 function Card({ project }) {
+  // Image tramée dans son cadre, puis la légende en dessous (titre, catégorie)
   const media = (
-    <span className="card__media">
-      <img
-        src={project.img.src}
-        alt={project.img.alt}
-        loading="lazy"
-        width={project.img.width}
-        height={project.img.height}
-      />
-      <span className="card__overlay">
-        <span className="card__cat">{project.cat}</span>
-        <span className="card__title">{project.title}</span>
-        {project.desc && <span className="card__desc">{project.desc}</span>}
+    <>
+      <span className="card__media">
+        <img
+          src={project.img.src}
+          alt={project.img.alt}
+          loading="lazy"
+          width={project.img.width}
+          height={project.img.height}
+        />
       </span>
-    </span>
+      <span className="card__caption">
+        <span className="card__title">{project.title}</span>
+        <span className="card__cat">{project.cat}</span>
+      </span>
+    </>
   );
 
   // Carte-lien vers une autre page (ex. étude de cas) : prioritaire sur la
