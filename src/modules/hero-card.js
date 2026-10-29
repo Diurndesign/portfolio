@@ -160,8 +160,65 @@ function initTilt(card) {
   });
 }
 
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initHeroCard);
-} else {
+// Contact du hero : « Discutons de votre projet » ouvre deux bulles
+// (Appeler, Écrire). Survol à la souris, toucher ou clavier sinon ;
+// Échap ou un clic ailleurs les referme.
+function initHeroContact() {
+  const box = document.querySelector(".hero__contact");
+  if (!box) return;
+  const toggle = box.querySelector(".hero__contact-toggle");
+  const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  let closeTimer = 0;
+
+  function setOpen(open) {
+    clearTimeout(closeTimer);
+    box.classList.toggle("is-open", open);
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+
+  toggle.addEventListener("click", (e) => {
+    // à la souris, le survol a déjà ouvert : le clic ne doit pas refermer
+    // (detail > 0 = vrai clic ; 0 = Entrée / Espace au clavier)
+    if (canHover && e.detail > 0) setOpen(true);
+    else setOpen(!box.classList.contains("is-open"));
+  });
+
+  if (canHover) {
+    box.addEventListener("mouseenter", () => setOpen(true));
+    // petit délai : laisse le temps de rejoindre une bulle
+    box.addEventListener("mouseleave", () => {
+      closeTimer = setTimeout(() => setOpen(false), 250);
+    });
+  }
+
+  box.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && box.classList.contains("is-open")) {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+
+  box.addEventListener("focusout", (e) => {
+    if (!box.contains(e.relatedTarget)) setOpen(false);
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!box.contains(e.target)) setOpen(false);
+  });
+
+  // après un choix, les bulles se referment
+  box.querySelectorAll(".hero__bubble").forEach((a) =>
+    a.addEventListener("click", () => setOpen(false))
+  );
+}
+
+function init() {
   initHeroCard();
+  initHeroContact();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
 }

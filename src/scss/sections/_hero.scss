@@ -375,6 +375,7 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
   }
 
   &__card-face {
+    container-type: inline-size; // unité cqw pour le nom
     position: absolute;
     inset: 0;
     display: flex;
@@ -433,7 +434,8 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
   // reflet glisse quand la carte s'incline (--glare-y posé par le JS).
   &__card-face--front .hero__title {
     font-weight: 300;
-    font-size: clamp(3.4rem, 12vw, 9.5rem);
+    font-size: clamp(4.4rem, 15.5vw, 11rem);
+    font-size: 22cqw; // proportionnel à la largeur de la carte
     line-height: 0.86;
     text-align: center;
     // Chrome gaufré : le métal sort de la carte. Biseau en drop-shadow
@@ -549,52 +551,125 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
   }
 }
 
-
-// --- Actions sous la carte : liens discrets ---------------------
-// La carte porte le visuel ; les actions deviennent de simples liens en
-// capitales (comme les filtres des projets) au lieu de trois gros boutons.
-.hero__actions {
-  gap: 0.6rem 2.25rem;
-  margin-top: clamp(1.75rem, 4.5vh, 2.75rem);
+// --- Pictogramme de retournement (coin de la carte) -----------
+.hero__card-icon {
+  position: absolute;
+  right: clamp(0.75rem, 3%, 1.25rem);
+  bottom: clamp(0.75rem, 3%, 1.25rem);
+  width: clamp(1.1rem, 3.2cqw, 1.5rem);
+  height: auto;
+  color: rgba(255, 255, 255, 0.55);
+  pointer-events: none;
+  transition: transform 0.6s $ease, color 0.3s ease;
 }
 
-.hero__cta,
-.hero__cta--ghost {
-  padding: 0.35rem 0;
+.hero__card:hover .hero__card-icon {
+  color: rgba(255, 255, 255, 0.85);
+  transform: rotate(-180deg);
+}
+
+// --- Contact : un lien, deux bulles ----------------------------
+.hero__contact {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: clamp(1.75rem, 4.5vh, 2.75rem);
+  animation: hero-reveal 1s $ease both;
+  animation-delay: 0.6s;
+}
+
+.hero__contact-toggle {
+  padding: 0.4rem 0;
   border: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.35);
-  border-radius: 0;
+  border-bottom: 1px solid $color-white;
   background: none;
-  color: $color-text-soft;
-  font-size: 0.75rem;
+  color: $color-white;
+  font-family: $font-body;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+  cursor: pointer;
 
-  &::after {
-    content: none; // plus de halo pulsant
+  span {
+    display: inline-block;
+    margin-left: 0.35rem;
+    transition: transform $transition;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-white;
+    outline-offset: 4px;
+  }
+}
+
+.hero__contact.is-open .hero__contact-toggle span {
+  transform: rotate(45deg);
+}
+
+.hero__contact-options {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  padding-top: 1rem; // zone de survol continue entre le lien et les bulles
+
+  // fermées : invisibles et hors du parcours clavier
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+}
+
+.hero__contact.is-open .hero__contact-options {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.25s ease, visibility 0s;
+}
+
+.hero__bubble {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  border-radius: 999px;
+  background: $color-white;
+  color: $color-blue;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+  box-shadow: 0 14px 30px -14px rgba(0, 0, 30, 0.8);
+  // les bulles « éclosent » du lien
+  transform: translateY(-8px) scale(0.85);
+  transition: transform 0.35s cubic-bezier(0.3, 1.5, 0.5, 1), background $transition;
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+  }
+
+  &:nth-child(2) {
+    transition-delay: 0.05s;
   }
 
   &:hover,
   &:focus-visible {
-    transform: none;
-    box-shadow: none;
-    background: none;
-    color: $color-white;
-    border-bottom-color: $color-white;
+    background: $color-cream;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-white;
+    outline-offset: 3px;
   }
 }
 
-// L'action principale reste un cran au-dessus : blanc plein, filet plein
-.hero__cta:not(.hero__cta--ghost) {
-  color: $color-white;
-  border-bottom-color: $color-white;
+.hero__contact.is-open .hero__bubble {
+  transform: none;
 }
 
-@include until($bp-sm) {
-  .hero__actions {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.1rem;
+@media (prefers-reduced-motion: reduce) {
+  .hero__bubble,
+  .hero__card-icon {
+    transition: none;
   }
 }
