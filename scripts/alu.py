@@ -7,7 +7,7 @@ brillant laisse les reflets passer par-dessus l'image. La feuille a des
 bords légèrement irréguliers (alpha).
 
 Utilisation (depuis la racine du projet) :
-    python3 scripts/alu.py public/img/projets/photo.webp public/img/projets/alu/photo.webp [graine]
+    python3 scripts/alu.py public/img/projets/photo.webp public/img/projets/argent/photo.webp [graine]
 
 La graine (un entier) change la forme des plis : une par projet.
 Dépendances : Pillow et NumPy (pip install pillow numpy).
