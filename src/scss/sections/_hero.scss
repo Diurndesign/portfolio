@@ -424,20 +424,48 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
   // Le nom est imprimé sur la carte : pas d'apparition séparée
   &__card-face--front .hero__title span {
     animation: none;
+    display: block;
+    width: fit-content;
   }
 
+  // Test : Diurn Studio en chrome (dégradé métallique découpé dans le
+  // texte, avec une ligne d'horizon claire au milieu des lettres). Le
+  // reflet glisse quand la carte s'incline (--glare-y posé par le JS).
   &__card-face--front .hero__title {
     font-weight: 300;
     font-size: clamp(3.4rem, 12vw, 9.5rem);
     line-height: 0.86;
-    color: $klein;
     text-align: center;
-    text-shadow:
-      -1px -1px 0 rgba(255, 255, 255, 0.28),
-      -2px -2px 3px rgba(255, 255, 255, 0.1),
-      1px 1px 0 rgba(0, 0, 30, 0.6),
-      2px 3px 5px rgba(0, 0, 30, 0.45);
+    // ombre sous le métal (drop-shadow : text-shadow masquerait le dégradé)
+    filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.25))
+      drop-shadow(0 3px 4px rgba(0, 0, 30, 0.55));
   }
+
+  // Chrome posé mot par mot : chaque ligne a son horizon clair. Marge
+  // horizontale pour ne pas couper les boucles du D et du N.
+  &__card-face--front .hero__title span {
+    padding: 0.1em 0.45em;
+    margin: -0.1em auto;
+    color: #d9dde3; // repli si background-clip: text n'est pas géré
+    background: linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #dfe3e9 18%,
+      #9aa1ac 38%,
+      #4b525d 49%,
+      #f3f5f8 51%,
+      #c3c8d0 66%,
+      #8a919c 82%,
+      #eef1f4 100%
+    );
+    background-size: 100% 160%;
+    background-position: 50% var(--glare-y, 30%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background-position 0.25s ease-out;
+  }
+
 
   // Toute la face avant est cliquable
   &__card-flip {
