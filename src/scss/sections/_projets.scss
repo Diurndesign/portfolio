@@ -270,7 +270,9 @@ $film-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
 $paper: #f6f4ef; // même papier que les vignettes (scripts/trame.py)
 
 .section--projets {
-  background: $paper;
+  // fond crème du site : les vignettes, sur papier plus clair, ressortent
+  // comme des tirages posés sur la page
+  background: $color-cream;
 
   .projets__head {
     text-align: center;
