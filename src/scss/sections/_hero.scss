@@ -393,8 +393,27 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
       0 30px 60px -20px rgba(0, 0, 30, 0.75);
   }
 
+  // Épaisseur : le recto et le verso sont écartés de --card-depth, et des
+  // tranches remplissent l'intervalle (visibles de profil)
+  &__card {
+    --card-depth: clamp(4px, 0.9vw, 7px);
+  }
+
+  &__card-face--front {
+    transform: translateZ(calc(var(--card-depth) / 2));
+  }
+
+  &__card-edge {
+    position: absolute;
+    inset: 0;
+    border-radius: 10px;
+    background: #00216f; // tranche du carton, plus sombre que la face
+    // 7 tranches réparties entre les deux faces
+    transform: translateZ(calc(var(--card-depth) * (var(--i) / 8 - 0.5)));
+  }
+
   &__card-face--back {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) translateZ(calc(var(--card-depth) / 2));
     gap: clamp(0.75rem, 2.2vw, 1.4rem);
     padding: clamp(1.25rem, 5%, 3rem) clamp(1.25rem, 8%, 4.5rem);
     text-align: center;
@@ -476,15 +495,6 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     }
   }
 
-  &__card-hint {
-    margin-top: 1rem;
-    font-size: 0.72rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: $color-text-muted;
-    animation: hero-reveal 1s $ease both;
-    animation-delay: 0.5s;
-  }
 
   &__actions {
     justify-content: center;
@@ -514,17 +524,3 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
   }
 }
 
-// Indication adaptée : clic à la souris, glissé au doigt
-.hero__card-hint--touch {
-  display: none;
-}
-
-@media (hover: none) {
-  .hero__card-hint--mouse {
-    display: none;
-  }
-
-  .hero__card-hint--touch {
-    display: inline;
-  }
-}
