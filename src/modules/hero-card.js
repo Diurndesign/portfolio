@@ -11,7 +11,7 @@
 
 const MAX_TILT = 8; // degrés
 const DRAG_START = 10; // px avant de considérer le geste comme un glissé
-const FLICK_SPEED = 0.5; // px/ms : un geste plus rapide retourne la carte
+const FLICK_SPEED = 0.3; // px/ms : un geste plus rapide retourne la carte
 
 function initHeroCard() {
   const card = document.querySelector(".hero__card");

@@ -312,7 +312,7 @@
 //  Carte de visite à retourner (recto gaufré, verso présentation)
 // ============================================================
 $klein: #002fa7; // bleu Klein : plus vif que le bleu roi du fond
-$card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9 -0.35'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
+$card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.6 -0.28'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)'/%3E%3C/svg%3E");
 
 .hero {
   &__inner {
@@ -434,18 +434,16 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
   // reflet glisse quand la carte s'incline (--glare-y posé par le JS).
   &__card-face--front .hero__title {
     font-weight: 300;
-    font-size: clamp(4.4rem, 15.5vw, 11rem);
-    font-size: 22cqw; // proportionnel à la largeur de la carte
+    font-size: clamp(3.2rem, 11vw, 8rem);
+    font-size: 16cqw; // proportionnel à la carte, avec de la marge autour
     line-height: 0.86;
     text-align: center;
     // Chrome gaufré : le métal sort de la carte. Biseau en drop-shadow
     // (text-shadow masquerait le dégradé) : arête claire en haut à gauche,
     // arête sombre en bas à droite, ombre portée courte, puis un léger
     // bombé du papier autour des lettres.
-    filter: drop-shadow(-1px -1px 0 rgba(255, 255, 255, 0.55))
-      drop-shadow(1px 1px 0 rgba(0, 10, 60, 0.85))
-      drop-shadow(1px 2px 1px rgba(0, 0, 30, 0.55))
-      drop-shadow(0 0 6px rgba(140, 170, 255, 0.18));
+    filter: drop-shadow(-0.5px -0.5px 0 rgba(255, 255, 255, 0.45))
+      drop-shadow(0.5px 1px 0 rgba(0, 10, 60, 0.6));
   }
 
   // Chrome posé mot par mot : chaque ligne a son horizon clair. Marge
@@ -574,7 +572,7 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: clamp(1.75rem, 4.5vh, 2.75rem);
+  margin-top: clamp(2.5rem, 7vh, 4rem);
   animation: hero-reveal 1s $ease both;
   animation-delay: 0.6s;
 }
@@ -612,7 +610,7 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
   display: flex;
   justify-content: center;
   gap: 0.75rem;
-  padding-top: 1rem; // zone de survol continue entre le lien et les bulles
+  padding-top: 1.4rem; // zone de survol continue entre le lien et les bulles
 
   // fermées : invisibles et hors du parcours clavier
   visibility: hidden;
@@ -671,5 +669,17 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
   .hero__bubble,
   .hero__card-icon {
     transition: none;
+  }
+}
+
+// Plus d'air autour de la carte : accroche plus éloignée, carte un peu
+// moins large sur mobile pour laisser respirer les bords
+.hero__eyebrow {
+  margin-bottom: clamp(2rem, 6vh, 3.5rem);
+}
+
+.hero__card {
+  @include until($bp-sm) {
+    width: 90%;
   }
 }
