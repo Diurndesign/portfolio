@@ -25,8 +25,22 @@ GAMMA = 0.6  # < 1 éclaircit les tons moyens
 
 
 def halftone(src, dst, seed=7):
+    tone = halftone_tone(src, WIDTH, HEIGHT, seed)
+
+    # Bichromie : 0 = encre bleu roi, 255 = papier
+    t = (tone / 255.0)[..., None]
+    rgb = INK + (PAPER - INK) * t
+    # 4 nuances (encre, papier, deux tons de bord) en WebP sans perte : une
+    # trame se compresse 2 à 3 fois mieux ainsi qu'en WebP classique.
+    out = Image.fromarray(rgb.astype("uint8"), "RGB")
+    out = out.quantize(colors=4, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
+    out.convert("RGB").save(dst, lossless=True, method=6)
+
+
+def halftone_tone(src, width, height, seed=7):
+    """Renvoie la trame en niveaux de gris (0 = encre, 255 = papier)."""
     im = Image.open(src).convert("L")
-    im = ImageOps.fit(im, (WIDTH, HEIGHT), Image.LANCZOS)  # recadrage centré
+    im = ImageOps.fit(im, (width, height), Image.LANCZOS)  # recadrage centré
     im = ImageOps.autocontrast(im, cutoff=1)
     # Éclaircit les tons moyens : sans ça, les photos sombres deviennent
     # des aplats d'encre et l'image ne se lit plus.
@@ -54,8 +68,8 @@ def halftone(src, dst, seed=7):
     canvas = canvas.resize((bw, bh), Image.LANCZOS)
     back = canvas.rotate(-ANGLE, expand=True, fillcolor=255, resample=Image.BICUBIC)
     cx, cy = back.size[0] // 2, back.size[1] // 2
-    back = back.crop((cx - WIDTH // 2, cy - HEIGHT // 2,
-                      cx - WIDTH // 2 + WIDTH, cy - HEIGHT // 2 + HEIGHT))
+    back = back.crop((cx - width // 2, cy - height // 2,
+                      cx - width // 2 + width, cy - height // 2 + height))
 
     # Quelques poussières d'encre. Le grain pellicule fin est ajouté en CSS
     # (une seule petite texture partagée), sinon chaque image pèse 3 fois plus.
@@ -65,16 +79,7 @@ def halftone(src, dst, seed=7):
     tone[dust > 0.9995] -= 140  # petites taches d'encre
     tone[dust < 0.0005] += 140  # petits manques
     tone = np.clip(tone, 0, 255)
-    tone = np.asarray(Image.fromarray(tone.astype("uint8")).filter(ImageFilter.GaussianBlur(0.3)), dtype=float)
-
-    # Bichromie : 0 = encre bleu roi, 255 = papier
-    t = (tone / 255.0)[..., None]
-    rgb = INK + (PAPER - INK) * t
-    # 4 nuances (encre, papier, deux tons de bord) en WebP sans perte : une
-    # trame se compresse 2 à 3 fois mieux ainsi qu'en WebP classique.
-    out = Image.fromarray(rgb.astype("uint8"), "RGB")
-    out = out.quantize(colors=4, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE)
-    out.convert("RGB").save(dst, lossless=True, method=6)
+    return np.asarray(Image.fromarray(tone.astype("uint8")).filter(ImageFilter.GaussianBlur(0.3)), dtype=float)
 
 
 if __name__ == "__main__":

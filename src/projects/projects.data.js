@@ -36,10 +36,10 @@ export const projects = [
     cat: "Site internet",
     tags: ["web"],
     img: {
-      src: "/img/projets/trame/beautycorner.webp",
+      src: "/img/projets/alu/beautycorner.webp",
       alt: "Aperçu du site The Beauty Corner by Alex, institut de beauté à Nice, sur ordinateur et mobile",
-      width: 720,
-      height: 900,
+      width: 640,
+      height: 800,
     },
     detail: {
       cat: "Site internet · Sur mesure",
@@ -67,10 +67,10 @@ export const projects = [
     cat: "Identité · Site web",
     tags: ["web", "identite"],
     img: {
-      src: "/img/projets/trame/gdunan.webp",
+      src: "/img/projets/alu/gdunan.webp",
       alt: "Site internet Gdunan présenté sur un ordinateur portable",
-      width: 720,
-      height: 900,
+      width: 640,
+      height: 800,
     },
     detail: {
       stack: ["Logo", "Site web", "Carte gaufrée", "Shooting photo"],
@@ -99,10 +99,10 @@ export const projects = [
     cat: "Logo · Mascotte",
     tags: ["identite"],
     img: {
-      src: "/img/projets/trame/azureco.webp",
+      src: "/img/projets/alu/azureco.webp",
       alt: "Emblème du Pressing Azur Eco",
-      width: 720,
-      height: 900,
+      width: 640,
+      height: 800,
     },
     detail: {
       stack: ["Logo", "Mascotte", "Recherche typo", "Étiquette"],
@@ -131,10 +131,10 @@ export const projects = [
     cat: "Affiche & édition",
     tags: ["edition"],
     img: {
-      src: "/img/projets/trame/tijm.webp",
+      src: "/img/projets/alu/tijm.webp",
       alt: "Combat de judo en noir et blanc, Tournoi International de Judo de Monaco",
-      width: 720,
-      height: 900,
+      width: 640,
+      height: 800,
     },
     detail: {
       title: "TijM 2017",
@@ -163,10 +163,10 @@ export const projects = [
     cat: "Refonte · Couture",
     tags: ["identite"],
     img: {
-      src: "/img/projets/trame/elo.webp",
+      src: "/img/projets/alu/elo.webp",
       alt: "Logo Elo posé sur du marbre avec un ruban gansé griffé",
-      width: 720,
-      height: 900,
+      width: 640,
+      height: 800,
     },
     detail: {
       stack: ["Logo", "Refonte", "Couture", "Direction artistique"],
@@ -193,10 +193,10 @@ export const projects = [
     cat: "Identité de marque",
     tags: ["identite"],
     img: {
-      src: "/img/projets/trame/ewaflr.webp",
+      src: "/img/projets/alu/ewaflr.webp",
       alt: "Univers de marque Ewa FLR : tote bag, menu et légumes de saison",
-      width: 720,
-      height: 900,
+      width: 640,
+      height: 800,
     },
     detail: {
       stack: ["Logo", "Charte graphique", "Papeterie", "Direction artistique"],
@@ -225,10 +225,10 @@ export const projects = [
     cat: "Site dynamique · JavaScript",
     tags: ["web"],
     img: {
-      src: "/img/projets/trame/sophiebluel.webp",
+      src: "/img/projets/alu/sophiebluel.webp",
       alt: "Portfolio d'architecte : galerie de projets filtrable, développée en JavaScript",
-      width: 720,
-      height: 900,
+      width: 640,
+      height: 800,
     },
     detail: {
       cat: "Projet de formation · JavaScript",
@@ -264,10 +264,10 @@ export const projects = [
     cat: "Optimisation SEO · Performance",
     tags: ["web"],
     img: {
-      src: "/img/projets/trame/ninacarducci.webp",
+      src: "/img/projets/alu/ninacarducci.webp",
       alt: "Site de Nina Carducci : page d'accueil, illustrée ici avec des photos d'architecture",
-      width: 720,
-      height: 900,
+      width: 640,
+      height: 800,
     },
     detail: {
       cat: "Projet de formation · SEO, performance, accessibilité",
@@ -303,10 +303,10 @@ export const projects = [
     cat: "Application web · React",
     tags: ["web"],
     img: {
-      src: "/img/projets/trame/murmure.webp",
+      src: "/img/projets/alu/murmure.webp",
       alt: "L'application Murmure ouverte sur un téléphone",
-      width: 720,
-      height: 900,
+      width: 640,
+      height: 800,
     },
     detail: {
       cat: "Projet personnel · React + Supabase",
