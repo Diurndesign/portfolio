@@ -67,7 +67,6 @@ Un projet (carte **et** fiche détaillée) est décrit dans **un seul objet** de
   tags: ["web"],                 // filtres : web · identite · edition
   img: { src: "/img/projets/mon-projet.webp", alt: "…", width: 1080, height: 1080 },
   detail: {
-    bg: "#efe8df",
     stack: ["React", "Sass"],
     body: ["Premier paragraphe…", "Deuxième…"],
     links: [{ href: "https://…", label: "Voir le site" }],   // optionnel

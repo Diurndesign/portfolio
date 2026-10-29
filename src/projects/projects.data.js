@@ -12,7 +12,6 @@
 //   - kind "link"  → renvoie vers une section de la page (ex. Murmure).
 //
 // Champs d'une fiche `detail` (projets "modal") :
-//   - bg      : couleur de fond de la modale.
 //   - cat     : (optionnel) titre de catégorie dans la fiche, sinon reprend `cat`.
 //   - stack   : étiquettes techniques affichées en haut de la fiche.
 //   - body    : paragraphes (le HTML <strong> est autorisé).
@@ -43,7 +42,6 @@ export const projects = [
       height: 1080,
     },
     detail: {
-      bg: "#efe8df",
       cat: "Site internet · Sur mesure",
       stack: ["Design web", "Développement", "Espace admin", "Supabase", "SEO local"],
       body: [
@@ -73,7 +71,6 @@ export const projects = [
       height: 1080,
     },
     detail: {
-      bg: "#f0efe8",
       stack: ["Logo", "Site web", "Carte gaufrée", "Shooting photo"],
       body: [
         "Identité globale de Gdunan : un monogramme « GD » épuré, pensé pour une marque haut de gamme où la matière et le geste priment. Le logo se décline du web au print, jusqu'à une carte de visite gaufrée à froid, sans encre.",
@@ -104,7 +101,6 @@ export const projects = [
       height: 500,
     },
     detail: {
-      bg: "#eef0ea",
       stack: ["Logo", "Mascotte", "Recherche typo", "Étiquette"],
       body: [
         "Création du logo de Pressing Azur Eco dans un univers de mascotte rétro : le style « rubber hose » des années 30. Un personnage-boîte joyeux, chapeau et nœud papillon, qui incarne le pressing avec malice.",
@@ -135,7 +131,6 @@ export const projects = [
       height: 1065,
     },
     detail: {
-      bg: "#efe7d7",
       title: "TijM 2017",
       stack: ["Affiche", "Mise en page", "Magazine", "Direction artistique"],
       body: [
@@ -166,7 +161,6 @@ export const projects = [
       height: 912,
     },
     detail: {
-      bg: "#f2efe8",
       stack: ["Logo", "Refonte", "Couture", "Direction artistique"],
       body: [
         "Refonte de l'identité d'Elo Ab, couturière. Un logotype tout en rondeurs où l'aiguille et le fil s'invitent dans les lettres (un clin d'œil direct à son métier) posé sur une palette douce de crème et de noir.",
@@ -195,7 +189,6 @@ export const projects = [
       height: 842,
     },
     detail: {
-      bg: "#e7e7e6",
       stack: ["Logo", "Charte graphique", "Papeterie", "Direction artistique"],
       body: [
         "Identité de marque pour Ewa FLR, cheffe. Un univers minimal et végétal, structuré autour d'un logotype vertical tout en finesse (Modenica light) et d'une couleur unique, le « bleu béton ».",
@@ -226,7 +219,6 @@ export const projects = [
       height: 960,
     },
     detail: {
-      bg: "#eef0ea",
       cat: "Projet de formation · JavaScript",
       tagline: "Une galerie publique, un espace d'administration privé : une architecte qui met à jour son site sans développeur.",
       tech: ["html", "css", "javascript", "jwt"],
@@ -266,7 +258,6 @@ export const projects = [
       height: 960,
     },
     detail: {
-      bg: "#f3ebe4",
       cat: "Projet de formation · SEO, performance, accessibilité",
       tagline: "Le même site de photographe, 98 % plus léger, mieux référencé et accessible à tous, sans toucher au design.",
       tech: ["html", "css", "javascript", "jquery", "bootstrap", "lighthouse"],
@@ -306,7 +297,6 @@ export const projects = [
       height: 509,
     },
     detail: {
-      bg: "#e7e8f0",
       cat: "Projet personnel · React + Supabase",
       tagline: "Une question par jour. Des réponses d'inconnus. Rien d'autre.",
       tech: ["react", "vite", "supabase", "vercel"],

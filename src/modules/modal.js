@@ -9,8 +9,11 @@ import { projects } from "../projects/projects.data.js";
 import { renderTech } from "../projects/tech-icons.js";
 
 // Construit le HTML d'une fiche projet à partir de son objet `detail`.
+// Mise en page « verre » : le texte à gauche (en-tête, fiche technique,
+// rubriques), les images et la démo à droite.
 function renderFiche(proj) {
   const d = proj.detail;
+  const num = String(projects.indexOf(proj) + 1).padStart(2, "0");
   const cat = d.cat || proj.cat || "";
   const title = d.title || proj.title || "";
   const tags = (d.stack || []).map((t) => `<li>${t}</li>`).join("");
@@ -42,6 +45,18 @@ function renderFiche(proj) {
         .join("")
     : "";
 
+  // Fiche technique, façon « spec sheet » : une ligne par information.
+  const tools = techs
+    ? `<ul class="project__techs" aria-label="Technologies utilisées">${techs}</ul>`
+    : tags
+      ? `<ul class="project__tags">${tags}</ul>`
+      : "";
+  const spec = `<dl class="project__spec">
+      <div class="project__spec-row"><dt>N°</dt><dd>${num}</dd></div>
+      ${cat ? `<div class="project__spec-row"><dt>Catégorie</dt><dd>${cat}</dd></div>` : ""}
+      ${tools ? `<div class="project__spec-row"><dt>Outils</dt><dd>${tools}</dd></div>` : ""}
+    </dl>`;
+
   // Démo jouable (iframe) + QR code, pour les projets qui l'exposent (ex. Murmure).
   // L'iframe n'est créée qu'à l'ouverture de la modale (pas au chargement de la page).
   const demo = d.demo
@@ -67,20 +82,22 @@ function renderFiche(proj) {
          }
        </div>`
     : "";
+  const gallery = g
+    ? `<div class="project__gallery${g.screens ? " project__gallery--screens" : ""}">${imgs}</div>`
+    : "";
 
   return `
-    <article class="project" data-bg="${d.bg || ""}">
-      <header class="project__head">
-        <p class="project__cat">${cat}</p>
-        <h3 class="project__title" id="modal-title">${title}</h3>
-        ${d.tagline ? `<p class="project__tagline">${d.tagline}</p>` : ""}
-        ${tags ? `<ul class="project__tags">${tags}</ul>` : ""}
-        ${techs ? `<ul class="project__techs" aria-label="Technologies utilisées">${techs}</ul>` : ""}
-      </header>
-      <div class="project__text">${body}</div>
-      ${demo}
-      ${links ? `<div class="project__links">${links}</div>` : ""}
-      ${g ? `<div class="project__gallery${g.screens ? " project__gallery--screens" : ""}">${imgs}</div>` : ""}
+    <article class="project">
+      <div class="project__main">
+        <header class="project__head">
+          <h3 class="project__title" id="modal-title">${title}</h3>
+          ${d.tagline ? `<p class="project__tagline">${d.tagline}</p>` : ""}
+        </header>
+        ${spec}
+        <div class="project__text${d.sections ? " project__text--sections" : ""}">${body}</div>
+        ${links ? `<div class="project__links">${links}</div>` : ""}
+      </div>
+      ${demo || gallery ? `<div class="project__media">${demo}${gallery}</div>` : ""}
     </article>`;
 }
 
@@ -118,11 +135,9 @@ function initModal() {
       titleEl ? titleEl.textContent.trim() : "Détail du projet"
     );
 
-    // couleur de fond propre au projet (data-bg), sinon défaut CSS
-    const detail = body.querySelector(".project");
-    const bg = detail && detail.getAttribute("data-bg");
-    if (bg) modal.style.setProperty("--modal-bg", bg);
-    else modal.style.removeProperty("--modal-bg");
+    // Fiche projet : habillage « verre » et page en noir et blanc derrière.
+    // Les autres contenus (mentions légales) gardent le panneau clair.
+    modal.classList.toggle("modal--project", !tpl);
 
     lastFocused = document.activeElement;
     modal.classList.add("is-open");
