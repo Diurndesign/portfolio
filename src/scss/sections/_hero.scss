@@ -327,7 +327,22 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     animation-delay: 0.25s;
   }
 
+  // Inclinaison qui suit la souris (variables posées par hero-card.js)
   &__card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--tilt-x, 0deg)) rotateY(var(--tilt-y, 0deg));
+    transition: transform 0.25s ease-out;
+
+    .hero__card.is-resting & {
+      transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+  }
+
+  // Retournement, sur un élément à part pour ne pas se mélanger à l'inclinaison
+  &__card-flipper {
     position: relative;
     width: 100%;
     height: 100%;
@@ -337,6 +352,22 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     .hero__card.is-flipped & {
       transform: rotateY(180deg);
     }
+  }
+
+  // Reflet de lumière qui suit la souris sur le papier
+  &__card-face::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(
+      circle at var(--glare-x, 50%) var(--glare-y, 30%),
+      rgba(255, 255, 255, 0.14),
+      rgba(255, 255, 255, 0) 55%
+    );
+    opacity: var(--glare-o, 0);
+    transition: opacity 0.4s ease;
   }
 
   &__card-face {
@@ -468,7 +499,8 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__card-inner {
+  .hero__card-inner,
+  .hero__card-flipper {
     transition: none;
   }
 }
