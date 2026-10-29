@@ -1,9 +1,10 @@
 """Vignettes « aluminium froissé » pour les cartes de projets.
 
-La trame bleu roi (voir trame.py) est imprimée sur une feuille d'aluminium
-froissée générée par le script : facettes planes, plis droits, reflets
-métalliques. L'encre suit les plis (plus sombre dans les creux, brillante
-sur les arêtes) et la feuille a des bords légèrement irréguliers (alpha).
+La photo est imprimée en argent, en tons continus, sur une feuille
+d'aluminium froissée générée par le script : facettes planes, plis droits,
+reflets métalliques. Les plis traversent l'image (plus sombre dans les
+creux, brillante sur les arêtes) et la feuille a des bords légèrement
+irréguliers (alpha).
 
 Utilisation (depuis la racine du projet) :
     python3 scripts/alu.py public/img/projets/photo.webp public/img/projets/alu/photo.webp [graine]
@@ -14,9 +15,7 @@ Dépendances : Pillow et NumPy (pip install pillow numpy).
 import sys
 
 import numpy as np
-from PIL import Image, ImageDraw
-
-from trame import INK, halftone_tone
+from PIL import Image, ImageDraw, ImageOps
 
 WIDTH, HEIGHT = 640, 800  # format 4:5 des cartes
 SILVER = np.array([200, 204, 212], np.float32)  # argent légèrement froid
@@ -76,16 +75,22 @@ def ragged_mask(seed, inset=10, jitter=7, step=60, ss=3):
     return mask.resize((WIDTH, HEIGHT), Image.LANCZOS)
 
 
+def photo_tone(src):
+    """Photo en niveaux de gris, recadrée au format de la carte (0 à 1)."""
+    im = Image.open(src).convert("L")
+    im = ImageOps.fit(im, (WIDTH, HEIGHT), Image.LANCZOS)
+    im = ImageOps.autocontrast(im, cutoff=1)
+    return np.asarray(im, dtype=np.float32) / 255.0
+
+
 def alu(src, dst, seed=1):
-    shade = foil_shade(seed)
-    ink = 1.0 - halftone_tone(src, WIDTH, HEIGHT, seed) / 255.0  # couverture d'encre
-    s = shade[..., None]
-    foil = np.clip(s * SILVER * 1.25, 0, 255)
-    # Encre imprimée sur l'alu : assombrie dans les creux, avec un éclat
-    # blanc sur les arêtes les plus lumineuses.
-    printed = np.clip(INK * (0.45 + 0.6 * s) + (s ** 10) * 70, 0, 255)
-    a = ink[..., None]
-    rgb = foil * (1 - a) + printed * a
+    shade = foil_shade(seed)[..., None]
+    tone = photo_tone(src)[..., None]
+    # Impression argent : la photo module la luminosité du métal, et les
+    # plis la traversent (creux plus sombres, éclat blanc sur les arêtes).
+    metal = SILVER * 1.25 * (0.12 + 0.88 * tone) * (0.5 + 0.65 * shade)
+    sheen = (shade ** 10) * 60
+    rgb = np.clip(metal + sheen, 0, 255)
     out = Image.fromarray(rgb.astype("uint8"), "RGB")
     out.putalpha(ragged_mask(seed))
     out.save(dst, quality=62, method=6, alpha_quality=60)
