@@ -436,9 +436,14 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     font-size: clamp(3.4rem, 12vw, 9.5rem);
     line-height: 0.86;
     text-align: center;
-    // ombre sous le métal (drop-shadow : text-shadow masquerait le dégradé)
-    filter: drop-shadow(0 1px 0 rgba(255, 255, 255, 0.25))
-      drop-shadow(0 3px 4px rgba(0, 0, 30, 0.55));
+    // Chrome gaufré : le métal sort de la carte. Biseau en drop-shadow
+    // (text-shadow masquerait le dégradé) : arête claire en haut à gauche,
+    // arête sombre en bas à droite, ombre portée courte, puis un léger
+    // bombé du papier autour des lettres.
+    filter: drop-shadow(-1px -1px 0 rgba(255, 255, 255, 0.55))
+      drop-shadow(1px 1px 0 rgba(0, 10, 60, 0.85))
+      drop-shadow(1px 2px 1px rgba(0, 0, 30, 0.55))
+      drop-shadow(0 0 6px rgba(140, 170, 255, 0.18));
   }
 
   // Chrome posé mot par mot : chaque ligne a son horizon clair. Marge
@@ -449,14 +454,14 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     color: #d9dde3; // repli si background-clip: text n'est pas géré
     background: linear-gradient(
       180deg,
-      #ffffff 0%,
-      #dfe3e9 18%,
-      #9aa1ac 38%,
-      #4b525d 49%,
-      #f3f5f8 51%,
-      #c3c8d0 66%,
-      #8a919c 82%,
-      #eef1f4 100%
+      #fbfcfd 0%,
+      #d8dde4 20%,
+      #a3aab5 40%,
+      #6d7480 49%,
+      #e9ecf0 52%,
+      #bfc5cd 68%,
+      #959ca7 84%,
+      #e4e7eb 100%
     );
     background-size: 100% 160%;
     background-position: 50% var(--glare-y, 30%);
