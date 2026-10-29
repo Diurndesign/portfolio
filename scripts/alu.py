@@ -1,10 +1,10 @@
 """Vignettes « aluminium froissé » pour les cartes de projets.
 
-La photo est imprimée en argent, en tons continus, sur une feuille
-d'aluminium froissée générée par le script : facettes planes, plis droits,
-reflets métalliques. Les plis traversent l'image (plus sombre dans les
-creux, brillante sur les arêtes) et la feuille a des bords légèrement
-irréguliers (alpha).
+La photo est imprimée sur une feuille d'argent froissée générée par le
+script : facettes planes, plis droits, et sur chacune le reflet d'un
+studio photo (sources lumineuses, murs clairs et sombres). Un vernis
+brillant laisse les reflets passer par-dessus l'image. La feuille a des
+bords légèrement irréguliers (alpha).
 
 Utilisation (depuis la racine du projet) :
     python3 scripts/alu.py public/img/projets/photo.webp public/img/projets/alu/photo.webp [graine]
@@ -18,7 +18,6 @@ import numpy as np
 from PIL import Image, ImageDraw, ImageOps
 
 WIDTH, HEIGHT = 640, 800  # format 4:5 des cartes
-SILVER = np.array([200, 204, 212], np.float32)  # argent légèrement froid
 
 
 def facet_layer(rng, cells, angle):
@@ -33,23 +32,29 @@ def facet_layer(rng, cells, angle):
     return np.asarray(im.crop((left, top, left + WIDTH, top + HEIGHT)), dtype=np.float32)
 
 
-def foil_shade(seed):
-    """Éclairage de la feuille froissée, de 0 (creux sombre) à 1 (reflet)."""
+def foil_reflection(seed):
+    """Reflet d'un studio sur une feuille d'argent froissée, de 0 (sombre)
+    à ~1,4 (éclats). Chaque facette reflète une autre partie du studio :
+    c'est ce contraste franc entre facettes voisines qui fait le métal."""
     rng = np.random.default_rng(seed)
     height = np.zeros((HEIGHT, WIDTH), np.float32)
-    for cells, amp in [(4, 1.0), (7, 0.6), (13, 0.3), (26, 0.12)]:
+    for cells, amp in [(3, 1.0), (6, 0.6), (11, 0.28), (22, 0.08)]:
         layer = facet_layer(rng, cells, rng.uniform(0, 180))
         ridged = 1.0 - np.abs(2 * layer - 1)
         height += amp * (0.88 * layer + 0.12 * ridged)
-    gy, gx = np.gradient(height * 14.0)
+    gy, gx = np.gradient(height * 21.0)
     nz = 1.0 / np.sqrt(gx * gx + gy * gy + 1)
     nx, ny = -gx * nz, -gy * nz
-    # Reflets d'un environnement de studio : bandes claires et sombres selon
-    # l'orientation de chaque facette, typique du métal.
-    env = 0.5 + 0.5 * np.sin(6.5 * nx + 4.0 * ny + 1.3) * np.cos(5.0 * ny - 2.5 * nx + 0.4)
-    light = np.clip(0.55 * nx - 0.45 * ny + 0.7 * nz, 0, 1)  # lumière en haut à gauche
-    shade = 0.6 * env ** 1.6 + 0.5 * light ** 4
-    return np.clip((shade - 0.12) * 1.55, 0, 1)
+    rx, ry = 2 * nz * nx, 2 * nz * ny  # direction réfléchie (vue de face)
+    # studio : plus clair en haut, bandes de murs clairs et sombres
+    env = 0.5 - 0.42 * ry + 0.12 * rx + 0.28 * np.sin(3.2 * rx - 1.1 * ry + 0.6)
+    for cx, cy, r2, k in [(-0.3, -0.5, 0.06, 0.55), (0.5, -0.2, 0.03, 0.45), (0.1, 0.45, 0.02, 0.3)]:
+        env += k * np.exp(-((rx - cx) ** 2 + (ry - cy) ** 2) / r2)  # sources lumineuses
+    for cx, cy, r2, k in [(0.55, 0.45, 0.05, 0.55), (-0.65, 0.2, 0.03, 0.45)]:
+        env -= k * np.exp(-((rx - cx) ** 2 + (ry - cy) ** 2) / r2)  # drapeaux noirs
+    env += 0.5 * np.exp(-((0.8 * rx + 0.6 * ry - 0.15) ** 2) / 0.003)  # réglette fine
+    env += (1 - nz) ** 2 * 0.3  # les facettes très inclinées brillent (Fresnel)
+    return np.clip(env, 0, 1.4)
 
 
 def ragged_mask(seed, inset=10, jitter=7, step=60, ss=3):
@@ -84,13 +89,15 @@ def photo_tone(src):
 
 
 def alu(src, dst, seed=1):
-    shade = foil_shade(seed)[..., None]
+    c = foil_reflection(seed)[..., None]
     tone = photo_tone(src)[..., None]
-    # Impression argent : la photo module la luminosité du métal, et les
-    # plis la traversent (creux plus sombres, éclat blanc sur les arêtes).
-    metal = SILVER * 1.25 * (0.12 + 0.88 * tone) * (0.5 + 0.65 * shade)
-    sheen = (shade ** 10) * 60
-    rgb = np.clip(metal + sheen, 0, 255)
+    highlight = np.array([238, 242, 250], np.float32)  # reflets froids
+    shadow = np.array([52, 55, 63], np.float32)  # creux gris profond
+    metal = shadow + (highlight - shadow) * np.clip(c, 0, 1)
+    # photo imprimée sur l'argent, puis un vernis brillant : les reflets
+    # passent aussi par-dessus l'encre sombre
+    gloss = np.clip(c - 0.72, 0, 1) ** 1.2 * 255 * 0.85
+    rgb = np.clip(metal * (0.3 + 0.7 * tone) + gloss, 0, 255)
     out = Image.fromarray(rgb.astype("uint8"), "RGB")
     out.putalpha(ragged_mask(seed))
     out.save(dst, quality=62, method=6, alpha_quality=60)
