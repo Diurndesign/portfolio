@@ -44,9 +44,11 @@ export const projects = [
     detail: {
       cat: "Site internet · Sur mesure",
       stack: ["Design web", "Développement", "Espace admin", "Supabase", "SEO local"],
-      body: [
-        "The Beauty Corner by Alex est un institut de beauté niçois où la dermopigmentation, le soin des ongles et les soirées beauté entre amies se vivent comme des moments d'exception. À partir du logo existant de la marque, la mise en page et l'univers du site prolongent cette douceur : une atmosphère naturelle et sensorielle, des appels à l'action clairs, l'Instagram de la cliente et un espace contact intégrés.",
-        "Le cœur du projet est un espace d'administration sur mesure : la cliente ajoute et modifie ses photos elle-même, hébergées sur Supabase, pour montrer l'évolution de son travail au fil des années en toute autonomie. Un site codé main, responsive et facile à maintenir, avec la réservation en ligne via Planity et un référencement local soigné à Nice.",
+      sections: [
+        { heading: "Contexte", text: "Alexandra, esthéticienne depuis 20 ans et spécialiste de la dermopigmentation des sourcils, tient un institut à Nice. Ses clientes la découvraient sur Instagram et réservaient sur Planity, mais il lui manquait un site à elle." },
+        { heading: "Objectifs", text: "Un site qui lui ressemble, qui rassure avant une prestation comme la dermopigmentation, qu'elle puisse mettre à jour seule, et qui l'aide à être mieux trouvée sur Google." },
+        { heading: "Ce que j'ai réalisé", text: "Un site codé sur mesure à partir de son logo, des avant/après interactifs, la réservation reliée à Planity, ses avis Google mis en avant, et un espace d'administration sur Supabase pour gérer ses photos en toute autonomie." },
+        { heading: "Résultat", text: "Livré en deux semaines, le site est à son nom. L'institut est mieux positionné sur Google, et de nouvelles clientes sont venues grâce au site." },
       ],
       links: [{ href: "https://thebeautycornerbyalex.fr", label: "Voir le site en ligne" }],
       gallery: {
@@ -72,9 +74,11 @@ export const projects = [
     },
     detail: {
       stack: ["Logo", "Site web", "Carte gaufrée", "Shooting photo"],
-      body: [
-        "Identité globale de Gdunan : un monogramme « GD » épuré, pensé pour une marque haut de gamme où la matière et le geste priment. Le logo se décline du web au print, jusqu'à une carte de visite gaufrée à froid, sans encre.",
-        "Le projet couvre la création du logo, la conception et la direction artistique du site internet, ainsi qu'un shooting photo dédié à son travail : des visuels sombres et texturés qui mettent la matière en lumière.",
+      sections: [
+        { heading: "Contexte", text: "Gdunan est une marque haut de gamme où la matière et le geste priment. Le projet couvre toute son image, du logo au site internet." },
+        { heading: "Objectifs", text: "Une identité épurée et cohérente sur tous les supports, du web au print, qui met la matière au premier plan." },
+        { heading: "Ce que j'ai réalisé", text: "Un monogramme « GD » épuré, la conception et la direction artistique du site internet, une carte de visite gaufrée à froid, sans encre, et un shooting photo dédié à son travail." },
+        { heading: "Résultat", text: "Une identité globale déclinée du site à la papeterie, avec des visuels sombres et texturés qui mettent la matière en lumière." },
       ],
       gallery: {
         screens: false,
@@ -102,9 +106,11 @@ export const projects = [
     },
     detail: {
       stack: ["Logo", "Mascotte", "Recherche typo", "Étiquette"],
-      body: [
-        "Création du logo de Pressing Azur Eco dans un univers de mascotte rétro : le style « rubber hose » des années 30. Un personnage-boîte joyeux, chapeau et nœud papillon, qui incarne le pressing avec malice.",
-        "Le projet comprend une recherche typographique (un alphabet display sur mesure), la création du personnage et sa mise en situation, notamment sur l'étiquette. Palette sauge, bleu nuit et crème.",
+      sections: [
+        { heading: "Contexte", text: "Création du logo de Pressing Azur Eco, dans un univers de mascotte rétro inspiré du style « rubber hose » des années 30." },
+        { heading: "Objectifs", text: "Incarner le pressing par un personnage joyeux et mémorable, avec une typographie qui lui soit propre." },
+        { heading: "Ce que j'ai réalisé", text: "Une recherche typographique (un alphabet display sur mesure), la création d'un personnage-boîte, chapeau et nœud papillon, et sa mise en situation, notamment sur l'étiquette." },
+        { heading: "Résultat", text: "Une mascotte qui incarne le pressing avec malice, dans une palette sauge, bleu nuit et crème." },
       ],
       gallery: {
         screens: false,
@@ -133,9 +139,11 @@ export const projects = [
     detail: {
       title: "TijM 2017",
       stack: ["Affiche", "Mise en page", "Magazine", "Direction artistique"],
-      body: [
-        "Identité visuelle du 24<sup>e</sup> Tournoi International de Judo de Monaco (Trophée Gérard Bertrand, 2017). Une affiche pensée pour tenir aussi bien sur un panneau urbain de la Principauté que dans le hall du Stade Louis II.",
-        "Au-delà de l'affiche : la conception et la mise en page du magazine officiel du tournoi : doubles pages, hiérarchie typographique et intégration des photographies de combat, jusqu'au bon à tirer.",
+      sections: [
+        { heading: "Contexte", text: "Identité visuelle du 24<sup>e</sup> Tournoi International de Judo de Monaco (Trophée Gérard Bertrand, 2017)." },
+        { heading: "Objectifs", text: "Une affiche qui tienne aussi bien sur un panneau urbain de la Principauté que dans le hall du Stade Louis II, et un magazine officiel à la hauteur de l'événement." },
+        { heading: "Ce que j'ai réalisé", text: "L'affiche, puis la conception et la mise en page du magazine officiel : doubles pages, hiérarchie typographique et intégration des photographies de combat." },
+        { heading: "Résultat", text: "Une identité cohérente de l'affiche au magazine, menée jusqu'au bon à tirer." },
       ],
       gallery: {
         screens: false,
@@ -162,9 +170,11 @@ export const projects = [
     },
     detail: {
       stack: ["Logo", "Refonte", "Couture", "Direction artistique"],
-      body: [
-        "Refonte de l'identité d'Elo Ab, couturière. Un logotype tout en rondeurs où l'aiguille et le fil s'invitent dans les lettres (un clin d'œil direct à son métier) posé sur une palette douce de crème et de noir.",
-        "La marque se décline avec délicatesse : ruban gansé griffé « Elo », compositions florales et matières textiles, pour une image à la fois artisanale et raffinée.",
+      sections: [
+        { heading: "Contexte", text: "Refonte de l'identité d'Elo Ab, couturière." },
+        { heading: "Objectifs", text: "Une image à la fois artisanale et raffinée, qui parle directement de son métier." },
+        { heading: "Ce que j'ai réalisé", text: "Un logotype tout en rondeurs où l'aiguille et le fil s'invitent dans les lettres, sur une palette douce de crème et de noir, décliné jusqu'à un ruban gansé griffé « Elo »." },
+        { heading: "Résultat", text: "Une marque qui se décline avec délicatesse, entre compositions florales et matières textiles." },
       ],
       gallery: {
         screens: false,
@@ -190,9 +200,11 @@ export const projects = [
     },
     detail: {
       stack: ["Logo", "Charte graphique", "Papeterie", "Direction artistique"],
-      body: [
-        "Identité de marque pour Ewa FLR, cheffe. Un univers minimal et végétal, structuré autour d'un logotype vertical tout en finesse (Modenica light) et d'une couleur unique, le « bleu béton ».",
-        "La charte se décline sur l'ensemble des supports (papeterie, carte de visite, tablier) pour une image de marque sobre et éditoriale, au service de sa cuisine.",
+      sections: [
+        { heading: "Contexte", text: "Création de l'identité de marque d'Ewa FLR, cheffe." },
+        { heading: "Objectifs", text: "Une image de marque sobre et éditoriale, au service de sa cuisine." },
+        { heading: "Ce que j'ai réalisé", text: "Un univers minimal et végétal, structuré autour d'un logotype vertical tout en finesse (Modenica light) et d'une couleur unique, le « bleu béton »." },
+        { heading: "Résultat", text: "Une charte déclinée sur l'ensemble des supports : papeterie, carte de visite et tablier." },
       ],
       gallery: {
         screens: false,
