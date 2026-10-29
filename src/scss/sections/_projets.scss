@@ -59,37 +59,39 @@
   &__filters {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.55rem 0.6rem;
+    justify-content: center;
+    gap: 0.5rem 2rem;
     margin-bottom: clamp(1.75rem, 4vh, 2.75rem);
   }
 
+  // Filtres en simples mots : pas d'encadré, le filtre actif est souligné
   &__filter {
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba($color-ink, 0.72);
-    background: transparent;
-    border: 1px solid rgba($color-ink, 0.22);
-    border-radius: 999px;
-    padding: 0.5rem 1.05rem;
+    color: rgba($color-ink, 0.7);
+    background: none;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    border-radius: 0;
+    padding: 0.4rem 0;
     cursor: pointer;
-    transition: color $transition, background $transition, border-color $transition;
+    transition: color $transition, border-color $transition;
 
     &:hover {
       color: $color-ink;
-      border-color: rgba($color-ink, 0.5);
+      border-bottom-color: rgba($color-ink, 0.4);
     }
 
     &:focus-visible {
       outline: 2px solid $color-ink;
-      outline-offset: 3px;
+      outline-offset: 4px;
     }
 
     &.is-active {
-      color: $color-cream;
-      background: $color-ink;
-      border-color: $color-ink;
+      color: $color-ink;
+      border-bottom-color: $color-ink;
     }
   }
 }
