@@ -15,11 +15,22 @@ $modal-panel: $color-panel;
 .modal {
   position: fixed;
   inset: 0;
+  // Hauteur de la zone visible (barres du navigateur mobile exclues)
+  height: 100vh;
+  height: 100dvh;
   z-index: 100;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: clamp(1rem, 4vw, 3rem);
+  // Ne passe jamais sous l'encoche ni sous les barres du navigateur mobile
+  padding-top: max(clamp(1rem, 4vw, 3rem), env(safe-area-inset-top));
+  padding-bottom: max(clamp(1rem, 4vw, 3rem), env(safe-area-inset-bottom));
+
+  @include until($bp-sm) {
+    padding: max(0.75rem, env(safe-area-inset-top)) 0.75rem
+      max(0.75rem, env(safe-area-inset-bottom));
+  }
 
   visibility: hidden;
   opacity: 0;
@@ -46,6 +57,9 @@ $modal-panel: $color-panel;
     z-index: 1;
     width: min(960px, 100%);
     max-height: 90vh;
+    // dvh : hauteur réellement visible (sur mobile, vh inclut la zone
+    // cachée sous les barres du navigateur et la fenêtre déborde).
+    max-height: 90dvh;
     overflow: hidden;
     border-radius: 10px;
     display: flex;
@@ -125,6 +139,12 @@ $glass-muted: rgba(244, 243, 241, 0.66);
   .modal__dialog {
     width: min(1280px, 100%);
     max-height: 92vh;
+    max-height: 92dvh;
+
+    @include until($bp-sm) {
+      max-height: 100%;
+      border-radius: 14px;
+    }
     border-radius: 18px;
     border: 1px solid $glass-line;
     background: $glass-bg;
