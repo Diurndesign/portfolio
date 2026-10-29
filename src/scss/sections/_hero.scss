@@ -319,7 +319,16 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     align-items: center;
   }
 
+  // Couleurs de la carte (variante orange : .hero__card--orange)
   &__card {
+    --card-bg: #{$klein};
+    --card-edge: #00216f;
+    --card-ink: #{$color-white};
+    --card-ink-soft: rgba(255, 255, 255, 0.82);
+    --emboss-light: rgba(255, 255, 255, 0.28);
+    --emboss-light-soft: rgba(255, 255, 255, 0.1);
+    --emboss-dark: rgba(0, 0, 30, 0.6);
+    --emboss-dark-soft: rgba(0, 0, 30, 0.45);
     width: min(760px, 100%);
     aspect-ratio: 85 / 55; // format carte de visite, paysage
     perspective: 1600px;
@@ -383,7 +392,7 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    background: $card-paper 0 0 / 240px 240px, $klein;
+    background: $card-paper 0 0 / 240px 240px, var(--card-bg);
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     // carte posée sur le bleu roi : ombre portée + léger relief de tranche
@@ -408,7 +417,7 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     position: absolute;
     inset: 0;
     border-radius: 10px;
-    background: #00216f; // tranche du carton, plus sombre que la face
+    background: var(--card-edge); // tranche du carton, plus sombre que la face
     // 7 tranches réparties entre les deux faces
     transform: translateZ(calc(var(--card-depth) * (var(--i) / 8 - 0.5)));
   }
@@ -429,46 +438,20 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     width: fit-content;
   }
 
-  // Test : Diurn Studio en chrome (dégradé métallique découpé dans le
-  // texte, avec une ligne d'horizon claire au milieu des lettres). Le
-  // reflet glisse quand la carte s'incline (--glare-y posé par le JS).
+  // Gaufrage à sec : le nom est de la couleur de la carte, révélé
+  // seulement par la lumière (haut gauche) et l'ombre (bas droite).
   &__card-face--front .hero__title {
     font-weight: 300;
     font-size: clamp(3.2rem, 11vw, 8rem);
     font-size: 16cqw; // proportionnel à la carte, avec de la marge autour
     line-height: 0.86;
     text-align: center;
-    // Chrome gaufré : le métal sort de la carte. Biseau en drop-shadow
-    // (text-shadow masquerait le dégradé) : arête claire en haut à gauche,
-    // arête sombre en bas à droite, ombre portée courte, puis un léger
-    // bombé du papier autour des lettres.
-    filter: drop-shadow(-0.5px -0.5px 0 rgba(255, 255, 255, 0.45))
-      drop-shadow(0.5px 1px 0 rgba(0, 10, 60, 0.6));
-  }
-
-  // Chrome posé mot par mot : chaque ligne a son horizon clair. Marge
-  // horizontale pour ne pas couper les boucles du D et du N.
-  &__card-face--front .hero__title span {
-    padding: 0.1em 0.45em;
-    margin: -0.1em auto;
-    color: #d9dde3; // repli si background-clip: text n'est pas géré
-    background: linear-gradient(
-      180deg,
-      #fbfcfd 0%,
-      #d8dde4 20%,
-      #a3aab5 40%,
-      #6d7480 49%,
-      #e9ecf0 52%,
-      #bfc5cd 68%,
-      #959ca7 84%,
-      #e4e7eb 100%
-    );
-    background-size: 100% 160%;
-    background-position: 50% var(--glare-y, 30%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: background-position 0.25s ease-out;
+    color: var(--card-bg);
+    text-shadow:
+      -1px -1px 0 var(--emboss-light),
+      -2px -2px 3px var(--emboss-light-soft),
+      1px 1px 0 var(--emboss-dark),
+      2px 3px 5px var(--emboss-dark-soft);
   }
 
 
@@ -493,7 +476,7 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.82);
+    color: var(--card-ink-soft);
   }
 
   &__card-face--back .hero__intro {
@@ -501,7 +484,7 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     max-width: 46ch;
     font-size: clamp(0.85rem, 1.7vw, 1.15rem);
     line-height: 1.65;
-    color: $color-white;
+    color: var(--card-ink);
   }
 
   // Toute la face arrière est cliquable aussi (comme le recto)
@@ -556,13 +539,14 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
   bottom: clamp(0.75rem, 3%, 1.25rem);
   width: clamp(1.1rem, 3.2cqw, 1.5rem);
   height: auto;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--card-ink-soft);
+  opacity: 0.7;
   pointer-events: none;
   transition: transform 0.6s $ease, color 0.3s ease;
 }
 
 .hero__card:hover .hero__card-icon {
-  color: rgba(255, 255, 255, 0.85);
+  opacity: 1;
   transform: rotate(-180deg);
 }
 
@@ -682,4 +666,16 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
   @include until($bp-sm) {
     width: 90%;
   }
+}
+
+// Variante orange (tests) : texte noir pour garder le contraste AA
+.hero__card--orange {
+  --card-bg: #e04b20;
+  --card-edge: #a8330f;
+  --card-ink: #111111;
+  --card-ink-soft: #111111;
+  --emboss-light: rgba(255, 220, 200, 0.45);
+  --emboss-light-soft: rgba(255, 220, 200, 0.15);
+  --emboss-dark: rgba(90, 20, 0, 0.55);
+  --emboss-dark-soft: rgba(90, 20, 0, 0.35);
 }
