@@ -504,27 +504,19 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     color: $color-white;
   }
 
+  // Toute la face arrière est cliquable aussi (comme le recto)
   &__card-back {
+    position: absolute;
+    inset: 0;
+    width: 100%;
     border: 0;
-    background: none;
-    padding: 0.3rem 0;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.82);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+    background: transparent;
     cursor: pointer;
-
-    &:hover,
-    &:focus-visible {
-      color: $color-white;
-      border-bottom-color: $color-white;
-    }
 
     &:focus-visible {
       outline: 2px solid $color-white;
-      outline-offset: 4px;
+      outline-offset: 6px;
     }
   }
 
