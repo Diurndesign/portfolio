@@ -5,8 +5,13 @@
 // « Retourner la carte » du verso la remet à l'endroit. La face cachée est
 // rendue inerte : ni focus clavier, ni lecture par les lecteurs d'écran.
 // Avec une souris, la carte s'incline et un reflet suit le pointeur.
+// Au doigt, on fait glisser la carte pour la faire tourner : elle suit le
+// geste, puis se pose sur la face la plus proche (ou se retourne si le
+// geste est rapide).
 
 const MAX_TILT = 8; // degrés
+const DRAG_START = 10; // px avant de considérer le geste comme un glissé
+const FLICK_SPEED = 0.5; // px/ms : un geste plus rapide retourne la carte
 
 function initHeroCard() {
   const card = document.querySelector(".hero__card");
@@ -17,18 +22,110 @@ function initHeroCard() {
   const flipBtn = card.querySelector(".hero__card-flip");
   const backBtn = card.querySelector(".hero__card-back");
 
-  function setFlipped(flipped) {
+  const flipper = card.querySelector(".hero__card-flipper");
+  let angle = 0; // rotation cumulée (0, 180, 360…), pour tourner sans revenir en arrière
+
+  // Met à jour l'état (faces inertes, aria) selon la face visible
+  function syncFaces(focus) {
+    const flipped = Math.round(angle / 180) % 2 !== 0;
     card.classList.toggle("is-flipped", flipped);
     flipBtn.setAttribute("aria-pressed", flipped ? "true" : "false");
     back.inert = !flipped;
     front.inert = flipped;
-    (flipped ? backBtn : flipBtn).focus({ preventScroll: true });
+    if (focus) (flipped ? backBtn : flipBtn).focus({ preventScroll: true });
   }
 
-  flipBtn.addEventListener("click", () => setFlipped(true));
-  backBtn.addEventListener("click", () => setFlipped(false));
+  function rotateTo(deg, animate = true) {
+    angle = deg;
+    flipper.style.transition = animate ? "" : "none";
+    flipper.style.transform = `rotateY(${angle}deg)`;
+  }
+
+  flipBtn.addEventListener("click", () => {
+    rotateTo(angle + 180);
+    syncFaces(true);
+  });
+  backBtn.addEventListener("click", () => {
+    rotateTo(angle - 180);
+    syncFaces(true);
+  });
+
+  initSwipe(card, {
+    getAngle: () => angle,
+    rotateTo,
+    settle(deg) {
+      rotateTo(deg);
+      syncFaces(false);
+    },
+  });
 
   initTilt(card);
+}
+
+// Glisser au doigt (ou au stylet) pour faire tourner la carte. Le défilement
+// vertical de la page reste possible (touch-action: pan-y en CSS).
+function initSwipe(card, { getAngle, rotateTo, settle }) {
+  let startX = 0;
+  let startAngle = 0;
+  let lastX = 0;
+  let lastT = 0;
+  let speed = 0;
+  let dragging = false;
+  let pointerId = null;
+
+  card.addEventListener("pointerdown", (e) => {
+    if (e.pointerType === "mouse") return; // la souris clique, elle ne glisse pas
+    pointerId = e.pointerId;
+    startX = lastX = e.clientX;
+    lastT = e.timeStamp;
+    startAngle = getAngle();
+    dragging = false;
+    speed = 0;
+  });
+
+  card.addEventListener("pointermove", (e) => {
+    if (e.pointerId !== pointerId) return;
+    const dx = e.clientX - startX;
+    if (!dragging && Math.abs(dx) < DRAG_START) return;
+    if (!dragging) {
+      dragging = true;
+      card.setPointerCapture(pointerId);
+    }
+    const dt = e.timeStamp - lastT || 1;
+    speed = (e.clientX - lastX) / dt;
+    lastX = e.clientX;
+    lastT = e.timeStamp;
+    // largeur de la carte = un demi-tour
+    rotateTo(startAngle + (dx / card.offsetWidth) * 180, false);
+  });
+
+  function end(e) {
+    if (e.pointerId !== pointerId) return;
+    pointerId = null;
+    if (!dragging) return;
+    let target = Math.round(getAngle() / 180) * 180;
+    // geste rapide : on retourne dans le sens du geste, même si court
+    if (target === startAngle && Math.abs(speed) > FLICK_SPEED) {
+      target = startAngle + Math.sign(speed) * 180;
+    }
+    settle(target);
+  }
+
+  card.addEventListener("pointerup", end);
+  card.addEventListener("pointercancel", end);
+
+  // Un glissé ne doit pas déclencher le clic des boutons de la carte
+  card.addEventListener(
+    "click",
+    (e) => {
+      if (dragging) {
+        e.preventDefault();
+        e.stopPropagation();
+        dragging = false;
+      }
+    },
+    true
+  );
 }
 
 // Inclinaison : seulement avec une souris, et si les animations sont permises

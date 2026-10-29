@@ -323,6 +323,11 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     width: min(760px, 100%);
     aspect-ratio: 85 / 55; // format carte de visite, paysage
     perspective: 1600px;
+    // au doigt : glisser horizontalement fait tourner la carte, le
+    // défilement vertical de la page reste au navigateur
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    user-select: none;
     animation: hero-reveal 1.1s $ease both;
     animation-delay: 0.25s;
   }
@@ -349,9 +354,8 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     transform-style: preserve-3d;
     transition: transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
 
-    .hero__card.is-flipped & {
-      transform: rotateY(180deg);
-    }
+    // (la rotation est posée par hero-card.js, cumulée pour tourner
+    // toujours dans le sens du geste)
   }
 
   // Reflet de lumière qui suit la souris sur le papier
@@ -502,5 +506,20 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
   .hero__card-inner,
   .hero__card-flipper {
     transition: none;
+  }
+}
+
+// Indication adaptée : clic à la souris, glissé au doigt
+.hero__card-hint--touch {
+  display: none;
+}
+
+@media (hover: none) {
+  .hero__card-hint--mouse {
+    display: none;
+  }
+
+  .hero__card-hint--touch {
+    display: inline;
   }
 }
