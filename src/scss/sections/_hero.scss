@@ -330,8 +330,17 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     --emboss-light-soft: rgba(255, 255, 255, 0.1);
     --emboss-dark: rgba(0, 0, 30, 0.6);
     --emboss-dark-soft: rgba(0, 0, 30, 0.45);
-    width: min(760px, 100%);
+    // Largeur calculée sur l'écran seul (marges latérales déduites), jamais
+    // sur la colonne flex : Safari/WebKit (iPad) réduisait à zéro la largeur
+    // en pourcentage, et la carte n'était plus qu'un trait vertical.
+    flex-shrink: 0;
+    width: min(760px, calc(100vw - 2 * #{$sidebar-width} - 1rem));
+    max-width: 100%;
     aspect-ratio: 85 / 55; // format carte de visite, paysage
+
+    @include until($bp-md) {
+      width: min(760px, calc(100vw - 2.5rem));
+    }
     perspective: 1600px;
     // au doigt : glisser horizontalement fait tourner la carte, le
     // défilement vertical de la page reste au navigateur
@@ -645,7 +654,7 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
 
 .hero__card {
   @include until($bp-sm) {
-    width: 90%;
+    width: calc(0.9 * (100vw - 2.5rem)); // 90 % de la colonne, sans pourcentage
   }
 }
 
