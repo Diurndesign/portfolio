@@ -1,5 +1,5 @@
 // ============================================================
-//  /api/lead — chaque demande du site arrive dans Notion
+//  /api/demande — chaque demande du site arrive dans Notion
 // ============================================================
 // Fonction serveur Vercel appelée par src/modules/contact-form.js, en
 // parallèle de l'envoi Web3Forms (l'e-mail de notification) : si l'un
@@ -96,7 +96,7 @@ function messageBlocks(message) {
     .map((p) => ({ object: "block", type: "paragraph", paragraph: { rich_text: text(p) } }));
 }
 
-// Contrôle de réglage : GET /api/lead?check=1 indique si la clé est
+// Contrôle de réglage : GET /api/demande?check=1 indique si la clé est
 // présente et si Notion donne accès à la base (la clé n'est jamais montrée)
 // Sur les versions de test seulement, ?check=ecriture ajoute une fiche
 // « Test de réglage » pour vérifier toute la chaîne jusqu'à Notion.
@@ -114,7 +114,7 @@ async function check(req, res) {
             Statut: { select: { name: "Nouveau" } },
             Email: { email: "hello@diurnstudio.fr" },
             Formulaire: { select: { name: "contact" } },
-            Page: { rich_text: text("/api/lead (contrôle)") },
+            Page: { rich_text: text("/api/demande (contrôle)") },
             "Reçu le": { date: { start: new Date().toISOString() } },
           },
         });
@@ -135,7 +135,7 @@ export default async function handler(req, res) {
   }
   const origin = req.headers.origin || "";
   if (!ALLOWED.some((re) => re.test(origin))) {
-    console.warn("lead: origine refusée", origin || "(aucune)");
+    console.warn("demande: origine refusée", origin || "(aucune)");
     return res.status(403).json({ ok: false });
   }
 
@@ -152,12 +152,12 @@ export default async function handler(req, res) {
   const name = clean(body.name, 120);
   const email = clean(body.email, 200);
   if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    console.warn("lead: nom ou e-mail invalide");
+    console.warn("demande: nom ou e-mail invalide");
     return res.status(400).json({ ok: false });
   }
 
   if (!TOKEN) {
-    console.error("lead: clé Notion absente (NOTION_TOKEN ou NOTION_KEY)");
+    console.error("demande: clé Notion absente (NOTION_TOKEN ou NOTION_KEY)");
     return res.status(200).json({ ok: false, reason: "notion_non_configure" });
   }
 
@@ -181,10 +181,10 @@ export default async function handler(req, res) {
       },
       children: messageBlocks(clean(body.message, 20000)),
     });
-    console.log("lead: demande ajoutée dans Notion", `(${formName}, ${clean(body.page, 80)})`);
+    console.log("demande: demande ajoutée dans Notion", `(${formName}, ${clean(body.page, 80)})`);
     return res.status(200).json({ ok: true });
   } catch (err) {
-    console.error("lead:", err.message);
+    console.error("demande:", err.message);
     // base supprimée ou déplacée : on la recherchera à la prochaine demande
     databaseId = "";
     return res.status(502).json({ ok: false });

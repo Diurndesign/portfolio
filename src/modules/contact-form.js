@@ -3,7 +3,7 @@
 //  On reste sur la page : états chargement / succès / erreur.
 // ============================================================
 // Chaque demande part par deux chemins en parallèle : Web3Forms (l'e-mail
-// de notification) et /api/lead (la base Notion « Prospects du site »).
+// de notification) et /api/demande (la base Notion « Prospects du site »).
 // Il suffit que l'un des deux aboutisse : aucune demande n'est perdue.
 
 // Provenance du visiteur (site d'où il arrive, campagne), mémorisée pour
@@ -70,7 +70,7 @@ function initContactForm() {
       const keyReady = access_key && access_key !== "WEB3FORMS_ACCESS_KEY";
       const [mail, crm] = await Promise.allSettled([
         keyReady ? postJSON("https://api.web3forms.com/submit", data) : Promise.reject(new Error("clé absente")),
-        postJSON("/api/lead", {
+        postJSON("/api/demande", {
           ...fields,
           form_name: form.dataset.formName || "contact",
           page: location.pathname,
