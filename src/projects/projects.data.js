@@ -333,7 +333,7 @@ export const projects = [
         title: "Murmure — l'application en direct",
       },
       qr: {
-        src: "/img/murmure-qr.png",
+        src: "/img/murmure-qr-noir.png",
         label: "Scanne pour tester Murmure sur ton mobile.",
       },
       links: [

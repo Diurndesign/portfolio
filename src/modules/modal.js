@@ -40,7 +40,7 @@ function renderFiche(proj) {
     ? g.images
         .map(
           (im) =>
-            // --r : proportions de l'image, pour la galerie « justifiée »
+            // --r : proportions de l'image, pour répartir la galerie en rangées
             `<img src="${im.src}" alt="${im.alt}" loading="lazy" width="${im.width}" height="${im.height}" style="--r: ${(im.width / im.height).toFixed(3)}" />`
         )
         .join("")
@@ -102,6 +102,48 @@ function renderFiche(proj) {
     </article>`;
 }
 
+// Galerie en rangées équilibrées : les images sont réparties pour que
+// chaque rangée occupe toute la largeur à une hauteur proche de la cible,
+// sans dernière rangée à moitié vide. Dans une rangée, chaque image prend
+// une largeur proportionnelle à ses proportions (même hauteur pour toutes).
+function layoutGallery(gallery) {
+  const width = gallery.clientWidth;
+  if (!width || gallery._width === width) return;
+  gallery._width = width;
+  const imgs = [...gallery.querySelectorAll("img")];
+  const ratios = imgs.map((im) => im.width / im.height || 1);
+  const gap = parseFloat(getComputedStyle(gallery).rowGap) || 0;
+  const small = width < 560;
+  const target = small ? 170 : Math.min(380, Math.max(240, innerHeight * 0.42));
+  const perRow = small ? 2 : 3; // images assez grandes pour être lues
+
+  // best[i] : meilleure répartition des images à partir de i
+  const n = ratios.length;
+  const best = new Array(n + 1).fill(null);
+  best[n] = { cost: 0, next: n };
+  for (let i = n - 1; i >= 0; i--) {
+    let sum = 0;
+    for (let j = i; j < n; j++) {
+      sum += ratios[j];
+      const h = (width - gap * (j - i)) / sum;
+      const d = (h - target) / target;
+      // rangée trop haute (image seule en portrait) fortement pénalisée
+      const cost = d * d * (h > target * 1.7 ? 6 : 1) + best[j + 1].cost;
+      if (!best[i] || cost < best[i].cost) best[i] = { cost, next: j + 1 };
+      if (j - i + 1 >= perRow) break;
+    }
+  }
+
+  const rows = document.createDocumentFragment();
+  for (let i = 0; i < n; i = best[i].next) {
+    const row = document.createElement("div");
+    row.className = "project__row";
+    imgs.slice(i, best[i].next).forEach((im) => row.appendChild(im));
+    rows.appendChild(row);
+  }
+  gallery.replaceChildren(rows);
+}
+
 function initModal() {
   const modal = document.getElementById("modal");
   const body = document.getElementById("modal-body");
@@ -112,6 +154,12 @@ function initModal() {
   let lastFocused = null;
 
   const isOpen = () => modal.classList.contains("is-open");
+
+  // nouvelle répartition quand la largeur de la fenêtre change
+  const galleryObserver =
+    "ResizeObserver" in window
+      ? new ResizeObserver((entries) => entries.forEach((e) => layoutGallery(e.target)))
+      : { observe() {} };
 
   function open(id) {
     const tpl = document.getElementById("detail-" + id);
@@ -144,6 +192,12 @@ function initModal() {
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("no-scroll");
+
+    const gallery = body.querySelector(".project__gallery");
+    if (gallery) {
+      layoutGallery(gallery);
+      galleryObserver.observe(gallery);
+    }
 
     // focus sur le bouton de fermeture
     closeBtn.focus();

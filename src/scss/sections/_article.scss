@@ -354,16 +354,6 @@ $article-max: 1180px;
   }
 }
 
-// Lettrine sur le premier paragraphe de l'article
-.article-section--first > p:first-of-type::first-letter {
-  float: left;
-  margin: 0.08em 0.12em 0 0;
-  font-family: $font-display;
-  font-size: 3.6em;
-  line-height: 0.82;
-  color: rgb(var(--c-blue));
-}
-
 // --- Listes en tuiles (atouts ✓, limites ×, signaux •) ----------
 .article-checks {
   display: grid;

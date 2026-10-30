@@ -69,11 +69,6 @@
     transition: transform $transition, opacity $transition, background $transition;
   }
 
-  // Sur une section claire (menu fermé) : traits foncés
-  &--light:not(.is-open) &__burger-line {
-    background: rgba(var(--c-ink), 0.7);
-  }
-
   // --- Panneau plein écran quand le menu est ouvert --------
   @include until($bp-md) {
     &.is-open {
@@ -220,31 +215,21 @@
       border-radius: 4px;
     }
   }
+}
 
-  // --- Variante foncée : quand une section claire passe sous la nav ---
-  // Libellés en encre pleine (lisibles sur la section Projets crème),
-  // sans fond : pas de cadre visible lors des transitions de section.
-  &--light &__link {
-    color: $color-ink;
+// --- Couleur de chaque élément fixe selon le fond derrière lui ---
+// Classes posées par modules/scroll-nav.js, élément par élément (logo,
+// liens, icônes, burger) : encre sur fond clair, blanc sur fond foncé.
+.nav .is-on-dark {
+  --c-fg: 255, 255, 255;
+  --a-muted: 0.65;
+  --a-soft: 0.82;
+}
 
-    &::after {
-      background: $color-ink;
-    }
-
-    &:hover,
-    &:focus-visible {
-      color: $color-ink;
-    }
-  }
-
-  &--light &__social {
-    color: $color-ink;
-
-    &:hover,
-    &:focus-visible {
-      color: $color-ink;
-    }
-  }
+.nav .is-on-light {
+  --c-fg: var(--c-ink);
+  --a-muted: 0.8;
+  --a-soft: 1;
 }
 
 // ============================================================
@@ -297,11 +282,13 @@
     pointer-events: auto;
   }
 
-  // sur une section claire (nav en mode foncé) : logo noir
-  .nav--light & {
-    img {
-      filter: none;
-    }
+  // logo source noir : gardé noir sur fond clair, inversé sur fond foncé
+  &.is-on-light img {
+    filter: none;
+  }
+
+  &.is-on-dark img {
+    filter: invert(1);
   }
 
   @include until($bp-md) {

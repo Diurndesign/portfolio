@@ -278,23 +278,11 @@ $paper: #f6f5f2;
     background: linear-gradient(180deg, rgba(24, 24, 26, 0.86), rgba(10, 10, 11, 0.92));
   }
 
-  // Menu et logo fixes : en blanc quand une section charbon passe dessous
-  .nav--dark {
-    --c-fg: 255, 255, 255;
-    --a-muted: 0.65;
-    --a-soft: 0.82;
-  }
-
-  // Logo : noir sur l'orange, blanc sur le charbon
-  .site-logo img {
+  // Logo : noir sur l'orange (avant le calcul du fond par scroll-nav.js)
+  .site-logo:not(.is-on-dark) img {
     filter: none;
   }
 
-  .nav--dark .site-logo {
-    img {
-      filter: invert(1);
-    }
-  }
 }
 
 // --- Interrupteur de thème ------------------------------------
@@ -346,10 +334,6 @@ $paper: #f6f5f2;
   &:focus-visible {
     outline: 2px solid currentColor;
     outline-offset: 3px;
-  }
-
-  .nav--light & {
-    color: $color-ink;
   }
 
   @include until($bp-md) {

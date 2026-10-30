@@ -375,32 +375,34 @@ $glass-muted: rgba(244, 243, 241, 0.66);
     min-width: 0;
   }
 
-  // Galerie « justifiée » : rangées horizontales qui remplissent la largeur,
-  // chaque image garde ses proportions (--r = largeur / hauteur, posé par
-  // modal.js). La dernière rangée n'est pas étirée (pseudo-élément final).
+  // Galerie en rangées pleine largeur : modal.js répartit les images en
+  // rangées équilibrées (.project__row) ; dans une rangée, chaque image
+  // prend une largeur proportionnelle à ses proportions (--r = largeur /
+  // hauteur), donc toutes ont la même hauteur et la rangée est remplie.
   &__gallery {
-    --row: clamp(190px, 32vh, 300px);
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 0.75rem;
 
-    &::after {
-      content: "";
-      flex-grow: 1000;
-    }
-
-    img {
-      display: block;
-      flex: var(--r, 1) 1 calc(var(--r, 1) * var(--row));
-      width: 0;
-      height: auto;
-      aspect-ratio: var(--r, 1);
-      border-radius: 8px;
-    }
-
     @include until($bp-sm) {
-      --row: 140px;
+      gap: 0.5rem;
     }
+  }
+
+  &__row {
+    display: flex;
+    gap: inherit;
+  }
+
+  &__gallery img {
+    display: block;
+    flex: var(--r, 1) 1 0;
+    min-width: 0;
+    width: 0;
+    height: auto;
+    aspect-ratio: var(--r, 1);
+    object-fit: cover;
+    border-radius: 8px;
   }
 
   &__gallery--screens img {
