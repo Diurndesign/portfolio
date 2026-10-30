@@ -15,47 +15,73 @@
   max-width: $content-max;
   margin: 0 auto;
 
-  // --- Haut : texte + photo --------------------------------
+  // --- Haut : signature, titre en escalier, photo ---------
+  // Mise en page éditoriale : une petite signature à gauche, un grand
+  // titre en capitales dont les dernières lignes se décalent, la photo
+  // en vis-à-vis à droite. Les colonnes sont partagées avec le filet et
+  // les textes en dessous, pour que tout s'aligne sur la même grille.
+  --about-cols: minmax(6.5rem, 1fr) 5fr minmax(20rem, 2.6fr);
+  --about-gap: clamp(1.5rem, 3vw, 3rem);
+
   &__top {
     display: grid;
-    grid-template-columns: 1.2fr 0.85fr;
-    align-items: center;
-    gap: clamp(2.5rem, 6vw, 6rem);
+    grid-template-columns: var(--about-cols);
+    column-gap: var(--about-gap);
+    align-items: start;
 
     @include until($bp-lg) {
       grid-template-columns: 1fr;
-      gap: 2.5rem;
+      row-gap: 2rem;
     }
+  }
+
+  &__tag {
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: $color-white;
+    padding-top: 0.35rem;
+  }
+
+  // Taille du titre en variable : la légende se cale sur ses lignes
+  &__intro {
+    --hl: clamp(2.1rem, 4.4vw, 4rem);
+    --shift: 3.1;
+    position: relative;
   }
 
   &__headline {
-    font-family: $font-display;
-    font-weight: 300;
-    font-size: clamp(2.1rem, 4.4vw, 3.6rem);
-    line-height: 1.08;
-    letter-spacing: -0.01em;
-    color: $color-white;
-    max-width: 18ch;
-    text-wrap: balance;
-    margin-top: 0.4rem;
-  }
-
-  &__bio {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    max-width: 46ch;
-    margin-top: clamp(1.5rem, 3vh, 2.25rem);
+    font-family: $font-body;
+    font-weight: 700;
+    font-size: var(--hl);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    text-transform: uppercase;
+    color: $color-white;
+  }
 
-    p {
-      font-size: clamp(0.98rem, 1.1vw, 1.08rem);
-      line-height: 1.75;
-      color: $color-text-soft;
-    }
+  &__line--shift {
+    padding-left: calc(var(--hl) * var(--shift));
+  }
 
-    strong {
-      color: $color-white;
-      font-weight: 600;
+  // Légende logée dans le creux laissé par les lignes décalées
+  &__caption {
+    position: absolute;
+    left: 0;
+    top: calc(var(--hl) * 0.92 * 3 + 0.6rem);
+    width: calc(var(--hl) * var(--shift) - 1rem);
+    font-size: 0.7rem;
+    line-height: 1.35;
+    color: $color-text-muted;
+
+    // Mobile : colonne trop étroite, la légende passe sous le titre
+    @include until($bp-md) {
+      position: static;
+      width: auto;
+      max-width: 30ch;
+      margin-top: 1rem;
     }
   }
 
@@ -67,7 +93,7 @@
   &__photo {
     position: relative;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 4px;
 
     @include until($bp-lg) {
       max-width: 340px;
@@ -181,6 +207,30 @@
       }
     }
 
+    // Avec survol (voile posé sur la photo) : contenu resserré pour que
+    // tout tienne dans la photo, sans défilement interne.
+    @media (hover: hover) {
+      &-reveal {
+        gap: 1rem;
+        padding: 1.25rem;
+      }
+
+      &-block {
+        gap: 0.6rem;
+      }
+
+      &-group .about__photo-group-label {
+        font-size: 1rem;
+        margin-bottom: 0.2rem;
+      }
+
+      &-group p,
+      &-edu {
+        font-size: 0.76rem;
+        line-height: 1.45;
+      }
+    }
+
     // Appareils avec survol (souris) : les compétences se révèlent au
     // survol, ou au clic / Entrée sur le bouton (toggle JS). L'indice invite.
     @media (hover: hover) {
@@ -193,7 +243,8 @@
           transform: scale(1.05);
         }
 
-        .about__photo-cue {
+        .about__photo-cue,
+        .about__stamp {
           opacity: 0;
         }
 
@@ -220,6 +271,7 @@
         background: none;
         padding: 1.5rem 0 0;
         justify-content: flex-start;
+        overflow: visible;
       }
     }
   }
@@ -232,57 +284,118 @@
     }
   }
 
-  // --- Blocs ------------------------------------------------
-  &__blocks {
-    margin-top: clamp(3.5rem, 9vh, 7rem);
+  // Cachet rond posé sur la photo (décoratif)
+  &__stamp {
+    position: absolute;
+    top: 0.9rem;
+    right: 0.9rem;
+    display: grid;
+    place-items: center;
+    width: 6.2rem;
+    aspect-ratio: 1;
+    padding: 0.9rem;
+    border-radius: 50%;
+    border: 1px solid $color-ink;
+    background: $color-cream;
+    color: $color-ink;
+    font-size: 0.66rem;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    text-align: center;
+    text-transform: uppercase;
+    pointer-events: none;
+    transition: opacity 0.35s $ease;
   }
 
-  // Mon approche : deux colonnes — actions à gauche, texte à droite.
-  // Colonnes centrées verticalement : le groupe de boutons (court)
-  // s'aligne sur le milieu du texte plutôt que de flotter en haut.
-  &__approach {
+  // --- Filet « À propos » sur toute la largeur restante ------
+  &__rule {
     display: grid;
-    grid-template-columns: minmax(210px, 0.8fr) 1.7fr;
-    align-items: center;
-    gap: clamp(2rem, 5vw, 4.5rem);
-    padding: clamp(1.75rem, 3.5vh, 2.75rem) 0 0;
+    grid-template-columns: var(--about-cols);
+    column-gap: var(--about-gap);
+    margin-top: clamp(3rem, 8vh, 5.5rem);
 
     @include until($bp-lg) {
       grid-template-columns: 1fr;
-      align-items: start;
-      gap: 1.75rem;
     }
   }
 
-  // Colonne texte (à droite) — reste 1re dans le DOM pour un ordre de
-  // lecture naturel sur mobile (texte puis actions).
-  &__approach-body {
+  &__eyebrow {
+    grid-column: 2 / -1;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 0;
+
+    &::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.55);
+    }
+
+    @include until($bp-lg) {
+      grid-column: 1;
+    }
+  }
+
+  // --- Textes en colonnes étroites + actions sous la photo ---
+  &__bottom {
+    display: grid;
+    grid-template-columns: var(--about-cols);
+    column-gap: var(--about-gap);
+    align-items: end;
+    margin-top: clamp(2rem, 5vh, 3rem);
+
+    @include until($bp-lg) {
+      grid-template-columns: 1fr;
+      row-gap: 2.5rem;
+    }
+  }
+
+  &__cols {
     grid-column: 2;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(1.5rem, 3vw, 2.75rem);
+    align-items: start;
+
+    @include until($bp-lg) {
+      grid-column: 1;
+    }
+
+    @include until($bp-md) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__bio,
+  &__approach-body {
     display: flex;
     flex-direction: column;
     gap: 0.9rem;
 
-    .about__text {
-      max-width: 60ch;
+    p {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: $color-text-soft;
     }
 
-    @include until($bp-lg) {
-      grid-column: auto;
+    strong {
+      color: $color-white;
+      font-weight: 600;
     }
   }
 
-  // Colonne actions (à gauche) — les deux CTA empilés
   &__approach-actions {
-    grid-column: 1;
-    grid-row: 1;
+    grid-column: 3;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 1.1rem;
 
     @include until($bp-lg) {
-      grid-column: auto;
-      grid-row: auto;
+      grid-column: 1;
     }
   }
 
