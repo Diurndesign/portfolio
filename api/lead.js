@@ -6,7 +6,7 @@
 // des deux échoue, la demande n'est pas perdue.
 //
 // Réglages (Vercel, Settings, Environment Variables) :
-//   NOTION_TOKEN    clé de l'intégration Notion (secret_… ou ntn_…)
+//   NOTION_TOKEN    clé de l'intégration Notion (ou NOTION_KEY)
 //   NOTION_PAGE_ID  (facultatif) page Notion partagée avec l'intégration ;
 //                   par défaut la page « Diurn studio ». La base
 //                   « Prospects du site » y est créée à la première demande
@@ -31,14 +31,18 @@ const STATUTS = [
 // Page Notion « Diurn studio » (identifiant public, pas un secret)
 const PAGE_ID = process.env.NOTION_PAGE_ID || "4017472ce4448019b9afc5b6ad540d02";
 
-let databaseId = process.env.NOTION_DATABASE_ID || "";
+// Base « Prospects du site », créée dans cette page (identifiant public)
+const DATABASE_ID = process.env.NOTION_DATABASE_ID || "fc3b659862bb47e59c288be61cbffd50";
+const TOKEN = process.env.NOTION_TOKEN || process.env.NOTION_KEY;
+
+let databaseId = DATABASE_ID;
 const hits = new Map(); // anti-abus simple : adresse IP -> horodatages récents
 
 function notion(path, method, body) {
   return fetch(NOTION + path, {
     method,
     headers: {
-      Authorization: `Bearer ${process.env.NOTION_TOKEN}`,
+      Authorization: `Bearer ${TOKEN}`,
       "Notion-Version": NOTION_VERSION,
       "Content-Type": "application/json",
     },
@@ -114,7 +118,7 @@ export default async function handler(req, res) {
   const email = clean(body.email, 200);
   if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).json({ ok: false });
 
-  if (!process.env.NOTION_TOKEN) {
+  if (!TOKEN) {
     return res.status(200).json({ ok: false, reason: "notion_non_configure" });
   }
 
@@ -142,7 +146,7 @@ export default async function handler(req, res) {
   } catch (err) {
     console.error("lead:", err.message);
     // base supprimée ou déplacée : on la recherchera à la prochaine demande
-    if (!process.env.NOTION_DATABASE_ID) databaseId = "";
+    databaseId = "";
     return res.status(502).json({ ok: false });
   }
 }
