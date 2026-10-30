@@ -913,3 +913,10 @@
     transition: none;
   }
 }
+
+// Avis sur fond clair (pages de service) : étoiles dans la couleur
+// principale, le jaune y serait illisible (charbon en thème orange,
+// voir base/_theme.scss)
+.landing-page .proof__stars {
+  color: rgb(var(--c-blue));
+}
