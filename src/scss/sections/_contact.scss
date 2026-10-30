@@ -16,9 +16,9 @@
   margin: 0 auto;
 
   // --- Accueil : deux colonnes séparées par un filet ---------
-  // À gauche le titre puis le formulaire en retrait, à droite les autres
-  // moyens de contact. De fines lignes de construction (verticale qui
-  // traverse le titre, horizontale sous le formulaire) dessinent la grille.
+  // À gauche le titre puis le formulaire en retrait, à droite les avis.
+  // Un filet horizontal sous le formulaire et un vertical entre les
+  // colonnes dessinent la grille.
   --line: rgba(var(--c-fg), 0.16);
   --indent: clamp(3rem, 7vw, 6rem);
 
@@ -36,27 +36,10 @@
     padding: clamp(1rem, 3vh, 2rem) clamp(2rem, 5vw, 4.5rem) clamp(2.5rem, 6vh, 4rem) 0;
     border-bottom: 1px solid var(--line);
 
-    // Ligne verticale de construction, à mi-retrait
-    &::before {
-      content: "";
-      position: absolute;
-      top: calc(-1 * clamp(5rem, 12vh, 9rem));
-      bottom: 0;
-      left: calc(var(--indent) / 2);
-      width: 1px;
-      background: var(--line);
-      pointer-events: none;
-    }
-
-    // Mobile : ni lignes de construction ni filet du bas (le pied de
-    // page a déjà le sien, juste en dessous)
+    // Mobile : pas de filet du bas (le pied de page suit juste en dessous)
     @include until($bp-lg) {
       padding-right: 0;
       border-bottom: 0;
-
-      &::before {
-        display: none;
-      }
     }
   }
 

@@ -402,15 +402,6 @@ $paper: #f6f5f2;
   }
 }
 
-// Emplacement sous la carte de visite (accueil)
-.hero__theme {
-  display: flex;
-  justify-content: center;
-  margin-top: clamp(1.25rem, 3.5vh, 2rem);
-  animation: hero-reveal 1s $ease both;
-  animation-delay: 0.7s;
-}
-
 // Sans barre de navigation : interrupteur fixe en bas à droite
 .theme-switch--floating {
   position: fixed;

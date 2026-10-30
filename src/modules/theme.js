@@ -23,9 +23,8 @@ function initTheme() {
   const current = () => (root.dataset.theme === "orange" ? "orange" : "blue");
 
   // Interrupteur bleu / orange : une pastille de chaque couleur, un
-  // anneau glisse sur celle du thème affiché. Sous la carte de visite sur
-  // l'accueil ; ailleurs dans la barre latérale droite, sous les réseaux
-  // (dans le menu sur mobile).
+  // anneau glisse sur celle du thème affiché. Posé dans la vague du bas
+  // d'écran (modules/dock.js) ; à défaut dans la barre latérale droite.
   const btn = document.createElement("button");
   btn.type = "button";
   btn.className = "theme-switch";

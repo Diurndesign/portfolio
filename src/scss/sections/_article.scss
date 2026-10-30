@@ -102,13 +102,6 @@ $article-max: 1180px;
     }
   }
 
-  // Interrupteur bleu / orange (créé par modules/theme.js)
-  // à droite de la ligne « Guides · min de lecture »
-  &__theme {
-    display: flex;
-    margin-left: auto;
-  }
-
   // Fondu vers le fond clair du corps de l'article
   &__fade {
     height: clamp(9rem, 22vh, 14rem);
@@ -816,9 +809,4 @@ $article-max: 1180px;
   .article-card__media img {
     transition: none;
   }
-}
-
-// Interrupteur sur la page Guides (sous le chapeau)
-.landing__theme {
-  margin-top: 1.5rem;
 }

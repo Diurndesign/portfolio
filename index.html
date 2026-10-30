@@ -193,21 +193,6 @@
   <body>
     <!-- ===================== NAVBAR ===================== -->
     <nav class="nav" aria-label="Navigation principale">
-      <!-- Retour en haut : en bas au centre, apparaît au scroll (même anneau que « Voir les projets ») -->
-      <a href="#accueil" class="back-top">
-        <span class="sr-only">Retour en haut de la page</span>
-        <svg class="back-top__ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-          <defs>
-            <path id="back-top-circle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" />
-          </defs>
-          <text>
-            <textPath href="#back-top-circle" textLength="236" lengthAdjust="spacing">Haut de page · Haut de page ·</textPath>
-          </text>
-        </svg>
-        <svg class="back-top__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-          <path d="M12 19V5M6.5 10.5 12 5l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-        </svg>
-      </a>
 
       <!-- Sidebar gauche : sections -->
       <button class="nav__burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
@@ -342,25 +327,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Interrupteur bleu / orange (créé par modules/theme.js) -->
-        <div class="hero__theme" data-theme-switch></div>
-
-        <!-- Invitation à descendre vers les projets -->
-        <a class="hero__scroll" href="#projets">
-          <span class="sr-only">Voir les projets</span>
-          <svg class="hero__scroll-ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-            <defs>
-              <path id="hero-scroll-circle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" />
-            </defs>
-            <text>
-              <textPath href="#hero-scroll-circle" textLength="236" lengthAdjust="spacing">Voir les projets · Voir les projets ·</textPath>
-            </text>
-          </svg>
-          <svg class="hero__scroll-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-            <path d="M12 5v14M6.5 13.5 12 19l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </a>
       </div>
 
       <!-- Dégradé de transition : le bleu du hero s'évapore vers le crème

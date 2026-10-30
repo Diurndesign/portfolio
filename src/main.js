@@ -3,13 +3,13 @@ import "./scss/main.scss";
 import "./modules/modal.js";
 import "./modules/nav-toggle.js";
 import "./modules/scroll-nav.js";
-import "./modules/site-logo.js";
 import "./modules/consent.js";
 import "./modules/contact-form.js";
 import "./modules/about-photo.js";
 import "./modules/hero-card.js";
 import "./modules/track.js";
 import "./modules/calendly.js";
+import "./modules/dock.js";
 import "./modules/theme.js";
 import "./modules/article-toc.js";
 
