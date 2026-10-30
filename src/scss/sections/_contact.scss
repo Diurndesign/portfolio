@@ -98,7 +98,7 @@
     }
   }
 
-  // --- Colonne droite : infos, avis, réseaux --------------------
+  // --- Colonne droite : avis et réseaux -------------------------
   &__aside {
     display: flex;
     flex-direction: column;
@@ -109,37 +109,6 @@
     @include until($bp-lg) {
       padding: 2.5rem 0 0;
       border-left: 0;
-    }
-  }
-
-  &__info-label {
-    font-size: 0.78rem;
-    color: $color-text-muted;
-    margin-bottom: 0.35rem;
-  }
-
-  &__info-link,
-  &__info-text {
-    font-size: 0.95rem;
-    line-height: 1.5;
-    color: $color-white;
-  }
-
-  &__info-link {
-    background-image: linear-gradient(currentColor, currentColor);
-    background-size: 0% 1px;
-    background-repeat: no-repeat;
-    background-position: 0 100%;
-    transition: background-size 0.4s $ease;
-
-    &:hover,
-    &:focus-visible {
-      background-size: 100% 1px;
-    }
-
-    &:focus-visible {
-      outline: 2px solid $color-white;
-      outline-offset: 3px;
     }
   }
 
