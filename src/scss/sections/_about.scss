@@ -405,18 +405,10 @@
     font-size: 0.95rem;
     transition: background $transition, border-color $transition, color $transition;
 
-    span {
-      transition: transform $transition;
-    }
-
     &:hover,
     &:focus-visible {
       background: $color-cream;
       border-color: $color-cream;
-
-      span {
-        transform: translate(2px, -2px);
-      }
     }
 
     &:focus-visible {
