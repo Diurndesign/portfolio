@@ -28,8 +28,6 @@
 //   charbon : à propos, pied de page (texte blanc, gris, touches d'orange)
 // Dégradé de transition vers la couleur de la section suivante : même
 // rampe d'opacité adoucie que les fondus du thème bleu (.hero__fade).
-$fade-h: clamp(200px, 32vh, 400px);
-
 @mixin fade-to($r, $g, $b) {
   background: linear-gradient(
     to bottom,
@@ -45,6 +43,38 @@ $fade-h: clamp(200px, 32vh, 400px);
     rgb($r, $g, $b) 100%
   );
 }
+
+// Jonction répartie sur deux sections, dans leurs marges intérieures
+// existantes (la mise en page reste identique au thème bleu) : la première
+// moitié dans le bas de la section du dessus...
+@mixin fade-out-to($r, $g, $b) {
+  background: linear-gradient(
+    to bottom,
+    rgba($r, $g, $b, 0) 0%,
+    rgba($r, $g, $b, 0.04) 30%,
+    rgba($r, $g, $b, 0.14) 55%,
+    rgba($r, $g, $b, 0.3) 78%,
+    rgba($r, $g, $b, 0.5) 100%
+  );
+}
+
+// ... la seconde dans le haut de la section du dessous.
+@mixin fade-in-from($r, $g, $b) {
+  background: linear-gradient(
+    to bottom,
+    rgba($r, $g, $b, 0.5) 0%,
+    rgba($r, $g, $b, 0.3) 22%,
+    rgba($r, $g, $b, 0.14) 45%,
+    rgba($r, $g, $b, 0.04) 70%,
+    rgba($r, $g, $b, 0) 100%
+  );
+}
+
+// Hauteurs des marges intérieures (mêmes valeurs que les sections)
+$pad-section: clamp(5rem, 12vh, 9rem); // à propos, contact
+$pad-faq: 6rem; // .section (4rem sur mobile)
+$pad-faq-mobile: 4rem;
+$pad-footer: clamp(2.5rem, 6vh, 4rem); // haut du pied de page
 
 $orange: #e9573b;
 $charcoal: #18181a;
@@ -112,51 +142,91 @@ $paper: #f6f5f2;
     @include fade-to(24, 24, 26);
   }
 
-  // à propos (charbon) -> FAQ (blanc), FAQ -> contact (orange),
-  // contact -> pied de page (charbon) : bande en bas de section, l'espace
-  // du bas est agrandi d'autant pour ne pas passer sous le contenu
+  // Filets de séparation masqués (ils traverseraient les dégradés) ;
+  // transparents plutôt que supprimés : la mise en page ne bouge pas
+  .section,
+  .site-footer__nav {
+    border-top-color: transparent;
+  }
+
+  // Jonctions à propos -> FAQ -> contact -> pied de page
   #a-propos,
   #faq,
-  #contact {
+  #contact,
+  .site-footer {
     position: relative;
-
-    &::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: $fade-h;
-      pointer-events: none;
-    }
   }
 
-  #a-propos {
-    padding-bottom: calc(clamp(5rem, 12vh, 9rem) + #{$fade-h});
-
-    &::after {
-      @include fade-to(246, 245, 242);
-    }
+  #a-propos::after,
+  #faq::after,
+  #contact::after,
+  #faq::before,
+  #contact::before,
+  .site-footer::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    pointer-events: none;
   }
 
-  #faq {
-    padding-bottom: calc(6rem + #{$fade-h});
+  #a-propos::after,
+  #faq::after,
+  #contact::after {
+    bottom: 0;
+  }
+
+  #faq::before,
+  #contact::before,
+  .site-footer::before {
+    top: 0;
+  }
+
+  // à propos (charbon) -> FAQ (blanc)
+  #a-propos::after {
+    height: $pad-section;
+    @include fade-out-to(246, 245, 242);
+  }
+
+  // (le petit filet centré de la FAQ cède la place au dégradé)
+  #faq::before {
+    width: auto;
+    transform: none;
+    height: $pad-faq;
+    @include fade-in-from(24, 24, 26);
 
     @include until($bp-md) {
-      padding-bottom: calc(4rem + #{$fade-h});
-    }
-
-    &::after {
-      @include fade-to(233, 87, 59);
+      height: $pad-faq-mobile;
     }
   }
 
-  #contact {
-    padding-bottom: calc(clamp(5rem, 12vh, 9rem) + #{$fade-h});
+  // FAQ (blanc) -> contact (orange)
+  #faq::after {
+    height: $pad-faq;
+    @include fade-out-to(233, 87, 59);
 
-    &::after {
-      @include fade-to(24, 24, 26);
+    @include until($bp-md) {
+      height: $pad-faq-mobile;
     }
+  }
+
+  // (remonte d'un pixel : couvre le filet transparent du haut de section,
+  // qui laisserait voir l'orange uni et dessinerait un trait)
+  #contact::before {
+    top: -1px;
+    height: calc(#{$pad-section} + 1px);
+    @include fade-in-from(246, 245, 242);
+  }
+
+  // contact (orange) -> pied de page (charbon)
+  #contact::after {
+    height: $pad-section;
+    @include fade-out-to(24, 24, 26);
+  }
+
+  .site-footer::before {
+    height: $pad-footer;
+    @include fade-in-from(233, 87, 59);
   }
 
   // Photo du hero : passée à l'orange et éclaircie (texte charbon dessus)
