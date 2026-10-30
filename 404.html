@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Page introuvable | Diurn Studio</title>
+
+    <!-- Favicon (carré bleu de marque) -->
+    <!--#include partials/head-icons.html-->
+  </head>
+  <body>
+    <!-- ===================== NAVBAR ===================== -->
+    <!--#include partials/nav.html-->
+
+    <!-- ===================== PAGE 404 ===================== -->
+    <!-- Servie par Vercel (code 404) pour toute adresse inconnue -->
+    <main class="article-page" id="main">
+      <header class="article-hero">
+        <div class="article-wrap">
+          <p class="article-hero__meta"><span>Erreur 404</span></p>
+          <h1 class="article-hero__title">Cette page n'existe pas, ou plus.</h1>
+          <p class="article-hero__lede">L'adresse a peut-être changé, ou un lien est erroné. Vous trouverez sûrement ce que vous cherchez à partir de l'accueil ou des guides.</p>
+          <div class="article-hero__actions">
+            <a class="hero-btn hero-btn--primary" href="/">Retour à l'accueil</a>
+            <a class="hero-btn" href="/#projets">Voir les projets</a>
+            <a class="hero-btn" href="/guides">Lire les guides</a>
+          </div>
+        </div>
+      </header>
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <!--#include partials/footer.html-->
+
+    <!--#include partials/overlays.html-->
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

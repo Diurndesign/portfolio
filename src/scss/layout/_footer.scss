@@ -11,6 +11,11 @@
   padding: 0 clamp(1.25rem, 5vw, 4rem) clamp(1.75rem, 4vh, 2.5rem);
   color: $color-text-muted;
 
+  // Barres latérales fixes dès la tablette : le contenu reste entre elles
+  @include from($bp-md) {
+    padding-inline: max(#{$sidebar-width} + 1rem, min(5vw, 4rem));
+  }
+
   // Grille de colonnes régulières (villes, design, guides, services)
   &__nav {
     display: grid;

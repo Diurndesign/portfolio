@@ -15,6 +15,33 @@ body {
   color: $color-blue;
 }
 
+// Lien d'évitement « Aller au contenu » : hors écran, visible au focus
+.skip-link {
+  position: fixed;
+  z-index: 300;
+  top: 0.75rem;
+  left: 50%;
+  translate: -50% -200%;
+  padding: 0.7rem 1.2rem;
+  border-radius: 2px;
+  background: rgb(var(--c-ink));
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.9rem;
+
+  &:focus-visible {
+    translate: -50% 0;
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+}
+
+// Sigles dans la police d'affichage (modules/caps.js) : minuscules, donc
+// petites capitales nettes au lieu des capitales ornées
+.caps {
+  text-transform: lowercase;
+}
+
 // Contenu réservé aux lecteurs d'écran (masqué visuellement)
 .sr-only {
   position: absolute;

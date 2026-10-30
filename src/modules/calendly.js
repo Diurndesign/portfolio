@@ -5,8 +5,8 @@
 // target="_blank"), donc il fonctionne même sans JavaScript. Au clic, la
 // page de réservation s'ouvre dans une fenêtre du site, en iframe directe :
 // pas de script Calendly à télécharger (plus rapide que leur widget).
-// Le calendrier est préparé dès le survol ou le premier toucher du bouton,
-// pour qu'il soit déjà chargé au moment du clic. L'iframe est un peu plus
+// Le calendrier est préparé dès l'appui sur le bouton de la souris, juste
+// avant le clic, et jamais avant une action du visiteur. L'iframe est un peu plus
 // large que la fenêtre : sa barre de défilement reste hors champ.
 // L'événement GA4 « click_calendly » est envoyé par track.js.
 
@@ -88,14 +88,14 @@ function close() {
 }
 
 function initCalendly() {
-  // Préchargement à l'intention : survol, focus clavier ou toucher
-  const warm = (e) => {
+  // Préchargement à l'appui du bouton de la souris (quelques dixièmes de
+  // seconde avant le clic) : rien n'est demandé à Calendly sans clic,
+  // comme l'indiquent les mentions légales.
+  document.addEventListener("pointerdown", (e) => {
+    if (e.pointerType === "touch" || e.button !== 0) return;
     const trigger = e.target.closest && e.target.closest("[data-calendly]");
     if (trigger) preload(trigger.getAttribute("href"));
-  };
-  document.addEventListener("pointerover", warm, { passive: true });
-  document.addEventListener("focusin", warm);
-  document.addEventListener("touchstart", warm, { passive: true });
+  });
 
   document.addEventListener("click", (e) => {
     const trigger = e.target.closest("[data-calendly]");

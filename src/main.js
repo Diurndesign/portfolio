@@ -12,6 +12,9 @@ import "./modules/calendly.js";
 import "./modules/dock.js";
 import "./modules/theme.js";
 import "./modules/article-toc.js";
+import "./modules/caps.js";
+import "./modules/compare.js";
+import "./modules/scroll-hide.js";
 
 // Grille de projets filtrable (React). Chargée à la demande, uniquement sur
 // la page qui la contient : les autres pages n'embarquent pas React.

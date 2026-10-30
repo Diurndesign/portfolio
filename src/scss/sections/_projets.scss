@@ -134,8 +134,9 @@
   // horizontal de la section (le translateX laissait un liseré crème au bord).
   width: 100vw;
   margin-left: calc(50% - 50vw);
-  margin-top: clamp(4rem, 11vh, 8rem);
-  height: clamp(240px, 38vh, 480px);
+  // raccord resserré : moitié de l'ancien vide entre Projets et À propos
+  margin-top: clamp(2rem, 5vh, 4rem);
+  height: clamp(160px, 22vh, 280px);
   pointer-events: none;
   background: linear-gradient(
     to bottom,
@@ -429,7 +430,7 @@
   .card__cta {
     margin-top: 0.7rem;
     padding: 0.45rem 1.15rem;
-    border-radius: 999px;
+    border-radius: 2px;
     background: var(--pill-bg);
     color: var(--pill-ink);
     font-size: 0.72rem;

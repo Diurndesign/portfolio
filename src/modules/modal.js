@@ -77,7 +77,7 @@ function renderFiche(proj) {
            d.qr
              ? `<figure class="project__qr">
                   <img src="${d.qr.src}" alt="QR code pour ouvrir l'application sur mobile" width="235" height="234" loading="lazy" />
-                  <figcaption>${d.qr.label || "Scanne pour tester sur mobile."}</figcaption>
+                  <figcaption>${d.qr.label || "Scannez pour tester sur votre mobile."}</figcaption>
                 </figure>`
              : ""
          }
@@ -178,7 +178,7 @@ function initModal() {
 
     // Nomme la fenêtre avec le titre du projet (accessibilité) ; l'attribut
     // reste valide au chargement (aria-label statique dans le HTML).
-    const titleEl = body.querySelector(".project__title");
+    const titleEl = body.querySelector(".project__title, #modal-title");
     dialog.setAttribute(
       "aria-label",
       titleEl ? titleEl.textContent.trim() : "Détail du projet"
@@ -238,7 +238,7 @@ function initModal() {
   // piège à focus basique à l'intérieur du dialog
   function trapFocus(e) {
     const focusables = dialog.querySelectorAll(
-      'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      'a[href], button:not([disabled]), iframe, [tabindex]:not([tabindex="-1"])'
     );
     if (!focusables.length) return;
     const first = focusables[0];

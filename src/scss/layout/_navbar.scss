@@ -317,3 +317,22 @@
     }
   }
 }
+
+// Mobile, pendant la lecture (modules/scroll-hide.js) : logo et burger
+// remontent hors de l'écran pour ne pas couvrir le texte
+@include until($bp-md) {
+  .site-logo {
+    transition: translate 0.35s $ease, opacity 0.35s $ease, transform 0.55s $ease;
+  }
+
+  .nav__burger {
+    transition: translate 0.35s $ease, opacity 0.35s $ease;
+  }
+
+  .is-reading .site-logo,
+  .is-reading .nav__burger {
+    translate: 0 -140%;
+    opacity: 0;
+    pointer-events: none;
+  }
+}

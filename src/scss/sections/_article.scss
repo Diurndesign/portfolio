@@ -860,3 +860,69 @@ $article-max: 1180px;
 [data-theme="orange"] .article-cover--tint img {
   filter: hue-rotate(138deg) saturate(1.1) brightness(1.2);
 }
+
+// --- Actions en haut de page (sous le chapeau) -------------------
+// Sur la couleur principale : bouton plein dans la couleur du texte
+// (blanc en bleu, charbon en orange), bouton secondaire en contour.
+.article-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: clamp(1.5rem, 3.5vh, 2.25rem);
+}
+
+.hero-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0.8rem 1.4rem;
+  border: 1px solid rgba(var(--c-fg), 0.7);
+  border-radius: 2px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: rgb(var(--c-fg));
+  transition: background $transition, color $transition, border-color $transition;
+
+  &:hover,
+  &:focus-visible {
+    border-color: rgb(var(--c-fg));
+    background: rgba(var(--c-fg), 0.1);
+  }
+
+  &:focus-visible {
+    outline: 2px solid rgb(var(--c-fg));
+    outline-offset: 3px;
+  }
+
+  &--primary {
+    border-color: rgb(var(--c-fg));
+    background: rgb(var(--c-fg));
+    color: rgb(var(--c-blue));
+
+    &:hover,
+    &:focus-visible {
+      background: rgba(var(--c-fg), 0.88);
+    }
+  }
+
+  @include until($bp-sm) {
+    flex: 1 1 100%;
+  }
+}
+
+// --- Variantes de composants ---------------------------------------
+// Options au choix (pas des étapes) : libellé lu dans data-label
+.article-steps--options li::before {
+  content: attr(data-label);
+}
+
+// Deux images en paysage côte à côte : pas de recadrage en portrait
+.article-figure--duo-landscape img {
+  aspect-ratio: 4 / 3;
+}
+
+// Couverture dont l'information est en haut de l'image (capture d'écran)
+.article-cover--top img {
+  object-position: top;
+}

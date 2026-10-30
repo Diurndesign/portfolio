@@ -175,3 +175,13 @@
   visibility: hidden;
   opacity: 0;
 }
+
+// Mobile, pendant la lecture (modules/scroll-hide.js) : la vague descend
+// hors de l'écran et revient dès qu'on remonte
+.dock {
+  transition: width 0.4s $ease, height 0.4s $ease, translate 0.35s $ease;
+}
+
+.is-reading .dock {
+  translate: 0 110%;
+}

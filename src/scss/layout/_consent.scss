@@ -76,7 +76,7 @@
     font-size: 0.85rem;
     font-weight: 600;
     padding: 0.6rem 1.2rem;
-    border-radius: 999px;
+    border-radius: 2px;
     transition: transform $transition, background $transition, color $transition;
 
     &:focus-visible {
@@ -123,4 +123,10 @@
     transition: opacity 0.2s linear;
     transform: none;
   }
+}
+
+// Fenêtre ouverte (mentions légales, fiche projet) : le bandeau s'efface
+// pour ne pas la recouvrir, et revient à la fermeture
+body:has(.modal.is-open) .cookie-consent {
+  visibility: hidden;
 }

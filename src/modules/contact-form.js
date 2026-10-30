@@ -34,6 +34,10 @@ function initContactForm() {
 
     try {
       const data = Object.fromEntries(new FormData(form));
+      // Adresse de site saisie sans protocole (« monsite.fr ») : complétée
+      if (data.website && !/^https?:\/\//i.test(data.website.trim())) {
+        data.website = "https://" + data.website.trim();
+      }
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
@@ -46,7 +50,9 @@ function initContactForm() {
 
       if (json.success) {
         status.textContent =
-          "Merci ! Votre message est bien parti, je vous réponds au plus vite.";
+          form.dataset.formName === "audit"
+            ? "Merci ! Votre demande est bien partie, votre rapport arrive sous 48 heures."
+            : "Merci ! Votre message est bien parti, je vous réponds au plus vite.";
         status.classList.add("is-success");
         form.reset();
 

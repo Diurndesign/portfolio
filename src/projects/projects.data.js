@@ -225,7 +225,7 @@ export const projects = [
     id: "sophiebluel",
     kind: "modal",
     title: "Portfolio d'architecte",
-    cat: "Site dynamique · JavaScript",
+    cat: "Projet de formation · JavaScript",
     tags: ["web"],
     tone: "bleu",
     img: {
@@ -253,10 +253,10 @@ export const projects = [
       gallery: {
         screens: true,
         images: [
-          { src: "/img/projets/sophiebluel-galerie.png", alt: "Portfolio d'architecte : galerie publique filtrable par catégorie", width: 1440, height: 950 },
-          { src: "/img/projets/sophiebluel-admin.png", alt: "Portfolio d'architecte : mode édition après connexion", width: 1440, height: 950 },
-          { src: "/img/projets/sophiebluel-modal.png", alt: "Portfolio d'architecte : fenêtre modale d'administration avec ajout et suppression de projets", width: 1440, height: 950 },
-          { src: "/img/projets/sophiebluel-login.png", alt: "Portfolio d'architecte : page de connexion de l'administration", width: 1440, height: 900 },
+          { src: "/img/projets/sophiebluel-galerie.webp", alt: "Portfolio d'architecte : galerie publique filtrable par catégorie", width: 1440, height: 950 },
+          { src: "/img/projets/sophiebluel-admin.webp", alt: "Portfolio d'architecte : mode édition après connexion", width: 1440, height: 950 },
+          { src: "/img/projets/sophiebluel-modal.webp", alt: "Portfolio d'architecte : fenêtre modale d'administration avec ajout et suppression de projets", width: 1440, height: 950 },
+          { src: "/img/projets/sophiebluel-login.webp", alt: "Portfolio d'architecte : page de connexion de l'administration", width: 1440, height: 900 },
         ],
       },
     },
@@ -265,7 +265,7 @@ export const projects = [
     id: "ninacarducci",
     kind: "modal",
     title: "Nina Carducci",
-    cat: "Optimisation SEO · Performance",
+    cat: "Projet de formation · SEO",
     tags: ["web"],
     tone: "nb",
     img: {
@@ -320,7 +320,7 @@ export const projects = [
       tech: ["react", "vite", "supabase", "vercel"],
       sections: [
         { heading: "Contexte", text: "Un projet personnel né d'un constat : les réseaux sociaux mettent l'individu au centre, au lieu du sujet. Je l'ai conçu et développé seul, du design de l'interface à la base de données et à la mise en ligne." },
-        { heading: "Objectifs", text: "Créer un rituel quotidien court et anonyme : une seule question par jour, la même pour tous, sans compte, sans « like », sans fil infini, et sans collecter de données personnelles." },
+        { heading: "Objectifs", text: "Créer un rituel quotidien court et anonyme : une seule question par jour, la même pour tous, sans compte, sans « like », sans fil infini, et sans collecter de données personnelles." },
         { heading: "Stack technique", text: "React 18 et Vite pour l'interface, Supabase (base PostgreSQL hébergée en Europe) pour les réponses, Vercel pour le déploiement." },
         { heading: "Compétences développées", text: "Concevoir un produit de A à Z avec un vrai back-end : modèle de données, limite d'une réponse par jour vérifiée côté navigateur et côté serveur, signalement avec suppression immédiate, question disponible hors ligne. L'IA m'a servi d'accélérateur, chaque ligne relue et comprise." },
         { heading: "Résultats et impact", text: "Une application en ligne et jouable ci-dessous, avec 400 questions en rotation, un mode sombre automatique, une page de confidentialité et des numéros d'écoute accessibles depuis l'app." },
@@ -330,11 +330,11 @@ export const projects = [
       // + QR code pour tester sur mobile.
       demo: {
         url: "https://murmure-orpin.vercel.app/",
-        title: "Murmure — l'application en direct",
+        title: "Murmure, l'application en direct",
       },
       qr: {
         src: "/img/murmure-qr-noir.png",
-        label: "Scanne pour tester Murmure sur ton mobile.",
+        label: "Scannez pour tester Murmure sur votre mobile.",
       },
       links: [
         { href: "https://murmure-orpin.vercel.app/", label: "Ouvrir en plein écran" },
