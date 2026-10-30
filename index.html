@@ -333,8 +333,18 @@
 
         <!-- Invitation à descendre vers les projets -->
         <a class="hero__scroll" href="#projets">
-          Voir les projets
-          <span class="hero__scroll-mouse" aria-hidden="true"></span>
+          <span class="sr-only">Voir les projets</span>
+          <svg class="hero__scroll-ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+            <defs>
+              <path id="hero-scroll-circle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" />
+            </defs>
+            <text>
+              <textPath href="#hero-scroll-circle" textLength="236" lengthAdjust="spacing">Voir les projets · Voir les projets ·</textPath>
+            </text>
+          </svg>
+          <svg class="hero__scroll-arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 5v14M6.5 13.5 12 19l5.5-5.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
         </a>
       </div>
 
