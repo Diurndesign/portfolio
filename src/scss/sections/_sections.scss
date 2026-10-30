@@ -11,7 +11,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-top: 1px solid rgba(var(--c-fg), 0.08);
 
   // Titres de section : même style que le titre du contact
   &__title {
@@ -29,23 +28,8 @@
 }
 
 // --- Section FAQ (accordéon, réutilise .landing__faq) ---------
-// Le filet de séparation pleine largeur de .section traversait la
-// navbar de gauche : on le remplace par un filet court et centré.
-#faq {
-  position: relative;
-  border-top: none;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: clamp(120px, 28vw, 340px);
-    height: 1px;
-    background: rgba(var(--c-fg), 0.14);
-  }
-}
+// Pas de filet de séparation entre les sections : les fondus de couleur
+// font la transition.
 
 .faq {
   width: 100%;

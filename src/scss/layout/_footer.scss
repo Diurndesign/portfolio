@@ -12,14 +12,11 @@
   color: $color-text-muted;
 
   // Grille de colonnes régulières (villes, design, guides, services)
-  // Le filet du haut est en retrait (dans le padding), aligné avec celui
-  // du bas, pour ne pas traverser le texte de la barre latérale.
   &__nav {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: clamp(1.75rem, 3vw, 2.75rem);
     padding-top: clamp(2.5rem, 6vh, 4rem);
-    border-top: 1px solid rgba(var(--c-fg), 0.14);
   }
 
   // Chaque groupe : un titre cliquable + un panneau de liens repliable

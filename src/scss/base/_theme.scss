@@ -142,13 +142,6 @@ $paper: #f6f5f2;
     @include fade-to(24, 24, 26);
   }
 
-  // Filets de séparation masqués (ils traverseraient les dégradés) ;
-  // transparents plutôt que supprimés : la mise en page ne bouge pas
-  .section,
-  .site-footer__nav {
-    border-top-color: transparent;
-  }
-
   // Jonctions à propos -> FAQ -> contact -> pied de page
   #a-propos,
   #faq,
@@ -188,10 +181,7 @@ $paper: #f6f5f2;
     @include fade-out-to(246, 245, 242);
   }
 
-  // (le petit filet centré de la FAQ cède la place au dégradé)
   #faq::before {
-    width: auto;
-    transform: none;
     height: $pad-faq;
     @include fade-in-from(24, 24, 26);
 
@@ -210,11 +200,8 @@ $paper: #f6f5f2;
     }
   }
 
-  // (remonte d'un pixel : couvre le filet transparent du haut de section,
-  // qui laisserait voir l'orange uni et dessinerait un trait)
   #contact::before {
-    top: -1px;
-    height: calc(#{$pad-section} + 1px);
+    height: $pad-section;
     @include fade-in-from(246, 245, 242);
   }
 
