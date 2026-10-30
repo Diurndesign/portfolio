@@ -4,6 +4,22 @@
 @use "../abstracts/variables" as *;
 @use "../abstracts/mixins" as *;
 
+// Photo « À propos » : état compétences visibles (survol ou toucher)
+@mixin photo-revealed {
+  img {
+    filter: blur(7px) brightness(0.5);
+    transform: scale(1.05);
+  }
+
+  .about__photo-cue {
+    opacity: 0;
+  }
+
+  .about__photo-reveal {
+    opacity: 1;
+  }
+}
+
 .section--about {
   // annule le centrage flex hérité de .section
   display: block;
@@ -90,8 +106,12 @@
   // laisse apparaître les compétences. Micro-interaction signant le profil
   // designer + développeur. Le contenu reste dans le DOM (SEO + lecteurs
   // d'écran) ; seule sa visibilité est animée.
+  // Photo et voile superposés dans une même cellule de grille : si le
+  // texte des compétences est plus haut que la photo (petits écrans), la
+  // photo s'allonge au lieu de laisser le texte déborder.
   &__photo {
     position: relative;
+    display: grid;
     overflow: hidden;
     border-radius: 4px;
 
@@ -100,9 +120,10 @@
     }
 
     img {
+      grid-area: 1 / 1;
       display: block;
       width: 100%;
-      height: auto;
+      height: 100%;
       aspect-ratio: 3 / 4;
       object-fit: cover;
       transition: filter 0.55s $ease, transform 0.6s $ease;
@@ -113,6 +134,7 @@
     &-toggle {
       position: absolute;
       inset: 0;
+      z-index: 2;
       width: 100%;
       border: 0;
       padding: 0;
@@ -122,7 +144,7 @@
       &:focus-visible {
         outline: 2px solid $color-white;
         outline-offset: -6px;
-        border-radius: 10px;
+        border-radius: 4px;
       }
     }
 
@@ -130,6 +152,7 @@
     &-cue {
       pointer-events: none;
       position: absolute;
+      z-index: 1;
       left: 1rem;
       bottom: 1rem;
       max-width: calc(100% - 2rem);
@@ -146,14 +169,15 @@
 
     // Voile des compétences, révélé au survol
     &-reveal {
-      position: absolute;
-      inset: 0;
+      grid-area: 1 / 1;
+      // au-dessus de la photo, même zoomée (le zoom crée un empilement)
+      position: relative;
+      z-index: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
       gap: clamp(1.4rem, 4vh, 2.1rem);
       padding: clamp(1.5rem, 7%, 2.5rem);
-      overflow-y: auto;
       background: linear-gradient(
         180deg,
         rgba($color-blue, 0.84),
@@ -207,72 +231,54 @@
       }
     }
 
-    // Avec survol (voile posé sur la photo) : contenu resserré pour que
-    // tout tienne dans la photo, sans défilement interne.
-    @media (hover: hover) {
-      &-reveal {
-        gap: 1rem;
-        padding: 1.25rem;
-      }
-
-      &-block {
-        gap: 0.6rem;
-      }
-
-      &-group .about__photo-group-label {
-        font-size: 1rem;
-        margin-bottom: 0.2rem;
-      }
-
-      &-group p,
-      &-edu {
-        font-size: 0.76rem;
-        line-height: 1.45;
-      }
+    // Voile posé sur la photo : contenu resserré pour qu'il tienne dedans
+    &-reveal {
+      gap: 1rem;
+      padding: 1.25rem;
     }
 
-    // Appareils avec survol (souris) : les compétences se révèlent au
-    // survol, ou au clic / Entrée sur le bouton (toggle JS). L'indice invite.
+    &-block {
+      gap: 0.6rem;
+    }
+
+    &-group .about__photo-group-label {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+
+    &-group p,
+    &-edu {
+      font-size: 0.76rem;
+      line-height: 1.45;
+    }
+
+    // Les compétences se révèlent au clic / toucher / Entrée sur le bouton
+    // (toggle JS), et au survol sur les appareils à souris.
+    &.is-revealed {
+      @include photo-revealed;
+    }
+
     @media (hover: hover) {
       cursor: pointer;
 
-      &:hover,
-      &.is-revealed {
-        img {
-          filter: blur(7px) brightness(0.5);
-          transform: scale(1.05);
-        }
-
-        .about__photo-cue,
-        .about__stamp {
-          opacity: 0;
-        }
-
-        .about__photo-reveal {
-          opacity: 1;
-        }
+      &:hover {
+        @include photo-revealed;
       }
+    }
+  }
 
+  // Indice : « Survolez » à la souris, « Touchez » sur écran tactile
+  &__cue-touch {
+    display: none;
+  }
+
+  @media (hover: none) {
+    &__cue-hover {
+      display: none;
     }
 
-    // Appareils tactiles (pas de survol) : pas de mécanique cachée, les
-    // compétences sont affichées d'office sous la photo, qui reste nette.
-    @media (hover: none) {
-      .about__photo-cue,
-      .about__photo-toggle {
-        display: none;
-      }
-
-      .about__photo-reveal {
-        position: static;
-        inset: auto;
-        opacity: 1;
-        pointer-events: auto;
-        background: none;
-        padding: 1.5rem 0 0;
-        justify-content: flex-start;
-        overflow: visible;
-      }
+    &__cue-touch {
+      display: inline;
     }
   }
 
@@ -282,30 +288,6 @@
       transition: filter 0.2s linear;
       transform: none !important;
     }
-  }
-
-  // Cachet rond posé sur la photo (décoratif)
-  &__stamp {
-    position: absolute;
-    top: 0.9rem;
-    right: 0.9rem;
-    display: grid;
-    place-items: center;
-    width: 6.2rem;
-    aspect-ratio: 1;
-    padding: 0.9rem;
-    border-radius: 50%;
-    border: 1px solid $color-ink;
-    background: $color-cream;
-    color: $color-ink;
-    font-size: 0.66rem;
-    font-weight: 700;
-    line-height: 1.1;
-    letter-spacing: 0.02em;
-    text-align: center;
-    text-transform: uppercase;
-    pointer-events: none;
-    transition: opacity 0.35s $ease;
   }
 
   // --- Filet « À propos » sur toute la largeur restante ------
