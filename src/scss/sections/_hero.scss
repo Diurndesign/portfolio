@@ -710,3 +710,22 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     font-size: 0.62rem;
   }
 }
+
+// Carte centrée dans le premier écran : le bloc accroche + carte occupe
+// la hauteur visible (moins l'espace de la nav), le dégradé vient après.
+.hero__inner {
+  min-height: calc(100vh - 2rem);
+  min-height: calc(100svh - 2rem);
+  padding-top: 0;
+  // compense la hauteur de l'accroche : c'est la carte qui est au centre
+  padding-bottom: clamp(4rem, 12vh, 7rem);
+  justify-content: center;
+
+  @include until($bp-md) {
+    min-height: calc(100svh - 1rem);
+  }
+}
+
+.hero__fade {
+  margin-top: 0;
+}
