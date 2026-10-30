@@ -803,3 +803,21 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     transform: translateY(75%);
   }
 }
+
+// --- Photo de fond : ruelle du Vieux-Nice en bichromie bleue ---
+// Image déjà teintée (nuit → bleu de marque → bleu clair), posée
+// discrètement sous le contenu et fondue vers le bas.
+.hero {
+  isolation: isolate;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: url("/img/hero/nice-ruelle-1500.webp") center 30% / cover no-repeat;
+  opacity: 0.55;
+  mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 92%);
+
+}
