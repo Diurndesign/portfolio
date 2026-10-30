@@ -44,7 +44,6 @@ function initTheme() {
       // stockage indisponible (navigation privée) : le thème vaut pour la page
     }
     sync();
-    document.dispatchEvent(new Event("themechange"));
   }
 
   btn.addEventListener("click", () => {

@@ -19,54 +19,57 @@
   --a-muted: 0.65;
   --a-soft: 0.82;
   --a-placeholder: 0.6;
+  // Sections sombres (à propos, pied de page) : bleu nuit
+  --s-dark: 23, 25, 58;
 }
 
-// Thème orange, comme la référence : trois aplats francs qui alternent,
-// sans dégradé entre les sections.
-//   orange  : hero, contact (texte noir charbon, grands titres blancs)
-//   blanc   : projets, FAQ (texte noir, gris pour le secondaire)
-//   charbon : à propos, pied de page (texte blanc, gris, touches d'orange)
-// Dégradé de transition vers la couleur de la section suivante : même
-// rampe d'opacité adoucie que les fondus du thème bleu (.hero__fade).
-@mixin fade-to($r, $g, $b) {
+// Les deux thèmes alternent trois tons, avec un dégradé à chaque passage :
+//                 bleu            orange
+//   principal :   bleu roi        orange       hero, contact
+//   clair     :   crème           blanc cassé  projets, FAQ
+//   sombre    :   bleu nuit       charbon      à propos, pied de page
+
+// Dégradé de transition vers la couleur de la section suivante (triplet
+// RVB en variable CSS) : même rampe adoucie que .hero__fade.
+@mixin fade-to($v) {
   background: linear-gradient(
     to bottom,
-    rgba($r, $g, $b, 0) 0%,
-    rgba($r, $g, $b, 0.03) 16%,
-    rgba($r, $g, $b, 0.1) 30%,
-    rgba($r, $g, $b, 0.22) 43%,
-    rgba($r, $g, $b, 0.38) 55%,
-    rgba($r, $g, $b, 0.56) 66%,
-    rgba($r, $g, $b, 0.74) 77%,
-    rgba($r, $g, $b, 0.89) 88%,
-    rgba($r, $g, $b, 0.97) 95%,
-    rgb($r, $g, $b) 100%
+    rgba(var($v), 0) 0%,
+    rgba(var($v), 0.03) 16%,
+    rgba(var($v), 0.1) 30%,
+    rgba(var($v), 0.22) 43%,
+    rgba(var($v), 0.38) 55%,
+    rgba(var($v), 0.56) 66%,
+    rgba(var($v), 0.74) 77%,
+    rgba(var($v), 0.89) 88%,
+    rgba(var($v), 0.97) 95%,
+    rgb(var($v)) 100%
   );
 }
 
 // Jonction répartie sur deux sections, dans leurs marges intérieures
-// existantes (la mise en page reste identique au thème bleu) : la première
-// moitié dans le bas de la section du dessus...
-@mixin fade-out-to($r, $g, $b) {
+// existantes (la mise en page reste la même) : la première moitié dans le
+// bas de la section du dessus...
+@mixin fade-out-to($v) {
   background: linear-gradient(
     to bottom,
-    rgba($r, $g, $b, 0) 0%,
-    rgba($r, $g, $b, 0.04) 30%,
-    rgba($r, $g, $b, 0.14) 55%,
-    rgba($r, $g, $b, 0.3) 78%,
-    rgba($r, $g, $b, 0.5) 100%
+    rgba(var($v), 0) 0%,
+    rgba(var($v), 0.04) 30%,
+    rgba(var($v), 0.14) 55%,
+    rgba(var($v), 0.3) 78%,
+    rgba(var($v), 0.5) 100%
   );
 }
 
 // ... la seconde dans le haut de la section du dessous.
-@mixin fade-in-from($r, $g, $b) {
+@mixin fade-in-from($v) {
   background: linear-gradient(
     to bottom,
-    rgba($r, $g, $b, 0.5) 0%,
-    rgba($r, $g, $b, 0.3) 22%,
-    rgba($r, $g, $b, 0.14) 45%,
-    rgba($r, $g, $b, 0.04) 70%,
-    rgba($r, $g, $b, 0) 100%
+    rgba(var($v), 0.5) 0%,
+    rgba(var($v), 0.3) 22%,
+    rgba(var($v), 0.14) 45%,
+    rgba(var($v), 0.04) 70%,
+    rgba(var($v), 0) 100%
   );
 }
 
@@ -76,10 +79,117 @@ $pad-faq: 6rem; // .section (4rem sur mobile)
 $pad-faq-mobile: 4rem;
 $pad-footer: clamp(2.5rem, 6vh, 4rem); // haut du pied de page
 
+// --- Sections sombres : texte blanc ---
+#a-propos,
+.site-footer {
+  --c-fg: 255, 255, 255;
+  --a-muted: 0.65;
+  --a-soft: 0.82;
+  --a-placeholder: 0.6;
+  background: rgb(var(--s-dark));
+}
+
+// --- Section claire : FAQ (texte encre) ---
+#faq {
+  --c-fg: var(--c-ink);
+  --a-muted: 0.7;
+  --a-soft: 0.86;
+  background: rgb(var(--c-cream));
+}
+
+// --- Dégradés entre les sections (la couleur glisse vers la suivante) ---
+// hero (principal) -> projets (clair) : .hero__fade
+// projets (clair) -> à propos (sombre) ; :root pour passer devant le
+// dégradé d'origine de _projets.scss, chargé après ce fichier
+:root .projets__fade {
+  @include fade-to(--s-dark);
+}
+
+// Jonctions à propos -> FAQ -> contact -> pied de page
+#a-propos,
+#faq,
+#contact,
+.site-footer {
+  position: relative;
+}
+
+#a-propos::after,
+#faq::after,
+#contact::after,
+#faq::before,
+#contact::before,
+.site-footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+#a-propos::after,
+#faq::after,
+#contact::after {
+  bottom: 0;
+}
+
+#faq::before,
+#contact::before,
+.site-footer::before {
+  top: 0;
+}
+
+// à propos (sombre) -> FAQ (clair)
+#a-propos::after {
+  height: $pad-section;
+  @include fade-out-to(--c-cream);
+}
+
+#faq::before {
+  height: $pad-faq;
+  @include fade-in-from(--s-dark);
+
+  @include until($bp-md) {
+    height: $pad-faq-mobile;
+  }
+}
+
+// FAQ (clair) -> contact (principal)
+#faq::after {
+  height: $pad-faq;
+  @include fade-out-to(--c-blue);
+
+  @include until($bp-md) {
+    height: $pad-faq-mobile;
+  }
+}
+
+#contact::before {
+  height: $pad-section;
+  @include fade-in-from(--c-cream);
+}
+
+// contact (principal) -> pied de page (sombre)
+#contact::after {
+  height: $pad-section;
+  @include fade-out-to(--s-dark);
+}
+
+.site-footer::before {
+  height: $pad-footer;
+  @include fade-in-from(--c-blue);
+}
+
+// Logo fixe : rond de la couleur de la section sombre qu'il survole
+.nav--dark .site-logo {
+  --logo-bg: rgb(var(--s-dark));
+}
+
 $orange: #e9573b;
 $charcoal: #18181a;
 $paper: #f6f5f2;
 
+// Thème orange, comme la référence : orange vif à texte charbon, blanc
+// cassé, charbon ; touches d'orange sur le charbon.
 :root[data-theme="orange"] {
   --c-blue: 233, 87, 59;
   --c-blue-deep: 24, 24, 26; // bandeau cookies : charbon
@@ -91,20 +201,14 @@ $paper: #f6f5f2;
   --a-muted: 0.92;
   --a-soft: 1;
   --a-placeholder: 0.7;
+  --s-dark: 24, 24, 26;
 
-  // --- Sections charbon (texte blanc) ---
-  #a-propos,
-  .site-footer,
+  // Bandeau cookies charbon : texte blanc
   .cookie-consent {
     --c-fg: 255, 255, 255;
     --a-muted: 0.65;
     --a-soft: 0.82;
     --a-placeholder: 0.6;
-  }
-
-  #a-propos,
-  .site-footer {
-    background: $charcoal;
   }
 
   // Boutons blancs sur charbon : texte charbon (l'orange y serait peu lisible)
@@ -122,98 +226,9 @@ $paper: #f6f5f2;
     }
   }
 
-  // --- Section blanche : FAQ ---
-  #faq {
-    --c-fg: 24, 24, 26;
-    --a-muted: 0.7;
-    --a-soft: 0.86;
-    background: $paper;
-  }
-
-  // --- Orange : grands titres en blanc, comme le « 1 » de la référence ---
+  // Orange : grand titre en blanc, comme le « 1 » de la référence
   .contact__headline {
     color: $white;
-  }
-
-  // --- Dégradés entre les sections (la couleur glisse vers la suivante) ---
-  // hero (orange) -> projets (blanc) : .hero__fade, via les variables
-  // projets (blanc) -> à propos (charbon)
-  .projets__fade {
-    @include fade-to(24, 24, 26);
-  }
-
-  // Jonctions à propos -> FAQ -> contact -> pied de page
-  #a-propos,
-  #faq,
-  #contact,
-  .site-footer {
-    position: relative;
-  }
-
-  #a-propos::after,
-  #faq::after,
-  #contact::after,
-  #faq::before,
-  #contact::before,
-  .site-footer::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    pointer-events: none;
-  }
-
-  #a-propos::after,
-  #faq::after,
-  #contact::after {
-    bottom: 0;
-  }
-
-  #faq::before,
-  #contact::before,
-  .site-footer::before {
-    top: 0;
-  }
-
-  // à propos (charbon) -> FAQ (blanc)
-  #a-propos::after {
-    height: $pad-section;
-    @include fade-out-to(246, 245, 242);
-  }
-
-  #faq::before {
-    height: $pad-faq;
-    @include fade-in-from(24, 24, 26);
-
-    @include until($bp-md) {
-      height: $pad-faq-mobile;
-    }
-  }
-
-  // FAQ (blanc) -> contact (orange)
-  #faq::after {
-    height: $pad-faq;
-    @include fade-out-to(233, 87, 59);
-
-    @include until($bp-md) {
-      height: $pad-faq-mobile;
-    }
-  }
-
-  #contact::before {
-    height: $pad-section;
-    @include fade-in-from(246, 245, 242);
-  }
-
-  // contact (orange) -> pied de page (charbon)
-  #contact::after {
-    height: $pad-section;
-    @include fade-out-to(24, 24, 26);
-  }
-
-  .site-footer::before {
-    height: $pad-footer;
-    @include fade-in-from(233, 87, 59);
   }
 
   // Photo du hero : passée à l'orange et éclaircie (texte charbon dessus)
@@ -281,8 +296,6 @@ $paper: #f6f5f2;
   }
 
   .nav--dark .site-logo {
-    --logo-bg: #{$charcoal};
-
     img {
       filter: invert(1);
     }
