@@ -243,7 +243,7 @@ ${sections}
           <h2>${entry.cta.heading}</h2>
           <p>${entry.cta.text}</p>
           <div class="case-study__cta-actions">
-            <a class="landing__btn" href="https://calendly.com/diurnstudio/appel-decouvert" target="_blank" rel="noopener" data-calendly>Réserver un appel de 15 min</a>
+            <a class="landing__btn" href="https://calendly.com/diurnstudio/appel-decouvert" target="_blank" rel="noopener" data-calendly>Réserver un appel de 30 min</a>
             <a class="btn-reserve" href="/#contact">Demander un devis</a>
           </div>
           <p class="case-study__back-bottom">

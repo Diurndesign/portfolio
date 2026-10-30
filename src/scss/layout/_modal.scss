@@ -194,16 +194,14 @@ $glass-muted: rgba(244, 243, 241, 0.66);
   }
 }
 
+// Une seule colonne : le texte, puis les images en rangées horizontales
+// (fini la colonne d'images verticale qui laissait un grand vide).
 .project {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.42fr);
-  gap: clamp(2rem, 4vw, 3.5rem);
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(2rem, 4vw, 3rem);
   align-items: start;
   color: $glass-text;
-
-  @include until($bp-lg) {
-    grid-template-columns: 1fr;
-  }
 
   &__main {
     min-width: 0;
@@ -369,45 +367,39 @@ $glass-muted: rgba(244, 243, 241, 0.66);
     }
   }
 
-  // Colonne de droite : démo et images, empilées.
+  // Démo et images, sous le texte
   &__media {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     min-width: 0;
-    padding-top: 3rem; // sous le bouton de fermeture
-
-    @include until($bp-lg) {
-      padding-top: 0;
-    }
   }
 
+  // Galerie « justifiée » : rangées horizontales qui remplissent la largeur,
+  // chaque image garde ses proportions (--r = largeur / hauteur, posé par
+  // modal.js). La dernière rangée n'est pas étirée (pseudo-élément final).
   &__gallery {
+    --row: clamp(190px, 32vh, 300px);
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+
+    &::after {
+      content: "";
+      flex-grow: 1000;
+    }
 
     img {
       display: block;
-      width: 100%;
+      flex: var(--r, 1) 1 calc(var(--r, 1) * var(--row));
+      width: 0;
       height: auto;
+      aspect-ratio: var(--r, 1);
       border-radius: 8px;
-      // Images en noir et blanc, en couleur au survol (comme la grille).
-      filter: grayscale(1);
-      transition: filter 0.5s $ease;
-
-      &:hover {
-        filter: grayscale(0);
-      }
-    }
-
-    @include until($bp-lg) {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     @include until($bp-sm) {
-      grid-template-columns: 1fr;
+      --row: 140px;
     }
   }
 
@@ -481,11 +473,6 @@ $glass-muted: rgba(244, 243, 241, 0.66);
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .project__gallery img {
-    transition: none;
-  }
-}
 
 // --- Contenu « Mentions légales » dans le modal --------------
 .legal {

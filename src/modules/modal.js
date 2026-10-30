@@ -40,7 +40,8 @@ function renderFiche(proj) {
     ? g.images
         .map(
           (im) =>
-            `<img src="${im.src}" alt="${im.alt}" loading="lazy" width="${im.width}" height="${im.height}" />`
+            // --r : proportions de l'image, pour la galerie « justifiée »
+            `<img src="${im.src}" alt="${im.alt}" loading="lazy" width="${im.width}" height="${im.height}" style="--r: ${(im.width / im.height).toFixed(3)}" />`
         )
         .join("")
     : "";

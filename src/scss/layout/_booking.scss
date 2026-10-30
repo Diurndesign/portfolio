@@ -1,0 +1,126 @@
+// ============================================================
+//  Fenêtre de réservation (Calendly en iframe, modules/calendly.js)
+// ============================================================
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+.booking {
+  position: fixed;
+  inset: 0;
+  z-index: 250;
+  display: grid;
+  place-items: center;
+  padding: clamp(0.75rem, 3vw, 2rem);
+
+  &[hidden] {
+    display: none;
+  }
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(var(--s-dark), 0.72);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 0.3s $ease;
+  }
+
+  &__panel {
+    position: relative;
+    width: min(1000px, 100%);
+    height: min(720px, 100%);
+    border-radius: 14px;
+    overflow: hidden;
+    background: $white;
+    box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.3s $ease, transform 0.3s $ease;
+  }
+
+  &.is-open &__backdrop,
+  &.is-open &__panel {
+    opacity: 1;
+    transform: none;
+  }
+
+  // L'iframe déborde à droite : sa barre de défilement est masquée,
+  // le défilement à la molette ou au doigt reste possible.
+  &__frame {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+
+    iframe {
+      display: block;
+      width: calc(100% + 24px);
+      height: 100%;
+      border: 0;
+      opacity: 0;
+      transition: opacity 0.3s $ease;
+    }
+  }
+
+  &.is-loaded iframe {
+    opacity: 1;
+  }
+
+  &__loader {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    font-size: 0.9rem;
+    color: #555;
+  }
+
+  &.is-loaded &__loader {
+    display: none;
+  }
+
+  &__close {
+    position: absolute;
+    z-index: 1;
+    top: 0.6rem;
+    right: 0.6rem;
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(17, 17, 17, 0.06);
+    color: #111;
+    cursor: pointer;
+    transition: background $transition;
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background: rgba(17, 17, 17, 0.14);
+    }
+
+    &:focus-visible {
+      outline: 2px solid #111;
+      outline-offset: 2px;
+    }
+  }
+}
+
+// Page figée derrière la fenêtre
+.booking-open,
+.booking-open body {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .booking__backdrop,
+  .booking__panel,
+  .booking__frame iframe {
+    transition: none;
+  }
+}
