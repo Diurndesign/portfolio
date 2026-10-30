@@ -389,32 +389,21 @@
     color: $color-white;
   }
 
-  // CTA principal (fin de « Mon approche ») vers le formulaire
+  // Boutons en rectangles plats, comme le reste du site (carte du
+  // hero, formulaire de contact)
   &__cta {
-    position: relative;
     align-self: flex-start;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     padding: 0.85rem 1.6rem;
-    border-radius: 999px;
+    border: 1px solid $color-white;
+    border-radius: 2px;
     background: $color-white;
     color: $color-blue;
     font-weight: 600;
     font-size: 0.95rem;
-    transition: transform $transition, box-shadow $transition;
-
-    // Halo pulsant (identique au hero) pour capter l'attention.
-    &::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      border-radius: inherit;
-      pointer-events: none;
-      animation: cta-glow 2.6s $ease infinite;
-      animation-delay: 1.8s;
-    }
+    transition: background $transition, border-color $transition, color $transition;
 
     span {
       transition: transform $transition;
@@ -422,8 +411,8 @@
 
     &:hover,
     &:focus-visible {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 30px -14px rgba(0, 0, 0, 0.55);
+      background: $color-cream;
+      border-color: $color-cream;
 
       span {
         transform: translate(2px, -2px);
@@ -435,30 +424,18 @@
       outline-offset: 4px;
     }
 
-    // Variante secondaire (audit gratuit) : contour discret
+    // Variante secondaire (audit gratuit) : contour fin, se remplit au survol
     &--ghost {
       background: transparent;
       color: $color-white;
-      border: 1px solid rgba(255, 255, 255, 0.35);
-
-      // halo plus discret que le CTA principal (hiérarchie préservée)
-      &::after {
-        opacity: 0.5;
-      }
+      border-color: rgba(255, 255, 255, 0.55);
 
       &:hover,
       &:focus-visible {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.6);
-        box-shadow: none;
+        background: $color-white;
+        border-color: $color-white;
+        color: $color-blue;
       }
-    }
-  }
-
-  // Accessibilité : pas de halo pulsant si l'utilisateur refuse l'animation
-  @media (prefers-reduced-motion: reduce) {
-    &__cta::after {
-      animation: none;
     }
   }
 

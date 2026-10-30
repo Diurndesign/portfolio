@@ -465,7 +465,8 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     gap: 0.55em;
     padding: 0.7em 1.05em;
     border: 1px solid rgba(255, 255, 255, 0.55);
-    border-radius: 999px;
+    // rectangle plat, comme les autres boutons du site
+    border-radius: 2px;
     color: var(--card-ink);
     font-size: clamp(0.66rem, 2.1cqw, 0.85rem);
     font-weight: 600;
@@ -670,7 +671,6 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
   .hero__card-action {
     white-space: normal;
     padding: 0.55em 0.75em;
-    border-radius: 12px;
     font-size: 0.66rem;
   }
 }
@@ -706,7 +706,6 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     justify-content: center;
     white-space: nowrap;
     padding: 0.55em 0.5em;
-    border-radius: 999px;
     font-size: 0.62rem;
   }
 }
