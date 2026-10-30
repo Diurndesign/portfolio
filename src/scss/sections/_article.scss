@@ -54,7 +54,8 @@ $article-max: 1180px;
       }
     }
 
-    span[aria-hidden] {
+    // séparateur « · » (enfant direct, pas les pastilles de l'interrupteur)
+    > span[aria-hidden] {
       opacity: 0.6;
     }
   }
@@ -99,6 +100,13 @@ $article-max: 1180px;
       color: $color-white;
       font-weight: 600;
     }
+  }
+
+  // Interrupteur bleu / orange (créé par modules/theme.js)
+  // à droite de la ligne « Guides · min de lecture »
+  &__theme {
+    display: flex;
+    margin-left: auto;
   }
 
   // Fondu vers le fond clair du corps de l'article
@@ -808,4 +816,9 @@ $article-max: 1180px;
   .article-card__media img {
     transition: none;
   }
+}
+
+// Interrupteur sur la page Guides (sous le chapeau)
+.landing__theme {
+  margin-top: 1.5rem;
 }
