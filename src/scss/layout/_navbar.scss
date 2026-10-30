@@ -48,7 +48,8 @@
       justify-content: center;
       gap: 6px;
       position: fixed;
-      top: 0.9rem;
+      // centré sur la hauteur du logo (70px à 0.5rem du haut)
+      top: calc(0.5rem + 13px);
       right: 0.9rem;
       z-index: 50;
       width: 44px;
@@ -97,8 +98,11 @@
       gap: 1.5rem;
     }
 
+    // l'espacement des lettres ajoute un blanc après la dernière lettre :
+    // le même à gauche garde chaque mot centré sur l'axe du menu
     &.is-open &__link {
       font-size: 1rem;
+      padding-left: 0.18em;
     }
 
     // Traits du burger transformés en croix

@@ -13,6 +13,7 @@ function initNavToggle() {
     burger.setAttribute("aria-expanded", String(open));
     burger.setAttribute("aria-label", open ? "Fermer le menu" : "Ouvrir le menu");
     document.body.classList.toggle("no-scroll", open);
+    document.documentElement.classList.toggle("menu-open", open);
   }
 
   burger.addEventListener("click", () => {

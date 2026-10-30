@@ -169,3 +169,9 @@
 .site-footer {
   padding-bottom: calc(var(--dock-space, 6.5rem) + env(safe-area-inset-bottom));
 }
+
+// Menu mobile ouvert : la vague s'efface pour ne pas recouvrir le panneau
+.menu-open .dock {
+  visibility: hidden;
+  opacity: 0;
+}
