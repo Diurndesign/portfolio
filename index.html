@@ -654,123 +654,126 @@
 
       <section id="contact" class="section section--contact">
         <div class="contact">
-          <p class="section__eyebrow">Contact</p>
-
           <div class="contact__grid">
             <div class="contact__main">
+              <p class="contact__kicker">Écrivez-moi</p>
               <h2 class="contact__headline">Parlons de votre projet.</h2>
-              <div class="contact__intro">
-                <p>
+
+              <div class="contact__body">
+                <p class="contact__intro">
                   Une idée à concrétiser, une question, ou juste l'envie
                   d'échanger&nbsp;?
-                  <strong>Écrivez-moi, je réponds à chaque message.</strong>
+                  <strong>Je réponds à chaque message.</strong>
                 </p>
-              </div>
 
-              <div class="direct-contact">
-                <p class="direct-contact__text">
-                  Vous préférez en parler de vive voix&nbsp;? Appelez-moi ou
-                  réservez un appel de 15&nbsp;min.
-                </p>
-                <div class="direct-contact__actions">
-                  <a
-                    class="btn-phone"
-                    href="tel:+33650949615"
-                  >
-                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                      <path fill="currentColor" d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z" />
-                    </svg>
-                    Appeler : 06 50 94 96 15
-                  </a>
-                  <a
-                    class="btn-reserve"
-                    href="https://calendly.com/diurnstudio/appel-decouvert"
-                    target="_blank"
-                    rel="noopener"
-                    data-calendly
-                  >
-                    Réserver un appel de 15 min
-                  </a>
-                </div>
-              </div>
-
-              <div class="contact__form-block">
-                <p class="contact__label">Me contacter directement</p>
                 <form
-              class="contact__form"
-              id="contact-form"
-              action="https://api.web3forms.com/submit"
-              method="POST"
-            >
-              <input type="hidden" name="access_key" value="e5c89c34-54c5-4f3a-8c1f-6a8d4c359c75" />
-              <input type="hidden" name="from_name" value="Formulaire diurnstudio.fr" />
-              <!-- Anti-spam (pot de miel) : masqué, ne doit jamais être coché -->
-              <input
-                type="checkbox"
-                name="botcheck"
-                class="contact__botcheck"
-                tabindex="-1"
-                autocomplete="off"
-                aria-hidden="true"
-                aria-label="Ne pas remplir ce champ anti-spam"
-              />
+                  class="contact__form"
+                  id="contact-form"
+                  action="https://api.web3forms.com/submit"
+                  method="POST"
+                >
+                  <input type="hidden" name="access_key" value="e5c89c34-54c5-4f3a-8c1f-6a8d4c359c75" />
+                  <input type="hidden" name="from_name" value="Formulaire diurnstudio.fr" />
+                  <!-- Anti-spam (pot de miel) : masqué, ne doit jamais être coché -->
+                  <input
+                    type="checkbox"
+                    name="botcheck"
+                    class="contact__botcheck"
+                    tabindex="-1"
+                    autocomplete="off"
+                    aria-hidden="true"
+                    aria-label="Ne pas remplir ce champ anti-spam"
+                  />
 
-              <div class="contact__field">
-                <label for="cf-name">Nom et prénom</label>
-                <input type="text" id="cf-name" name="name" required autocomplete="name" />
-              </div>
-              <div class="contact__field">
-                <label for="cf-email">Email</label>
-                <input
-                  type="email"
-                  id="cf-email"
-                  name="email"
-                  required
-                  autocomplete="email"
-                />
-              </div>
-              <div class="contact__field">
-                <label for="cf-subject">Objet</label>
-                <input
-                  type="text"
-                  id="cf-subject"
-                  name="subject"
-                  required
-                  placeholder="Ex. : création d'un site vitrine"
-                />
-              </div>
-              <div class="contact__field">
-                <label for="cf-message">Votre projet en quelques mots</label>
-                <textarea id="cf-message" name="message" rows="5" required></textarea>
-              </div>
+                  <div class="contact__field">
+                    <label for="cf-name">Nom et prénom</label>
+                    <input type="text" id="cf-name" name="name" required autocomplete="name" />
+                  </div>
+                  <div class="contact__field">
+                    <label for="cf-email">Email</label>
+                    <input
+                      type="email"
+                      id="cf-email"
+                      name="email"
+                      required
+                      autocomplete="email"
+                    />
+                  </div>
+                  <div class="contact__field">
+                    <label for="cf-subject">Objet</label>
+                    <input
+                      type="text"
+                      id="cf-subject"
+                      name="subject"
+                      required
+                      placeholder="Ex. : création d'un site vitrine"
+                    />
+                  </div>
+                  <div class="contact__field">
+                    <label for="cf-message">Votre projet en quelques mots</label>
+                    <textarea id="cf-message" name="message" rows="5" required></textarea>
+                  </div>
 
-              <button type="submit" class="contact__submit">
-                Envoyer le message <span aria-hidden="true">↗</span>
-              </button>
-              <p class="contact__status" role="status" aria-live="polite"></p>
-              <p class="contact__privacy">
-                Vos informations servent uniquement à vous répondre et ne sont
-                jamais revendues.
-              </p>
-            </form>
+                  <button type="submit" class="contact__submit">
+                    Envoyer le message <span aria-hidden="true">↗</span>
+                  </button>
+                  <p class="contact__status" role="status" aria-live="polite"></p>
+                  <p class="contact__privacy">
+                    Vos informations servent uniquement à vous répondre et ne
+                    sont jamais revendues.
+                  </p>
+                </form>
               </div>
             </div>
 
-            <aside class="proof proof--desktop" aria-label="Avis clients">
-              <div class="proof__head">
-                <span class="proof__score">5,0</span>
-                <span class="proof__stars" aria-hidden="true">★★★★★</span>
-                <a class="proof__source" href="https://share.google/iNXmDD4h4sXeVodC5" target="_blank" rel="noopener">4 avis Google</a>
+            <!-- Autres moyens de contact, avis et réseaux -->
+            <div class="contact__aside">
+              <div class="contact__info">
+                <p class="contact__info-label">Téléphone</p>
+                <a class="contact__info-link" href="tel:+33650949615">06 50 94 96 15</a>
               </div>
-              <figure class="proof__item">
-                <blockquote>Une personne très professionnelle, sérieuse et amicale&nbsp;!</blockquote>
-                <figcaption>Aurélien</figcaption>
-              </figure>
-              <figure class="proof__item">
-                <blockquote>J'ai récemment travaillé avec Diurn Studio pour une collaboration sur plusieurs vidéos et montage vidéo. Je lui fais confiance à 100&nbsp;% il est très professionnel, a du bon matos et prend le temps de comprendre votre vision. Merci énormément&nbsp;! Je recommande</blockquote>
-                <figcaption>Le Ben</figcaption>
-              </figure>
-            </aside>
+              <div class="contact__info">
+                <p class="contact__info-label">Email</p>
+                <a class="contact__info-link" href="mailto:hello@diurnstudio.fr">hello@diurnstudio.fr</a>
+              </div>
+              <div class="contact__info">
+                <p class="contact__info-label">Appel découverte</p>
+                <a
+                  class="contact__info-link"
+                  href="https://calendly.com/diurnstudio/appel-decouvert"
+                  target="_blank"
+                  rel="noopener"
+                  data-calendly
+                >Réserver un appel de 15&nbsp;min <span aria-hidden="true">↗</span></a>
+              </div>
+              <div class="contact__info">
+                <p class="contact__info-label">Studio</p>
+                <p class="contact__info-text">Nice, Alpes-Maritimes</p>
+              </div>
+
+              <aside class="proof proof--desktop" aria-label="Avis clients">
+                <div class="proof__head">
+                  <span class="proof__score">5,0</span>
+                  <span class="proof__stars" aria-hidden="true">★★★★★</span>
+                  <a class="proof__source" href="https://share.google/iNXmDD4h4sXeVodC5" target="_blank" rel="noopener">4 avis Google</a>
+                </div>
+                <figure class="proof__item">
+                  <blockquote>Une personne très professionnelle, sérieuse et amicale&nbsp;!</blockquote>
+                  <figcaption>Aurélien</figcaption>
+                </figure>
+                <figure class="proof__item">
+                  <blockquote>J'ai récemment travaillé avec Diurn Studio pour une collaboration sur plusieurs vidéos et montage vidéo. Je lui fais confiance à 100&nbsp;% il est très professionnel, a du bon matos et prend le temps de comprendre votre vision. Merci énormément&nbsp;! Je recommande</blockquote>
+                  <figcaption>Le Ben</figcaption>
+                </figure>
+              </aside>
+
+              <ul class="contact__social" aria-label="Réseaux">
+                <li><a href="https://www.instagram.com/diurn.studio/" target="_blank" rel="noopener">instagram</a></li>
+                <li><a href="https://www.linkedin.com/in/diurnstudio/" target="_blank" rel="noopener">linkedin</a></li>
+                <li><a href="https://www.malt.fr/profile/jeremybendenoun" target="_blank" rel="noopener">malt</a></li>
+                <li><a href="https://github.com/Diurndesign" target="_blank" rel="noopener">github</a></li>
+              </ul>
+            </div>
           </div>
         </div>
       </section>
