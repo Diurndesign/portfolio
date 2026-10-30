@@ -31,11 +31,11 @@
   max-width: $content-max;
   margin: 0 auto;
 
-  // --- Haut : signature, titre en escalier, photo ---------
-  // Mise en page éditoriale : une petite signature à gauche, un grand
-  // titre en capitales dont les dernières lignes se décalent, la photo
-  // en vis-à-vis à droite. Les colonnes sont partagées avec le filet et
-  // les textes en dessous, pour que tout s'aligne sur la même grille.
+  // --- Haut : titre en escalier, photo ---------------------
+  // Mise en page éditoriale : un grand titre dont les dernières lignes
+  // se décalent, la photo en vis-à-vis à droite. Les colonnes sont
+  // partagées avec le filet et les textes en dessous, pour que tout
+  // s'aligne sur la même grille.
   --about-cols: minmax(6.5rem, 1fr) 5fr minmax(20rem, 2.6fr);
   --about-gap: clamp(1.5rem, 3vw, 3rem);
 
@@ -51,19 +51,17 @@
     }
   }
 
-  &__tag {
-    font-size: 0.8rem;
-    font-weight: 700;
-    line-height: 1.15;
-    color: $color-white;
-    padding-top: 0.35rem;
-  }
-
   // Taille du titre en variable : la légende se cale sur ses lignes
+  // Le titre reste dans la 2e colonne : aligné sur le filet et les textes
   &__intro {
     --hl: clamp(2.6rem, 5.4vw, 4.6rem);
     --shift: 3.1;
     position: relative;
+    grid-column: 2;
+
+    @include until($bp-lg) {
+      grid-column: auto;
+    }
   }
 
   // Même police que les autres titres de section (serif du site)
