@@ -4,6 +4,22 @@
         <img src="/img/logo-diurn.png" alt="Logo de Diurn Studio" width="320" height="400" />
       </a>
 
+      <!-- Retour en haut : en bas au centre, apparaît au scroll (comme sur l'accueil) -->
+      <a href="#" class="back-top">
+        <span class="sr-only">Retour en haut de la page</span>
+        <svg class="back-top__ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+          <defs>
+            <path id="back-top-circle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" />
+          </defs>
+          <text>
+            <textPath href="#back-top-circle" textLength="236" lengthAdjust="spacing">Haut de page · Haut de page ·</textPath>
+          </text>
+        </svg>
+        <svg class="back-top__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 19V5M6.5 10.5 12 5l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </a>
+
       <!-- Sidebar gauche : sections de l'accueil -->
       <button class="nav__burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav-menu">
         <span class="nav__burger-line"></span>
