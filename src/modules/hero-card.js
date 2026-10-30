@@ -160,27 +160,8 @@ function initTilt(card) {
   });
 }
 
-// « Discutons de votre projet » : retourne la carte vers ses actions de
-// contact (verso) et place le focus sur la première.
-function initHeroContact() {
-  const toggle = document.querySelector(".hero__contact-toggle");
-  const card = document.querySelector(".hero__card");
-  if (!toggle || !card) return;
-
-  toggle.addEventListener("click", () => {
-    if (!card.classList.contains("is-flipped")) {
-      card.querySelector(".hero__card-flip").click();
-    }
-    const first = card.querySelector(".hero__card-action");
-    if (first) first.focus({ preventScroll: true });
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    card.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
-  });
-}
-
 function init() {
   initHeroCard();
-  initHeroContact();
 }
 
 if (document.readyState === "loading") {
