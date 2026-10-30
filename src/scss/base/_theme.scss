@@ -26,6 +26,26 @@
 //   orange  : hero, contact (texte noir charbon, grands titres blancs)
 //   blanc   : projets, FAQ (texte noir, gris pour le secondaire)
 //   charbon : à propos, pied de page (texte blanc, gris, touches d'orange)
+// Dégradé de transition vers la couleur de la section suivante : même
+// rampe d'opacité adoucie que les fondus du thème bleu (.hero__fade).
+$fade-h: clamp(200px, 32vh, 400px);
+
+@mixin fade-to($r, $g, $b) {
+  background: linear-gradient(
+    to bottom,
+    rgba($r, $g, $b, 0) 0%,
+    rgba($r, $g, $b, 0.03) 16%,
+    rgba($r, $g, $b, 0.1) 30%,
+    rgba($r, $g, $b, 0.22) 43%,
+    rgba($r, $g, $b, 0.38) 55%,
+    rgba($r, $g, $b, 0.56) 66%,
+    rgba($r, $g, $b, 0.74) 77%,
+    rgba($r, $g, $b, 0.89) 88%,
+    rgba($r, $g, $b, 0.97) 95%,
+    rgb($r, $g, $b) 100%
+  );
+}
+
 $orange: #e9573b;
 $charcoal: #18181a;
 $paper: #f6f5f2;
@@ -85,24 +105,58 @@ $paper: #f6f5f2;
     color: $white;
   }
 
-  // Pas de dégradés : des aplats nets entre les sections
-  .hero__fade,
+  // --- Dégradés entre les sections (la couleur glisse vers la suivante) ---
+  // hero (orange) -> projets (blanc) : .hero__fade, via les variables
+  // projets (blanc) -> à propos (charbon)
   .projets__fade {
-    background: none;
+    @include fade-to(24, 24, 26);
   }
 
-  .hero__fade {
-    height: clamp(3rem, 8vh, 5rem);
+  // à propos (charbon) -> FAQ (blanc), FAQ -> contact (orange),
+  // contact -> pied de page (charbon) : bande en bas de section, l'espace
+  // du bas est agrandi d'autant pour ne pas passer sous le contenu
+  #a-propos,
+  #faq,
+  #contact {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: $fade-h;
+      pointer-events: none;
+    }
   }
 
-  // la marge d'un fondu vide « sortirait » de la section (orange visible) :
-  // on le masque et la section garde son propre espace blanc en bas
-  .projets__fade {
-    display: none;
+  #a-propos {
+    padding-bottom: calc(clamp(5rem, 12vh, 9rem) + #{$fade-h});
+
+    &::after {
+      @include fade-to(246, 245, 242);
+    }
   }
 
-  .section--projets {
-    padding-bottom: clamp(4rem, 10vh, 7rem);
+  #faq {
+    padding-bottom: calc(6rem + #{$fade-h});
+
+    @include until($bp-md) {
+      padding-bottom: calc(4rem + #{$fade-h});
+    }
+
+    &::after {
+      @include fade-to(233, 87, 59);
+    }
+  }
+
+  #contact {
+    padding-bottom: calc(clamp(5rem, 12vh, 9rem) + #{$fade-h});
+
+    &::after {
+      @include fade-to(24, 24, 26);
+    }
   }
 
   // Photo du hero : passée à l'orange et éclaircie (texte charbon dessus)
