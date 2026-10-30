@@ -2,7 +2,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/parcours", "destination": "/", "permanent": true }
+    { "source": "/parcours", "destination": "/", "permanent": true },
+    { "source": "/realisations/beauty-corner", "destination": "/", "permanent": true }
   ],
   "headers": [
     {

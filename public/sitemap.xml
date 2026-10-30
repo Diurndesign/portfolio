@@ -79,11 +79,6 @@
     <priority>0.6</priority>
   </url>
   <!-- case-studies:start -->
-  <url>
-    <loc>https://www.diurnstudio.fr/realisations/beauty-corner</loc>
-    <lastmod>2026-10-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+
   <!-- case-studies:end -->
 </urlset>
