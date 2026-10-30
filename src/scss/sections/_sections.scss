@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(var(--c-fg), 0.08);
 
   // Titres de section : même style que le titre du contact
   &__title {
@@ -43,7 +43,7 @@
     transform: translateX(-50%);
     width: clamp(120px, 28vw, 340px);
     height: 1px;
-    background: rgba(255, 255, 255, 0.14);
+    background: rgba(var(--c-fg), 0.14);
   }
 }
 

@@ -63,7 +63,7 @@
   // Bouton principal plein : bleu de marque sur crème
   .landing__btn {
     background: $color-blue;
-    color: $color-white;
+    color: $white;
 
     &:focus-visible {
       outline-color: $color-blue;

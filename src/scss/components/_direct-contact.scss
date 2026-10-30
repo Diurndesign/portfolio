@@ -34,7 +34,7 @@
   min-height: 44px;
   padding: 0.7rem 1.2rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(var(--c-fg), 0.22);
   color: $color-white;
   font-weight: 600;
   font-size: 0.95rem;
@@ -48,8 +48,8 @@
 
   &:hover,
   &:focus-visible {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.5);
+    background: rgba(var(--c-fg), 0.08);
+    border-color: rgba(var(--c-fg), 0.5);
   }
 
   &:focus-visible {
@@ -67,7 +67,7 @@
   min-height: 44px;
   padding: 0.7rem 1.5rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.35);
+  border: 1px solid rgba(var(--c-fg), 0.35);
   background: transparent;
   color: $color-white;
   font-weight: 600;
@@ -78,8 +78,8 @@
 
   &:hover,
   &:focus-visible {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.6);
+    background: rgba(var(--c-fg), 0.08);
+    border-color: rgba(var(--c-fg), 0.6);
     transform: translateY(-2px);
   }
 

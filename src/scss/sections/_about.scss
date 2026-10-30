@@ -140,7 +140,7 @@
       cursor: pointer;
 
       &:focus-visible {
-        outline: 2px solid $color-white;
+        outline: 2px solid $white;
         outline-offset: -6px;
         border-radius: 4px;
       }
@@ -158,7 +158,7 @@
       border-radius: 999px;
       background: rgba(var(--c-blue), 0.62);
       backdrop-filter: blur(3px);
-      color: $color-white;
+      color: $white;
       font-size: 0.74rem;
       font-weight: 600;
       letter-spacing: 0.02em;
@@ -181,7 +181,7 @@
         rgba(var(--c-blue), 0.84),
         rgba(var(--c-blue-night), 0.88)
       );
-      color: $color-white;
+      color: $white;
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.45s $ease;
@@ -198,7 +198,7 @@
       margin: 0;
       font-size: 0.85rem;
       line-height: 1.5;
-      color: $color-text-soft;
+      color: rgba($white, 0.82);
     }
 
     &-reveal-title {
@@ -207,7 +207,7 @@
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(var(--c-cream), 0.9);
+      color: rgba(235, 230, 219, 0.9);
     }
 
     &-group {
@@ -217,7 +217,7 @@
         font-weight: 300;
         font-size: clamp(1.05rem, 1.7vw, 1.35rem);
         letter-spacing: -0.01em;
-        color: $color-white;
+        color: $white;
         margin-bottom: 0.35rem;
       }
 
@@ -225,7 +225,7 @@
         margin: 0;
         font-size: 0.85rem;
         line-height: 1.55;
-        color: $color-text-soft;
+        color: rgba($white, 0.82);
       }
     }
 
@@ -311,7 +311,7 @@
       content: "";
       flex: 1;
       height: 1px;
-      background: rgba(255, 255, 255, 0.55);
+      background: rgba(var(--c-fg), 0.55);
     }
 
     @include until($bp-lg) {
@@ -418,7 +418,7 @@
     &--ghost {
       background: transparent;
       color: $color-white;
-      border-color: rgba(255, 255, 255, 0.55);
+      border-color: rgba(var(--c-fg), 0.55);
 
       &:hover,
       &:focus-visible {

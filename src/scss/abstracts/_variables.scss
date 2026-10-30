@@ -6,7 +6,10 @@
 // Couleurs de thème : variables CSS (triplets RVB) pour que le bouton de
 // thème puisse les changer en direct. Valeurs dans base/_theme.scss.
 $color-blue: rgb(var(--c-blue)); // bleu roi du fond
-$color-white: #ffffff;
+// Couleur du texte sur le fond principal (blanc en thème bleu, noir en
+// thème orange) ; $white reste blanc dans tous les thèmes (texte sur photo).
+$color-white: rgb(var(--c-fg));
+$white: #ffffff;
 $color-black: #000000;
 
 // Sections claires (ex. Projets)
@@ -28,9 +31,9 @@ $color-warning: #ffc65c;
 
 // Nuances de texte (blanc translucide sur fond bleu)
 // 0.65 : contraste AA (>= 4.5:1) sur le bleu, y compris en petit corps.
-$color-text-muted: rgba(255, 255, 255, var(--a-muted));
-$color-text-soft: rgba(255, 255, 255, var(--a-soft));
-$color-text-placeholder: rgba(255, 255, 255, var(--a-placeholder)); // 5.5:1 sur le bleu
+$color-text-muted: rgba(var(--c-fg), var(--a-muted));
+$color-text-soft: rgba(var(--c-fg), var(--a-soft));
+$color-text-placeholder: rgba(var(--c-fg), var(--a-placeholder)); // 5.5:1 sur le bleu
 
 // Texte secondaire sur crème : 0.7 = contraste AA (>= 5.7:1) sur tous les
 // fonds clairs des fiches projet.

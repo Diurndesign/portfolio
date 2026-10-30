@@ -14,33 +14,76 @@
   --c-blue-night: 5, 6, 58;
   --c-cream: 235, 230, 219;
   --c-ink: 23, 25, 58;
-  // texte blanc translucide : 0.65 = contraste AA sur le bleu
+  --c-fg: 255, 255, 255; // texte sur le fond principal
+  // texte translucide : 0.65 = contraste AA sur le bleu
   --a-muted: 0.65;
   --a-soft: 0.82;
   --a-placeholder: 0.6;
 }
 
-// Orange assez profond pour que le texte blanc reste lisible (AA), crème
-// remplacé par un gris clair, encre bleu nuit par du noir.
+// Thème orange, comme la référence : orange vif avec texte noir, et les
+// sections claires passent en noir charbon avec texte clair.
 :root[data-theme="orange"] {
-  --c-blue: 196, 64, 26;
-  --c-blue-deep: 150, 45, 15;
-  --c-blue-night: 50, 14, 4;
-  --c-cream: 226, 226, 224;
-  --c-ink: 17, 17, 17;
-  // sur l'orange, le blanc translucide perd du contraste : on le densifie
-  --a-muted: 0.95;
-  --a-soft: 1;
-  --a-placeholder: 0.85;
+  --c-blue: 233, 87, 59;
+  --c-blue-deep: 245, 150, 122; // bandeau cookies, texte noir
+  --c-blue-night: 24, 24, 26;
+  --c-cream: 24, 24, 26;
+  --c-ink: 240, 238, 234;
+  --c-fg: 17, 17, 17;
+  // texte noir translucide : 0.88 = contraste AA sur l'orange
+  --a-muted: 0.88;
+  --a-soft: 0.94;
+  --a-placeholder: 0.7;
 
-  // Photos teintées en bleu : passées à l'orange, les crème au gris
-  .hero__bg,
-  .section--projets .card--bleu .card__media img {
-    filter: hue-rotate(138deg) saturate(1.15);
+  // Photo du hero : passée à l'orange et éclaircie (texte noir dessus)
+  .hero__bg {
+    filter: hue-rotate(138deg) saturate(1.1) brightness(1.35);
+    opacity: 0.4;
   }
 
-  .section--projets .card--creme .card__media img {
-    filter: grayscale(1);
+  // Carte de visite : noir charbon, texte clair, accents orange
+  .hero__card {
+    --card-bg: #18181a;
+    --card-edge: #050506;
+    --card-ink: #f2f0eb;
+    --card-ink-soft: rgba(242, 240, 235, 0.82);
+    --card-accent: #b23a17;
+    --emboss-light: rgba(255, 255, 255, 0.14);
+    --emboss-light-soft: rgba(255, 255, 255, 0.05);
+    --emboss-dark: rgba(0, 0, 0, 0.75);
+    --emboss-dark-soft: rgba(0, 0, 0, 0.5);
+  }
+
+  // Mosaïque : tuiles bleues passées à l'orange, crème au gris
+  .section--projets {
+    .card {
+      --shade: 24, 24, 26;
+      --pill-ink: #b23a17;
+    }
+
+    .card--bleu .card__media img {
+      filter: hue-rotate(138deg) saturate(1.15);
+    }
+
+    .card--creme {
+      --ink: #111111;
+      --ink-soft: rgba(17, 17, 17, 0.78);
+      --pill-bg: #111111;
+      --pill-ink: #e6e6e4;
+
+      .card__media img {
+        filter: grayscale(1);
+      }
+    }
+  }
+
+  // Compétences sur la photo : voile et indice en noir charbon
+  .about__photo-cue {
+    background: rgba(24, 24, 26, 0.75);
+  }
+
+  .about__photo-reveal {
+    background: linear-gradient(180deg, rgba(24, 24, 26, 0.86), rgba(10, 10, 11, 0.92));
   }
 }
 
@@ -57,7 +100,7 @@
   padding: 0;
   border: 2px solid rgba(255, 255, 255, 0.9);
   border-radius: 50%;
-  background: #c4401a;
+  background: #e9573b;
   box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   transition: transform $transition, background $transition;
@@ -73,6 +116,7 @@
 
   [data-theme="orange"] & {
     background: #010d94;
+    border-color: #111111;
   }
 
   @include until($bp-md) {
@@ -82,22 +126,11 @@
 }
 
 // --- Animation du changement de thème -------------------------
-// Navigateurs récents : la nouvelle page s'ouvre en cercle depuis le
-// bouton (View Transitions, piloté par theme.js).
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation: none;
-  mix-blend-mode: normal;
-}
-
-// Autres navigateurs : fondu des couleurs le temps du changement
-.theme-fading,
-.theme-fading *,
-.theme-fading *::before,
-.theme-fading *::after {
-  transition:
-    background-color 0.6s ease,
-    color 0.6s ease,
-    border-color 0.6s ease,
-    fill 0.6s ease !important;
+// Un disque de la nouvelle couleur s'étend depuis le bouton et couvre la
+// page, le thème change dessous, puis le disque s'efface (theme.js).
+.theme-wipe {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  pointer-events: none;
 }

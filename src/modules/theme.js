@@ -1,13 +1,15 @@
 // ============================================================
 //  Bouton de thème : bleu <-> orange
 // ============================================================
-// Bascule data-theme="orange" sur <html>. Le changement s'ouvre en cercle
-// depuis le bouton (View Transitions) ; sans cette API, les couleurs se
-// fondent (classe .theme-fading). Le choix est mémorisé dans le navigateur
-// du visiteur et réappliqué dès le <head> (partials/head-icons.html).
+// Bascule data-theme="orange" sur <html>. Au clic, un disque de la
+// nouvelle couleur s'étend depuis le bouton et couvre la page, le thème
+// change dessous, puis le disque s'efface. (Pas de View Transitions : leur
+// capture d'écran déforme la carte de visite en 3D.) Le choix est mémorisé
+// dans le navigateur du visiteur et réappliqué dès le <head>
+// (partials/head-icons.html).
 
 const KEY = "diurn-theme";
-const BAR_COLOR = { blue: "#010d94", orange: "#c4401a" };
+const BAR_COLOR = { blue: "#010d94", orange: "#e9573b" };
 const LABEL = {
   blue: "Passer le site en orange",
   orange: "Revenir au bleu",
@@ -45,20 +47,12 @@ function initTheme() {
   btn.addEventListener("click", () => {
     const next = current() === "orange" ? "blue" : "orange";
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (reduce) {
+    if (reduce || !document.body.animate) {
       apply(next);
       return;
     }
 
-    if (!document.startViewTransition) {
-      root.classList.add("theme-fading");
-      apply(next);
-      setTimeout(() => root.classList.remove("theme-fading"), 700);
-      return;
-    }
-
-    // Cercle qui part du centre du bouton jusqu'au coin le plus éloigné
+    // Disque qui part du centre du bouton jusqu'au coin le plus éloigné
     const r = btn.getBoundingClientRect();
     const x = r.left + r.width / 2;
     const y = r.top + r.height / 2;
@@ -67,22 +61,25 @@ function initTheme() {
       Math.max(y, window.innerHeight - y)
     );
 
-    const transition = document.startViewTransition(() => apply(next));
-    transition.ready.then(() => {
-      root.animate(
-        {
-          clipPath: [
-            `circle(0px at ${x}px ${y}px)`,
-            `circle(${end}px at ${x}px ${y}px)`,
-          ],
-        },
-        {
-          duration: 750,
-          easing: "cubic-bezier(0.65, 0, 0.35, 1)",
-          pseudoElement: "::view-transition-new(root)",
-        }
-      );
-    });
+    const wipe = document.createElement("div");
+    wipe.className = "theme-wipe";
+    wipe.style.background = BAR_COLOR[next];
+    document.body.appendChild(wipe);
+
+    const grow = wipe.animate(
+      {
+        clipPath: [
+          `circle(0px at ${x}px ${y}px)`,
+          `circle(${end}px at ${x}px ${y}px)`,
+        ],
+      },
+      { duration: 650, easing: "cubic-bezier(0.65, 0, 0.35, 1)", fill: "forwards" }
+    );
+    grow.onfinish = () => {
+      apply(next);
+      const fade = wipe.animate({ opacity: [1, 0] }, { duration: 450, easing: "ease-out", fill: "forwards" });
+      fade.onfinish = () => wipe.remove();
+    };
   });
 
   sync();

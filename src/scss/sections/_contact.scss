@@ -19,7 +19,7 @@
   // À gauche le titre puis le formulaire en retrait, à droite les autres
   // moyens de contact. De fines lignes de construction (verticale qui
   // traverse le titre, horizontale sous le formulaire) dessinent la grille.
-  --line: rgba(255, 255, 255, 0.16);
+  --line: rgba(var(--c-fg), 0.16);
   --indent: clamp(3rem, 7vw, 6rem);
 
   &__grid {
@@ -141,8 +141,8 @@
     textarea {
       width: 100%;
       padding: 0.8rem 0.95rem;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.22);
+      background: rgba(var(--c-fg), 0.06);
+      border: 1px solid rgba(var(--c-fg), 0.22);
       border-radius: 8px;
       color: $color-white;
       font-family: $font-body;
@@ -156,7 +156,7 @@
       &:focus {
         outline: none;
         border-color: $color-white;
-        background: rgba(255, 255, 255, 0.1);
+        background: rgba(var(--c-fg), 0.1);
       }
     }
 
@@ -225,8 +225,8 @@
 // ============================================================
 .proof {
   padding: clamp(1.25rem, 2.5vw, 1.75rem);
-  background: rgba($color-white, 0.05);
-  border: 1px solid rgba($color-white, 0.12);
+  background: rgba(var(--c-fg), 0.05);
+  border: 1px solid rgba(var(--c-fg), 0.12);
   border-radius: 14px;
 
   // Deux emplacements selon l'écran : à côté du formulaire (desktop),
@@ -253,7 +253,7 @@
     gap: 0.3rem 0.6rem;
     padding-bottom: 1rem;
     margin-bottom: 1rem;
-    border-bottom: 1px solid rgba($color-white, 0.1);
+    border-bottom: 1px solid rgba(var(--c-fg), 0.1);
   }
 
   &__score {
@@ -276,7 +276,7 @@
     color: $color-text-soft;
     text-decoration: underline;
     text-underline-offset: 3px;
-    text-decoration-color: rgba($color-white, 0.3);
+    text-decoration-color: rgba(var(--c-fg), 0.3);
     transition: color $transition, text-decoration-color $transition;
 
     &:hover,
@@ -304,7 +304,7 @@
     & + & {
       margin-top: 1rem;
       padding-top: 1rem;
-      border-top: 1px solid rgba($color-white, 0.08);
+      border-top: 1px solid rgba(var(--c-fg), 0.08);
     }
 
     blockquote {
@@ -344,7 +344,7 @@
       padding: 0.45rem 0 0.55rem;
       background: transparent;
       border: 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+      border-bottom: 1px solid rgba(var(--c-fg), 0.4);
       border-radius: 0;
 
       &:focus {
