@@ -290,50 +290,50 @@
                   <span class="sr-only">Retourner la carte pour lire la présentation</span>
                 </button>
               </div>
+              <!-- Verso : présentation à gauche, contact à droite, comme une
+                   carte de visite. Un clic hors des liens retourne la carte. -->
               <div class="hero__card-face hero__card-face--back" inert>
-                <p class="hero__card-kicker">Diurn Studio · Nice</p>
-                <p class="hero__intro">
-                  Designer et développeur web à Nice, je conçois l'identité des
-                  marques et je code les sites internet sur mesure qui les portent,
-                  du logo au référencement local. Un seul interlocuteur, du concept
-                  à la mise en ligne.
-                </p>
-                <svg class="hero__card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12a8 8 0 1 0 2.4-5.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M4 4v4h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 <button class="hero__card-back" type="button">
                   <span class="sr-only">Retourner la carte côté recto</span>
                 </button>
+                <div class="hero__card-body">
+                <div class="hero__card-text">
+                  <p class="hero__card-kicker">Diurn Studio · Nice</p>
+                  <p class="hero__intro">
+                    Designer et développeur web à Nice, je conçois l'identité des
+                    marques et je code les sites internet sur mesure qui les portent,
+                    du logo au référencement local. Un seul interlocuteur, du concept
+                    à la mise en ligne.
+                  </p>
+                </div>
+                <div class="hero__card-actions">
+                  <a
+                    class="hero__card-action"
+                    href="https://calendly.com/diurnstudio/appel-decouvert"
+                    target="_blank"
+                    rel="noopener"
+                    data-calendly
+                  >
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z" /></svg>
+                    Réserver un appel
+                  </a>
+                  <a class="hero__card-action" href="#contact">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" /></svg>
+                    Écrire un message
+                  </a>
+                </div>
+                </div>
+                <svg class="hero__card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12a8 8 0 1 0 2.4-5.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M4 4v4h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Contact : un seul lien ; au survol (souris) ou au toucher,
-             deux bulles s'ouvrent pour appeler ou écrire. -->
+        <!-- Raccourci : retourne la carte vers ses actions de contact -->
         <div class="hero__contact">
-          <button
-            class="hero__contact-toggle"
-            type="button"
-            aria-expanded="false"
-            aria-controls="hero-contact-options"
-          >
+          <button class="hero__contact-toggle" type="button">
             Discutons de votre projet <span aria-hidden="true">↗</span>
           </button>
-          <div class="hero__contact-options" id="hero-contact-options">
-            <a
-              class="hero__bubble"
-              href="https://calendly.com/diurnstudio/appel-decouvert"
-              target="_blank"
-              rel="noopener"
-              data-calendly
-            >
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11zM7 11h5v5H7z" /></svg>
-              Réserver un appel de 15 min
-            </a>
-            <a class="hero__bubble" href="#contact">
-              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" /></svg>
-              Écrire un message
-            </a>
-          </div>
         </div>
       </div>
 

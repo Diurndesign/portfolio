@@ -160,56 +160,22 @@ function initTilt(card) {
   });
 }
 
-// Contact du hero : « Discutons de votre projet » ouvre deux bulles
-// (Appeler, Écrire). Survol à la souris, toucher ou clavier sinon ;
-// Échap ou un clic ailleurs les referme.
+// « Discutons de votre projet » : retourne la carte vers ses actions de
+// contact (verso) et place le focus sur la première.
 function initHeroContact() {
-  const box = document.querySelector(".hero__contact");
-  if (!box) return;
-  const toggle = box.querySelector(".hero__contact-toggle");
-  const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-  let closeTimer = 0;
+  const toggle = document.querySelector(".hero__contact-toggle");
+  const card = document.querySelector(".hero__card");
+  if (!toggle || !card) return;
 
-  function setOpen(open) {
-    clearTimeout(closeTimer);
-    box.classList.toggle("is-open", open);
-    toggle.setAttribute("aria-expanded", open ? "true" : "false");
-  }
-
-  toggle.addEventListener("click", (e) => {
-    // à la souris, le survol a déjà ouvert : le clic ne doit pas refermer
-    // (detail > 0 = vrai clic ; 0 = Entrée / Espace au clavier)
-    if (canHover && e.detail > 0) setOpen(true);
-    else setOpen(!box.classList.contains("is-open"));
-  });
-
-  if (canHover) {
-    box.addEventListener("mouseenter", () => setOpen(true));
-    // petit délai : laisse le temps de rejoindre une bulle
-    box.addEventListener("mouseleave", () => {
-      closeTimer = setTimeout(() => setOpen(false), 250);
-    });
-  }
-
-  box.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && box.classList.contains("is-open")) {
-      setOpen(false);
-      toggle.focus();
+  toggle.addEventListener("click", () => {
+    if (!card.classList.contains("is-flipped")) {
+      card.querySelector(".hero__card-flip").click();
     }
+    const first = card.querySelector(".hero__card-action");
+    if (first) first.focus({ preventScroll: true });
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    card.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
   });
-
-  box.addEventListener("focusout", (e) => {
-    if (!box.contains(e.relatedTarget)) setOpen(false);
-  });
-
-  document.addEventListener("click", (e) => {
-    if (!box.contains(e.target)) setOpen(false);
-  });
-
-  // après un choix, les bulles se referment
-  box.querySelectorAll(".hero__bubble").forEach((a) =>
-    a.addEventListener("click", () => setOpen(false))
-  );
 }
 
 function init() {
