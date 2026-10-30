@@ -7,7 +7,8 @@
 //
 // Réglages (Vercel, Settings, Environment Variables) :
 //   NOTION_TOKEN    clé de l'intégration Notion (secret_… ou ntn_…)
-//   NOTION_PAGE_ID  page Notion partagée avec l'intégration ; la base
+//   NOTION_PAGE_ID  (facultatif) page Notion partagée avec l'intégration ;
+//                   par défaut la page « Diurn studio ». La base
 //                   « Prospects du site » y est créée à la première demande
 //   NOTION_DATABASE_ID (facultatif) pour viser une base existante
 
@@ -26,6 +27,9 @@ const STATUTS = [
   ["Signé", "green"],
   ["Perdu", "gray"],
 ];
+
+// Page Notion « Diurn studio » (identifiant public, pas un secret)
+const PAGE_ID = process.env.NOTION_PAGE_ID || "4017472ce4448019b9afc5b6ad540d02";
 
 let databaseId = process.env.NOTION_DATABASE_ID || "";
 const hits = new Map(); // anti-abus simple : adresse IP -> horodatages récents
@@ -50,7 +54,7 @@ function notion(path, method, body) {
 async function getDatabase() {
   if (databaseId) return databaseId;
   // accepte l'identifiant seul ou le lien complet de la page Notion
-  const page = process.env.NOTION_PAGE_ID.split("?")[0].replace(/-/g, "").slice(-32);
+  const page = PAGE_ID.split("?")[0].replace(/-/g, "").slice(-32);
   const children = await notion(`/blocks/${page}/children?page_size=100`, "GET");
   const found = children.results.find((b) => b.type === "child_database" && b.child_database.title === DB_TITLE);
   if (found) return (databaseId = found.id);
@@ -110,7 +114,7 @@ export default async function handler(req, res) {
   const email = clean(body.email, 200);
   if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).json({ ok: false });
 
-  if (!process.env.NOTION_TOKEN || (!process.env.NOTION_PAGE_ID && !databaseId)) {
+  if (!process.env.NOTION_TOKEN) {
     return res.status(200).json({ ok: false, reason: "notion_non_configure" });
   }
 
