@@ -24,6 +24,9 @@ function Card({ project }) {
         <span className="card__cat">{project.cat}</span>
         <span className="card__title">{project.title}</span>
         {project.desc && <span className="card__desc">{project.desc}</span>}
+        <span className="card__cta" aria-hidden="true">
+          Découvrir
+        </span>
       </span>
     </span>
   );

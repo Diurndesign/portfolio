@@ -27,7 +27,7 @@
     color: rgba($color-ink, 0.7);
   }
   .card__media {
-    background: rgba($color-ink, 0.06);
+    background: $color-blue;
   }
   .card__btn:focus-visible {
     outline-color: $color-ink;
@@ -259,5 +259,136 @@
       rgba(0, 0, 0, 0.4) 48%,
       rgba(0, 0, 0, 0) 75%
     );
+  }
+}
+
+// ============================================================
+//  Accueil : mosaïque façon catalogue, photos en bleu roi
+//  (les pages villes gardent la grille de cartes classique)
+// ============================================================
+.section--projets {
+  // Une tuile pleine largeur, puis deux demi-tuiles, et ainsi de suite.
+  // Une demi-tuile restée seule en fin de liste (selon le filtre) prend
+  // toute la largeur pour ne pas laisser de trou.
+  .projets__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+
+    @include until($bp-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .projets__grid > .card:nth-child(3n + 1),
+  .projets__grid > .card:nth-child(3n + 2):last-child {
+    grid-column: 1 / -1;
+
+    .card__media {
+      aspect-ratio: 2 / 1;
+
+      @include until($bp-sm) {
+        aspect-ratio: 4 / 3;
+      }
+    }
+  }
+
+  // Demi-tuiles : légende en bas, sous le sujet de la photo (logo, objet)
+  .projets__grid > .card:not(:nth-child(3n + 1)):not(:nth-child(3n + 2):last-child) .card__overlay {
+    justify-content: flex-end;
+    padding-bottom: clamp(1.5rem, 3vw, 2.25rem);
+    --veil:
+      radial-gradient(ellipse 75% 38% at 50% 100%, rgba($color-blue-night, 0.7), rgba($color-blue-night, 0) 100%),
+      rgba($color-blue-night, 0.12);
+  }
+
+  .projets__grid > .card:nth-child(3n + 1) .card__title {
+    font-size: clamp(1.8rem, 3.4vw, 2.9rem);
+  }
+
+  .card__btn {
+    text-align: center;
+
+    &:focus-visible {
+      outline-offset: 3px;
+    }
+  }
+
+  // Vignettes déjà teintées en bleu roi (bichromie) : plus de noir & blanc
+  .card__media {
+    border-radius: 0;
+    aspect-ratio: 1 / 1;
+
+    img {
+      filter: none;
+      transition: transform 0.8s $ease;
+    }
+  }
+
+  // Voile bleu nuit concentré au centre : la légende blanche reste
+  // lisible, même sur les vignettes les plus claires.
+  .card__overlay {
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 1.5rem;
+    text-align: center;
+    --veil:
+      radial-gradient(ellipse 60% 50% at 50% 50%, rgba($color-blue-night, 0.6), rgba($color-blue-night, 0) 100%),
+      rgba($color-blue-night, 0.15);
+    background: var(--veil);
+  }
+
+  .card__cat {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  .card__title {
+    font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+  }
+
+  .card__desc {
+    margin-top: 0;
+    max-width: 34ch;
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  // Pastille « Découvrir » : décorative, toute la tuile est cliquable
+  .card__cta {
+    margin-top: 0.7rem;
+    padding: 0.45rem 1.15rem;
+    border-radius: 999px;
+    background: $color-white;
+    color: $color-blue;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    transition: background $transition, color $transition, box-shadow $transition;
+  }
+
+  // Survol / focus clavier : léger zoom, pastille inversée
+  .card__btn:hover,
+  .card__btn:focus-visible {
+    .card__media img {
+      transform: scale(1.04);
+      filter: none;
+    }
+
+    .card__overlay {
+      background: var(--veil);
+    }
+
+    .card__cta {
+      background: transparent;
+      color: $color-white;
+      box-shadow: inset 0 0 0 1px $color-white;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section--projets .card__media img {
+    transition: none;
   }
 }
