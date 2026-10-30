@@ -511,10 +511,16 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
   // Recto : Diurn Studio gaufré (même couleur que la carte, relief par
   // la lumière en haut à gauche et l'ombre en bas à droite)
   // Le nom est imprimé sur la carte : pas d'apparition séparée
-  &__card-face--front .hero__title span {
+  &__card-face--front .hero__title-line {
     animation: none;
     display: block;
     width: fit-content;
+
+    // Lettres du logotype, décoratives (texte de remplacement vide)
+    &::before {
+      content: attr(data-text);
+      content: attr(data-text) / "";
+    }
   }
 
   // Gaufrage à sec : le nom est de la couleur de la carte, révélé

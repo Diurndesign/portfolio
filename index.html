@@ -280,9 +280,12 @@
               <span class="hero__card-edge" style="--i: 6" aria-hidden="true"></span>
               <span class="hero__card-edge" style="--i: 7" aria-hidden="true"></span>
               <div class="hero__card-face hero__card-face--front">
+                <!-- Nom gaufré : logotype dessiné en CSS (data-text), le nom
+                     lisible reste dans le titre pour Google et les lecteurs d'écran -->
                 <h2 class="hero__title">
-                  <span>DiUrN</span>
-                  <span>sTudio</span>
+                  <span class="sr-only">Diurn Studio</span>
+                  <span class="hero__title-line" data-text="DiUrN" aria-hidden="true"></span>
+                  <span class="hero__title-line" data-text="sTudio" aria-hidden="true"></span>
                 </h2>
                 <svg class="hero__card-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 12a8 8 0 1 0 2.4-5.7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M4 4v4h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 <button class="hero__card-flip" type="button" aria-pressed="false">
