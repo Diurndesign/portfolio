@@ -2,7 +2,7 @@
 //  THÈMES — bleu (par défaut) et orange
 // ============================================================
 // Les couleurs de thème sont des triplets RVB (utilisables dans rgba()).
-// Le bouton .theme-toggle (modules/theme.js) bascule l'attribut
+// L'interrupteur .theme-switch (modules/theme.js) bascule l'attribut
 // data-theme="orange" sur <html> ; le choix est mémorisé et appliqué dès
 // le <head> (partials/head-icons.html) pour éviter un flash de couleur.
 @use "../abstracts/variables" as *;
@@ -302,41 +302,100 @@ $paper: #f6f5f2;
   }
 }
 
-// --- Bouton de thème ------------------------------------------
-// Pastille fixe en bas de la barre latérale droite (en bas à droite sur
-// mobile) : orange sur le thème bleu, bleu sur le thème orange.
-.theme-toggle {
-  position: fixed;
-  z-index: 25;
-  right: calc((#{$sidebar-width} - 2.75rem) / 2);
-  bottom: 1.25rem;
-  width: 2.75rem;
-  height: 2.75rem;
-  padding: 0;
-  border: 2px solid rgba(255, 255, 255, 0.9);
-  border-radius: 50%;
-  background: #e9573b;
-  box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.5);
+// --- Interrupteur de thème ------------------------------------
+// Capsule à deux pastilles (bleu, orange) ; un anneau glisse sur celle du
+// thème affiché. Verticale dans la barre latérale droite, horizontale
+// dans le menu mobile. Le trait suit la couleur des liens du menu.
+.theme-switch {
+  --dot: 10px;
+  --thumb: 18px;
+  --pad: 3px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: calc(var(--thumb) + 2 * var(--pad) + 2px);
+  height: calc(2 * var(--thumb) + 2 * var(--pad) + 8px);
+  padding: calc(var(--pad) + (var(--thumb) - var(--dot)) / 2) 0;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  background: none;
+  color: $color-text-soft;
   cursor: pointer;
-  transition: transform $transition, background $transition;
+  transition: color $transition, transform $transition;
 
   &:hover {
-    transform: scale(1.08);
+    color: $color-white;
   }
 
   &:focus-visible {
-    outline: 2px solid $color-white;
+    outline: 2px solid currentColor;
     outline-offset: 3px;
   }
 
-  [data-theme="orange"] & {
-    background: #010d94;
+  .nav--light & {
+    color: $color-ink;
   }
 
   @include until($bp-md) {
-    right: 1rem;
-    bottom: 1rem;
+    flex-direction: row;
+    width: calc(2 * var(--thumb) + 2 * var(--pad) + 8px);
+    height: calc(var(--thumb) + 2 * var(--pad) + 2px);
+    padding: 0 calc(var(--pad) + (var(--thumb) - var(--dot)) / 2);
   }
+}
+
+.theme-switch__dot {
+  width: var(--dot);
+  height: var(--dot);
+  border-radius: 50%;
+  // fin liseré : la pastille reste visible sur un fond de même couleur
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.55);
+
+  &--blue {
+    background: #010d94;
+  }
+
+  &--orange {
+    background: #e9573b;
+  }
+}
+
+// Anneau sur la pastille active : en haut (bleu) ou en bas (orange)
+.theme-switch__thumb {
+  position: absolute;
+  left: 50%;
+  top: var(--pad);
+  width: var(--thumb);
+  height: var(--thumb);
+  margin-left: calc(var(--thumb) / -2);
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  transition: top 0.45s cubic-bezier(0.65, 0, 0.35, 1), left 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+
+  [data-theme="orange"] & {
+    top: calc(100% - var(--pad) - var(--thumb));
+  }
+
+  @include until($bp-md) {
+    top: 50%;
+    left: var(--pad);
+    margin: calc(var(--thumb) / -2) 0 0;
+
+    [data-theme="orange"] & {
+      top: 50%;
+      left: calc(100% - var(--pad) - var(--thumb));
+    }
+  }
+}
+
+// Sans barre de navigation : interrupteur fixe en bas à droite
+.theme-switch--floating {
+  position: fixed;
+  z-index: 25;
+  right: 1rem;
+  bottom: 1rem;
 }
 
 // --- Animation du changement de thème -------------------------

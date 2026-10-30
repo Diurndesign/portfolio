@@ -1,5 +1,5 @@
 // ============================================================
-//  Bouton de thème : bleu <-> orange
+//  Interrupteur de thème : bleu <-> orange
 // ============================================================
 // Bascule data-theme="orange" sur <html>. Au clic, le nouveau thème
 // s'ouvre en cercle depuis le bouton par-dessus l'ancien (View
@@ -22,10 +22,26 @@ function initTheme() {
   const meta = document.querySelector('meta[name="theme-color"]');
   const current = () => (root.dataset.theme === "orange" ? "orange" : "blue");
 
+  // Interrupteur bleu / orange : une pastille de chaque couleur, un
+  // anneau glisse sur celle du thème affiché. Placé dans la barre latérale
+  // droite, sous les réseaux (dans le menu sur mobile).
   const btn = document.createElement("button");
   btn.type = "button";
-  btn.className = "theme-toggle";
-  document.body.appendChild(btn);
+  btn.className = "theme-switch";
+  btn.innerHTML =
+    '<span class="theme-switch__dot theme-switch__dot--blue" aria-hidden="true"></span>' +
+    '<span class="theme-switch__dot theme-switch__dot--orange" aria-hidden="true"></span>' +
+    '<span class="theme-switch__thumb" aria-hidden="true"></span>';
+  const side = document.querySelector(".nav__side--right");
+  if (side) {
+    const li = document.createElement("li");
+    li.className = "nav__theme";
+    li.appendChild(btn);
+    side.appendChild(li);
+  } else {
+    btn.classList.add("theme-switch--floating");
+    document.body.appendChild(btn);
+  }
 
   function sync() {
     const theme = current();
