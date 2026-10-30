@@ -263,7 +263,8 @@
 }
 
 // ============================================================
-//  Accueil : mosaïque façon catalogue, photos en bleu roi
+//  Accueil : mosaïque façon catalogue, tuiles jointives en trois tons
+//  (bleu roi, crème, noir et blanc : voir « tone » dans projects.data.js)
 //  (les pages villes gardent la grille de cartes classique)
 // ============================================================
 .section--projets {
@@ -274,11 +275,33 @@
   // d'une longue colonne de tuiles identiques.
   .projets__grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 6px;
+    gap: 0;
+  }
 
-    @include until($bp-sm) {
-      gap: 4px;
-    }
+  // --- Tons des tuiles : voile, texte et pastille ---
+  // --shade : couleur du voile sous la légende (triplet RVB)
+  // --veil-k : intensité du voile (plus forte sur crème, texte encre)
+  .card {
+    --shade: 5, 6, 58;
+    --veil-k: 1;
+    --ink: #{$color-white};
+    --ink-soft: rgba(255, 255, 255, 0.85);
+    --pill-bg: #{$color-white};
+    --pill-ink: #{$color-blue};
+  }
+
+  .card--nb {
+    --shade: 0, 0, 0;
+    --pill-ink: #111;
+  }
+
+  .card--creme {
+    --shade: 244, 240, 232;
+    --veil-k: 1.35;
+    --ink: #{$color-ink};
+    --ink-soft: #{rgba($color-ink, 0.78)};
+    --pill-bg: #{$color-ink};
+    --pill-ink: #{$color-cream};
   }
 
   .projets__grid > .card:nth-child(3n + 1),
@@ -299,8 +322,8 @@
     justify-content: flex-end;
     padding-bottom: clamp(1.5rem, 3vw, 2.25rem);
     --veil:
-      radial-gradient(ellipse 75% 38% at 50% 100%, rgba($color-blue-night, 0.7), rgba($color-blue-night, 0) 100%),
-      rgba($color-blue-night, 0.12);
+      radial-gradient(ellipse 75% 38% at 50% 100%, rgba(var(--shade), calc(0.7 * var(--veil-k))), rgba(var(--shade), 0) 100%),
+      rgba(var(--shade), calc(0.12 * var(--veil-k)));
 
     // Mobile : demi-tuile étroite, légende resserrée (la tuile entière
     // reste cliquable, la pastille se fait plus petite)
@@ -308,8 +331,8 @@
       gap: 0.3rem;
       padding: 0.75rem 0.6rem 0.9rem;
       --veil:
-        radial-gradient(ellipse 95% 45% at 50% 100%, rgba($color-blue-night, 0.75), rgba($color-blue-night, 0) 100%),
-        rgba($color-blue-night, 0.12);
+        radial-gradient(ellipse 95% 45% at 50% 100%, rgba(var(--shade), calc(0.75 * var(--veil-k))), rgba(var(--shade), 0) 100%),
+        rgba(var(--shade), calc(0.12 * var(--veil-k)));
 
       .card__cat {
         font-size: 0.56rem;
@@ -340,12 +363,14 @@
   .card__btn {
     text-align: center;
 
+    // tuiles jointives : contour de focus à l'intérieur de la tuile
     &:focus-visible {
-      outline-offset: 3px;
+      outline: 2px solid var(--ink);
+      outline-offset: -5px;
     }
   }
 
-  // Vignettes déjà teintées en bleu roi (bichromie) : plus de noir & blanc
+  // Vignettes déjà teintées (bichromie) : pas de filtre CSS
   .card__media {
     border-radius: 0;
     aspect-ratio: 1 / 1;
@@ -361,8 +386,8 @@
     }
   }
 
-  // Voile bleu nuit concentré au centre : la légende blanche reste
-  // lisible, même sur les vignettes les plus claires.
+  // Voile concentré sous la légende, dans le ton de la tuile : le texte
+  // reste lisible, même sur les zones les plus contrastées de la photo.
   .card__overlay {
     align-items: center;
     justify-content: center;
@@ -370,25 +395,26 @@
     padding: 1.5rem;
     text-align: center;
     --veil:
-      radial-gradient(ellipse 60% 50% at 50% 50%, rgba($color-blue-night, 0.6), rgba($color-blue-night, 0) 100%),
-      rgba($color-blue-night, 0.15);
+      radial-gradient(ellipse 60% 50% at 50% 50%, rgba(var(--shade), calc(0.6 * var(--veil-k))), rgba(var(--shade), 0) 100%),
+      rgba(var(--shade), calc(0.15 * var(--veil-k)));
     background: var(--veil);
   }
 
   .card__cat {
     font-size: 0.68rem;
     letter-spacing: 0.18em;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--ink-soft);
   }
 
   .card__title {
     font-size: clamp(1.5rem, 2.4vw, 2.1rem);
+    color: var(--ink);
   }
 
   .card__desc {
     margin-top: 0;
     max-width: 34ch;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--ink-soft);
   }
 
   // Pastille « Découvrir » : décorative, toute la tuile est cliquable
@@ -396,8 +422,8 @@
     margin-top: 0.7rem;
     padding: 0.45rem 1.15rem;
     border-radius: 999px;
-    background: $color-white;
-    color: $color-blue;
+    background: var(--pill-bg);
+    color: var(--pill-ink);
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.04em;
@@ -418,8 +444,8 @@
 
     .card__cta {
       background: transparent;
-      color: $color-white;
-      box-shadow: inset 0 0 0 1px $color-white;
+      color: var(--ink);
+      box-shadow: inset 0 0 0 1px var(--ink);
     }
   }
 }

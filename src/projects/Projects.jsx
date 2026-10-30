@@ -113,7 +113,7 @@ export default function Projects() {
       <ul className="projets__grid projets__grid--enhanced" key={active}>
         {visible.map((project, i) => (
           <li
-            className="card"
+            className={"card card--" + (project.tone || "bleu")}
             key={project.id}
             style={{ animationDelay: `${i * 45}ms` }}
           >
