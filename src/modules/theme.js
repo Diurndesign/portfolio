@@ -23,8 +23,9 @@ function initTheme() {
   const current = () => (root.dataset.theme === "orange" ? "orange" : "blue");
 
   // Interrupteur bleu / orange : une pastille de chaque couleur, un
-  // anneau glisse sur celle du thème affiché. Placé dans la barre latérale
-  // droite, sous les réseaux (dans le menu sur mobile).
+  // anneau glisse sur celle du thème affiché. Sous la carte de visite sur
+  // l'accueil ; ailleurs dans la barre latérale droite, sous les réseaux
+  // (dans le menu sur mobile).
   const btn = document.createElement("button");
   btn.type = "button";
   btn.className = "theme-switch";
@@ -32,8 +33,12 @@ function initTheme() {
     '<span class="theme-switch__dot theme-switch__dot--blue" aria-hidden="true"></span>' +
     '<span class="theme-switch__dot theme-switch__dot--orange" aria-hidden="true"></span>' +
     '<span class="theme-switch__thumb" aria-hidden="true"></span>';
+  const slot = document.querySelector("[data-theme-switch]");
   const side = document.querySelector(".nav__side--right");
-  if (side) {
+  if (slot) {
+    btn.classList.add("theme-switch--row");
+    slot.appendChild(btn);
+  } else if (side) {
     const li = document.createElement("li");
     li.className = "nav__theme";
     li.appendChild(btn);

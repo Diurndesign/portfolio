@@ -304,8 +304,27 @@ $paper: #f6f5f2;
 
 // --- Interrupteur de thème ------------------------------------
 // Capsule à deux pastilles (bleu, orange) ; un anneau glisse sur celle du
-// thème affiché. Verticale dans la barre latérale droite, horizontale
-// dans le menu mobile. Le trait suit la couleur des liens du menu.
+// thème affiché. Horizontale sous la carte de visite (--row) et dans le
+// menu mobile, verticale dans la barre latérale droite des autres pages.
+// Le trait suit la couleur du texte autour.
+@mixin switch-row {
+  flex-direction: row;
+  width: calc(2 * var(--thumb) + 2 * var(--pad) + 8px);
+  height: calc(var(--thumb) + 2 * var(--pad) + 2px);
+  padding: 0 calc(var(--pad) + (var(--thumb) - var(--dot)) / 2);
+
+  .theme-switch__thumb {
+    top: 50%;
+    left: var(--pad);
+    margin: calc(var(--thumb) / -2) 0 0;
+  }
+
+  [data-theme="orange"] & .theme-switch__thumb {
+    top: 50%;
+    left: calc(100% - var(--pad) - var(--thumb));
+  }
+}
+
 .theme-switch {
   --dot: 10px;
   --thumb: 18px;
@@ -323,7 +342,7 @@ $paper: #f6f5f2;
   background: none;
   color: $color-text-soft;
   cursor: pointer;
-  transition: color $transition, transform $transition;
+  transition: color $transition;
 
   &:hover {
     color: $color-white;
@@ -339,11 +358,15 @@ $paper: #f6f5f2;
   }
 
   @include until($bp-md) {
-    flex-direction: row;
-    width: calc(2 * var(--thumb) + 2 * var(--pad) + 8px);
-    height: calc(var(--thumb) + 2 * var(--pad) + 2px);
-    padding: 0 calc(var(--pad) + (var(--thumb) - var(--dot)) / 2);
+    @include switch-row;
   }
+}
+
+// Sous la carte : un peu plus grande, horizontale sur tous les écrans
+.theme-switch--row {
+  --dot: 12px;
+  --thumb: 22px;
+  @include switch-row;
 }
 
 .theme-switch__dot {
@@ -377,17 +400,15 @@ $paper: #f6f5f2;
   [data-theme="orange"] & {
     top: calc(100% - var(--pad) - var(--thumb));
   }
+}
 
-  @include until($bp-md) {
-    top: 50%;
-    left: var(--pad);
-    margin: calc(var(--thumb) / -2) 0 0;
-
-    [data-theme="orange"] & {
-      top: 50%;
-      left: calc(100% - var(--pad) - var(--thumb));
-    }
-  }
+// Emplacement sous la carte de visite (accueil)
+.hero__theme {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(1.25rem, 3.5vh, 2rem);
+  animation: hero-reveal 1s $ease both;
+  animation-delay: 0.7s;
 }
 
 // Sans barre de navigation : interrupteur fixe en bas à droite
