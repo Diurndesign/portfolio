@@ -98,21 +98,37 @@ function messageBlocks(message) {
 
 // Contrôle de réglage : GET /api/lead?check=1 indique si la clé est
 // présente et si Notion donne accès à la base (la clé n'est jamais montrée)
-async function check(res) {
+// Sur les versions de test seulement, ?check=ecriture ajoute une fiche
+// « Test de réglage » pour vérifier toute la chaîne jusqu'à Notion.
+async function check(req, res) {
   const out = { cle: Boolean(TOKEN), base: "non testée" };
   if (TOKEN) {
     try {
       const db = await notion(`/databases/${databaseId || DATABASE_ID}`, "GET");
       out.base = `ok : ${db.title?.[0]?.plain_text || "sans titre"}`;
+      if (req.query.check === "ecriture" && process.env.VERCEL_ENV !== "production") {
+        await notion("/pages", "POST", {
+          parent: { database_id: databaseId || DATABASE_ID },
+          properties: {
+            Nom: { title: text("Test de réglage (à supprimer)") },
+            Statut: { select: { name: "Nouveau" } },
+            Email: { email: "hello@diurnstudio.fr" },
+            Formulaire: { select: { name: "contact" } },
+            Page: { rich_text: text("/api/lead (contrôle)") },
+            "Reçu le": { date: { start: new Date().toISOString() } },
+          },
+        });
+        out.ecriture = "ok";
+      }
     } catch (err) {
-      out.base = err.message;
+      out.erreur = err.message;
     }
   }
   return res.status(200).json(out);
 }
 
 export default async function handler(req, res) {
-  if (req.method === "GET" && "check" in (req.query || {})) return check(res);
+  if (req.method === "GET" && "check" in (req.query || {})) return check(req, res);
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
     return res.status(405).json({ ok: false });
