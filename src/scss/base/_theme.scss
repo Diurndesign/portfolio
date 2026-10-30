@@ -216,29 +216,31 @@ $paper: #f6f5f2;
 }
 
 // --- Animation du changement de thème -------------------------
-// Les couleurs glissent vers le nouveau thème, le contenu reste visible
-// (classe posée par theme.js le temps du changement).
-.theme-fading,
-.theme-fading *,
-.theme-fading *::before,
-.theme-fading *::after {
-  transition:
-    background-color 0.8s ease,
-    color 0.8s ease,
-    border-color 0.8s ease,
-    fill 0.8s ease,
-    filter 0.8s ease,
-    opacity 0.8s ease !important;
+// Le nouveau thème s'ouvre en cercle par-dessus l'ancien (View
+// Transitions, piloté par theme.js) : pas de fondu par défaut.
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
 }
 
-// Anneau de la nouvelle couleur qui part du bouton
-.theme-ring {
-  position: fixed;
-  z-index: 300;
-  width: 2.75rem;
-  height: 2.75rem;
-  border: 2px solid;
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
+// Pendant la transition, la carte est mise à plat : la capture du
+// navigateur gère mal la 3D (face cachée qui réapparaît, épaisseur).
+.theme-switching {
+  .hero__card-inner,
+  .hero__card-flipper {
+    transform-style: flat;
+  }
+
+  // à plat, le masquage des faces arrière cacherait le verso : on montre
+  // les deux faces et on masque celle qui n'est pas affichée
+  .hero__card-face {
+    -webkit-backface-visibility: visible;
+    backface-visibility: visible;
+  }
+
+  .hero__card-face[inert],
+  .hero__card-edge {
+    visibility: hidden;
+  }
 }
