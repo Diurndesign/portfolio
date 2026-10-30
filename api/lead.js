@@ -96,13 +96,32 @@ function messageBlocks(message) {
     .map((p) => ({ object: "block", type: "paragraph", paragraph: { rich_text: text(p) } }));
 }
 
+// Contrôle de réglage : GET /api/lead?check=1 indique si la clé est
+// présente et si Notion donne accès à la base (la clé n'est jamais montrée)
+async function check(res) {
+  const out = { cle: Boolean(TOKEN), base: "non testée" };
+  if (TOKEN) {
+    try {
+      const db = await notion(`/databases/${databaseId || DATABASE_ID}`, "GET");
+      out.base = `ok : ${db.title?.[0]?.plain_text || "sans titre"}`;
+    } catch (err) {
+      out.base = err.message;
+    }
+  }
+  return res.status(200).json(out);
+}
+
 export default async function handler(req, res) {
+  if (req.method === "GET" && "check" in (req.query || {})) return check(res);
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
     return res.status(405).json({ ok: false });
   }
   const origin = req.headers.origin || "";
-  if (!ALLOWED.some((re) => re.test(origin))) return res.status(403).json({ ok: false });
+  if (!ALLOWED.some((re) => re.test(origin))) {
+    console.warn("lead: origine refusée", origin || "(aucune)");
+    return res.status(403).json({ ok: false });
+  }
 
   const body = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
   // pot de miel : un robot coche la case cachée, on fait semblant d'accepter
@@ -116,9 +135,13 @@ export default async function handler(req, res) {
 
   const name = clean(body.name, 120);
   const email = clean(body.email, 200);
-  if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).json({ ok: false });
+  if (!name || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    console.warn("lead: nom ou e-mail invalide");
+    return res.status(400).json({ ok: false });
+  }
 
   if (!TOKEN) {
+    console.error("lead: clé Notion absente (NOTION_TOKEN ou NOTION_KEY)");
     return res.status(200).json({ ok: false, reason: "notion_non_configure" });
   }
 
@@ -142,6 +165,7 @@ export default async function handler(req, res) {
       },
       children: messageBlocks(clean(body.message, 20000)),
     });
+    console.log("lead: demande ajoutée dans Notion", `(${formName}, ${clean(body.page, 80)})`);
     return res.status(200).json({ ok: true });
   } catch (err) {
     console.error("lead:", err.message);
