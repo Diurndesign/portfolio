@@ -119,13 +119,11 @@
   }
 }
 
+// Surtitre discret au-dessus des titres (même style que « Me contacter »)
 .section__eyebrow {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: $color-text-muted;
-  margin-bottom: 0.9rem;
+  font-size: 0.78rem;
+  color: $color-text-soft;
+  margin-bottom: 0.6rem;
 }
 
 // --- Dégradé de fin de section (symétrique du hero) -----------

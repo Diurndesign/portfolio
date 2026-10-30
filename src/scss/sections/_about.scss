@@ -61,20 +61,20 @@
 
   // Taille du titre en variable : la légende se cale sur ses lignes
   &__intro {
-    --hl: clamp(2.1rem, 4.4vw, 4rem);
+    --hl: clamp(2.6rem, 5.4vw, 4.6rem);
     --shift: 3.1;
     position: relative;
   }
 
+  // Même police que les autres titres de section (serif du site)
   &__headline {
     display: flex;
     flex-direction: column;
-    font-family: $font-body;
-    font-weight: 700;
+    font-family: $font-display;
+    font-weight: 500;
     font-size: var(--hl);
-    line-height: 0.92;
-    letter-spacing: -0.035em;
-    text-transform: uppercase;
+    line-height: 0.86;
+    letter-spacing: -0.01em;
     color: $color-white;
   }
 
@@ -86,7 +86,7 @@
   &__caption {
     position: absolute;
     left: 0;
-    top: calc(var(--hl) * 0.92 * 3 + 0.6rem);
+    top: calc(var(--hl) * 0.86 * 3 + 0.6rem);
     width: calc(var(--hl) * var(--shift) - 1rem);
     font-size: 0.7rem;
     line-height: 1.35;
