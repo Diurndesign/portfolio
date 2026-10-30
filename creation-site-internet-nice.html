@@ -123,20 +123,30 @@
     <!--#include partials/nav.html-->
 
     <!-- ===================== LANDING : Création de site à Nice ===================== -->
-    <main class="landing">
-      <article class="landing__article">
-        <header class="landing__head">
-          <p class="landing__eyebrow">Création de site internet · Nice</p>
-          <h1 class="landing__title">Création de site internet à Nice</h1>
-          <p class="landing__lede">
-            Vous cherchez à créer un site internet à Nice qui vous ressemble
+    <main class="article-page landing-page">
+      <article>
+        <header class="article-hero">
+          <div class="article-wrap">
+            <p class="article-hero__meta"><span>Création de site internet · Nice</span></p>
+            <h1 class="article-hero__title">Création de site internet à Nice</h1>
+            <p class="article-hero__lede">Vous cherchez à créer un site internet à Nice qui vous ressemble
             vraiment ? Diurn Studio conçoit des sites web sur mesure pour les
             entreprises, les indépendants et les marques de la Côte d'Azur : des
-            sites pensés, dessinés et codés main, du concept à la mise en ligne.
-          </p>
+            sites pensés, dessinés et codés main, du concept à la mise en ligne.</p>
+            <p class="article-hero__byline"><img src="/img/photo-profil.webp" alt="" width="40" height="40" /><span><strong>Jérémy Bendenoun</strong>, designer et développeur web à Nice</span></p>
+          </div>
+          <div class="article-hero__fade" aria-hidden="true"></div>
         </header>
 
-        <ul class="landing__pillars">
+        <div class="article-body" data-nav-light>
+          <div class="article-wrap">
+            <figure class="article-cover article-cover--tint">
+              <img src="/img/hero/nice-ruelle-1500.webp" alt="Ruelle du Vieux-Nice vue d'en bas" loading="eager" width="1500" height="2000" />
+              <figcaption>Le Vieux-Nice, où Diurn Studio est installé.</figcaption>
+            </figure>
+
+            <div class="landing-intro">
+              <ul class="landing__pillars">
           <li class="pillar">
             <svg class="pillar__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-3.5 3.1-6 7-6s7 2.5 7 6"/></svg>
             <h2 class="pillar__title">Un seul interlocuteur</h2>
@@ -160,8 +170,18 @@
           <li class="stat"><span class="stat__num">100%</span><span class="stat__label">sur mesure</span></li>
           <li class="stat"><span class="stat__num">Nice</span><span class="stat__label">&amp; Côte d'Azur</span></li>
         </ul>
+            </div>
 
-        <section class="landing__section">
+            <div class="article-layout">
+              <nav class="article-toc" aria-label="Sommaire">
+                <p class="article-toc__title">Sommaire</p>
+                <ol class="article-toc__list"><li><a href="#un-studio-nicois-ou-le-design-et-le-developpemen">Un studio niçois où le design et le développement ne font qu'un</a></li><li><a href="#quelques-realisations">Quelques réalisations</a></li><li><a href="#des-sites-web-sur-mesure-jamais-des-templates">Des sites web sur mesure, jamais des templates</a></li><li><a href="#une-experience-utilisateur-soignee-sur-tous-les">Une expérience utilisateur soignée, sur tous les écrans</a></li><li><a href="#le-referencement-naturel-seo-integre-des-la-conc">Le référencement naturel (SEO) intégré dès la conception</a></li><li><a href="#un-seul-interlocuteur-du-concept-a-la-mise-en-li">Un seul interlocuteur, du concept à la mise en ligne</a></li><li><a href="#pourquoi-choisir-un-studio-plutot-qu-un-createur">Pourquoi choisir un studio plutôt qu'un créateur de site en ligne ?</a></li><li><a href="#studio-ou-agence-web-a-nice-que-choisir">Studio ou agence web à Nice : que choisir ?</a></li><li><a href="#base-a-nice-disponible-sur-toute-la-cote-d-azur">Basé à Nice, disponible sur toute la Côte d'Azur</a></li><li><a href="#au-dela-de-nice-sur-la-cote-d-azur">Au-delà de Nice, sur la Côte d'Azur</a></li><li><a href="#contact">Lançons votre projet à Nice</a></li></ol>
+              </nav>
+
+              <div class="article-content">
+        
+        <section class="landing__section article-section article-section--first" id="un-studio-nicois-ou-le-design-et-le-developpemen">
+          <span class="article-section__num" aria-hidden="true">01</span>
           <h2>Un studio niçois où le design et le développement ne font qu'un</h2>
           <p>
             La création d'un site internet se joue le plus souvent à plusieurs
@@ -178,8 +198,8 @@
             métiers sont cloisonnés.
           </p>
         </section>
-
-        <section class="landing__section landing__work" aria-label="Réalisations">
+        <section class="landing__section article-section landing__work" aria-label="Réalisations" id="quelques-realisations">
+          <span class="article-section__num" aria-hidden="true">02</span>
           <h2>Quelques réalisations</h2>
           <ul class="projets__grid">
             <li class="card"><a class="card__btn" href="/#projet-gdunan"><span class="card__media"><img src="/img/projets/gd-2.webp" alt="Identité et site Gdunan" loading="lazy" width="1080" height="1080" /><span class="card__overlay"><span class="card__cat">Identité · Site web</span><span class="card__title">GdunaN</span></span></span></a></li>
@@ -187,10 +207,10 @@
             <li class="card"><a class="card__btn" href="/#projet-ewaflr"><span class="card__media"><img src="/img/projets/ewa-1.webp" alt="Identité de marque Ewa FLR" loading="lazy" width="1080" height="1080" /><span class="card__overlay"><span class="card__cat">Identité de marque</span><span class="card__title">Ewa FLR</span></span></span></a></li>
           </ul>
           <p class="landing__work-more"><a href="/#projets">Voir tout le portfolio →</a></p>
-          <p class="landing__midcta"><a class="landing__btn" href="#contact">Discutons de votre projet <span aria-hidden="true">↗</span></a></p>
+          <p class="landing__midcta"><a class="landing__btn" href="#contact">Discutons de votre projet</a></p>
         </section>
-
-        <section class="landing__section">
+        <section class="landing__section article-section" id="des-sites-web-sur-mesure-jamais-des-templates">
+          <span class="article-section__num" aria-hidden="true">03</span>
           <h2>Des sites web sur mesure, jamais des templates</h2>
           <p>
             Oubliez les thèmes préfabriqués que l'on retrouve, à l'identique,
@@ -212,9 +232,10 @@
             <li>Rapide et léger, sans plugins superflus</li>
             <li>100&nbsp;% adapté à votre activité</li>
           </ul>
+          <figure class="article-figure"><img src="/img/projets/gd-3.webp" alt="Site internet Gdunan affiché sur mobile" loading="lazy" width="1000" height="563" /><figcaption>Gdunan&nbsp;: un site codé sur mesure, aussi soigné sur mobile que sur ordinateur.</figcaption></figure>
         </section>
-
-        <section class="landing__section">
+        <section class="landing__section article-section" id="une-experience-utilisateur-soignee-sur-tous-les">
+          <span class="article-section__num" aria-hidden="true">04</span>
           <h2>Une expérience utilisateur soignée, sur tous les écrans</h2>
           <p>
             Un beau site ne suffit pas : il doit être agréable à parcourir.
@@ -229,8 +250,8 @@
             en ligne.
           </p>
         </section>
-
-        <section class="landing__section">
+        <section class="landing__section article-section" id="le-referencement-naturel-seo-integre-des-la-conc">
+          <span class="article-section__num" aria-hidden="true">05</span>
           <h2>Le référencement naturel (SEO) intégré dès la conception</h2>
           <p>
             Un site invisible sur Google ne sert à rien. C'est pourquoi le
@@ -252,9 +273,10 @@
             <li>Contenu pensé pour les recherches locales</li>
             <li>Performances et vitesse au rendez-vous</li>
           </ul>
+          <figure class="article-figure"><img src="/img/projets/nina-accueil.webp" alt="Page d'accueil du site Nina Carducci" loading="lazy" width="1440" height="900" /><figcaption>Nina Carducci&nbsp;: un site optimisé pour la vitesse, le référencement et l'accessibilité.</figcaption></figure>
         </section>
-
-        <section class="landing__section">
+        <section class="landing__section article-section" id="un-seul-interlocuteur-du-concept-a-la-mise-en-li">
+          <span class="article-section__num" aria-hidden="true">06</span>
           <h2>Un seul interlocuteur, du concept à la mise en ligne</h2>
           <p>
             Travailler avec Diurn Studio, c'est bénéficier d'un
@@ -268,9 +290,10 @@
             une collaboration directe, transparente et efficace, du premier
             échange jusqu'au lancement de votre site web à Nice.
           </p>
+          <figure class="article-figure article-figure--duo"><div class="article-figure__row"><img src="/img/projets/ewa-4.webp" alt="Planche d'identité Ewa FLR : couleur, mise en situation et typographie" loading="lazy" width="1000" height="1414" /><img src="/img/projets/ewa-2.webp" alt="Cartes de visite recto verso Ewa FLR" loading="lazy" width="1000" height="750" /></div><figcaption>Ewa FLR&nbsp;: l'identité et ses supports, pensés par la même personne que le site.</figcaption></figure>
         </section>
-
-        <section class="landing__section">
+        <section class="landing__section article-section" id="pourquoi-choisir-un-studio-plutot-qu-un-createur">
+          <span class="article-section__num" aria-hidden="true">07</span>
           <h2>Pourquoi choisir un studio plutôt qu'un créateur de site en ligne ?</h2>
           <p>
             Les outils de création automatique promettent un site en quelques
@@ -286,8 +309,8 @@
             devient un véritable atout pour votre activité.
           </p>
         </section>
-
-        <section class="landing__section">
+        <section class="landing__section article-section" id="studio-ou-agence-web-a-nice-que-choisir">
+          <span class="article-section__num" aria-hidden="true">08</span>
           <h2>Studio ou agence web à Nice : que choisir ?</h2>
           <p>
             Si vous cherchez une agence web à Nice, la vraie question est celle du
@@ -310,8 +333,8 @@
             </table>
           </div>
         </section>
-
-        <section class="landing__section">
+        <section class="landing__section article-section" id="base-a-nice-disponible-sur-toute-la-cote-d-azur">
+          <span class="article-section__num" aria-hidden="true">09</span>
           <h2>Basé à Nice, disponible sur toute la Côte d'Azur</h2>
           <p>
             Implanté à Nice, Diurn Studio accompagne les entreprises et les
@@ -326,8 +349,8 @@
             internet à Nice qui vous ressemble et qui travaille pour vous.
           </p>
         </section>
-
-                        <section class="landing__section landing__zones" aria-label="Autres villes de la Côte d'Azur">
+        <section class="landing__section article-section landing__zones" aria-label="Autres villes de la Côte d'Azur" id="au-dela-de-nice-sur-la-cote-d-azur">
+          <span class="article-section__num" aria-hidden="true">10</span>
           <h2>Au-delà de Nice, sur la Côte d'Azur</h2>
           <ul class="landing__cities">
             <li>
@@ -350,8 +373,12 @@
             </li>
           </ul>
         </section>
+              </div>
+            </div>
 
-        <section class="landing__section landing__cta landing__contact" id="contact">
+            <div class="landing-contact">
+        <section class="landing__section article-section landing__cta landing__contact" id="contact">
+          <span class="article-section__num" aria-hidden="true">11</span>
           <h2>Lançons votre projet à Nice</h2>
           <p>
             À Nice, je conçois et je code chaque site sur mesure, du premier croquis
@@ -409,7 +436,7 @@
                   <label for="cf-message">Votre projet en quelques mots</label>
                   <textarea id="cf-message" name="message" rows="5" required></textarea>
                 </div>
-                <button type="submit" class="contact__submit">Envoyer ma demande <span aria-hidden="true">↗</span></button>
+                <button type="submit" class="contact__submit">Envoyer ma demande</button>
                 <p class="contact__status" role="status" aria-live="polite"></p>
                 <p class="contact__privacy">Vos informations servent uniquement à vous répondre et ne sont jamais revendues.</p>
               </form>
@@ -435,6 +462,10 @@
             </div>
           </div>
         </section>
+            </div>
+          </div>
+          <div class="article-end" aria-hidden="true"></div>
+        </div>
       </article>
     </main>
 

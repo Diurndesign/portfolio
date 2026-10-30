@@ -52,21 +52,43 @@
     <!--#include partials/nav.html-->
 
     <!-- ===================== OFFRE : Audit gratuit ===================== -->
-    <main class="landing">
-      <article class="landing__article">
-        <header class="landing__head">
-          <p class="landing__eyebrow">Audit gratuit</p>
-          <h1 class="landing__title">Audit gratuit de votre site web</h1>
-          <p class="landing__lede">Votre site vous dérange sans que vous sachiez dire pourquoi ? Un regard extérieur change tout. Je passe votre site au crible, gratuitement, et je vous livre sous 48 heures un rapport clair : ce qui va, ce qui coince, et surtout quoi corriger en priorité. Sans engagement.</p>
+    <main class="article-page landing-page">
+      <article>
+        <header class="article-hero">
+          <div class="article-wrap">
+            <p class="article-hero__meta"><span>Audit gratuit</span></p>
+            <h1 class="article-hero__title">Audit gratuit de votre site web</h1>
+            <p class="article-hero__lede">Votre site vous dérange sans que vous sachiez dire pourquoi ? Un regard extérieur change tout. Je passe votre site au crible, gratuitement, et je vous livre sous 48 heures un rapport clair : ce qui va, ce qui coince, et surtout quoi corriger en priorité. Sans engagement.</p>
+            <p class="article-hero__byline"><img src="/img/photo-profil.webp" alt="" width="40" height="40" /><span><strong>Jérémy Bendenoun</strong>, designer et développeur web à Nice</span></p>
+          </div>
+          <div class="article-hero__fade" aria-hidden="true"></div>
         </header>
 
-        <ul class="landing__stats" aria-label="Conditions">
+        <div class="article-body" data-nav-light>
+          <div class="article-wrap">
+            <figure class="article-cover">
+              <img src="/img/projets/nina-accueil.webp" alt="Page d'accueil du site Nina Carducci après optimisation" loading="eager" width="1440" height="900" />
+              <figcaption>Nina Carducci&nbsp;: un site audité puis optimisé (vitesse, référencement, accessibilité).</figcaption>
+            </figure>
+
+            <div class="landing-intro">
+              <ul class="landing__stats" aria-label="Conditions">
           <li class="stat"><span class="stat__num">0€</span><span class="stat__label">gratuit</span></li>
           <li class="stat"><span class="stat__num">48h</span><span class="stat__label">de livraison</span></li>
           <li class="stat"><span class="stat__num">0</span><span class="stat__label">engagement</span></li>
         </ul>
+            </div>
 
-        <section class="landing__section">
+            <div class="article-layout">
+              <nav class="article-toc" aria-label="Sommaire">
+                <p class="article-toc__title">Sommaire</p>
+                <ol class="article-toc__list"><li><a href="#ce-que-j-analyse">Ce que j'analyse</a></li><li><a href="#ce-que-vous-recevez">Ce que vous recevez</a></li><li><a href="#un-audit-qui-va-sous-le-capot">Un audit qui va sous le capot</a></li><li><a href="#questions-frequentes">Questions fréquentes</a></li><li><a href="#contact">Recevez votre audit gratuit</a></li></ol>
+              </nav>
+
+              <div class="article-content">
+        
+        <section class="landing__section article-section article-section--first" id="ce-que-j-analyse">
+          <span class="article-section__num" aria-hidden="true">01</span>
           <h2>Ce que j'analyse</h2>
           <p>Un audit qui ne s'arrête pas à l'apparence. Je regarde votre site sous tous les angles :</p>
           <ul class="landing__list">
@@ -79,8 +101,8 @@
             <li>la capacité du site à transformer un visiteur en client</li>
           </ul>
         </section>
-
-        <section class="landing__section">
+        <section class="landing__section article-section" id="ce-que-vous-recevez">
+          <span class="article-section__num" aria-hidden="true">02</span>
           <h2>Ce que vous recevez</h2>
           <p>Pas de jargon incompréhensible, un rapport clair et actionnable :</p>
           <ul class="landing__list">
@@ -91,14 +113,15 @@
           </ul>
           <p>Le tout livré sous 48 heures.</p>
         </section>
-
-        <section class="landing__section">
+        <section class="landing__section article-section" id="un-audit-qui-va-sous-le-capot">
+          <span class="article-section__num" aria-hidden="true">03</span>
           <h2>Un audit qui va sous le capot</h2>
           <p>La plupart des audits s'arrêtent à ce qui se voit. Le mien va plus loin. Comme je suis à la fois designer, développeur et référenceur, je ne regarde pas seulement si votre site est beau. Je vois comment il est construit, pourquoi il est lent, ce qui freine son référencement.</p>
           <p>Un seul regard, du pixel au code. C'est là que se cachent les vrais leviers.</p>
+          <figure class="article-figure"><img src="/img/projets/nina-galerie.webp" alt="Galerie filtrable du site Nina Carducci" loading="lazy" width="1440" height="900" /><figcaption>Nina Carducci&nbsp;: des images passées de 88 Mo à 1,2 Mo, et 100 en accessibilité sur Lighthouse.</figcaption></figure>
         </section>
-
-        <section class="landing__section">
+        <section class="landing__section article-section" id="questions-frequentes">
+          <span class="article-section__num" aria-hidden="true">04</span>
           <h2>Questions fréquentes</h2>
           <div class="landing__faq" aria-label="Questions fréquentes sur l'audit gratuit">
             <details class="landing__faq-item" open>
@@ -123,8 +146,12 @@
             </details>
           </div>
         </section>
+              </div>
+            </div>
 
-        <section class="landing__section landing__cta landing__contact" id="contact">
+            <div class="landing-contact">
+        <section class="landing__section article-section landing__cta landing__contact" id="contact">
+          <span class="article-section__num" aria-hidden="true">05</span>
           <h2>Recevez votre audit gratuit</h2>
           <p>Renseignez ces quelques informations, je m'occupe du reste et je reviens vers vous sous 48 heures.</p>
           <form class="contact__form" id="contact-form" data-form-name="audit" action="https://api.web3forms.com/submit" method="POST">
@@ -152,11 +179,15 @@
               <label for="cf-message">Votre principale préoccupation</label>
               <textarea id="cf-message" name="message" rows="4" required placeholder="Ex. : je reçois des visites mais peu de contacts"></textarea>
             </div>
-            <button type="submit" class="contact__submit">Recevoir mon audit gratuit <span aria-hidden="true">↗</span></button>
+            <button type="submit" class="contact__submit">Recevoir mon audit gratuit</button>
             <p class="contact__status" role="status" aria-live="polite"></p>
           </form>
           <p>Par Jérémy Bendenoun, Diurn Studio, designer et développeur web à Nice.</p>
         </section>
+            </div>
+          </div>
+          <div class="article-end" aria-hidden="true"></div>
+        </div>
       </article>
     </main>
 

@@ -256,17 +256,13 @@
   left: clamp(1rem, 2vw, 1.6rem);
   z-index: 40;
 
-  // Rond de fond derrière le logo, sur TOUTES les tailles d'écran : le
-  // logo ne se perd jamais dans le texte au scroll (iPad, portables…).
-  // La couleur suit la section survolée pour rester invisible.
-  --logo-bg: #{$color-blue};
+  // Pas de rond de fond : le logo s'incorpore à la page, sa couleur suit
+  // la section survolée (blanc sur fond sombre, encre sur fond clair).
   display: flex;
   align-items: center;
   justify-content: center;
   width: 84px;
   height: 84px;
-  border-radius: 50%;
-  background: var(--logo-bg);
 
   // masqué tant que le hero est visible
   opacity: 0;
@@ -301,10 +297,8 @@
     pointer-events: auto;
   }
 
-  // sur une section claire (nav en mode foncé) : logo noir + rond crème
+  // sur une section claire (nav en mode foncé) : logo noir
   .nav--light & {
-    --logo-bg: #{$color-cream};
-
     img {
       filter: none;
     }

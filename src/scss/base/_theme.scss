@@ -108,16 +108,16 @@ $pad-footer: clamp(2.5rem, 6vh, 4rem); // haut du pied de page
 // Jonctions à propos -> FAQ -> contact -> pied de page
 #a-propos,
 #faq,
-#contact,
+#contact.section--contact,
 .site-footer {
   position: relative;
 }
 
 #a-propos::after,
 #faq::after,
-#contact::after,
+#contact.section--contact::after,
 #faq::before,
-#contact::before,
+#contact.section--contact::before,
 .site-footer::before {
   content: "";
   position: absolute;
@@ -128,12 +128,12 @@ $pad-footer: clamp(2.5rem, 6vh, 4rem); // haut du pied de page
 
 #a-propos::after,
 #faq::after,
-#contact::after {
+#contact.section--contact::after {
   bottom: 0;
 }
 
 #faq::before,
-#contact::before,
+#contact.section--contact::before,
 .site-footer::before {
   top: 0;
 }
@@ -163,13 +163,13 @@ $pad-footer: clamp(2.5rem, 6vh, 4rem); // haut du pied de page
   }
 }
 
-#contact::before {
+#contact.section--contact::before {
   height: $pad-section;
   @include fade-in-from(--c-cream);
 }
 
 // contact (principal) -> pied de page (sombre)
-#contact::after {
+#contact.section--contact::after {
   height: $pad-section;
   @include fade-out-to(--s-dark);
 }
@@ -177,11 +177,6 @@ $pad-footer: clamp(2.5rem, 6vh, 4rem); // haut du pied de page
 .site-footer::before {
   height: $pad-footer;
   @include fade-in-from(--c-blue);
-}
-
-// Logo fixe : rond de la couleur de la section sombre qu'il survole
-.nav--dark .site-logo {
-  --logo-bg: rgb(var(--s-dark));
 }
 
 $orange: #e9573b;

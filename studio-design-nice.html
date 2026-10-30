@@ -108,23 +108,31 @@
     <!--#include partials/nav.html-->
 
     <!-- ===================== LANDING : Studio de design à Nice ===================== -->
-    <main class="landing">
-      <article class="landing__article">
-        <header class="landing__head">
-          <p class="landing__eyebrow">Studio de design · Nice</p>
-          <h1 class="landing__title">
-            Studio de design à Nice : un seul interlocuteur pour votre marque
-          </h1>
-          <p class="landing__lede">
-            <a href="/">Diurn Studio</a>, c'est un studio de design à Nice où tout
+    <main class="article-page landing-page">
+      <article>
+        <header class="article-hero">
+          <div class="article-wrap">
+            <p class="article-hero__meta"><span>Studio de design · Nice</span></p>
+            <h1 class="article-hero__title">Studio de design à Nice : un seul interlocuteur pour votre marque</h1>
+            <p class="article-hero__lede"><a href="/">Diurn Studio</a>, c'est un studio de design à Nice où tout
             est réuni au même endroit. Plutôt que de courir après plusieurs
             prestataires qui ne se parlent pas, vous avez face à vous une seule
             personne, responsable de bout en bout : de l'identité visuelle au site
-            internet, du premier échange jusqu'à la mise en ligne.
-          </p>
+            internet, du premier échange jusqu'à la mise en ligne.</p>
+            <p class="article-hero__byline"><img src="/img/photo-profil.webp" alt="" width="40" height="40" /><span><strong>Jérémy Bendenoun</strong>, designer et développeur web à Nice</span></p>
+          </div>
+          <div class="article-hero__fade" aria-hidden="true"></div>
         </header>
 
-        <ul class="landing__pillars">
+        <div class="article-body" data-nav-light>
+          <div class="article-wrap">
+            <figure class="article-cover">
+              <img src="/img/projets/elo-2.webp" alt="Logo Elo sur marbre avec un ruban gansé griffé" loading="eager" width="1000" height="770" />
+              <figcaption>Elo Ab, couturière&nbsp;: une refonte d'identité menée de bout en bout.</figcaption>
+            </figure>
+
+            <div class="landing-intro">
+              <ul class="landing__pillars">
           <li class="pillar">
             <svg class="pillar__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c0-3.5 3.1-6 7-6s7 2.5 7 6"/></svg>
             <h2 class="pillar__title">Un seul studio</h2>
@@ -148,8 +156,18 @@
           <li class="stat"><span class="stat__num">0</span><span class="stat__label">intermédiaire</span></li>
           <li class="stat"><span class="stat__num">Nice</span><span class="stat__label">&amp; Côte d'Azur</span></li>
         </ul>
+            </div>
 
-        <section class="landing__section">
+            <div class="article-layout">
+              <nav class="article-toc" aria-label="Sommaire">
+                <p class="article-toc__title">Sommaire</p>
+                <ol class="article-toc__list"><li><a href="#un-studio-pas-une-dispersion">Un studio, pas une dispersion</a></li><li><a href="#donner-vie-a-une-marque-dont-vous-serez-fier">Donner vie à une marque dont vous serez fier</a></li><li><a href="#croire-en-ce-que-l-on-cree-pour-mieux-le-transme">Croire en ce que l'on crée pour mieux le transmettre</a></li><li><a href="#design-global-de-la-strategie-a-l-execution">Design global : de la stratégie à l'exécution</a></li><li><a href="#studio-de-design-ou-agence-de-communication-a-ni">Studio de design ou agence de communication à Nice ?</a></li><li><a href="#comment-se-deroule-un-projet-etape-par-etape">Comment se déroule un projet, étape par étape</a></li><li><a href="#un-apercu-de-mon-travail">Un aperçu de mon travail</a></li><li><a href="#contact">Rencontrons-nous à Nice</a></li></ol>
+              </nav>
+
+              <div class="article-content">
+        
+        <section class="landing__section article-section article-section--first" id="un-studio-pas-une-dispersion">
+          <span class="article-section__num" aria-hidden="true">01</span>
           <h2>Un studio, pas une dispersion</h2>
           <p>
             L'idée d'un studio, pour moi, c'est de regrouper des compétences qui
@@ -177,8 +195,8 @@
             <li>Un seul interlocuteur, zéro dispersion</li>
           </ul>
         </section>
-
-        <section class="landing__section">
+        <section class="landing__section article-section" id="donner-vie-a-une-marque-dont-vous-serez-fier">
+          <span class="article-section__num" aria-hidden="true">02</span>
           <h2>Donner vie à une marque dont vous serez fier</h2>
           <p>
             Ce qui me guide sur chaque projet, c'est le ressenti du client. Mon
@@ -197,9 +215,10 @@
             cherche à faire ressortir dans chaque projet, parce que c'est elle qui
             touche les gens, bien plus qu'un beau visuel de plus.
           </p>
+          <figure class="article-figure article-figure--duo"><div class="article-figure__row"><img src="/img/projets/gd-1.webp" alt="Composition de marque Gdunan avec le monogramme GD" loading="lazy" width="1000" height="1250" /><img src="/img/projets/gd-5.webp" alt="Macro du travail de la matière, shooting Gdunan" loading="lazy" width="1000" height="1250" /></div><figcaption>Gdunan&nbsp;: une marque construite autour du monogramme GD.</figcaption></figure>
         </section>
-
-        <section class="landing__section">
+        <section class="landing__section article-section" id="croire-en-ce-que-l-on-cree-pour-mieux-le-transme">
+          <span class="article-section__num" aria-hidden="true">03</span>
           <h2>Croire en ce que l'on crée pour mieux le transmettre</h2>
           <p>
             C'est pour cette raison que je prends le temps de comprendre votre
@@ -213,8 +232,8 @@
             ceux que vous voulez atteindre.
           </p>
         </section>
-
-        <section class="landing__section">
+        <section class="landing__section article-section" id="design-global-de-la-strategie-a-l-execution">
+          <span class="article-section__num" aria-hidden="true">04</span>
           <h2>Design global : de la stratégie à l'exécution</h2>
           <p>
             Travailler avec un studio, c'est aussi bénéficier d'une vision
@@ -227,9 +246,10 @@
             direction. C'est ce qui fait la différence entre une accumulation de
             livrables et une identité qui tient debout.
           </p>
+          <figure class="article-figure"><img src="/img/projets/bcorner-mockup.webp" alt="Site The Beauty Corner by Alex sur ordinateur et mobile" loading="lazy" width="1080" height="1080" /><figcaption>The Beauty Corner by Alex&nbsp;: du logo existant au site en ligne.</figcaption></figure>
         </section>
-
-        <section class="landing__section">
+        <section class="landing__section article-section" id="studio-de-design-ou-agence-de-communication-a-ni">
+          <span class="article-section__num" aria-hidden="true">05</span>
           <h2>Studio de design ou agence de communication à Nice ?</h2>
           <p>
             On confond souvent studio de design et agence de communication à Nice.
@@ -252,8 +272,8 @@
             </table>
           </div>
         </section>
-
-        <section class="landing__section">
+        <section class="landing__section article-section" id="comment-se-deroule-un-projet-etape-par-etape">
+          <span class="article-section__num" aria-hidden="true">06</span>
           <h2>Comment se déroule un projet, étape par étape</h2>
           <p>
             Ma façon de travailler est transparente, et pensée pour que vous vous
@@ -292,9 +312,10 @@
             exactement où vous allez et à quel prix, et l'acompte garantit un
             engagement réel de chaque côté avant de se lancer.
           </p>
+          <figure class="article-figure"><img src="/img/projets/az-3.webp" alt="Planche Azur Eco : recherche typographique, couleurs et déclinaisons" loading="lazy" width="1000" height="1250" /><figcaption>Azur Eco&nbsp;: la planche de recherche, une étape clé avant la déclinaison.</figcaption></figure>
         </section>
-
-        <section class="landing__section landing__work" aria-label="Réalisations">
+        <section class="landing__section article-section landing__work" aria-label="Réalisations" id="un-apercu-de-mon-travail">
+          <span class="article-section__num" aria-hidden="true">07</span>
           <h2>Un aperçu de mon travail</h2>
           <ul class="projets__grid">
             <li class="card"><a class="card__btn" href="/#projet-gdunan"><span class="card__media"><img src="/img/projets/gd-2.webp" alt="Identité et site Gdunan" loading="lazy" width="1080" height="1080" /><span class="card__overlay"><span class="card__cat">Identité · Site web</span><span class="card__title">GdunaN</span></span></span></a></li>
@@ -302,10 +323,14 @@
             <li class="card"><a class="card__btn" href="/#projet-ewaflr"><span class="card__media"><img src="/img/projets/ewa-1.webp" alt="Identité de marque Ewa FLR" loading="lazy" width="1080" height="1080" /><span class="card__overlay"><span class="card__cat">Identité de marque</span><span class="card__title">Ewa FLR</span></span></span></a></li>
           </ul>
           <p class="landing__work-more"><a href="/#projets">Voir tout le portfolio →</a></p>
-          <p class="landing__midcta"><a class="landing__btn" href="#contact">Parlons de votre marque <span aria-hidden="true">↗</span></a></p>
+          <p class="landing__midcta"><a class="landing__btn" href="#contact">Parlons de votre marque</a></p>
         </section>
+              </div>
+            </div>
 
-        <section class="landing__section landing__cta landing__contact" id="contact">
+            <div class="landing-contact">
+        <section class="landing__section article-section landing__cta landing__contact" id="contact">
+          <span class="article-section__num" aria-hidden="true">08</span>
           <h2>Rencontrons-nous à Nice</h2>
           <p>
             Si l'idée d'un studio de design à Nice qui prend en charge votre
@@ -335,7 +360,7 @@
                   <label for="cf-message">Votre projet en quelques mots</label>
                   <textarea id="cf-message" name="message" rows="5" required></textarea>
                 </div>
-                <button type="submit" class="contact__submit">Envoyer ma demande <span aria-hidden="true">↗</span></button>
+                <button type="submit" class="contact__submit">Envoyer ma demande</button>
                 <p class="contact__status" role="status" aria-live="polite"></p>
                 <p class="contact__privacy">Vos informations servent uniquement à vous répondre et ne sont jamais revendues.</p>
               </form>
@@ -361,6 +386,10 @@
             </div>
           </div>
         </section>
+            </div>
+          </div>
+          <div class="article-end" aria-hidden="true"></div>
+        </div>
       </article>
     </main>
 

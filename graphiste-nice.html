@@ -115,24 +115,32 @@
     <!--#include partials/nav.html-->
 
     <!-- ===================== LANDING : Graphiste à Nice ===================== -->
-    <main class="landing">
-      <article class="landing__article">
-        <header class="landing__head">
-          <p class="landing__eyebrow">Graphiste · Identité de marque · Nice</p>
-          <h1 class="landing__title">
-            Graphiste à Nice : identité de marque et refonte graphique
-          </h1>
-          <p class="landing__lede">
-            Je suis Jérémy Bendenoun, graphiste à Nice. Je conçois des identités
+    <main class="article-page landing-page">
+      <article>
+        <header class="article-hero">
+          <div class="article-wrap">
+            <p class="article-hero__meta"><span>Graphiste · Identité de marque · Nice</span></p>
+            <h1 class="article-hero__title">Graphiste à Nice : identité de marque et refonte graphique</h1>
+            <p class="article-hero__lede">Je suis Jérémy Bendenoun, graphiste à Nice. Je conçois des identités
             de marque (de la création complète à la refonte) et je les décline
             ensuite sur tous les supports, aussi bien imprimés que numériques.
             Parce qu'une marque ne se résume pas à un logo : c'est un système
             visuel cohérent, qui doit tenir de la carte de visite jusqu'à
-            l'écran, et raconter la même histoire partout.
-          </p>
+            l'écran, et raconter la même histoire partout.</p>
+            <p class="article-hero__byline"><img src="/img/photo-profil.webp" alt="" width="40" height="40" /><span><strong>Jérémy Bendenoun</strong>, designer et développeur web à Nice</span></p>
+          </div>
+          <div class="article-hero__fade" aria-hidden="true"></div>
         </header>
 
-        <ul class="landing__pillars">
+        <div class="article-body" data-nav-light>
+          <div class="article-wrap">
+            <figure class="article-cover">
+              <img src="/img/projets/ewa-5.webp" alt="Univers de marque Ewa FLR : tote bag, menu et légumes de saison" loading="eager" width="1000" height="666" />
+              <figcaption>Ewa FLR&nbsp;: une identité de marque déclinée sur tous les supports.</figcaption>
+            </figure>
+
+            <div class="landing-intro">
+              <ul class="landing__pillars">
           <li class="pillar">
             <svg class="pillar__icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg>
             <h2 class="pillar__title">Identité complète</h2>
@@ -156,8 +164,18 @@
           <li class="stat"><span class="stat__num">100%</span><span class="stat__label">sur mesure</span></li>
           <li class="stat"><span class="stat__num">Nice</span><span class="stat__label">&amp; Côte d'Azur</span></li>
         </ul>
+            </div>
 
-        <section class="landing__section">
+            <div class="article-layout">
+              <nav class="article-toc" aria-label="Sommaire">
+                <p class="article-toc__title">Sommaire</p>
+                <ol class="article-toc__list"><li><a href="#creer-ou-refondre-une-identite-de-marque">Créer ou refondre une identité de marque</a></li><li><a href="#une-identite-declinee-sur-tous-les-supports-du-p">Une identité déclinée sur tous les supports, du print au web</a></li><li><a href="#ma-methode-de-la-recherche-a-la-declinaison">Ma méthode : de la recherche à la déclinaison</a></li><li><a href="#une-selection-de-projets-d-identite">Une sélection de projets d'identité</a></li><li><a href="#graphiste-et-developpeur-une-identite-pensee-pou">Graphiste et développeur : une identité pensée pour le numérique</a></li><li><a href="#identites-que-j-ai-creees">Identités que j'ai créées</a></li><li><a href="#contact">Travaillons votre image de marque à Nice</a></li></ol>
+              </nav>
+
+              <div class="article-content">
+        
+        <section class="landing__section article-section article-section--first" id="creer-ou-refondre-une-identite-de-marque">
+          <span class="article-section__num" aria-hidden="true">01</span>
           <h2>Créer ou refondre une identité de marque</h2>
           <p>
             Deux situations reviennent le plus souvent. Soit une marque part de
@@ -177,9 +195,10 @@
             c'est poser des fondations solides sur lesquelles la marque pourra
             grandir pendant des années.
           </p>
+          <figure class="article-figure article-figure--duo"><div class="article-figure__row"><img src="/img/projets/az-3.webp" alt="Planche Azur Eco : recherche typographique, couleurs et déclinaisons" loading="lazy" width="1000" height="1250" /><img src="/img/projets/ewa-4.webp" alt="Planche d'identité Ewa FLR : couleur, mise en situation et typographie" loading="lazy" width="1000" height="1414" /></div><figcaption>Planches d'identité (Azur Eco, Ewa FLR)&nbsp;: logo, couleurs et typographies.</figcaption></figure>
         </section>
-
-        <section class="landing__section">
+        <section class="landing__section article-section" id="une-identite-declinee-sur-tous-les-supports-du-p">
+          <span class="article-section__num" aria-hidden="true">02</span>
           <h2>Une identité déclinée sur tous les supports, du print au web</h2>
           <p>
             Un logo seul ne suffit pas à faire une identité. Ce qui fait qu'une
@@ -206,9 +225,10 @@
             <li>Site internet, réseaux sociaux, interfaces</li>
             <li>Cohérence garantie du print à l'écran</li>
           </ul>
+          <figure class="article-figure article-figure--duo"><div class="article-figure__row"><img src="/img/projets/gd-4.webp" alt="Carte de visite gaufrée avec le monogramme GD" loading="lazy" width="1000" height="1000" /><img src="/img/projets/elo-2.webp" alt="Logo Elo sur marbre avec un ruban gansé griffé" loading="lazy" width="1000" height="770" /></div><figcaption>Des supports imprimés&nbsp;: carte de visite gaufrée Gdunan, ruban griffé Elo Ab.</figcaption></figure>
         </section>
-
-        <section class="landing__section">
+        <section class="landing__section article-section" id="ma-methode-de-la-recherche-a-la-declinaison">
+          <span class="article-section__num" aria-hidden="true">03</span>
           <h2>Ma méthode : de la recherche à la déclinaison</h2>
           <p>
             Chaque projet suit une progression simple mais rigoureuse. Je commence
@@ -234,9 +254,10 @@
             <li>Construction du logo et de son système</li>
             <li>Déclinaison sur l'ensemble de vos supports</li>
           </ul>
+          <figure class="article-figure"><img src="/img/projets/az-1.webp" alt="La mascotte Azur Eco" loading="lazy" width="1000" height="1000" /><figcaption>Azur Eco&nbsp;: la mascotte créée pour le pressing.</figcaption></figure>
         </section>
-
-        <section class="landing__section">
+        <section class="landing__section article-section" id="une-selection-de-projets-d-identite">
+          <span class="article-section__num" aria-hidden="true">04</span>
           <h2>Une sélection de projets d'identité</h2>
           <p>
             <a href="/">Le portfolio</a> montre concrètement ce type de travail.
@@ -266,8 +287,8 @@
             sur mesure.
           </p>
         </section>
-
-        <section class="landing__section">
+        <section class="landing__section article-section" id="graphiste-et-developpeur-une-identite-pensee-pou">
+          <span class="article-section__num" aria-hidden="true">05</span>
           <h2>Graphiste et développeur : une identité pensée pour le numérique</h2>
           <p>
             C'est ce qui me distingue de la plupart des graphistes : je code aussi
@@ -283,8 +304,8 @@
           </p>
           <p class="landing__work-more">Besoin d'un site en plus de votre identité de marque ? Voyez <a href="/combien-coute-site-internet-nice">combien coûte un site internet à Nice</a>.</p>
         </section>
-
-        <section class="landing__section landing__work" aria-label="Réalisations">
+        <section class="landing__section article-section landing__work" aria-label="Réalisations" id="identites-que-j-ai-creees">
+          <span class="article-section__num" aria-hidden="true">06</span>
           <h2>Identités que j'ai créées</h2>
           <ul class="projets__grid">
             <li class="card"><a class="card__btn" href="/#projet-gdunan"><span class="card__media"><img src="/img/projets/gd-2.webp" alt="Identité et site Gdunan" loading="lazy" width="1080" height="1080" /><span class="card__overlay"><span class="card__cat">Identité · Site web</span><span class="card__title">GdunaN</span></span></span></a></li>
@@ -294,10 +315,14 @@
             <li class="card"><a class="card__btn" href="/#projet-azureco"><span class="card__media"><img src="/img/projets/az-5.webp" alt="Logo mascotte Pressing Azur Eco" loading="lazy" width="500" height="500" /><span class="card__overlay"><span class="card__cat">Logo · Mascotte</span><span class="card__title">Azur Eco</span></span></span></a></li>
           </ul>
           <p class="landing__work-more"><a href="/#projets">Voir tout le portfolio →</a></p>
-          <p class="landing__midcta"><a class="landing__btn" href="#contact">Parlons de votre identité <span aria-hidden="true">↗</span></a></p>
+          <p class="landing__midcta"><a class="landing__btn" href="#contact">Parlons de votre identité</a></p>
         </section>
+              </div>
+            </div>
 
-        <section class="landing__section landing__cta landing__contact" id="contact">
+            <div class="landing-contact">
+        <section class="landing__section article-section landing__cta landing__contact" id="contact">
+          <span class="article-section__num" aria-hidden="true">07</span>
           <h2>Travaillons votre image de marque à Nice</h2>
           <p>
             Que vous souhaitiez créer une identité de A à Z ou redonner du souffle
@@ -326,7 +351,7 @@
                   <label for="cf-message">Votre projet en quelques mots</label>
                   <textarea id="cf-message" name="message" rows="5" required></textarea>
                 </div>
-                <button type="submit" class="contact__submit">Envoyer ma demande <span aria-hidden="true">↗</span></button>
+                <button type="submit" class="contact__submit">Envoyer ma demande</button>
                 <p class="contact__status" role="status" aria-live="polite"></p>
                 <p class="contact__privacy">Vos informations servent uniquement à vous répondre et ne sont jamais revendues.</p>
               </form>
@@ -352,6 +377,10 @@
             </div>
           </div>
         </section>
+            </div>
+          </div>
+          <div class="article-end" aria-hidden="true"></div>
+        </div>
       </article>
     </main>
 

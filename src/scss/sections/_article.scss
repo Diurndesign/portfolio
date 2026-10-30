@@ -810,3 +810,63 @@ $article-max: 1180px;
     transition: none;
   }
 }
+
+// ============================================================
+//  Pages de service (villes, graphiste, studio, tarifs, audit)
+//  Même mise en page que les guides, avec leurs composants propres.
+// ============================================================
+
+// Atouts (piliers) et repères chiffrés, juste sous la couverture
+.landing-intro {
+  margin-top: clamp(3rem, 8vh, 5rem);
+
+  .landing__pillars {
+    margin: 0;
+  }
+
+  .landing__stats {
+    margin-top: clamp(2rem, 5vh, 3rem);
+  }
+}
+
+// Boutons pleins : couleur principale du thème
+.landing-page .landing__btn,
+.landing-page .contact__submit {
+  border-radius: 2px;
+  background: rgb(var(--c-blue));
+  color: $white;
+
+  &:hover,
+  &:focus-visible {
+    transform: none;
+    box-shadow: none;
+    background: rgb(var(--s-dark));
+  }
+
+  &:focus-visible {
+    outline-color: rgb(var(--c-blue));
+  }
+
+  [data-theme="orange"] & {
+    color: #18181a;
+
+    &:hover,
+    &:focus-visible {
+      color: $white;
+    }
+  }
+}
+
+// Formulaire et FAQ de contact : bloc pleine largeur en fin de page
+.landing-contact {
+  margin-top: clamp(4.5rem, 11vh, 7rem);
+
+  .landing__cta {
+    margin-top: 0;
+  }
+}
+
+// Photo bleue (ruelle du Vieux-Nice) : passée à l'orange avec le thème
+[data-theme="orange"] .article-cover--tint img {
+  filter: hue-rotate(138deg) saturate(1.1) brightness(1.2);
+}
