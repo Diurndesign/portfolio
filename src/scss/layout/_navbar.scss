@@ -334,7 +334,7 @@
 }
 
 // ============================================================
-//  Retour en haut (accueil, coin haut-gauche) — révélé au scroll
+//  Retour en haut (accueil, en bas au centre) — révélé au scroll
 // ============================================================
 // Même anneau de texte tournant que l'invitation « Voir les projets » du
 // hero, avec une flèche vers le haut. Rond de fond de la couleur de la
@@ -342,20 +342,22 @@
 .back-top {
   --logo-bg: #{$color-blue};
   position: fixed;
-  top: clamp(1rem, 2.4vh, 1.6rem);
-  left: clamp(1rem, 2vw, 1.6rem);
+  left: 0;
+  right: 0;
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  margin-inline: auto;
   z-index: 40;
   display: grid;
   place-items: center;
-  width: 84px;
-  height: 84px;
+  width: 76px;
+  height: 76px;
   border-radius: 50%;
   background: var(--logo-bg);
   color: $color-text-soft;
 
   // masqué tant que le hero est visible
   opacity: 0;
-  transform: translateY(-14px) scale(0.96);
+  transform: translateY(14px) scale(0.96);
   pointer-events: none;
   transition: opacity 0.55s $ease, transform 0.55s $ease, background $transition, color $transition;
 
@@ -389,10 +391,8 @@
   }
 
   @include until($bp-md) {
-    top: 0.5rem;
-    left: 0.5rem;
-    width: 70px;
-    height: 70px;
+    width: 64px;
+    height: 64px;
   }
 }
 
