@@ -53,7 +53,7 @@
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
-          {"@type": "Question", "name": "À qui s'adressent ces guides ?", "acceptedAnswer": {"@type": "Answer", "text": "Aux commerçants, artisans, indépendants et petites entreprises qui veulent créer ou refaire leur site, ou leur identité, et souhaitent comprendre leurs options avant de se lancer. Aucune connaissance technique n'est nécessaire."}},
+          {"@type": "Question", "name": "À qui s'adressent ces guides ?", "acceptedAnswer": {"@type": "Answer", "text": "Aux architectes, commerçants, artisans, indépendants et petites entreprises qui veulent créer ou refaire leur site, ou leur identité, et souhaitent comprendre leurs options avant de se lancer. Aucune connaissance technique n'est nécessaire."}},
           {"@type": "Question", "name": "Ces guides sont-ils neutres ?", "acceptedAnswer": {"@type": "Answer", "text": "Ils donnent des repères concrets : prix, avantages et limites de chaque solution. Le point de vue est assumé, celui d'un designer et développeur qui code des sites sur mesure. Quand une plateforme comme Wix ou Squarespace suffit, les guides le disent."}},
           {"@type": "Question", "name": "Les prix des guides correspondent-ils à vos tarifs ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. Le guide des prix reprend mes fourchettes actuelles : un site one-page dès 900 € et un site vitrine dès 1 800 €. Pour votre projet, le devis est gratuit et personnalisé."}},
           {"@type": "Question", "name": "Je ne sais pas par où commencer, que me conseillez-vous ?", "acceptedAnswer": {"@type": "Answer", "text": "Si vous avez déjà un site, commencez par l'audit gratuit : il montre ce qui fonctionne et ce qui freine. Sinon, décrivez-moi votre projet ou réservez un appel de 30 min."}}
@@ -65,81 +65,106 @@
     <!-- ===================== NAVBAR ===================== -->
     <!--#include partials/nav.html-->
 
-    <!-- ===================== HUB : Guides ===================== -->
-    <main class="landing">
-      <article class="landing__article landing__article--wide">
-        <header class="landing__head">
-          <p class="landing__eyebrow">Guides</p>
-          <h1 class="landing__title">Guides pour bien choisir votre site web</h1>
-          <p class="landing__lede">Avant de vous lancer, quelques repères clairs. Ces guides répondent aux questions que l'on me pose le plus souvent : combien ça coûte, quelle approche choisir, et jusqu'où l'IA peut vous aider. Sans jargon, avec un point de vue assumé.</p>
+    <!-- ===================== HUB : Guides (gabarit des articles) ===================== -->
+    <main class="article-page" id="main">
+      <article>
+        <header class="article-hero">
+          <div class="article-wrap">
+            <p class="article-hero__meta"><a href="/">Accueil</a><span aria-hidden="true">·</span><span>Guides</span></p>
+            <h1 class="article-hero__title">Guides pour bien choisir votre site web</h1>
+            <p class="article-hero__lede">Avant de vous lancer, quelques repères clairs. Ces guides répondent aux questions que l'on me pose le plus souvent&nbsp;: combien ça coûte, quelle approche choisir, jusqu'où l'IA peut vous aider, et quand refaire votre site et votre identité en même temps. Sans jargon, avec un point de vue assumé.</p>
+            <p class="article-hero__byline"><img src="/img/photo-profil-160.webp" alt="" width="40" height="40" /><span>Par <strong>Jérémy Bendenoun</strong>, Diurn Studio, designer et développeur web à Nice</span></p>
+          </div>
+          <div class="article-hero__fade" aria-hidden="true"></div>
         </header>
 
-        <ul class="guide-grid">
-          <li>
-            <a class="guide-card" href="/combien-coute-site-internet-nice">
-              <span class="guide-card__kicker">Prix</span>
-              <h2 class="guide-card__title">Combien coûte un site internet à Nice ?</h2>
-              <p class="guide-card__desc">Le prix d'un site sur mesure, ce qui fait vraiment varier le tarif, et comment obtenir un devis clair.</p>
-              <span class="guide-card__more">Lire le guide des prix <span aria-hidden="true">→</span></span>
-            </a>
-          </li>
-          <li>
-            <a class="guide-card" href="/site-sur-mesure-ou-wix-squarespace">
-              <span class="guide-card__kicker">Comparatif</span>
-              <h2 class="guide-card__title">Coder son site ou utiliser Wix ou Squarespace ?</h2>
-              <p class="guide-card__desc">Propriété, référencement, performances, évolution et coût sur la durée : le comparatif honnête entre un site codé sur mesure et une plateforme.</p>
-              <span class="guide-card__more">Lire le comparatif <span aria-hidden="true">→</span></span>
-            </a>
-          </li>
-          <li>
-            <a class="guide-card" href="/site-avec-ia-ou-developpeur">
-              <span class="guide-card__kicker">IA</span>
-              <h2 class="guide-card__title">Faire son site avec l'IA ou un développeur ?</h2>
-              <p class="guide-card__desc">Ce que le vibe coding sait faire, ses limites cachées (sécurité, SEO, maintenance), et quand faire appel à un professionnel.</p>
-              <span class="guide-card__more">Lire le guide <span aria-hidden="true">→</span></span>
-            </a>
-          </li>
-          <li>
-            <a class="guide-card" href="/refonte-site-et-charte-graphique">
-              <span class="guide-card__kicker">Refonte</span>
-              <h2 class="guide-card__title">Refaire son site et sa charte graphique en même temps ?</h2>
-              <p class="guide-card__desc">Les signaux d'une refonte globale, pourquoi mener le site et l'identité de front, et quand s'en tenir à un seul chantier.</p>
-              <span class="guide-card__more">Lire le guide <span aria-hidden="true">→</span></span>
-            </a>
-          </li>
-        </ul>
+        <div class="article-body" data-nav-light>
+          <div class="article-wrap">
+            <section class="article-related article-related--guides" aria-labelledby="guides-liste-titre">
+              <h2 class="article-related__title" id="guides-liste-titre">Les guides</h2>
+              <ul class="article-related__grid" role="list">
+                <li>
+                  <a class="article-card" href="/combien-coute-site-internet-nice">
+                    <span class="article-card__media"><img src="/img/articles/bcorner-mockup-16x10.webp" alt="" loading="eager" width="1568" height="980" /></span>
+                    <span class="article-card__kicker">Prix</span>
+                    <h3 class="article-card__title">Combien coûte un site internet à Nice&nbsp;?</h3>
+                    <p class="article-card__desc">Le prix d'un site sur mesure, ce qui fait vraiment varier le tarif, et comment obtenir un devis clair.</p>
+                    <p class="article-card__more">Lire le guide des prix <span aria-hidden="true">→</span></p>
+                  </a>
+                </li>
+                <li>
+                  <a class="article-card" href="/site-sur-mesure-ou-wix-squarespace">
+                    <span class="article-card__media"><img src="/img/projets/bcorner-2.webp" alt="" loading="eager" width="1543" height="753" /></span>
+                    <span class="article-card__kicker">Comparatif</span>
+                    <h3 class="article-card__title">Coder son site ou utiliser Wix ou Squarespace&nbsp;?</h3>
+                    <p class="article-card__desc">Propriété, référencement, performances, évolution et coût sur la durée&nbsp;: le comparatif honnête entre un site codé sur mesure et une plateforme.</p>
+                    <p class="article-card__more">Lire le comparatif <span aria-hidden="true">→</span></p>
+                  </a>
+                </li>
+                <li>
+                  <a class="article-card" href="/site-avec-ia-ou-developpeur">
+                    <span class="article-card__media"><img src="/img/articles/ia-portfolio-edition-16x10.webp" alt="" loading="lazy" width="1440" height="900" /></span>
+                    <span class="article-card__kicker">IA</span>
+                    <h3 class="article-card__title">Faire son site avec l'IA ou un développeur&nbsp;?</h3>
+                    <p class="article-card__desc">Ce que le vibe coding sait faire, ses limites cachées (sécurité, référencement, maintenance), et quand faire appel à un professionnel.</p>
+                    <p class="article-card__more">Lire le guide <span aria-hidden="true">→</span></p>
+                  </a>
+                </li>
+                <li>
+                  <a class="article-card" href="/refonte-site-et-charte-graphique">
+                    <span class="article-card__media"><img src="/img/projets/gd-3.webp" alt="" loading="lazy" width="1000" height="563" /></span>
+                    <span class="article-card__kicker">Refonte</span>
+                    <h3 class="article-card__title">Refaire son site et sa charte graphique en même temps&nbsp;?</h3>
+                    <p class="article-card__desc">Les signaux d'une refonte globale, pourquoi mener le site et l'identité de front, et quand s'en tenir à un seul chantier.</p>
+                    <p class="article-card__more">Lire le guide <span aria-hidden="true">→</span></p>
+                  </a>
+                </li>
+              </ul>
+            </section>
 
-        <section class="landing__section">
-          <h2>Questions fréquentes</h2>
-          <div class="landing__faq" aria-label="Questions fréquentes sur les guides">
-            <details class="landing__faq-item" open>
-              <summary>À qui s'adressent ces guides&nbsp;?</summary>
-              <p>Aux commerçants, artisans, indépendants et petites entreprises qui veulent créer ou refaire leur site, ou leur identité, et souhaitent comprendre leurs options avant de se lancer. Aucune connaissance technique n'est nécessaire.</p>
-            </details>
-            <details class="landing__faq-item">
-              <summary>Ces guides sont-ils neutres&nbsp;?</summary>
-              <p>Ils donnent des repères concrets&nbsp;: prix, avantages et limites de chaque solution. Le point de vue est assumé, celui d'un designer et développeur qui code des sites sur mesure. Quand une plateforme comme Wix ou Squarespace suffit, les guides le disent.</p>
-            </details>
-            <details class="landing__faq-item">
-              <summary>Les prix des guides correspondent-ils à vos tarifs&nbsp;?</summary>
-              <p>Oui. Le guide des prix reprend mes fourchettes actuelles&nbsp;: un site one-page dès 900&nbsp;€ et un site vitrine dès 1&nbsp;800&nbsp;€. Pour votre projet, le devis est gratuit et personnalisé.</p>
-            </details>
-            <details class="landing__faq-item">
-              <summary>Je ne sais pas par où commencer, que me conseillez-vous&nbsp;?</summary>
-              <p>Si vous avez déjà un site, commencez par l'<a href="/audit-site-web-gratuit">audit gratuit</a>&nbsp;: il montre ce qui fonctionne et ce qui freine. Sinon, <a href="/creation-site-internet-nice#contact">décrivez-moi votre projet</a> ou <a href="https://calendly.com/diurnstudio/appel-decouvert" target="_blank" rel="noopener" data-calendly>réservez un appel de 30&nbsp;min</a>.</p>
-            </details>
+            <section class="article-related" id="questions" aria-labelledby="questions-titre">
+              <h2 class="article-related__title" id="questions-titre">Questions fréquentes</h2>
+              <div class="article-content landing__faq" aria-label="Questions fréquentes sur les guides">
+                <details class="landing__faq-item" open>
+                  <summary>À qui s'adressent ces guides&nbsp;?</summary>
+                  <p>Aux architectes, commerçants, artisans, indépendants et petites entreprises qui veulent créer ou refaire leur site, ou leur identité, et souhaitent comprendre leurs options avant de se lancer. Aucune connaissance technique n'est nécessaire.</p>
+                </details>
+                <details class="landing__faq-item">
+                  <summary>Ces guides sont-ils neutres&nbsp;?</summary>
+                  <p>Ils donnent des repères concrets&nbsp;: prix, avantages et limites de chaque solution. Le point de vue est assumé, celui d'un designer et développeur qui code des sites sur mesure. Quand une plateforme comme Wix ou Squarespace suffit, les guides le disent.</p>
+                </details>
+                <details class="landing__faq-item">
+                  <summary>Les prix des guides correspondent-ils à vos tarifs&nbsp;?</summary>
+                  <p>Oui. Le guide des prix reprend mes fourchettes actuelles&nbsp;: un site one-page dès 900&nbsp;€ et un site vitrine dès 1&nbsp;800&nbsp;€. Pour votre projet, le devis est gratuit et personnalisé.</p>
+                </details>
+                <details class="landing__faq-item">
+                  <summary>Je ne sais pas par où commencer, que me conseillez-vous&nbsp;?</summary>
+                  <p>Si vous avez déjà un site, commencez par l'<a href="/audit-site-web-gratuit">audit gratuit</a>&nbsp;: il montre ce qui fonctionne et ce qui freine. Sinon, <a href="/creation-site-internet-nice#contact">décrivez-moi votre projet</a> ou <a href="https://calendly.com/diurnstudio/appel-decouvert" target="_blank" rel="noopener" data-calendly>réservez un appel de 30&nbsp;min</a>.</p>
+                </details>
+              </div>
+            </section>
+
+            <aside class="article-cta" aria-labelledby="cta-titre">
+              <div>
+                <h2 class="article-cta__title" id="cta-titre">Un doute sur votre site actuel&nbsp;?</h2>
+                <p class="article-cta__text">Je peux le passer au crible gratuitement et vous livrer un rapport clair sous 48&nbsp;heures, sans engagement.</p>
+              </div>
+              <div class="article-cta__actions">
+                <a class="article-cta__btn" href="/audit-site-web-gratuit">Demander un audit gratuit</a>
+                <a class="article-cta__btn article-cta__btn--ghost" href="https://calendly.com/diurnstudio/appel-decouvert" target="_blank" rel="noopener" data-calendly>Réserver un appel de 30&nbsp;min</a>
+              </div>
+            </aside>
+
+            <div class="article-author">
+              <img src="/img/photo-profil-160.webp" alt="" width="72" height="72" loading="lazy" />
+              <div>
+                <p class="article-author__name">Par Jérémy Bendenoun, Diurn Studio</p>
+                <p class="article-author__role">Designer et développeur web à Nice. Je crée l'identité des marques et je code le site qui la porte. <a href="/#a-propos">En savoir plus</a></p>
+              </div>
+            </div>
           </div>
-        </section>
-
-        <section class="guide-audit">
-          <div class="guide-audit__text">
-            <h2 class="guide-audit__title">Un doute sur votre site actuel ?</h2>
-            <p>Je peux le passer au crible gratuitement et vous livrer un rapport clair sous 48 heures, sans engagement.</p>
-          </div>
-          <a class="landing__btn" href="/audit-site-web-gratuit">Demander un audit gratuit <span aria-hidden="true">↗</span></a>
-        </section>
-
-        <p class="guide-byline">Par Jérémy Bendenoun, Diurn Studio, designer et développeur web à Nice.</p>
+          <div class="article-end" aria-hidden="true"></div>
+        </div>
       </article>
     </main>
 

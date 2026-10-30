@@ -1,36 +1,67 @@
 // ============================================================
-//  Sigles dans la police d'affichage
+//  Capitales dans la police d'affichage
 // ============================================================
 // Dans Hello Paris Serif, les capitales sont ornées (arabesques) et les
-// minuscules s'affichent en petites capitales droites. Une capitale
-// isolée en début de mot reste ornée (c'est le style des titres), mais
-// une suite de capitales (IA, FAQ, GPT…) devient illisible : elle est
-// enveloppée dans <span class="caps">, affichée en minuscules, donc en
-// petites capitales nettes. Le texte source ne change pas.
+// minuscules s'affichent en petites capitales droites. Seule la première
+// lettre d'un titre garde sa capitale ornée (c'est le style des titres) :
+// au milieu d'un titre, une capitale ornée déborde sur le mot d'avant
+// (« chezDiurn ») et une suite de capitales (IA, FAQ…) devient illisible.
+// Ces capitales sont enveloppées dans <span class="caps">, affichées en
+// minuscules, donc en petites capitales nettes. Le texte ne change pas.
+// Les noms de projets (cartes, fiches) gardent leur graphie : seules
+// leurs suites de capitales sont adoucies.
 
-const RUN = /[A-ZÀ-ÖØ-Þ]{2,}/;
-const RUN_ALL = /[A-ZÀ-ÖØ-Þ]{2,}/g;
+const CAP = /[A-ZÀ-ÖØ-Þ]/;
+const CAPS_ALL = /[A-ZÀ-ÖØ-Þ]+/g;
+const LETTER = /[A-Za-zÀ-ÖØ-öø-ÿ]/;
+const BRAND = ".card__title, .project__title";
 
 function isDisplay(el) {
   return getComputedStyle(el).fontFamily.startsWith('"Hello Paris');
 }
 
+// Bloc qui porte le titre (premier ancêtre qui n'est pas « inline »)
+function blockOf(el) {
+  let b = el;
+  while (b.parentElement && getComputedStyle(b).display.startsWith("inline")) b = b.parentElement;
+  return b;
+}
+
 function wrapText(node) {
   const text = node.nodeValue;
-  if (!RUN.test(text)) return;
+  if (!CAP.test(text)) return;
   const el = node.parentElement;
   if (!el || el.closest(".caps, script, style, textarea, [contenteditable]") || !isDisplay(el)) return;
+  const brand = !!el.closest(BRAND);
+  // lettres déjà présentes avant ce texte dans le même titre
+  const range = document.createRange();
+  range.setStart(blockOf(el), 0);
+  range.setEnd(node, 0);
+  let seenLetter = LETTER.test(range.toString());
+
   const frag = document.createDocumentFragment();
   let last = 0;
-  text.replace(RUN_ALL, (match, index) => {
-    if (index > last) frag.appendChild(document.createTextNode(text.slice(last, index)));
-    const span = document.createElement("span");
-    span.className = "caps";
-    span.textContent = match;
-    frag.appendChild(span);
-    last = index + match.length;
+  let changed = false;
+  text.replace(CAPS_ALL, (match, index) => {
+    if (!seenLetter) seenLetter = LETTER.test(text.slice(0, index));
+    const initial = !seenLetter;
+    // capitale initiale du titre : gardée ; ailleurs, adoucie (sauf noms
+    // de projets, où seules les suites de capitales le sont)
+    const keep = match.length === 1 && (initial || brand);
+    const start = initial && match.length > 1 ? 1 : 0;
+    if (!keep && match.length > start) {
+      if (index + start > last) frag.appendChild(document.createTextNode(text.slice(last, index + start)));
+      const span = document.createElement("span");
+      span.className = "caps";
+      span.textContent = match.slice(start);
+      frag.appendChild(span);
+      last = index + match.length;
+      changed = true;
+    }
+    seenLetter = true;
     return match;
   });
+  if (!changed) return;
   if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
   node.replaceWith(frag);
 }
@@ -42,7 +73,7 @@ function scan(root) {
   }
   if (root.nodeType !== Node.ELEMENT_NODE) return;
   const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
-    acceptNode: (n) => (RUN.test(n.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT),
+    acceptNode: (n) => (CAP.test(n.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT),
   });
   const nodes = [];
   while (walker.nextNode()) nodes.push(walker.currentNode);
