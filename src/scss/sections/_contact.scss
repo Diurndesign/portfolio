@@ -48,8 +48,11 @@
       pointer-events: none;
     }
 
+    // Mobile : ni lignes de construction ni filet du bas (le pied de
+    // page a déjà le sien, juste en dessous)
     @include until($bp-lg) {
       padding-right: 0;
+      border-bottom: 0;
 
       &::before {
         display: none;
@@ -98,7 +101,7 @@
     }
   }
 
-  // --- Colonne droite : avis et réseaux -------------------------
+  // --- Colonne droite : avis clients ------------------------------
   &__aside {
     display: flex;
     flex-direction: column;
@@ -106,35 +109,9 @@
     padding: clamp(2rem, 6vh, 4rem) 0 0 clamp(2rem, 5vw, 4.5rem);
     border-left: 1px solid var(--line);
 
+    // Mobile : les avis sont affichés avant la FAQ, la colonne est vide
     @include until($bp-lg) {
-      padding: 2.5rem 0 0;
-      border-left: 0;
-    }
-  }
-
-  // Réseaux en ligne, poussés en bas de la colonne
-  &__social {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1.75rem;
-    margin: auto 0 0;
-    padding: 1.5rem 0 0;
-    list-style: none;
-
-    a {
-      font-size: 0.82rem;
-      color: $color-text-muted;
-      transition: color $transition;
-
-      &:hover,
-      &:focus-visible {
-        color: $color-white;
-      }
-
-      &:focus-visible {
-        outline: 2px solid $color-white;
-        outline-offset: 3px;
-      }
+      display: none;
     }
   }
 
