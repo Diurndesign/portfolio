@@ -11,6 +11,7 @@ import "./modules/hero-card.js";
 import "./modules/track.js";
 import "./modules/calendly.js";
 import "./modules/theme.js";
+import "./modules/article-toc.js";
 
 // Grille de projets filtrable (React). Chargée à la demande, uniquement sur
 // la page qui la contient : les autres pages n'embarquent pas React.
