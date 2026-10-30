@@ -7,7 +7,8 @@
 // ============================================================
 // La couleur de fond est reconstituée au point central de l'élément :
 // fond des blocs sous ce point, dégradés verticaux (raccords entre
-// sections) et photos (couleur échantillonnée dans l'image).
+// sections), photos (couleur échantillonnée dans l'image) et photos de
+// fond en CSS (voile sombre déclaré par --nav-shade).
 
 const UI = ".nav, .dock, .cookie-consent";
 const WHITE = [255, 255, 255];
@@ -83,12 +84,36 @@ function imageAt(img, x, y) {
 
 // Couches d'un élément au point y (de la plus haute à la plus basse)
 function layersOf(el, x, y) {
+  // Photo de fond assombrissante (--nav-shade = force du voile), en
+  // tenant compte de son masque en dégradé vertical
+  const shade = parseFloat(getComputedStyle(el).getPropertyValue("--nav-shade"));
+  if (el.classList.contains("hero__bg")) {
+    if (!(shade > 0)) return [];
+    const cs = getComputedStyle(el);
+    const r = el.getBoundingClientRect();
+    const mask = cs.maskImage || cs.webkitMaskImage || "";
+    const m = mask.startsWith("linear-gradient") && r.height ? gradientAt(mask, (y - r.top) / r.height) : null;
+    const k = shade * (m ? m[3] : 1);
+    return k > 0 ? [[0, 0, 0, k]] : [];
+  }
   if (el.tagName === "IMG") {
     const c = imageAt(el, x, y);
     return c ? [c] : [];
   }
   const cs = getComputedStyle(el);
   const out = [];
+  // Raccords en pseudo-éléments (::after au-dessus de ::before), placés
+  // en absolu en haut ou en bas de leur section
+  ["::after", "::before"].forEach((pseudo) => {
+    const ps = getComputedStyle(el, pseudo);
+    if (ps.content === "none" || ps.position !== "absolute" || !ps.backgroundImage.startsWith("linear-gradient")) return;
+    const r = el.getBoundingClientRect();
+    const h = parseFloat(ps.height);
+    const top = ps.top !== "auto" ? r.top + parseFloat(ps.top) : r.bottom - parseFloat(ps.bottom) - h;
+    if (!h || y < top || y > top + h) return;
+    const g = gradientAt(ps.backgroundImage, (y - top) / h);
+    if (g) out.push(g);
+  });
   if (cs.backgroundImage.startsWith("linear-gradient")) {
     const r = el.getBoundingClientRect();
     const g = r.height ? gradientAt(cs.backgroundImage, (y - r.top) / r.height) : null;
@@ -108,7 +133,7 @@ function backgroundAt(x, y, fades) {
   const layers = [];
   const hit = document.elementsFromPoint(x, y).find((el) => !el.closest(UI));
   // Raccords dégradés posés par-dessus les sections (sans pointeur)
-  fades.forEach((f) => {
+  [...fades].reverse().forEach((f) => {
     const r = f.getBoundingClientRect();
     if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) layers.push(...layersOf(f, x, y));
   });
@@ -148,7 +173,7 @@ function initScrollNav() {
         ".site-logo, .nav__burger, .nav__side--left .nav__link, .nav__social, .nav__theme .theme-switch"
       ),
     ];
-    fades = [...document.querySelectorAll('[class*="__fade"]')].filter(
+    fades = [...document.querySelectorAll('[class*="__fade"], .hero__bg')].filter(
       (el) => !el.closest(UI) && getComputedStyle(el).pointerEvents === "none"
     );
   };

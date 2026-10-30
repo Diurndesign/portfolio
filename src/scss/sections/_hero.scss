@@ -747,5 +747,7 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
   background: url("/img/hero/nice-ruelle-1500.webp") center 30% / cover no-repeat;
   opacity: 0.55;
   mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 92%);
+  // voile sombre de la photo, lu par scroll-nav.js pour la couleur du menu
+  --nav-shade: 0.3;
 
 }

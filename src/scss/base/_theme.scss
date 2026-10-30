@@ -226,10 +226,26 @@ $paper: #f6f5f2;
     color: $white;
   }
 
+  // Étoiles des avis : charbon sur l'orange (le jaune y est illisible)
+  .proof__stars {
+    color: $color-ink;
+  }
+
   // Photo du hero : passée à l'orange et éclaircie (texte charbon dessus)
   .hero__bg {
     filter: hue-rotate(138deg) saturate(1.1) brightness(1.35);
     opacity: 0.4;
+
+    // Sur ordinateur, la photo s'efface sous les barres latérales : menu
+    // et icônes charbon restent sur l'orange franc, bien contrastés
+    @include from($bp-md) {
+      --nav-shade: 0;
+      $edges: linear-gradient(to right, transparent 0, transparent 70px, #000 220px, #000 calc(100% - 220px), transparent calc(100% - 70px));
+      -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 92%), $edges;
+      -webkit-mask-composite: source-in;
+      mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 92%), $edges;
+      mask-composite: intersect;
+    }
   }
 
   // Carte de visite : noir charbon, texte clair, accents orange
