@@ -21,21 +21,91 @@
   --a-placeholder: 0.6;
 }
 
-// Thème orange, comme la référence : orange vif avec texte noir, et les
-// sections claires passent en noir charbon avec texte clair.
+// Thème orange, comme la référence : trois aplats francs qui alternent,
+// sans dégradé entre les sections.
+//   orange  : hero, contact (texte noir charbon, grands titres blancs)
+//   blanc   : projets, FAQ (texte noir, gris pour le secondaire)
+//   charbon : à propos, pied de page (texte blanc, gris, touches d'orange)
+$orange: #e9573b;
+$charcoal: #18181a;
+$paper: #f6f5f2;
+
 :root[data-theme="orange"] {
   --c-blue: 233, 87, 59;
-  --c-blue-deep: 245, 150, 122; // bandeau cookies, texte noir
+  --c-blue-deep: 24, 24, 26; // bandeau cookies : charbon
   --c-blue-night: 24, 24, 26;
-  --c-cream: 24, 24, 26;
-  --c-ink: 240, 238, 234;
-  --c-fg: 17, 17, 17;
-  // texte noir translucide : 0.88 = contraste AA sur l'orange
-  --a-muted: 0.88;
-  --a-soft: 0.94;
+  --c-cream: 246, 245, 242; // sections claires : blanc cassé
+  --c-ink: 24, 24, 26;
+  --c-fg: 24, 24, 26; // texte sur l'orange
+  // texte charbon translucide : 0.92 = contraste AA sur l'orange
+  --a-muted: 0.92;
+  --a-soft: 1;
   --a-placeholder: 0.7;
 
-  // Photo du hero : passée à l'orange et éclaircie (texte noir dessus)
+  // --- Sections charbon (texte blanc) ---
+  #a-propos,
+  .site-footer,
+  .cookie-consent {
+    --c-fg: 255, 255, 255;
+    --a-muted: 0.65;
+    --a-soft: 0.82;
+    --a-placeholder: 0.6;
+  }
+
+  #a-propos,
+  .site-footer {
+    background: $charcoal;
+  }
+
+  // Boutons blancs sur charbon : texte charbon (l'orange y serait peu lisible)
+  #a-propos,
+  .cookie-consent {
+    --c-blue: 24, 24, 26;
+  }
+
+  // Touche d'orange : le libellé « À propos » et son filet
+  .about__eyebrow {
+    color: $orange;
+
+    &::after {
+      background: $orange;
+    }
+  }
+
+  // --- Section blanche : FAQ ---
+  #faq {
+    --c-fg: 24, 24, 26;
+    --a-muted: 0.7;
+    --a-soft: 0.86;
+    background: $paper;
+  }
+
+  // --- Orange : grands titres en blanc, comme le « 1 » de la référence ---
+  .contact__headline {
+    color: $white;
+  }
+
+  // Pas de dégradés : des aplats nets entre les sections
+  .hero__fade,
+  .projets__fade {
+    background: none;
+  }
+
+  .hero__fade {
+    height: clamp(3rem, 8vh, 5rem);
+  }
+
+  // la marge d'un fondu vide « sortirait » de la section (orange visible) :
+  // on le masque et la section garde son propre espace blanc en bas
+  .projets__fade {
+    display: none;
+  }
+
+  .section--projets {
+    padding-bottom: clamp(4rem, 10vh, 7rem);
+  }
+
+  // Photo du hero : passée à l'orange et éclaircie (texte charbon dessus)
   .hero__bg {
     filter: hue-rotate(138deg) saturate(1.1) brightness(1.35);
     opacity: 0.4;
@@ -43,7 +113,7 @@
 
   // Carte de visite : noir charbon, texte clair, accents orange
   .hero__card {
-    --card-bg: #18181a;
+    --card-bg: #{$charcoal};
     --card-edge: #050506;
     --card-ink: #f2f0eb;
     --card-ink-soft: rgba(242, 240, 235, 0.82);
@@ -66,10 +136,11 @@
     }
 
     .card--creme {
-      --ink: #111111;
-      --ink-soft: rgba(17, 17, 17, 0.78);
-      --pill-bg: #111111;
-      --pill-ink: #e6e6e4;
+      --shade: 246, 245, 242; // voile clair sous le texte charbon
+      --ink: #{$charcoal};
+      --ink-soft: rgba(24, 24, 26, 0.78);
+      --pill-bg: #{$charcoal};
+      --pill-ink: #{$paper};
 
       .card__media img {
         filter: grayscale(1);
@@ -84,6 +155,26 @@
 
   .about__photo-reveal {
     background: linear-gradient(180deg, rgba(24, 24, 26, 0.86), rgba(10, 10, 11, 0.92));
+  }
+
+  // Menu et logo fixes : en blanc quand une section charbon passe dessous
+  .nav--dark {
+    --c-fg: 255, 255, 255;
+    --a-muted: 0.65;
+    --a-soft: 0.82;
+  }
+
+  // Logo : noir sur l'orange, blanc sur le charbon
+  .site-logo img {
+    filter: none;
+  }
+
+  .nav--dark .site-logo {
+    --logo-bg: #{$charcoal};
+
+    img {
+      filter: invert(1);
+    }
   }
 }
 
@@ -116,7 +207,6 @@
 
   [data-theme="orange"] & {
     background: #010d94;
-    border-color: #111111;
   }
 
   @include until($bp-md) {
