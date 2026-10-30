@@ -71,7 +71,7 @@
 
   // Sur une section claire (menu fermé) : traits foncés
   &--light:not(.is-open) &__burger-line {
-    background: rgba($color-ink, 0.7);
+    background: rgba(var(--c-ink), 0.7);
   }
 
   // --- Panneau plein écran quand le menu est ouvert --------

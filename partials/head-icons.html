@@ -4,3 +4,13 @@
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#010d94" />
+    <!-- Thème choisi par le visiteur (bouton bleu / orange), appliqué avant
+         l'affichage pour éviter un flash de couleur -->
+    <script>
+      try {
+        if (localStorage.getItem("diurn-theme") === "orange") {
+          document.documentElement.dataset.theme = "orange";
+          document.querySelector('meta[name="theme-color"]').setAttribute("content", "#c4401a");
+        }
+      } catch (e) {}
+    </script>

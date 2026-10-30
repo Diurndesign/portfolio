@@ -24,7 +24,7 @@
   }
 
   .landing__lede {
-    color: rgba($color-ink, 0.78);
+    color: rgba(var(--c-ink), 0.78);
   }
 
   .landing__section {
@@ -33,7 +33,7 @@
     }
 
     p {
-      color: rgba($color-ink, 0.8);
+      color: rgba(var(--c-ink), 0.8);
     }
 
     strong {
@@ -42,7 +42,7 @@
 
     p a:not(.landing__btn) {
       color: $color-ink;
-      text-decoration-color: rgba($color-ink, 0.5);
+      text-decoration-color: rgba(var(--c-ink), 0.5);
 
       &:hover,
       &:focus-visible {
@@ -57,7 +57,7 @@
 
   // Filet de séparation du bloc CTA final (blanc à l'origine)
   .landing__cta {
-    border-top-color: rgba($color-ink, 0.16);
+    border-top-color: rgba(var(--c-ink), 0.16);
   }
 
   // Bouton principal plein : bleu de marque sur crème
@@ -72,13 +72,13 @@
 
   // Bouton secondaire « ghost » : contour encre
   .btn-reserve {
-    border-color: rgba($color-ink, 0.3);
+    border-color: rgba(var(--c-ink), 0.3);
     color: $color-ink;
 
     &:hover,
     &:focus-visible {
-      background: rgba($color-ink, 0.06);
-      border-color: rgba($color-ink, 0.6);
+      background: rgba(var(--c-ink), 0.06);
+      border-color: rgba(var(--c-ink), 0.6);
     }
 
     &:focus-visible {
@@ -88,7 +88,7 @@
 
   // Cartes « autres réalisations » (guide-card) adaptées au crème
   .guide-card {
-    border-color: rgba($color-ink, 0.18);
+    border-color: rgba(var(--c-ink), 0.18);
 
     &__kicker {
       color: $color-ink-muted;
@@ -99,7 +99,7 @@
     }
 
     &__desc {
-      color: rgba($color-ink, 0.75);
+      color: rgba(var(--c-ink), 0.75);
     }
 
     &__more {
@@ -108,8 +108,8 @@
 
     &:hover,
     &:focus-visible {
-      border-color: rgba($color-ink, 0.42);
-      background: rgba($color-ink, 0.04);
+      border-color: rgba(var(--c-ink), 0.42);
+      background: rgba(var(--c-ink), 0.04);
     }
 
     &:focus-visible {
@@ -119,10 +119,10 @@
 
   // FAQ adaptée au crème (encre au lieu du blanc)
   .landing__faq-item {
-    border-top-color: rgba($color-ink, 0.18);
+    border-top-color: rgba(var(--c-ink), 0.18);
 
     &:last-child {
-      border-bottom-color: rgba($color-ink, 0.18);
+      border-bottom-color: rgba(var(--c-ink), 0.18);
     }
 
     summary {
@@ -138,7 +138,7 @@
     }
 
     p {
-      color: rgba($color-ink, 0.82);
+      color: rgba(var(--c-ink), 0.82);
     }
   }
 }
@@ -150,7 +150,7 @@
   gap: 0.5rem;
   font-size: 0.85rem;
   letter-spacing: 0.02em;
-  color: rgba($color-ink, 0.7);
+  color: rgba(var(--c-ink), 0.7);
   transition: color $transition;
 
   &-arrow {
@@ -189,8 +189,8 @@
     margin: clamp(1.5rem, 4vh, 2.5rem) 0 clamp(1rem, 2vh, 1.5rem);
     border-radius: 14px;
     overflow: hidden;
-    background: rgba($color-ink, 0.06);
-    box-shadow: 0 30px 60px -32px rgba($color-ink, 0.4);
+    background: rgba(var(--c-ink), 0.06);
+    box-shadow: 0 30px 60px -32px rgba(var(--c-ink), 0.4);
 
     img {
       width: 100%;
@@ -208,9 +208,9 @@
     gap: 1.25rem 2rem;
     margin: clamp(1.5rem, 4vh, 2.5rem) 0;
     padding: clamp(1.25rem, 3vw, 1.75rem) clamp(1.25rem, 3vw, 2rem);
-    border: 1px solid rgba($color-ink, 0.16);
+    border: 1px solid rgba(var(--c-ink), 0.16);
     border-radius: 14px;
-    background: rgba($color-ink, 0.03);
+    background: rgba(var(--c-ink), 0.03);
   }
 
   &__facts {
@@ -256,7 +256,7 @@
     min-height: 44px;
     padding: 0.6rem 1.3rem;
     border-radius: 999px;
-    border: 1px solid rgba($color-ink, 0.3);
+    border: 1px solid rgba(var(--c-ink), 0.3);
     font-size: 0.9rem;
     font-weight: 600;
     color: $color-ink;
@@ -264,8 +264,8 @@
 
     &:hover,
     &:focus-visible {
-      background: rgba($color-ink, 0.06);
-      border-color: rgba($color-ink, 0.6);
+      background: rgba(var(--c-ink), 0.06);
+      border-color: rgba(var(--c-ink), 0.6);
     }
 
     &:focus-visible {
@@ -290,14 +290,14 @@
 
   &__card {
     padding: 1.5rem;
-    border: 1px solid rgba($color-ink, 0.14);
+    border: 1px solid rgba(var(--c-ink), 0.14);
     border-radius: 12px;
-    background: rgba($color-ink, 0.02);
+    background: rgba(var(--c-ink), 0.02);
 
     p {
       font-size: 0.95rem;
       line-height: 1.6;
-      color: rgba($color-ink, 0.78);
+      color: rgba(var(--c-ink), 0.78);
       max-width: none;
     }
   }
@@ -326,9 +326,9 @@
     margin: 0;
     border-radius: 12px;
     overflow: hidden;
-    background: rgba($color-ink, 0.06);
-    border: 1px solid rgba($color-ink, 0.1);
-    box-shadow: 0 14px 34px -20px rgba($color-ink, 0.35);
+    background: rgba(var(--c-ink), 0.06);
+    border: 1px solid rgba(var(--c-ink), 0.1);
+    box-shadow: 0 14px 34px -20px rgba(var(--c-ink), 0.35);
 
     img {
       width: 100%;
@@ -347,10 +347,10 @@
     padding: clamp(2rem, 5vw, 3.25rem) clamp(1.5rem, 4vw, 3rem);
     text-align: center;
     border-radius: 18px;
-    border: 1px solid rgba($color-ink, 0.12);
+    border: 1px solid rgba(var(--c-ink), 0.12);
     background:
-      radial-gradient(120% 120% at 50% 0%, rgba($color-blue, 0.06), rgba($color-blue, 0) 70%),
-      rgba($color-ink, 0.03);
+      radial-gradient(120% 120% at 50% 0%, rgba(var(--c-blue), 0.06), rgba(var(--c-blue), 0) 70%),
+      rgba(var(--c-ink), 0.03);
   }
 
   &__quote-text {
@@ -403,15 +403,15 @@
     pointer-events: none;
     background: linear-gradient(
       to bottom,
-      rgba($color-blue, 0) 0%,
-      rgba($color-blue, 0.03) 16%,
-      rgba($color-blue, 0.1) 30%,
-      rgba($color-blue, 0.22) 43%,
-      rgba($color-blue, 0.38) 55%,
-      rgba($color-blue, 0.56) 66%,
-      rgba($color-blue, 0.74) 77%,
-      rgba($color-blue, 0.89) 88%,
-      rgba($color-blue, 0.97) 95%,
+      rgba(var(--c-blue), 0) 0%,
+      rgba(var(--c-blue), 0.03) 16%,
+      rgba(var(--c-blue), 0.1) 30%,
+      rgba(var(--c-blue), 0.22) 43%,
+      rgba(var(--c-blue), 0.38) 55%,
+      rgba(var(--c-blue), 0.56) 66%,
+      rgba(var(--c-blue), 0.74) 77%,
+      rgba(var(--c-blue), 0.89) 88%,
+      rgba(var(--c-blue), 0.97) 95%,
       $color-blue 100%
     );
   }

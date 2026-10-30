@@ -156,7 +156,7 @@
       max-width: calc(100% - 2rem);
       padding: 0.5rem 0.9rem;
       border-radius: 999px;
-      background: rgba($color-blue, 0.62);
+      background: rgba(var(--c-blue), 0.62);
       backdrop-filter: blur(3px);
       color: $color-white;
       font-size: 0.74rem;
@@ -178,8 +178,8 @@
       padding: clamp(1.5rem, 7%, 2.5rem);
       background: linear-gradient(
         180deg,
-        rgba($color-blue, 0.84),
-        rgba($color-blue-night, 0.88)
+        rgba(var(--c-blue), 0.84),
+        rgba(var(--c-blue-night), 0.88)
       );
       color: $color-white;
       opacity: 0;
@@ -207,7 +207,7 @@
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba($color-cream, 0.9);
+      color: rgba(var(--c-cream), 0.9);
     }
 
     &-group {

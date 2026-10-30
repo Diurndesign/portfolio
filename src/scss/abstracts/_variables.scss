@@ -3,18 +3,20 @@
 // ============================================================
 
 // --- Couleurs -------------------------------------------------
-$color-blue: #010d94; // bleu roi du fond
+// Couleurs de thème : variables CSS (triplets RVB) pour que le bouton de
+// thème puisse les changer en direct. Valeurs dans base/_theme.scss.
+$color-blue: rgb(var(--c-blue)); // bleu roi du fond
 $color-white: #ffffff;
 $color-black: #000000;
 
 // Sections claires (ex. Projets)
-$color-cream: #ebe6db; // gris crème
-$color-ink: #17193a; // encre profonde (bleu très sombre) pour texte sur crème
+$color-cream: rgb(var(--c-cream)); // gris crème
+$color-ink: rgb(var(--c-ink)); // encre profonde (bleu très sombre) pour texte sur crème
 $color-panel: #ece7dd; // fond par défaut des fiches projet (modal)
 
 // Bleus profonds (surfaces qui doivent se détacher du fond)
-$color-blue-deep: #0b1560; // bandeau cookies
-$color-blue-night: #05063a; // voile sombre sur les photos
+$color-blue-deep: rgb(var(--c-blue-deep)); // bandeau cookies
+$color-blue-night: rgb(var(--c-blue-night)); // voile sombre sur les photos
 
 // Noir « appareil » (cadre téléphone de la démo Murmure)
 $color-device: #0b0b0d;
@@ -26,13 +28,13 @@ $color-warning: #ffc65c;
 
 // Nuances de texte (blanc translucide sur fond bleu)
 // 0.65 : contraste AA (>= 4.5:1) sur le bleu, y compris en petit corps.
-$color-text-muted: rgba(255, 255, 255, 0.65);
-$color-text-soft: rgba(255, 255, 255, 0.82);
-$color-text-placeholder: rgba(255, 255, 255, 0.6); // 5.5:1 sur le bleu
+$color-text-muted: rgba(255, 255, 255, var(--a-muted));
+$color-text-soft: rgba(255, 255, 255, var(--a-soft));
+$color-text-placeholder: rgba(255, 255, 255, var(--a-placeholder)); // 5.5:1 sur le bleu
 
 // Texte secondaire sur crème : 0.7 = contraste AA (>= 5.7:1) sur tous les
 // fonds clairs des fiches projet.
-$color-ink-muted: rgba($color-ink, 0.7);
+$color-ink-muted: rgba(var(--c-ink), 0.7);
 
 // --- Typographie ---------------------------------------------
 $font-display: "Hello Paris Serif", Georgia, "Times New Roman", serif;

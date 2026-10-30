@@ -85,7 +85,7 @@ $modal-panel: $color-panel;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba($color-ink, 0.08);
+    background: rgba(var(--c-ink), 0.08);
     border: 0;
     border-radius: 50%;
     color: $color-ink;
@@ -94,7 +94,7 @@ $modal-panel: $color-panel;
 
     &:hover,
     &:focus-visible {
-      background: rgba($color-ink, 0.16);
+      background: rgba(var(--c-ink), 0.16);
     }
 
     &:focus-visible {
@@ -506,7 +506,7 @@ $glass-muted: rgba(244, 243, 241, 0.66);
     & + & {
       margin-top: 1.75rem;
       padding-top: 1.75rem;
-      border-top: 1px solid rgba($color-ink, 0.15);
+      border-top: 1px solid rgba(var(--c-ink), 0.15);
     }
 
     h4 {
@@ -521,7 +521,7 @@ $glass-muted: rgba(244, 243, 241, 0.66);
     p {
       font-size: 0.98rem;
       line-height: 1.7;
-      color: rgba($color-ink, 0.82);
+      color: rgba(var(--c-ink), 0.82);
     }
 
     strong {
@@ -559,8 +559,8 @@ $glass-muted: rgba(244, 243, 241, 0.66);
       text-align: left;
       vertical-align: top;
       padding: 0.6rem 0.75rem 0.6rem 0;
-      border-bottom: 1px solid rgba($color-ink, 0.15);
-      color: rgba($color-ink, 0.82);
+      border-bottom: 1px solid rgba(var(--c-ink), 0.15);
+      color: rgba(var(--c-ink), 0.82);
     }
 
     th {

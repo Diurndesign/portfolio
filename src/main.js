@@ -10,6 +10,7 @@ import "./modules/about-photo.js";
 import "./modules/hero-card.js";
 import "./modules/track.js";
 import "./modules/calendly.js";
+import "./modules/theme.js";
 
 // Grille de projets filtrable (React). Chargée à la demande, uniquement sur
 // la page qui la contient : les autres pages n'embarquent pas React.

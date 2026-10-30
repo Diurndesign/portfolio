@@ -24,7 +24,7 @@
   .section__eyebrow {
     // 0.7 d'opacité pour rester au-dessus du contraste WCAG AA (4.5:1)
     // sur le fond crème — 0.55 tombait à ~3.6:1 (texte petit, illisible).
-    color: rgba($color-ink, 0.7);
+    color: rgba(var(--c-ink), 0.7);
   }
   .card__media {
     background: $color-blue;
@@ -70,7 +70,7 @@
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: rgba($color-ink, 0.7);
+    color: rgba(var(--c-ink), 0.7);
     background: none;
     border: 0;
     border-bottom: 1px solid transparent;
@@ -81,7 +81,7 @@
 
     &:hover {
       color: $color-ink;
-      border-bottom-color: rgba($color-ink, 0.4);
+      border-bottom-color: rgba(var(--c-ink), 0.4);
     }
 
     &:focus-visible {
@@ -139,15 +139,15 @@
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    rgba($color-blue, 0) 0%,
-    rgba($color-blue, 0.03) 16%,
-    rgba($color-blue, 0.1) 30%,
-    rgba($color-blue, 0.22) 43%,
-    rgba($color-blue, 0.38) 55%,
-    rgba($color-blue, 0.56) 66%,
-    rgba($color-blue, 0.74) 77%,
-    rgba($color-blue, 0.89) 88%,
-    rgba($color-blue, 0.97) 95%,
+    rgba(var(--c-blue), 0) 0%,
+    rgba(var(--c-blue), 0.03) 16%,
+    rgba(var(--c-blue), 0.1) 30%,
+    rgba(var(--c-blue), 0.22) 43%,
+    rgba(var(--c-blue), 0.38) 55%,
+    rgba(var(--c-blue), 0.56) 66%,
+    rgba(var(--c-blue), 0.74) 77%,
+    rgba(var(--c-blue), 0.89) 88%,
+    rgba(var(--c-blue), 0.97) 95%,
     $color-blue 100%
   );
 
@@ -307,7 +307,7 @@
     --shade: 244, 240, 232;
     --veil-k: 1.35;
     --ink: #{$color-ink};
-    --ink-soft: #{rgba($color-ink, 0.78)};
+    --ink-soft: #{rgba(var(--c-ink), 0.78)};
     --pill-bg: #{$color-ink};
     --pill-ink: #{$color-cream};
   }
