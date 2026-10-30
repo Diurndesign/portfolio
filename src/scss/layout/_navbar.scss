@@ -332,3 +332,96 @@
     }
   }
 }
+
+// ============================================================
+//  Retour en haut (accueil, coin haut-gauche) — révélé au scroll
+// ============================================================
+// Même anneau de texte tournant que l'invitation « Voir les projets » du
+// hero, avec une flèche vers le haut. Rond de fond de la couleur de la
+// section survolée, comme l'ancien logo fixe.
+.back-top {
+  --logo-bg: #{$color-blue};
+  position: fixed;
+  top: clamp(1rem, 2.4vh, 1.6rem);
+  left: clamp(1rem, 2vw, 1.6rem);
+  z-index: 40;
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: var(--logo-bg);
+  color: $color-text-soft;
+
+  // masqué tant que le hero est visible
+  opacity: 0;
+  transform: translateY(-14px) scale(0.96);
+  pointer-events: none;
+  transition: opacity 0.55s $ease, transform 0.55s $ease, background $transition, color $transition;
+
+  > svg {
+    grid-area: 1 / 1;
+  }
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  &:hover,
+  &:focus-visible {
+    color: $color-white;
+  }
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+  }
+
+  .nav--light & {
+    --logo-bg: #{$color-cream};
+    color: $color-ink;
+  }
+
+  .nav--dark & {
+    --logo-bg: rgb(var(--s-dark));
+  }
+
+  @include until($bp-md) {
+    top: 0.5rem;
+    left: 0.5rem;
+    width: 70px;
+    height: 70px;
+  }
+}
+
+.back-top__ring {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  animation: hero-scroll-spin 16s linear infinite;
+
+  text {
+    fill: currentColor;
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+}
+
+.back-top__arrow {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .back-top {
+    transition: opacity 0.2s linear;
+    transform: none;
+  }
+
+  .back-top__ring {
+    animation: none;
+  }
+}

@@ -1,9 +1,10 @@
 // ============================================================
-//  Logo fixe — apparaît quand le titre du hero sort de l'écran
+//  Retour en haut (accueil) / logo fixe (autres pages) — apparaît
+//  quand le titre du hero sort de l'écran
 // ============================================================
 
 function initSiteLogo() {
-  const logo = document.querySelector(".site-logo");
+  const logo = document.querySelector(".back-top, .site-logo");
   const trigger =
     document.querySelector(".hero__title") || document.querySelector(".hero");
   if (!logo || !trigger || !("IntersectionObserver" in window)) return;

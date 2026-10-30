@@ -193,9 +193,20 @@
   <body>
     <!-- ===================== NAVBAR ===================== -->
     <nav class="nav" aria-label="Navigation principale">
-      <!-- Logo fixe : apparaît au scroll, ramène en haut -->
-      <a href="#accueil" class="site-logo" aria-label="Diurn Studio, retour en haut de la page">
-        <img src="/img/logo-diurn.png" alt="Logo de Diurn Studio" width="320" height="400" />
+      <!-- Retour en haut : apparaît au scroll (même anneau que « Voir les projets ») -->
+      <a href="#accueil" class="back-top">
+        <span class="sr-only">Retour en haut de la page</span>
+        <svg class="back-top__ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+          <defs>
+            <path id="back-top-circle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" />
+          </defs>
+          <text>
+            <textPath href="#back-top-circle" textLength="236" lengthAdjust="spacing">Haut de page · Haut de page ·</textPath>
+          </text>
+        </svg>
+        <svg class="back-top__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 19V5M6.5 10.5 12 5l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
       </a>
 
       <!-- Sidebar gauche : sections -->
