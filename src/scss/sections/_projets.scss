@@ -270,12 +270,14 @@
   // Une tuile pleine largeur, puis deux demi-tuiles, et ainsi de suite.
   // Une demi-tuile restée seule en fin de liste (selon le filtre) prend
   // toute la largeur pour ne pas laisser de trou.
+  // Deux colonnes aussi sur mobile : la mosaïque garde son rythme au lieu
+  // d'une longue colonne de tuiles identiques.
   .projets__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 6px;
 
     @include until($bp-sm) {
-      grid-template-columns: 1fr;
+      gap: 4px;
     }
   }
 
@@ -299,6 +301,36 @@
     --veil:
       radial-gradient(ellipse 75% 38% at 50% 100%, rgba($color-blue-night, 0.7), rgba($color-blue-night, 0) 100%),
       rgba($color-blue-night, 0.12);
+
+    // Mobile : demi-tuile étroite, légende resserrée (la tuile entière
+    // reste cliquable, la pastille se fait plus petite)
+    @include until($bp-sm) {
+      gap: 0.3rem;
+      padding: 0.75rem 0.6rem 0.9rem;
+      --veil:
+        radial-gradient(ellipse 95% 45% at 50% 100%, rgba($color-blue-night, 0.75), rgba($color-blue-night, 0) 100%),
+        rgba($color-blue-night, 0.12);
+
+      .card__cat {
+        font-size: 0.56rem;
+        letter-spacing: 0.12em;
+        line-height: 1.35;
+      }
+
+      .card__title {
+        font-size: 1.2rem;
+      }
+
+      .card__desc {
+        display: none;
+      }
+
+      .card__cta {
+        margin-top: 0.35rem;
+        padding: 0.32rem 0.8rem;
+        font-size: 0.64rem;
+      }
+    }
   }
 
   .projets__grid > .card:nth-child(3n + 1) .card__title {
@@ -317,6 +349,11 @@
   .card__media {
     border-radius: 0;
     aspect-ratio: 1 / 1;
+
+    // Mobile : demi-tuiles en portrait, plus de place pour la légende
+    @include until($bp-sm) {
+      aspect-ratio: 4 / 5;
+    }
 
     img {
       filter: none;
