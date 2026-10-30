@@ -29,13 +29,11 @@
     align-items: flex-start;
   }
 
-  // Titre de colonne : libellé statique, en gras pour hiérarchiser
+  // Titre de colonne : même style discret que les surtitres de section
+  // (« Me contacter », « Questions fréquentes »)
   &__title {
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: $color-white;
+    font-size: 0.78rem;
+    color: $color-text-muted;
   }
 
   // Panneau de liens : toujours visible
@@ -87,8 +85,7 @@
     padding: 0;
     cursor: pointer;
     text-align: left;
-    font-size: 0.82rem;
-    letter-spacing: 0.02em;
+    font-size: 0.9rem;
     color: $color-text-soft;
     transition: color $transition;
 
@@ -124,7 +121,7 @@
 
   // Texte simple dans une colonne (ex. « Nice et Côte d'Azur »)
   &__meta {
-    font-size: 0.82rem;
+    font-size: 0.9rem;
     line-height: 1.5;
     color: $color-text-muted;
 
