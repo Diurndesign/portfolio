@@ -273,9 +273,19 @@
   // toute la largeur pour ne pas laisser de trou.
   // Deux colonnes aussi sur mobile : la mosaïque garde son rythme au lieu
   // d'une longue colonne de tuiles identiques.
+  // Pleine largeur de la page (même technique que les fondus). Sur grand
+  // écran, la mosaïque s'arrête aux barres de menu latérales fixes, qui
+  // resteraient sinon illisibles par-dessus les photos.
   .projets__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 0;
+    width: calc(100vw - #{2 * $sidebar-width});
+    margin-left: calc(50% - 50vw + #{$sidebar-width});
+
+    @include until($bp-md) {
+      width: 100vw;
+      margin-left: calc(50% - 50vw);
+    }
   }
 
   // --- Tons des tuiles : voile, texte et pastille ---
