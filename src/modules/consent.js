@@ -5,7 +5,7 @@
 //  puis le bandeau réapparaît. Il reste modifiable depuis le footer.
 // ============================================================
 
-const CLARITY_ID = 'A_REMPLACER';
+const CLARITY_ID = "z62fqoj1mo";
 const GA_ID = "G-FGQXLJR38H";
 const STORAGE_KEY = "diurn-cookie-consent"; // "granted" | "denied"
 const STORAGE_DATE_KEY = "diurn-cookie-consent-date"; // horodatage du choix (ms)
