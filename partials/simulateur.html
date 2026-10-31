@@ -1,0 +1,80 @@
+          <!-- Simulateur de budget (modules/simulator.js) : 5 questions, puis le
+               prénom et l'e-mail pour voir l'estimation. Les fourchettes viennent
+               des tarifs publiés sur /combien-coute-site-internet-nice. Masqué sans
+               JavaScript (le tableau des tarifs reste disponible). -->
+          <div class="sim" id="simulateur" data-simulator hidden>
+            <form class="sim__form" novalidate>
+              <div class="sim__progress">
+                <p class="sim__progress-label" aria-live="polite" data-sim-label>Question 1 sur 5</p>
+                <div class="sim__bar" aria-hidden="true"><span data-sim-bar></span></div>
+              </div>
+
+              <fieldset class="sim__step" data-step="projet">
+                <legend class="sim__question">Quel est votre projet&nbsp;?</legend>
+                <div class="sim__options">
+                  <label class="sim__option"><input type="radio" name="projet" value="onepage" /><span class="sim__option-title">Un site d'une page</span><span class="sim__option-text">Présenter votre activité simplement</span></label>
+                  <label class="sim__option"><input type="radio" name="projet" value="vitrine" /><span class="sim__option-title">Un site vitrine</span><span class="sim__option-text">4 à 6 pages&nbsp;: services, projets, à propos, contact</span></label>
+                  <label class="sim__option"><input type="radio" name="projet" value="refonte" /><span class="sim__option-title">Refaire mon site actuel</span><span class="sim__option-text">Il existe, mais ne vous ressemble plus</span></label>
+                  <label class="sim__option"><input type="radio" name="projet" value="logo" /><span class="sim__option-title">Seulement un logo</span><span class="sim__option-text">Le site viendra plus tard</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="sim__step" data-step="logo" hidden>
+                <legend class="sim__question">Avez-vous déjà un logo&nbsp;?</legend>
+                <div class="sim__options">
+                  <label class="sim__option"><input type="radio" name="logo" value="ok" /><span class="sim__option-title">Oui, et il me plaît</span></label>
+                  <label class="sim__option"><input type="radio" name="logo" value="revoir" /><span class="sim__option-title">Oui, mais il faudrait le revoir</span></label>
+                  <label class="sim__option"><input type="radio" name="logo" value="aucun" /><span class="sim__option-title">Non, pas encore</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="sim__step" data-step="contenus" hidden>
+                <legend class="sim__question">Vos textes et vos photos sont-ils prêts&nbsp;?</legend>
+                <div class="sim__options">
+                  <label class="sim__option"><input type="radio" name="contenus" value="tout" /><span class="sim__option-title">Oui, tout est prêt</span></label>
+                  <label class="sim__option"><input type="radio" name="contenus" value="partie" /><span class="sim__option-title">En partie</span></label>
+                  <label class="sim__option"><input type="radio" name="contenus" value="rien" /><span class="sim__option-title">Pas encore</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="sim__step" data-step="delai" hidden>
+                <legend class="sim__question">Pour quand&nbsp;?</legend>
+                <div class="sim__options">
+                  <label class="sim__option"><input type="radio" name="delai" value="Dès que possible" /><span class="sim__option-title">Dès que possible</span></label>
+                  <label class="sim__option"><input type="radio" name="delai" value="Dans 1 à 3 mois" /><span class="sim__option-title">Dans 1 à 3 mois</span></label>
+                  <label class="sim__option"><input type="radio" name="delai" value="Pas pressé" /><span class="sim__option-title">Pas pressé</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="sim__step" data-step="budget" hidden>
+                <legend class="sim__question">Quel budget aviez-vous en tête&nbsp;?</legend>
+                <p class="sim__hint">Il n'y a pas de mauvaise réponse&nbsp;: cela m'aide à vous proposer la formule adaptée.</p>
+                <div class="sim__options">
+                  <label class="sim__option"><input type="radio" name="budget" value="Moins de 1 000 €" /><span class="sim__option-title">Moins de 1&nbsp;000&nbsp;€</span></label>
+                  <label class="sim__option"><input type="radio" name="budget" value="1 000 à 2 000 €" /><span class="sim__option-title">1&nbsp;000 à 2&nbsp;000&nbsp;€</span></label>
+                  <label class="sim__option"><input type="radio" name="budget" value="2 000 à 3 500 €" /><span class="sim__option-title">2&nbsp;000 à 3&nbsp;500&nbsp;€</span></label>
+                  <label class="sim__option"><input type="radio" name="budget" value="Plus de 3 500 €" /><span class="sim__option-title">Plus de 3&nbsp;500&nbsp;€</span></label>
+                  <label class="sim__option"><input type="radio" name="budget" value="Je ne sais pas" /><span class="sim__option-title">Je ne sais pas encore</span></label>
+                </div>
+              </fieldset>
+
+              <fieldset class="sim__step" data-step="contact" hidden>
+                <legend class="sim__question">Votre estimation est prête</legend>
+                <p class="sim__hint">Indiquez votre prénom et votre e-mail pour la voir. Je ne vous écrirai qu'au sujet de votre projet, sans newsletter.</p>
+                <div class="sim__fields">
+                  <label class="sim__field"><span>Prénom</span><input type="text" name="name" autocomplete="given-name" required /></label>
+                  <label class="sim__field"><span>E-mail</span><input type="email" name="email" autocomplete="email" required /></label>
+                </div>
+                <input type="checkbox" name="botcheck" class="contact__botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" aria-label="Ne pas remplir ce champ anti-spam" />
+                <p class="sim__privacy">Vos informations servent uniquement à vous répondre et ne sont jamais revendues.</p>
+                <p class="sim__error" role="alert" data-sim-error></p>
+              </fieldset>
+
+              <div class="sim__nav">
+                <button class="sim__back" type="button" data-sim-back hidden>Retour</button>
+                <button class="sim__next" type="submit" data-sim-next>Suivant</button>
+              </div>
+            </form>
+
+            <div class="sim__result" data-sim-result tabindex="-1" hidden></div>
+          </div>

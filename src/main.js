@@ -15,6 +15,7 @@ import "./modules/article-toc.js";
 import "./modules/caps.js";
 import "./modules/compare.js";
 import "./modules/scroll-hide.js";
+import "./modules/simulator.js";
 
 // Grille de projets filtrable (React). Chargée à la demande, uniquement sur
 // la page qui la contient : les autres pages n'embarquent pas React.

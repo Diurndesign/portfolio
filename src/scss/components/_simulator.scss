@@ -1,0 +1,360 @@
+// ============================================================
+//  Simulateur de budget (partials/simulateur.html, modules/simulator.js)
+// ============================================================
+// Posé sur une section claire (corps des articles) : il reprend les
+// couleurs de texte de son contexte (--c-fg) et la couleur principale du
+// thème pour la sélection, la progression et le bouton.
+@use "../abstracts/variables" as *;
+@use "../abstracts/mixins" as *;
+
+// Les textes visés en « .sim .sim__x » : les règles des articles
+// (.article-section p, h3…) sont plus spécifiques qu'une classe seule.
+.sim {
+  margin-top: 1.75rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid rgba(var(--c-fg), 0.14);
+  border-radius: 14px;
+  background: rgba(var(--c-fg), 0.03);
+  scroll-margin-top: 2rem;
+
+  &__form,
+  &__step {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+  }
+
+  // --- Progression --------------------------------------------------
+  &__progress {
+    margin-bottom: 1.5rem;
+  }
+
+  & &__progress-label {
+    margin: 0 0 0.6rem;
+    font-size: 0.8rem;
+    color: $color-text-muted;
+  }
+
+  &__bar {
+    height: 2px;
+    background: rgba(var(--c-fg), 0.12);
+
+    span {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: rgb(var(--c-blue));
+      transition: width 0.4s $ease;
+    }
+  }
+
+  // --- Question et réponses ------------------------------------------
+  & &__question {
+    margin: 0 0 1.25rem;
+    padding: 0;
+    font-family: $font-display;
+    font-weight: 500;
+    font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+    line-height: 1.15;
+    color: $color-white;
+  }
+
+  & &__hint {
+    margin: -0.5rem 0 1.25rem;
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: $color-text-soft;
+  }
+
+  &__options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+    gap: 0.75rem;
+  }
+
+  &__option {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 1rem 1.1rem;
+    border: 1px solid rgba(var(--c-fg), 0.2);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: border-color $transition, background $transition;
+
+    // bouton radio invisible mais toujours focusable et lu
+    input {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    &:hover {
+      border-color: rgba(var(--c-fg), 0.45);
+    }
+
+    &:has(input:checked) {
+      border-color: rgb(var(--c-blue));
+      background: rgba(var(--c-blue), 0.07);
+      box-shadow: inset 0 0 0 1px rgb(var(--c-blue));
+    }
+
+    &:has(input:focus-visible) {
+      outline: 2px solid rgb(var(--c-blue));
+      outline-offset: 3px;
+    }
+  }
+
+  &__option-title {
+    font-weight: 600;
+    font-size: 0.98rem;
+    color: $color-white;
+  }
+
+  &__option-text {
+    font-size: 0.85rem;
+    line-height: 1.45;
+    color: $color-text-soft;
+  }
+
+  // --- Prénom et e-mail -----------------------------------------------
+  &__fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 1rem;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: $color-text-soft;
+
+    input {
+      padding: 0.8rem 0.9rem;
+      border: 1px solid rgba(var(--c-fg), 0.3);
+      border-radius: 2px;
+      background: transparent;
+      color: $color-white;
+      font: inherit;
+      font-size: 1rem;
+
+      &:focus-visible {
+        outline: 2px solid rgb(var(--c-blue));
+        outline-offset: 1px;
+      }
+    }
+  }
+
+  & &__privacy {
+    margin: 1rem 0 0;
+    font-size: 0.8rem;
+    color: $color-text-muted;
+  }
+
+  & &__error {
+    margin: 0.5rem 0 0;
+    font-size: 0.88rem;
+    color: $color-warning;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  // --- Boutons ---------------------------------------------------------
+  &__nav,
+  &__actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1rem;
+    margin-top: 1.75rem;
+  }
+
+  &__nav {
+    justify-content: flex-end;
+  }
+
+  &__next {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.85rem 1.5rem;
+    border: 0;
+    border-radius: 2px;
+    background: rgb(var(--c-blue));
+    color: $white;
+    font: inherit;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background $transition, opacity $transition;
+
+    &:hover,
+    &:focus-visible {
+      background: rgb(var(--s-dark));
+      color: $white;
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgb(var(--c-blue));
+      outline-offset: 3px;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      background: rgb(var(--c-blue));
+    }
+
+    [data-theme="orange"] & {
+      color: #18181a;
+
+      &:hover,
+      &:focus-visible {
+        color: $white;
+      }
+    }
+  }
+
+  &__back,
+  &__restart {
+    margin-right: auto;
+    padding: 0.6rem 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    font-size: 0.92rem;
+    color: $color-text-soft;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+
+    &:hover,
+    &:focus-visible {
+      color: $color-white;
+    }
+  }
+
+  &__back--link {
+    margin-right: 0;
+  }
+
+  &__restart {
+    margin: 0 0 0 auto;
+  }
+
+  // --- Résultat --------------------------------------------------------
+  &__result:focus {
+    outline: none;
+  }
+
+  & &__offer {
+    margin: 0;
+    font-weight: 600;
+    color: $color-white;
+  }
+
+  & &__price {
+    margin: 0.4rem 0 0;
+    font-family: $font-display;
+    font-weight: 500;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.05;
+    color: rgb(var(--c-blue));
+  }
+
+  & &__delay {
+    margin: 0.5rem 0 0;
+    color: $color-text-soft;
+  }
+
+  & &__verdict {
+    margin: 1.25rem 0 0;
+    padding: 0.8rem 1rem;
+    border-left: 2px solid rgba(var(--c-fg), 0.35);
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: $color-text-soft;
+
+    &--ok {
+      border-left-color: rgb(var(--c-blue));
+    }
+  }
+
+  & &__subtitle {
+    margin: 1.75rem 0 0.6rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $color-white;
+  }
+
+  & &__text,
+  & &__tips li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: $color-text-soft;
+  }
+
+  & &__text {
+    margin: 0;
+  }
+
+  &__tips {
+    margin: 0;
+    padding-left: 1.2rem;
+
+    li + li {
+      margin-top: 0.4rem;
+    }
+  }
+
+  & &__note {
+    margin: 1.5rem 0 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: $color-text-muted;
+  }
+
+  @include until($bp-sm) {
+    &__next {
+      flex: 1 1 100%;
+    }
+  }
+}
+
+// Orange : le prix en charbon (l'orange sur blanc cassé manque de contraste)
+[data-theme="orange"] .sim .sim__price {
+  color: rgb(var(--c-ink));
+}
+
+// Renvoi vers le simulateur (sous la FAQ de l'accueil)
+.sim-teaser {
+  margin: 2rem 0 0;
+  font-size: 0.98rem;
+  color: $color-text-soft;
+
+  a {
+    font-weight: 600;
+    color: $color-white;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+
+    span {
+      display: inline-block;
+      transition: translate $transition;
+    }
+
+    &:hover span,
+    &:focus-visible span {
+      translate: 4px 0;
+    }
+  }
+}

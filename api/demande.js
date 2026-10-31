@@ -76,6 +76,10 @@ async function getDatabase() {
       Entreprise: { rich_text: {} },
       Page: { rich_text: {} },
       Provenance: { rich_text: {} },
+      Projet: { rich_text: {} },
+      "Budget estimé": { rich_text: {} },
+      "Budget prévu": { select: {} },
+      "Délai souhaité": { select: {} },
       "Reçu le": { date: {} },
       "Montant du devis": { number: { format: "euro" } },
       Relance: { date: {} },
@@ -163,11 +167,20 @@ export default async function handler(req, res) {
 
   const website = clean(body.website, 300);
   const formName = clean(body.form_name, 30) || "contact";
+
+  // Réponses du simulateur de budget (colonnes remplies seulement s'il y en a)
+  const extra = {};
+  if (body.projet) extra.Projet = { rich_text: text(clean(body.projet, 1000)) };
+  if (body.estimation) extra["Budget estimé"] = { rich_text: text(clean(body.estimation, 200)) };
+  if (body.budget) extra["Budget prévu"] = { select: { name: clean(body.budget, 50) } };
+  if (body.delai) extra["Délai souhaité"] = { select: { name: clean(body.delai, 50) } };
+
   try {
     const db = await getDatabase();
     await notion("/pages", "POST", {
       parent: { database_id: db },
       properties: {
+        ...extra,
         Nom: { title: text(name) },
         Statut: { select: { name: "Nouveau" } },
         Email: { email },
