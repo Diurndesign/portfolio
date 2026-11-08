@@ -1,6 +1,17 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "functions": {
+    "api/prospects.js": {
+      "maxDuration": 60
+    }
+  },
+  "crons": [
+    {
+      "path": "/api/prospects",
+      "schedule": "0 5 * * 1-4"
+    }
+  ],
   "redirects": [
     {
       "source": "/parcours",
