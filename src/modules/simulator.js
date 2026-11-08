@@ -8,6 +8,8 @@
 // La demande part vers Notion (/api/demande) et par e-mail (Web3Forms), en
 // arrière-plan : l'estimation s'affiche même si l'envoi échoue.
 
+import { track } from "./analytics.js";
+
 const ACCESS_KEY = "e5c89c34-54c5-4f3a-8c1f-6a8d4c359c75"; // Web3Forms (clé publique)
 const CALENDLY = "https://calendly.com/diurnstudio/appel-decouvert";
 
@@ -160,9 +162,7 @@ function send(answers, offre, contact) {
     email: contact.email,
     message,
   }).catch(() => {});
-  if (typeof window.gtag === "function") {
-    window.gtag("event", "generate_lead", { form_name: "simulateur" });
-  }
+  track("generate_lead", { form_name: "simulateur" });
 }
 
 function initSimulator(root) {

@@ -8,6 +8,8 @@
 
 // Provenance du visiteur (site d'où il arrive, campagne), mémorisée pour
 // la session à l'arrivée sur le site, et jointe à sa demande seulement
+import { track } from "./analytics.js";
+
 function rememberSource() {
   try {
     if (sessionStorage.getItem("diurn-source")) return;
@@ -92,11 +94,7 @@ function initContactForm() {
         // Conversion GA4 au succès réel de l'envoi (pas au clic). Le nom du
         // formulaire vient de data-form-name (« audit », « devis »), sinon
         // « contact ». gtag n'existe qu'après consentement (consent.js).
-        if (typeof window.gtag === "function") {
-          window.gtag("event", "generate_lead", {
-            form_name: form.dataset.formName || "contact",
-          });
-        }
+        track("generate_lead", { form_name: form.dataset.formName || "contact" });
       } else {
         throw new Error("Échec de l'envoi");
       }

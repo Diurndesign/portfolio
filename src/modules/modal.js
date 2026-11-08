@@ -5,6 +5,7 @@
 // ajouter un projet là-bas suffit, pas besoin de toucher au HTML.
 // Le seul contenu encore en <template> est « Mentions légales » (#detail-legal).
 
+import { track } from "./analytics.js";
 import { projects } from "../projects/projects.data.js";
 import { renderTech } from "../projects/tech-icons.js";
 
@@ -165,6 +166,7 @@ function initModal() {
     const tpl = document.getElementById("detail-" + id);
     const proj = projects.find((p) => p.id === id && p.detail);
     if (!tpl && !proj) return;
+    if (proj) track("open_project", { project: id });
 
     body.innerHTML = "";
     if (tpl) {

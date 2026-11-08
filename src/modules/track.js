@@ -1,7 +1,7 @@
 // ============================================================
 //  Suivi des conversions — clics mail / téléphone / Calendly / CTA
 // ============================================================
-// Envoie des événements GA4 sur les actions de conversion secondaires
+// Envoie des événements (GA4 et Clarity, via analytics.js) sur les actions de conversion secondaires
 // (en complément de « generate_lead », envoyé par contact-form.js au succès
 // réel de l'envoi d'un formulaire).
 // RGPD : gtag n'existe qu'après consentement (voir consent.js), donc rien
@@ -11,11 +11,7 @@
 const CTA_SELECTOR =
   ".hero__cta, .about__cta, .landing__cta, .landing__midcta, [data-cta]";
 
-function track(name, params) {
-  if (typeof window.gtag === "function") {
-    window.gtag("event", name, params || {});
-  }
-}
+import { track } from "./analytics.js";
 
 function initTracking() {
   // Délégation d'événement : un seul écouteur pour tout le document.
@@ -38,6 +34,18 @@ function initTracking() {
     // Clic sur un lien de réservation Calendly
     if (/calendly\.com/i.test(href)) {
       track("click_calendly", { page_path: location.pathname });
+      return;
+    }
+
+    // Clic vers l'audit gratuit (menu, boutons, liens dans le texte)
+    if (/^\/audit-site-web-gratuit/.test(href)) {
+      track("click_audit", { page_path: location.pathname });
+      return;
+    }
+
+    // Clic vers une section contact (#contact, sur la page ou l'accueil)
+    if (/#contact$/.test(href)) {
+      track("click_contact", { page_path: location.pathname });
       return;
     }
 
