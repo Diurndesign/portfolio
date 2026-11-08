@@ -43,8 +43,12 @@ function htmlPartials() {
 //     chaîne critique et accélérer le LCP.
 function optimizeHtml() {
   const inlined = new Set();
-  // Polices réellement utilisées above-the-fold sur toutes les pages.
-  const preloadFonts = ["HelloParisSerifExtraLight", "HelloParisSerifLight"];
+  // Police du premier écran, selon le type de page (mesuré) : les titres des
+  // articles et pages de service sont en Medium (500), l'accueil en Light
+  // (300). Précharger le bon poids évite que le titre change de police, donc
+  // de taille, après l'affichage (décalage de mise en page).
+  const preloadFontsFor = (html) =>
+    html.includes('class="article-hero"') ? ["HelloParisSerifMedium"] : ["HelloParisSerifLight"];
 
   return {
     name: "optimize-html",
@@ -74,7 +78,7 @@ function optimizeHtml() {
 
       // --- 2. Preload des polices critiques -----------------------------
       const tags = [];
-      for (const name of preloadFonts) {
+      for (const name of preloadFontsFor(out)) {
         const file = Object.keys(ctx.bundle).find(
           (f) => f.includes(name) && f.endsWith(".woff2")
         );
