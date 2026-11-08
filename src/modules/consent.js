@@ -13,8 +13,12 @@ const STORAGE_DATE_KEY = "diurn-cookie-consent-date"; // horodatage du choix (ms
 // d'affichage immédiat du bandeau (vite.config.js, optimizeHtml).
 const CONSENT_MAX_AGE = 182 * 24 * 60 * 60 * 1000;
 
+// Mesure seulement sur le vrai site : les versions de test Vercel
+// (*.vercel.app) et le poste de travail ne faussent plus les statistiques.
+const IS_PRODUCTION = /(^|\.)diurnstudio\.fr$/.test(location.hostname);
+
 function loadGoogleAnalytics() {
-  if (window.__gaLoaded) return;
+  if (!IS_PRODUCTION || window.__gaLoaded) return;
   window.__gaLoaded = true;
 
   const s = document.createElement("script");
@@ -27,6 +31,14 @@ function loadGoogleAnalytics() {
     window.dataLayer.push(arguments);
   }
   window.gtag = gtag;
+  // Mode Consentement : chargé seulement après « Accepter », donc mesure
+  // d'audience accordée, publicité refusée (aucune donnée publicitaire)
+  gtag("consent", "default", {
+    analytics_storage: "granted",
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+  });
   gtag("js", new Date());
   gtag("config", GA_ID, { anonymize_ip: true });
 }
@@ -35,7 +47,7 @@ function loadGoogleAnalytics() {
 // (obligatoire pour les visiteurs européens). Tant que l'ID n'est pas
 // renseigné, rien n'est chargé.
 function loadClarity() {
-  if (!CLARITY_ID || CLARITY_ID === "A_REMPLACER") return;
+  if (!IS_PRODUCTION || !CLARITY_ID || CLARITY_ID === "A_REMPLACER") return;
 
   if (!window.__clarityLoaded) {
     window.__clarityLoaded = true;
