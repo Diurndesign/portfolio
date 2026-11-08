@@ -7,6 +7,7 @@ Diurn Studio est dirigé par Jérémy Bendenoun, designer et développeur web ba
 ## Services
 
 - Création de sites internet sur mesure (vitrine, one-page, application web), codés main en HTML, CSS, JavaScript et React. Un site one-page démarre à 900 €, un site vitrine multi-pages à partir de 1 800 €, un logo à partir de 700 €, une application web sur devis.
+- Refonte de site internet (de 1 500 à 3 500 €, 3 à 6 semaines) : nouveau design sur mesure, sortie de Wix, Squarespace ou WordPress, référencement Google conservé grâce aux redirections. Page : https://www.diurnstudio.fr/refonte-site-internet-nice
 - Identité de marque et design graphique : logo, charte graphique, système visuel complet, déclinaisons print et numériques.
 - Référencement local (SEO) intégré dès la conception, pour être visible sur Nice et la Côte d'Azur.
 - Direction photo et production de contenu pour nourrir la marque une fois le site en ligne.
