@@ -7,32 +7,58 @@
 
 const NB = " "; // espace insécable avant « : »
 
-// Métiers et villes visés (une recherche Google Maps par couple)
-export const METIERS = [
+// Métiers et villes visés (une recherche Google Maps par couple).
+// En priorité : architectes, architectes d'intérieur et avocats (2 recherches
+// sur 3 chaque jour, sur 7 villes), puis les artisans et les commerces.
+export const PRIORITAIRES = [
+  { metier: "Architecte", cherche: "un architecte", q: "architecte" },
+  { metier: "Avocat", cherche: "un cabinet d'avocats", q: "avocat" },
+  { metier: "Architecte d'intérieur", cherche: "un architecte d'intérieur", q: "architecte d'intérieur" },
+  { metier: "Avocat", cherche: "un avocat en droit de la famille", q: "avocat droit de la famille" },
+  { metier: "Architecte", cherche: "une agence d'architecture", q: "agence d'architecture" },
+  { metier: "Avocat", cherche: "un avocat en droit immobilier", q: "avocat droit immobilier" },
+  { metier: "Architecte d'intérieur", cherche: "un architecte d'intérieur", q: "décoration architecture intérieure" },
+  { metier: "Avocat", cherche: "un avocat en droit du travail", q: "avocat droit du travail" },
+];
+export const VILLES_PRIORITAIRES = ["Nice", "Cannes", "Antibes", "Menton", "Grasse", "Cagnes-sur-Mer", "Mougins"];
+
+export const AUTRES = [
+  { metier: "Plombier", cherche: "un plombier", q: "plombier" },
+  { metier: "Électricien", cherche: "un électricien", q: "électricien" },
+  { metier: "Menuisier", cherche: "un menuisier", q: "menuisier ébéniste" },
+  { metier: "Peintre en bâtiment", cherche: "un peintre en bâtiment", q: "peintre en bâtiment" },
+  { metier: "Maçon", cherche: "un maçon", q: "maçon rénovation" },
+  { metier: "Carreleur", cherche: "un carreleur", q: "carreleur" },
   { metier: "Boulangerie", cherche: "une boulangerie", q: "boulangerie pâtisserie" },
   { metier: "Restaurant", cherche: "un restaurant", q: "restaurant" },
   { metier: "Coiffeur", cherche: "un coiffeur", q: "salon de coiffure" },
-  { metier: "Plombier", cherche: "un plombier", q: "plombier" },
-  { metier: "Architecte d'intérieur", cherche: "un architecte d'intérieur", q: "architecte d'intérieur" },
-  { metier: "Boucherie", cherche: "une boucherie", q: "boucherie charcuterie" },
   { metier: "Institut de beauté", cherche: "un institut de beauté", q: "institut de beauté" },
-  { metier: "Électricien", cherche: "un électricien", q: "électricien" },
+  { metier: "Boucherie", cherche: "une boucherie", q: "boucherie charcuterie" },
   { metier: "Fromagerie", cherche: "une fromagerie", q: "fromagerie" },
   { metier: "Barbier", cherche: "un barbier", q: "barbier" },
-  { metier: "Menuisier", cherche: "un menuisier", q: "menuisier ébéniste" },
   { metier: "Caviste", cherche: "un caviste", q: "caviste" },
-  { metier: "Onglerie", cherche: "une onglerie", q: "onglerie prothésiste ongulaire" },
-  { metier: "Peintre en bâtiment", cherche: "un peintre en bâtiment", q: "peintre en bâtiment" },
   { metier: "Épicerie fine", cherche: "une épicerie fine", q: "épicerie fine" },
 ];
 export const VILLES = ["Nice", "Antibes", "Cannes", "Menton"];
 
-// 15 métiers et 4 villes : en avançant d'un cran par recherche, on passe
-// par les 60 couples avant de revenir au premier (15 et 4 sont premiers
-// entre eux), en changeant de métier et de ville à chaque fois.
-export function recherche(n) {
-  const i = ((n % 60) + 60) % 60;
-  return { ...METIERS[i % METIERS.length], ville: VILLES[i % VILLES.length] };
+// n-ième couple (métier, ville) : on change de métier à chaque pas et de
+// ville presque à chaque pas, et tous les couples passent avant de revenir
+// au premier.
+function couple(metiers, villes, n) {
+  const total = metiers.length * villes.length;
+  const i = ((n % total) + total) % total;
+  const tour = Math.floor(i / metiers.length);
+  const m = i % metiers.length;
+  return { ...metiers[m], ville: villes[(m + tour) % villes.length] };
+}
+
+// Les 3 recherches d'un jour : 2 prioritaires, puis 1 autre métier
+export function recherchesDuJour(jour) {
+  return [
+    couple(PRIORITAIRES, VILLES_PRIORITAIRES, jour * 2),
+    couple(PRIORITAIRES, VILLES_PRIORITAIRES, jour * 2 + 1),
+    couple(AUTRES, VILLES, jour),
+  ];
 }
 
 // Pages qui ne sont pas un vrai site : réseaux sociaux, annuaires,
@@ -408,6 +434,29 @@ Si cela vous intéresse, je vous montre en 30 minutes ce que cela donnerait pour
 Bonne journée,
 ${SIGNATURE}
 https://www.diurnstudio.fr
+
+${DESINSCRIPTION}`,
+    };
+  }
+
+  if (/avocat/i.test(metier)) {
+    return {
+      objet: `Le site de ${nom}`,
+      corps: `Maître [Nom],
+
+En cherchant ${qui} à ${ville}, je suis tombé sur le site de votre cabinet. [Un mot sincère et précis : vos domaines d'intervention, votre parcours, votre présentation.]
+
+En le parcourant, j'ai remarqué trois points qui peuvent freiner un futur client :
+1. ${liste[0]}
+2. ${liste[1]}
+3. ${liste[2]}
+
+Je suis Jérémy, designer et développeur web près de Nice. Je conçois des sites de cabinets sobres et clairs, dans le respect des règles de communication de la profession : une page par domaine d'intervention, vos honoraires présentés simplement si vous le souhaitez, une prise de rendez-vous en ligne, et un bon référencement sur « avocat ${ville} ».
+
+Je peux vous montrer en 30 minutes ce que cela donnerait pour votre cabinet : ${CALENDLY}
+
+Bien à vous,
+${SIGNATURE}
 
 ${DESINSCRIPTION}`,
     };

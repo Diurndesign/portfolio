@@ -3,7 +3,8 @@
 // ============================================================
 // Du lundi au jeudi, tôt le matin (vercel.json, « crons ») :
 //   1. cherche des entreprises sur Google Maps (API Google Places),
-//      un métier et une ville différents à chaque recherche ;
+//      2 recherches sur 3 pour les architectes et les avocats, la
+//      troisième pour les artisans et les commerces ;
 //   2. ouvre leur site et relève ce qui freine (pas de site, pas adapté
 //      au mobile, pas sécurisé, daté, lent, Wix…) ;
 //   3. ajoute les 5 entreprises qui en ont le plus besoin dans la base
@@ -21,7 +22,7 @@
 // clé n'est montrée) et quelle sera la prochaine recherche.
 
 import {
-  recherche,
+  recherchesDuJour,
   hostOf,
   plateformeDe,
   constatsSansSite,
@@ -218,7 +219,7 @@ async function lancer() {
   let restant = PAR_JOUR;
 
   for (let k = 0; k < RECHERCHES_PAR_JOUR && restant > 0; k++) {
-    const q = recherche(jour * RECHERCHES_PAR_JOUR + k);
+    const q = recherchesDuJour(jour)[k];
     const textQuery = `${q.q} ${q.ville}`;
     let pageToken;
     // jusqu'à 3 pages de 20 résultats : les premières sont vite dans Notion,
@@ -266,10 +267,7 @@ export default async function handler(req, res) {
   const query = req.query || {};
   if (req.method === "GET" && "check" in query) {
     const jour = Math.floor(Date.now() / 86_400_000);
-    const prochaines = Array.from({ length: RECHERCHES_PAR_JOUR }, (_, k) => {
-      const q = recherche(jour * RECHERCHES_PAR_JOUR + k);
-      return `${q.q} ${q.ville}`;
-    });
+    const prochaines = recherchesDuJour(jour).map((q) => `${q.q} ${q.ville}`);
     const out = {
       notion: Boolean(TOKEN),
       google: Boolean(PLACES_KEY),
