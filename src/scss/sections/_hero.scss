@@ -929,7 +929,7 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
 
   .hero__kicker,
   .hero__lead,
-  .hero__cta--ghost,
+  .hero__cta--works,
   .hero__proof li:not(:first-child) {
     display: none;
   }
@@ -954,9 +954,12 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     width: min(760px, calc(0.9 * (100vw - 2.5rem)));
     margin-top: 2rem;
 
+    // « Réserver un appel » et « Tester mon site » côte à côte
     .hero__cta {
-      flex: 1 1 100%;
+      flex: 1 1 0;
       justify-content: center;
+      padding: 0.9rem 0.75rem;
+      white-space: nowrap;
     }
   }
 
@@ -1062,5 +1065,65 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
   .hero__card-face--back .hero__card-body {
     grid-template-columns: 1fr;
     padding-bottom: 2.4rem;
+  }
+}
+
+// « Tester mon site » : bouton du mobile ; en desktop, le lien sous les boutons suffit
+@include from($bp-md) {
+  .hero__cta--test {
+    display: none;
+  }
+}
+
+// Logotype au verso : le même dessin que le nom gaufré du recto, en blanc
+.hero__card-logo {
+  margin-bottom: clamp(0.4rem, 2.4cqw, 1.2rem);
+  font-family: $font-display;
+  font-weight: 300;
+  font-size: clamp(1.2rem, 6.2cqw, 2.6rem);
+  line-height: 0.86;
+  color: var(--card-ink);
+}
+
+.hero__card-logo-line {
+  display: block;
+  width: fit-content;
+
+  &::before {
+    content: attr(data-text);
+    content: attr(data-text) / "";
+  }
+}
+
+// Le nom passe en texte courant : le logotype porte déjà la police d'affichage
+.hero__card-name {
+  font-family: $font-body;
+  font-weight: 600;
+  font-size: clamp(0.78rem, 2.7cqw, 1.15rem);
+  line-height: 1.25;
+}
+
+// Verso sur carte étroite (mobile) : tout doit tenir dans la hauteur
+@container (max-width: 330px) {
+  .hero__card-face--back .hero__card-body {
+    gap: 0.55rem;
+    padding-top: 0.9rem;
+  }
+
+  .hero__card-face--back .hero__card-text {
+    gap: 0.3rem;
+  }
+
+  .hero__card-logo {
+    margin-bottom: 0.15rem;
+    font-size: 1.05rem;
+  }
+
+  .hero__card-place {
+    display: none; // la ville est déjà dans le titre du hero
+  }
+
+  .hero__card-face--back .hero__card-actions {
+    padding-top: 0.55rem;
   }
 }

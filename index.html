@@ -208,7 +208,7 @@
         <li><a href="#a-propos" class="nav__link">À propos</a></li>
         <li><a href="#contact" class="nav__link">Contact</a></li>
         <li><a href="/guides" class="nav__link">Guides</a></li>
-        <li><a href="/audit-site-web-gratuit" class="nav__link">Audit gratuit</a></li>
+        <li><a href="/diagnostic-site-gratuit" class="nav__link">Tester votre site</a></li>
       </ul>
 
       <!-- Sidebar droite : réseaux -->
@@ -282,9 +282,10 @@
               rel="noopener"
               data-calendly
             >
-              Réserver un appel <span aria-hidden="true">↗</span>
+              Réserver un appel
             </a>
-            <a class="hero__cta hero__cta--ghost" href="#projets">Voir les réalisations</a>
+            <a class="hero__cta hero__cta--ghost hero__cta--works" href="#projets">Voir les réalisations</a>
+            <a class="hero__cta hero__cta--ghost hero__cta--test" href="/diagnostic-site-gratuit">Tester mon site</a>
           </div>
           <ul class="hero__proof">
             <li>
@@ -335,7 +336,13 @@
                      et une fiche contact à enregistrer dans le téléphone. -->
                 <div class="hero__card-body">
                 <div class="hero__card-text">
-                  <p class="hero__card-kicker">Diurn Studio</p>
+                  <!-- Logotype, même dessin qu'au recto (lettres décoratives,
+                       le nom lisible reste pour les lecteurs d'écran) -->
+                  <p class="hero__card-logo">
+                    <span class="sr-only">Diurn Studio</span>
+                    <span class="hero__card-logo-line" data-text="DiUrN" aria-hidden="true"></span>
+                    <span class="hero__card-logo-line" data-text="sTudio" aria-hidden="true"></span>
+                  </p>
                   <p class="hero__card-name">Jérémy Bendenoun</p>
                   <p class="hero__card-role">Designer et développeur web</p>
                   <p class="hero__card-place">Nice · Côte d'Azur</p>
