@@ -61,6 +61,7 @@ export const projects = [
   {
     id: "gdunan",
     kind: "modal",
+    cardHref: "/realisations/gdunan",
     title: "GdunaN",
     cat: "Identité · Site web",
     tags: ["web", "identite"],
@@ -160,6 +161,7 @@ export const projects = [
   {
     id: "elo",
     kind: "modal",
+    cardHref: "/realisations/elo-ab",
     title: "Elo Ab",
     cat: "Refonte · Couture",
     tags: ["identite"],
@@ -191,6 +193,7 @@ export const projects = [
   {
     id: "ewaflr",
     kind: "modal",
+    cardHref: "/realisations/ewa-flr",
     title: "Ewa FLR",
     cat: "Identité de marque",
     tags: ["identite"],

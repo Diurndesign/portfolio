@@ -272,7 +272,11 @@ function initModal() {
   // utilisé par les cartes « réalisations » des pages landing.
   function openFromHash() {
     const m = location.hash.match(/^#projet-([a-z0-9-]+)$/i);
-    if (m) open(m[1]);
+    if (!m) return;
+    // Projet qui a sa page d'étude de cas : on y va directement
+    const proj = projects.find((p) => p.id === m[1]);
+    if (proj && proj.cardHref) return location.replace(proj.cardHref);
+    open(m[1]);
   }
   openFromHash();
   window.addEventListener("hashchange", openFromHash);

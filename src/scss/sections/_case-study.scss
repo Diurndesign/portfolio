@@ -339,6 +339,22 @@
     &--full {
       grid-column: 1 / -1;
     }
+
+    // Deux images côte à côte de proportions différentes : la plus courte
+    // remplit la hauteur de la rangée (recadrée sur les côtés), sans vide
+    @include from($bp-sm) {
+      &:not(.case-study__fig--full) img {
+        height: 100%;
+        object-fit: cover;
+      }
+
+      // Image seule sur sa rangée : centrée, à la largeur d'une colonne
+      &:not(.case-study__fig--full):last-child:is(:first-child, .case-study__fig--full + *) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        width: calc(50% - clamp(0.75rem, 2vw, 1.25rem) / 2);
+      }
+    }
   }
 
   // --- Citation : moment fort (panneau teinté) ----------------

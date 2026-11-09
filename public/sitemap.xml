@@ -73,7 +73,24 @@
     <priority>0.6</priority>
   </url>
   <!-- case-studies:start -->
-
+  <url>
+    <loc>https://www.diurnstudio.fr/realisations/gdunan</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.diurnstudio.fr/realisations/ewa-flr</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.diurnstudio.fr/realisations/elo-ab</loc>
+    <lastmod>2026-11-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
   <!-- case-studies:end -->
   <url>
     <loc>https://www.diurnstudio.fr/refonte-site-internet-nice</loc>
