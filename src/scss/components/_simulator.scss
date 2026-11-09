@@ -358,3 +358,31 @@
     }
   }
 }
+
+// Résumé des fourchettes, en HTML statique sous le simulateur : lisible sans
+// JavaScript et par les moteurs de recherche (le simulateur, lui, est masqué
+// tant que son script n'a pas démarré).
+.sim-grid {
+  margin-top: 2.25rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid rgba(var(--c-fg), 0.14);
+
+  .article-section & .sim-grid__title {
+    margin: 0;
+    font-family: $font-body;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1.4;
+    color: $color-text-muted;
+  }
+
+  .article-section & .landing__list {
+    margin-top: 1rem;
+  }
+
+  .article-section & > p {
+    margin-top: 1.25rem;
+  }
+}
