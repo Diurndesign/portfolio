@@ -18,7 +18,7 @@ Hero (accroche + CTA) → Projets (preuves) → À propos (confiance) → FAQ (o
 ```
 
 Chaque section se termine par un appel à l'action : « Discutons de votre
-projet », « Audit gratuit » ou « Réserver un appel ».
+projet », « Tester votre site » ou « Réserver un appel ».
 
 ### Arborescence
 
@@ -35,7 +35,7 @@ projet », « Audit gratuit » ou « Réserver un appel ».
 ├── /site-sur-mesure-ou-wix-squarespace
 ├── /site-avec-ia-ou-developpeur
 └── /refonte-site-et-charte-graphique
-/audit-site-web-gratuit             Offre d'appel
+/diagnostic-site-gratuit            Diagnostic en 1 minute (offre d'appel)
 /creation-site-internet-{nice,cannes,antibes,monaco}   Pages SEO locales
 /graphiste-nice, /studio-design-nice                   Pages SEO métier
 ```

@@ -500,7 +500,7 @@ J'ai remarqué trois points qui vous font probablement perdre des clients :
 
 Je suis Jérémy, designer et développeur web près de Nice. Je refais des sites comme le vôtre sur mesure, en gardant votre nom de domaine et votre place sur Google, et sans abonnement à une plateforme.
 
-Si cela vous intéresse, je vous envoie un audit gratuit plus complet (vitesse, affichage mobile, référencement), sans engagement. Il suffit de me répondre « oui ».
+Vous pouvez voir la note de votre site en 1 minute, gratuitement et sans inscription : https://www.diurnstudio.fr/diagnostic-site-gratuit. Et si vous voulez en parler, il suffit de me répondre.
 
 Bonne journée,
 ${SIGNATURE}

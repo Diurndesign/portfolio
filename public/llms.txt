@@ -21,7 +21,6 @@ Diurn Studio est dirigé par Jérémy Bendenoun, designer et développeur web ba
 - [Création de site internet à Cannes](https://www.diurnstudio.fr/creation-site-internet-cannes) : sites sur mesure pour les entreprises de Cannes.
 - [Création de site internet à Antibes](https://www.diurnstudio.fr/creation-site-internet-antibes) : sites sur mesure sur le bassin d'Antibes.
 - [Création de site internet à Monaco](https://www.diurnstudio.fr/creation-site-internet-monaco) : sites sur mesure pour la Principauté de Monaco.
-- [Audit gratuit de votre site](https://www.diurnstudio.fr/audit-site-web-gratuit) : audit UX, SEO et performances, livré sous 48h, sans engagement.
 - [Diagnostic gratuit en 1 minute](https://www.diurnstudio.fr/diagnostic-site-gratuit) : note sur 100 et 3 priorités, mesurées automatiquement (vitesse mobile, référencement, accessibilité, essentiels).
 
 ## Guides

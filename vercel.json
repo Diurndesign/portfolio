@@ -25,6 +25,11 @@
       "source": "/realisations/beauty-corner",
       "destination": "/#projet-beautycorner",
       "permanent": true
+    },
+    {
+      "source": "/audit-site-web-gratuit",
+      "destination": "/diagnostic-site-gratuit",
+      "permanent": true
     }
   ],
   "headers": [

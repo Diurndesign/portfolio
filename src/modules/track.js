@@ -37,9 +37,9 @@ function initTracking() {
       return;
     }
 
-    // Clic vers l'audit gratuit (menu, boutons, liens dans le texte)
-    if (/^\/audit-site-web-gratuit/.test(href)) {
-      track("click_audit", { page_path: location.pathname });
+    // Clic vers le diagnostic gratuit (menu, boutons, liens dans le texte)
+    if (/^\/diagnostic-site-gratuit/.test(href)) {
+      track("click_diagnostic", { page_path: location.pathname });
       return;
     }
 
