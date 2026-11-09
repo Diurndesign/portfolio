@@ -217,6 +217,7 @@ const DE_FOND = {
 export function choisirCas(note, constatsBruts) {
   const fond = constatsBruts.find((c) => DE_FOND[c.probleme]);
   if (fond) return { cas: "refonte", motif: DE_FOND[fond.probleme] };
+  if (note === null) return { cas: "journee", motif: "" }; // mesure partielle : l'appel tranchera
   if (note < 50) return { cas: "refonte", motif: "Votre site cumule trop de freins pour une simple correction" };
   if (note >= 90) return { cas: "image", motif: "" };
   return { cas: "journee", motif: "" };
@@ -254,7 +255,9 @@ export async function diagnostiquer(url, { metier = "", ville = "" } = {}) {
   const poids = constatsSite.reduce((t, c) => t + c.score, 0);
   axes.push({ cle: "essentiels", label: "Essentiels d'un site pro", note: Math.max(0, 100 - poids * 6) });
 
-  const note = Math.round(axes.reduce((t, x) => t + x.note, 0) / axes.length);
+  // Sans la mesure Google, pas de note globale : elle ne reposerait que
+  // sur les essentiels et pourrait afficher 100/100 pour un site lent.
+  const note = lhr ? Math.round(axes.reduce((t, x) => t + x.note, 0) / axes.length) : null;
   const { cas, motif } = choisirCas(note, brut);
   return {
     cas,
@@ -288,14 +291,14 @@ async function ajouterNotion({ nom, email, lettre, envoye, page, source, d }) {
         Statut: { select: { name: "Nouveau" } },
         Email: { email },
         Formulaire: { select: { name: "diagnostic" } },
-        Objet: { rich_text: text(`Diagnostic ${d.note}/100${envoye ? "" : " : résultat à envoyer par e-mail"}`) },
+        Objet: { rich_text: text(`Diagnostic ${d.note === null ? "partiel" : `${d.note}/100`}${envoye ? "" : " : résultat à envoyer par e-mail"}`) },
         "Site actuel": { url: d.site },
         Page: { rich_text: text(page) },
         Provenance: { rich_text: text(source) },
         "Reçu le": { date: { start: new Date().toISOString() } },
       },
       children: [
-        para(`Note globale : ${d.note}/100${d.mesureGoogle ? "" : " (mesure Google indisponible)"}`),
+        para(d.note === null ? "Résultat partiel : mesure Google indisponible" : `Note globale : ${d.note}/100`),
         ...d.axes.map((x) => puce(`${x.label} : ${x.note}/100`)),
         para("Priorités montrées au visiteur :"),
         ...d.priorites.map(puce),
@@ -347,7 +350,7 @@ export function emailHtml(d, prenom) {
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:32px 16px">
 <table role="presentation" width="100%" style="max-width:560px;background:#ffffff;border-radius:6px" cellpadding="0" cellspacing="0"><tr><td style="padding:32px">
 <p style="margin:0 0 4px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#6b6d86">Diagnostic express · Diurn Studio</p>
-<h1 style="margin:0 0 16px;font-size:24px;color:#010d94">${esc(d.host)} : ${d.note}/100</h1>
+<h1 style="margin:0 0 16px;font-size:24px;color:#010d94">${esc(d.host)}${d.note === null ? " : premiers constats" : ` : ${d.note}/100`}</h1>
 <p style="margin:0 0 20px;color:#17193a;line-height:1.6">Bonjour${prenom ? " " + esc(prenom) : ""}, voici le résultat du diagnostic de votre site, mesuré sur mobile.</p>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #e3e0d8;border-bottom:1px solid #e3e0d8;margin-bottom:20px">${d.axes.map(ligne).join("")}</table>
 <p style="margin:-8px 0 20px;color:#6b6d86;font-size:13px;line-height:1.6">« Bases du référencement » vérifie que Google peut lire et comprendre votre page. Votre position dépend aussi de votre contenu, de votre fiche Google et des sites qui parlent de vous.</p>
@@ -377,7 +380,7 @@ async function envoyerBrevo({ email, prenom, lettre, d }) {
     sender: { name: "Jérémy · Diurn Studio", email: BREVO_SENDER },
     to: [{ email, ...(prenom ? { name: prenom } : {}) }],
     replyTo: { email: BREVO_SENDER, name: "Jérémy Bendenoun" },
-    subject: `Votre site ${d.host} : ${d.note}/100`,
+    subject: d.note === null ? `Votre site ${d.host} : premiers constats` : `Votre site ${d.host} : ${d.note}/100`,
     htmlContent: emailHtml(d, prenom),
     tags: ["diagnostic"],
   });
@@ -436,7 +439,8 @@ export default async function handler(req, res) {
   if (enCache && now - enCache.at < CACHE_MS && !ville) d = enCache.data;
   else {
     d = await diagnostiquer(url, { ville });
-    if (!d.erreur) cache.set(url.host, { at: now, data: d });
+    // un résultat partiel (mesure Google absente) n'est pas gardé : on réessaiera
+    if (!d.erreur && d.mesureGoogle) cache.set(url.host, { at: now, data: d });
   }
   if (d.erreur) return res.status(200).json({ ok: false, ...d });
 

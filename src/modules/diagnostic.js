@@ -159,13 +159,20 @@ function rendu(d) {
     : "";
   const sansGoogle = d.mesureGoogle
     ? ""
-    : `<p class="diag-note">La mesure de Google n'a pas répondu à temps : la note porte seulement sur les essentiels. Relancez le diagnostic dans quelques minutes pour un résultat complet.</p>`;
+    : `<p class="diag-note">La mesure de vitesse de Google n'a pas répondu : je ne donne donc pas de note sur 100. Relancez le diagnostic dans quelques minutes pour un résultat complet.</p>`;
+
+  // Mesure Google absente : ni note globale ni verdict, seulement les constats
+  const partiel = d.note === null;
+  const score = partiel
+    ? ""
+    : `<div class="diag-score">${anneau(d.note)}<p class="diag-score__num"><strong>${d.note}</strong><span>/100</span></p></div>`;
+  const titre = partiel ? "Résultat partiel : premiers constats" : verdict(d.note);
 
   return `<div class="diag-result__head">
-      <div class="diag-score">${anneau(d.note)}<p class="diag-score__num"><strong>${d.note}</strong><span>/100</span></p></div>
+      ${score}
       <div>
         <p class="diag-result__kicker">Résultat pour ${esc(d.host)}</p>
-        <h3 class="diag-result__title" tabindex="-1">${esc(verdict(d.note))}</h3>
+        <h3 class="diag-result__title" tabindex="-1">${esc(titre)}</h3>
         ${sansGoogle}
       </div>
     </div>
@@ -236,7 +243,7 @@ function initDiagnostic() {
       result.innerHTML = rendu(d);
       result.hidden = false;
       result.querySelector(".diag-result__title").focus();
-      track("diagnostic_termine", { note: d.note, cas: d.cas });
+      track("diagnostic_termine", { note: d.note ?? "partiel", cas: d.cas });
     } catch {
       setBusy(false);
       erreur(status, "reseau");
