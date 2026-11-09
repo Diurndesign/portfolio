@@ -126,7 +126,7 @@ async function charger(depart, ms = 12_000) {
 // ---------------------------------------------------------------------
 const AXES_PSI = [
   ["performance", "Vitesse sur mobile"],
-  ["seo", "Référencement Google"],
+  ["seo", "Bases du référencement"],
   ["accessibility", "Accessibilité"],
   ["best-practices", "Bonnes pratiques"],
 ];
@@ -303,6 +303,7 @@ export function emailHtml(d, prenom) {
 <h1 style="margin:0 0 16px;font-size:24px;color:#010d94">${esc(d.host)} : ${d.note}/100</h1>
 <p style="margin:0 0 20px;color:#17193a;line-height:1.6">Bonjour${prenom ? " " + esc(prenom) : ""}, voici le résultat du diagnostic de votre site, mesuré sur mobile.</p>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #e3e0d8;border-bottom:1px solid #e3e0d8;margin-bottom:20px">${d.axes.map(ligne).join("")}</table>
+<p style="margin:-8px 0 20px;color:#6b6d86;font-size:13px;line-height:1.6">« Bases du référencement » vérifie que Google peut lire et comprendre votre page. Votre position dépend aussi de votre contenu, de votre fiche Google et des sites qui parlent de vous.</p>
 <h2 style="margin:0 0 8px;font-size:17px;color:#17193a">Vos 3 priorités</h2>
 <ol style="margin:0 0 20px;padding-left:20px;color:#17193a;line-height:1.6">${d.priorites.map((p) => `<li style="margin-bottom:8px">${esc(p)}</li>`).join("") || "<li>Rien de bloquant relevé : bravo.</li>"}</ol>
 ${

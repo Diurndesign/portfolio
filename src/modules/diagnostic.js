@@ -11,7 +11,7 @@ import { track } from "./analytics.js";
 const ETAPES = [
   "Ouverture de votre page d'accueil…",
   "Mesure de la vitesse sur un téléphone…",
-  "Vérification du référencement Google…",
+  "Vérification des bases du référencement…",
   "Contrôle de l'accessibilité et des bonnes pratiques…",
   "Recherche des points à corriger en priorité…",
   "Calcul de votre note…",
@@ -113,6 +113,7 @@ function rendu(d, email) {
       </div>
     </div>
     <ul class="diag-axes">${axes}</ul>
+    <p class="diag-note">« Bases du référencement » vérifie que Google peut lire et comprendre votre page. Votre position dépend aussi de votre contenu, de votre fiche Google et des sites qui parlent de vous.</p>
     <h4 class="diag-result__sub">Vos 3 priorités</h4>
     ${priorites}
     ${forts}
