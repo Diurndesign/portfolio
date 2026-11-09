@@ -149,6 +149,7 @@ export default defineConfig(() => ({
         siteIaOuDev: resolve(root, "site-avec-ia-ou-developpeur.html"),
         refonteSiteCharte: resolve(root, "refonte-site-et-charte-graphique.html"),
         auditGratuit: resolve(root, "audit-site-web-gratuit.html"),
+        diagnosticGratuit: resolve(root, "diagnostic-site-gratuit.html"),
         guides: resolve(root, "guides.html"),
         refonteNice: resolve(root, "refonte-site-internet-nice.html"),
         notFound: resolve(root, "404.html"),

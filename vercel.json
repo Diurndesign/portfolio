@@ -4,6 +4,9 @@
   "functions": {
     "api/prospects.js": {
       "maxDuration": 60
+    },
+    "api/diagnostic.js": {
+      "maxDuration": 60
     }
   },
   "crons": [

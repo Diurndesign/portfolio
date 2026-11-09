@@ -766,3 +766,145 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
   --nav-shade: 0.3;
 
 }
+
+// ============================================================
+//  Accroche visible dès l'arrivée (texte + carte côte à côte)
+// ============================================================
+// Mobile d'abord : l'accroche, les boutons et la preuve, puis la carte.
+// À partir de 1024 px : texte à gauche, carte à droite.
+.hero__inner--split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  justify-items: center;
+  align-content: center;
+  gap: clamp(2rem, 5vh, 3rem);
+  padding-top: clamp(4.5rem, 10vh, 6rem); // laisse la place au menu burger
+  padding-bottom: clamp(2rem, 6vh, 4rem);
+
+  @include from($bp-lg) {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+    justify-items: stretch;
+    align-items: center;
+    gap: clamp(2.5rem, 5vw, 5rem);
+    padding-top: 0;
+  }
+
+  .hero__card {
+    @include from($bp-lg) {
+      justify-self: end;
+      // largeur calculée sur l'écran (même raison que plus haut : Safari)
+      width: min(600px, calc((100vw - 2 * #{$sidebar-width}) * 0.5));
+    }
+  }
+}
+
+.hero__text {
+  width: min(760px, calc(100vw - 2.5rem));
+  text-align: left;
+
+  @include from($bp-lg) {
+    width: auto;
+  }
+}
+
+.hero__kicker {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+  animation: hero-reveal 1s $ease both;
+  animation-delay: 0.1s;
+}
+
+.hero__headline {
+  margin-top: 0.85rem;
+  max-width: 17ch;
+  font-family: $font-display;
+  font-weight: 300;
+  font-size: clamp(2.15rem, 4.3vw, 3.7rem);
+  line-height: 1.04;
+  letter-spacing: -0.01em;
+  color: $color-white;
+  text-wrap: balance;
+  animation: hero-reveal 1s $ease both;
+  animation-delay: 0.18s;
+
+  @include from($bp-lg) {
+    max-width: 20ch;
+  }
+}
+
+.hero__lead {
+  margin-top: clamp(1rem, 2.5vh, 1.4rem);
+  max-width: 44ch;
+  font-size: clamp(1rem, 1.2vw, 1.12rem);
+  line-height: 1.65;
+  color: $color-text-soft;
+  animation: hero-reveal 1s $ease both;
+  animation-delay: 0.3s;
+}
+
+// Les boutons s'alignent sur le texte (la règle générale les centre)
+.hero__inner--split .hero__actions {
+  justify-content: flex-start;
+  margin-top: clamp(1.4rem, 3.5vh, 2rem);
+  animation-delay: 0.42s;
+
+  @include until($bp-sm) {
+    .hero__cta {
+      flex: 1 1 100%;
+      justify-content: center;
+    }
+  }
+}
+
+// Preuves : avis, prix d'appel, diagnostic gratuit
+.hero__proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.4rem;
+  margin-top: clamp(1.1rem, 3vh, 1.6rem);
+  padding: 0;
+  list-style: none;
+  font-size: 0.86rem;
+  animation: hero-reveal 1s $ease both;
+  animation-delay: 0.52s;
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45em;
+    color: $color-text-soft;
+    text-decoration: underline;
+    text-decoration-color: rgba(var(--c-fg), 0.3);
+    text-underline-offset: 0.25em;
+    transition: color $transition, text-decoration-color $transition;
+
+    &:hover,
+    &:focus-visible {
+      color: $color-white;
+      text-decoration-color: currentColor;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-white;
+      outline-offset: 3px;
+    }
+  }
+}
+
+.hero__proof-stars {
+  color: $color-white;
+  letter-spacing: 0.05em;
+  font-size: 0.8em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__kicker,
+  .hero__headline,
+  .hero__lead,
+  .hero__proof {
+    animation: none;
+  }
+}
