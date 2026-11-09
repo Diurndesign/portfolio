@@ -48,6 +48,36 @@ function anneau(note) {
   </svg>`;
 }
 
+// Fin du résultat : ce qu'on fait ensuite. Un site qui a des freins se
+// voit proposer la journée Diurn (je corrige, en une journée, prix fixe) ;
+// un site déjà en bonne santé, un échange sur l'image de marque.
+function offre(note) {
+  const appel = `<a class="diag-cta__btn diag-cta__btn--solid" href="https://calendly.com/diurnstudio/appel-decouvert" target="_blank" rel="noopener" data-calendly data-cta>Réserver ma journée</a>`;
+  if (note >= 90)
+    return `<div class="diag-cta">
+      <p class="diag-cta__kicker">Et maintenant&nbsp;?</p>
+      <p class="diag-cta__text"><strong>Votre site tient la route.</strong> S'il ne vous ressemble plus, c'est peut-être l'image qu'il faut retravailler&nbsp;: c'est le cœur de mon métier.</p>
+      <div class="diag-cta__actions">
+        <a class="diag-cta__btn diag-cta__btn--solid" href="https://calendly.com/diurnstudio/appel-decouvert" target="_blank" rel="noopener" data-calendly data-cta>Parlons de votre image</a>
+        <a class="diag-cta__btn" href="/graphiste-nice" data-cta>Voir l'identité de marque</a>
+      </div>
+    </div>`;
+  return `<div class="diag-cta">
+      <p class="diag-cta__kicker">La journée Diurn · 350&nbsp;€</p>
+      <p class="diag-cta__text"><strong>Ces priorités, je les corrige en une journée.</strong> Prix fixe, un seul interlocuteur, et un bilan avant/après chiffré le soir même.</p>
+      <ul class="diag-cta__list">
+        <li>Vitesse&nbsp;: images allégées, chargement accéléré sur mobile</li>
+        <li>Google&nbsp;: titres et descriptions de vos pages principales, fiche Google complétée</li>
+        <li>Téléphone&nbsp;: affichage corrigé, numéro et boutons cliquables</li>
+      </ul>
+      <p class="diag-cta__small">Si votre site ne peut pas être corrigé en une journée, je vous le dis lors de l'appel, avant tout engagement. Prix net, TVA non applicable.</p>
+      <div class="diag-cta__actions">
+        ${appel}
+        <a class="diag-cta__btn" href="tel:+33650949615">Appeler&nbsp;: 06&nbsp;50&nbsp;94&nbsp;96&nbsp;15</a>
+      </div>
+    </div>`;
+}
+
 function rendu(d, email) {
   const axes = d.axes
     .map(
@@ -87,13 +117,7 @@ function rendu(d, email) {
     ${priorites}
     ${forts}
     ${autres}
-    <div class="diag-cta">
-      <p class="diag-cta__text"><strong>Je regarde votre site en détail, gratuitement.</strong> Design, image de marque, parcours du visiteur : je vous dis quoi corriger d'abord, et combien ça coûterait.</p>
-      <div class="diag-cta__actions">
-        <a class="diag-cta__btn diag-cta__btn--solid" href="https://calendly.com/diurnstudio/appel-decouvert" target="_blank" rel="noopener" data-calendly data-cta>Réserver un appel de 30&nbsp;min</a>
-        <a class="diag-cta__btn" href="/audit-site-web-gratuit" data-cta>Demander l'audit détaillé</a>
-      </div>
-    </div>
+    ${offre(d.note)}
     ${envoye}
     <button type="button" class="diag-again">Tester un autre site</button>`;
 }

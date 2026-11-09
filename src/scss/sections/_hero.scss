@@ -908,3 +908,62 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     animation: none;
   }
 }
+
+// ============================================================
+//  Mobile et tablette étroite : version allégée
+// ============================================================
+// Au premier coup d'œil : le titre, la carte, un seul bouton, les étoiles.
+// Le bloc texte s'efface (display: contents) pour que ses éléments se
+// rangent autour de la carte ; l'accroche longue et les liens secondaires
+// restent pour le desktop (le H1 reste visible et lu par Google).
+@include until($bp-md) {
+  .hero__inner--split {
+    gap: 0;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .hero__inner--split .hero__text {
+    display: contents;
+  }
+
+  .hero__kicker,
+  .hero__lead,
+  .hero__cta--ghost,
+  .hero__proof li:not(:first-child) {
+    display: none;
+  }
+
+  .hero__headline {
+    order: 1;
+    margin: 0 auto;
+    text-align: center; // .hero__text (display: contents) transmet encore son alignement
+    max-width: 16ch;
+    font-size: clamp(1.55rem, 6.6vw, 2rem);
+    line-height: 1.12;
+  }
+
+  .hero__inner--split .hero__card {
+    order: 2;
+    margin-top: 2rem;
+  }
+
+  .hero__inner--split .hero__actions {
+    order: 3;
+    justify-content: center;
+    width: min(760px, calc(0.9 * (100vw - 2.5rem)));
+    margin-top: 2rem;
+
+    .hero__cta {
+      flex: 1 1 100%;
+      justify-content: center;
+    }
+  }
+
+  .hero__proof {
+    order: 4;
+    justify-content: center;
+    margin-top: 1rem;
+    font-size: 0.82rem;
+  }
+}

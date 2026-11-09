@@ -305,8 +305,14 @@ export function emailHtml(d, prenom) {
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #e3e0d8;border-bottom:1px solid #e3e0d8;margin-bottom:20px">${d.axes.map(ligne).join("")}</table>
 <h2 style="margin:0 0 8px;font-size:17px;color:#17193a">Vos 3 priorités</h2>
 <ol style="margin:0 0 20px;padding-left:20px;color:#17193a;line-height:1.6">${d.priorites.map((p) => `<li style="margin-bottom:8px">${esc(p)}</li>`).join("") || "<li>Rien de bloquant relevé : bravo.</li>"}</ol>
-<p style="margin:0 0 24px;color:#17193a;line-height:1.6">Ce diagnostic est automatique. Si vous le souhaitez, je regarde votre site en détail et je vous envoie une courte vidéo avec les corrections, gratuitement.</p>
-<p style="margin:0 0 24px"><a href="${CALENDLY}" style="display:inline-block;background:#010d94;color:#ffffff;padding:12px 20px;border-radius:2px;text-decoration:none;font-weight:600">Réserver un appel de 30 min</a></p>
+${
+    d.note >= 90
+      ? `<p style="margin:0 0 24px;color:#17193a;line-height:1.6">Votre site tient la route. S'il ne vous ressemble plus, c'est peut-être l'image qu'il faut retravailler : c'est le cœur de mon métier.</p>
+<p style="margin:0 0 24px"><a href="${CALENDLY}" style="display:inline-block;background:#010d94;color:#ffffff;padding:12px 20px;border-radius:2px;text-decoration:none;font-weight:600">Parlons de votre image</a></p>`
+      : `<p style="margin:0 0 8px;color:#17193a;line-height:1.6"><strong>Ces priorités, je les corrige en une journée.</strong> C'est la journée Diurn : 350 € prix fixe, et un bilan avant/après chiffré le soir même.</p>
+<p style="margin:0 0 24px;color:#6b6d86;font-size:13px;line-height:1.6">Si votre site ne peut pas être corrigé en une journée, je vous le dis lors de l'appel, avant tout engagement.</p>
+<p style="margin:0 0 24px"><a href="${CALENDLY}" style="display:inline-block;background:#010d94;color:#ffffff;padding:12px 20px;border-radius:2px;text-decoration:none;font-weight:600">Réserver ma journée</a></p>`
+  }
 <p style="margin:0;color:#6b6d86;font-size:13px;line-height:1.6">Jérémy Bendenoun · Diurn Studio · 06 50 94 96 15<br>Vous pouvez simplement répondre à cet e-mail.</p>
 </td></tr></table></td></tr></table></body></html>`;
 }
