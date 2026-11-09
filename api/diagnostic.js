@@ -203,6 +203,26 @@ function pointsForts({ page, axes }) {
 }
 
 // ---------------------------------------------------------------------
+//  Ce qu'on propose ensuite : trois cas
+// ---------------------------------------------------------------------
+// Les problèmes « de fond » ne se corrigent pas en une journée : site non
+// adapté au mobile, daté, construit sur Wix ou équivalent, sans https.
+const DE_FOND = {
+  "Pas adapté au mobile": "Votre site n'est pas adapté au téléphone",
+  "Site daté": "Votre site repose sur des bases datées",
+  "Site Wix ou similaire": "Votre site dépend d'une plateforme (Wix ou équivalent)",
+  "Site non sécurisé": "Votre site n'est pas sécurisé (pas de https)",
+};
+
+export function choisirCas(note, constatsBruts) {
+  const fond = constatsBruts.find((c) => DE_FOND[c.probleme]);
+  if (fond) return { cas: "refonte", motif: DE_FOND[fond.probleme] };
+  if (note < 50) return { cas: "refonte", motif: "Votre site cumule trop de freins pour une simple correction" };
+  if (note >= 90) return { cas: "image", motif: "" };
+  return { cas: "journee", motif: "" };
+}
+
+// ---------------------------------------------------------------------
 //  Diagnostic complet
 // ---------------------------------------------------------------------
 export async function diagnostiquer(url, { metier = "", ville = "" } = {}) {
@@ -220,7 +240,8 @@ export async function diagnostiquer(url, { metier = "", ville = "" } = {}) {
   const lhr = psiR.status === "fulfilled" ? psiR.value : null;
   if (!lhr) console.warn("diagnostic: PageSpeed indisponible", psiR.reason?.message || "");
 
-  const constatsSite = analyserPage({ ...page, metier, ville }).map((c) => ({ score: c.score, texte: c.texte }));
+  const brut = analyserPage({ ...page, metier, ville });
+  const constatsSite = brut.map((c) => ({ score: c.score, texte: c.texte }));
   const constats = [...constatsSite, ...constatsPagespeed(lhr)].sort((x, y) => y.score - x.score);
 
   const axes = [];
@@ -234,7 +255,10 @@ export async function diagnostiquer(url, { metier = "", ville = "" } = {}) {
   axes.push({ cle: "essentiels", label: "Essentiels d'un site pro", note: Math.max(0, 100 - poids * 6) });
 
   const note = Math.round(axes.reduce((t, x) => t + x.note, 0) / axes.length);
+  const { cas, motif } = choisirCas(note, brut);
   return {
+    cas,
+    motif,
     site: page.finalUrl,
     host: hostOf(page.finalUrl),
     note,
@@ -249,7 +273,7 @@ export async function diagnostiquer(url, { metier = "", ville = "" } = {}) {
 // ---------------------------------------------------------------------
 //  Notion : le diagnostic arrive dans « Prospects du site »
 // ---------------------------------------------------------------------
-async function ajouterNotion({ nom, email, metier, ville, lettre, page, source, d }) {
+async function ajouterNotion({ nom, email, lettre, envoye, page, source, d }) {
   if (!NOTION_TOKEN) return false;
   const text = (v) => (v ? [{ type: "text", text: { content: String(v).slice(0, 1900) } }] : []);
   const para = (v) => ({ object: "block", type: "paragraph", paragraph: { rich_text: text(v) } });
@@ -264,9 +288,8 @@ async function ajouterNotion({ nom, email, metier, ville, lettre, page, source, 
         Statut: { select: { name: "Nouveau" } },
         Email: { email },
         Formulaire: { select: { name: "diagnostic" } },
-        Objet: { rich_text: text(`Diagnostic express : ${d.note}/100`) },
+        Objet: { rich_text: text(`Diagnostic ${d.note}/100${envoye ? "" : " : résultat à envoyer par e-mail"}`) },
         "Site actuel": { url: d.site },
-        Entreprise: { rich_text: text([metier, ville].filter(Boolean).join(", ")) },
         Page: { rich_text: text(page) },
         Provenance: { rich_text: text(source) },
         "Reçu le": { date: { start: new Date().toISOString() } },
@@ -277,6 +300,8 @@ async function ajouterNotion({ nom, email, metier, ville, lettre, page, source, 
         para("Priorités montrées au visiteur :"),
         ...d.priorites.map(puce),
         ...(d.autres.length ? [para("Autres constats :"), ...d.autres.map(puce)] : []),
+        para(`Proposé à la fin : ${{ image: "image de marque", journee: "journée Diurn (350 €)", refonte: "refonte" }[d.cas]}${d.motif ? ` (${d.motif})` : ""}`),
+        para(`Résultat envoyé par e-mail : ${envoye ? "oui" : "non, à envoyer à la main"}`),
         para(`Lettre mensuelle : ${lettre ? "oui, acceptée" : "non"}`),
       ],
     }),
@@ -293,6 +318,28 @@ async function ajouterNotion({ nom, email, metier, ville, lettre, page, source, 
 // ---------------------------------------------------------------------
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
+// Fin de l'e-mail : la même proposition qu'à l'écran (trois cas)
+const bouton = (txt) =>
+  `<p style="margin:0 0 24px"><a href="${CALENDLY}" style="display:inline-block;background:#010d94;color:#ffffff;padding:12px 20px;border-radius:2px;text-decoration:none;font-weight:600">${txt}</a></p>`;
+const para = (txt, petit) =>
+  `<p style="margin:0 0 ${petit ? 24 : 8}px;color:${petit ? "#6b6d86" : "#17193a"};${petit ? "font-size:13px;" : ""}line-height:1.6">${txt}</p>`;
+
+function finEmail(d) {
+  if (d.cas === "image")
+    return para("<strong>Votre site tient la route.</strong> S'il ne vous ressemble plus, c'est peut-être l'image qu'il faut retravailler : c'est le cœur de mon métier.", false) + "<br>" + bouton("Parlons de votre image");
+  if (d.cas === "refonte")
+    return (
+      para(`<strong>${esc(d.motif)} : une journée ne suffira pas.</strong> Votre site a besoin d'une base saine. Une refonte sur mesure coûte de 1 500 à 3 500 €, en 3 à 6 semaines, en gardant votre nom de domaine et votre place sur Google.`, false) +
+      para("Le prix exact dépend du nombre de pages : je vous le donne après un premier échange, sans engagement.", true) +
+      bouton("Parlons de votre refonte")
+    );
+  return (
+    para("<strong>Ces priorités, je peux les corriger en une journée.</strong> C'est la journée Diurn : 350 € prix fixe, et un bilan avant/après chiffré le soir même.", false) +
+    para("Lors d'un court appel, je vérifie que votre site tient bien en une journée. Sinon, je vous le dis, avant tout engagement.", true) +
+    bouton("Vérifier que ça tient en une journée")
+  );
+}
+
 export function emailHtml(d, prenom) {
   const ligne = (x) =>
     `<tr><td style="padding:6px 0;color:#17193a">${esc(x.label)}</td><td style="padding:6px 0;text-align:right;font-weight:600;color:#010d94">${x.note}/100</td></tr>`;
@@ -306,14 +353,7 @@ export function emailHtml(d, prenom) {
 <p style="margin:-8px 0 20px;color:#6b6d86;font-size:13px;line-height:1.6">« Bases du référencement » vérifie que Google peut lire et comprendre votre page. Votre position dépend aussi de votre contenu, de votre fiche Google et des sites qui parlent de vous.</p>
 <h2 style="margin:0 0 8px;font-size:17px;color:#17193a">Vos 3 priorités</h2>
 <ol style="margin:0 0 20px;padding-left:20px;color:#17193a;line-height:1.6">${d.priorites.map((p) => `<li style="margin-bottom:8px">${esc(p)}</li>`).join("") || "<li>Rien de bloquant relevé : bravo.</li>"}</ol>
-${
-    d.note >= 90
-      ? `<p style="margin:0 0 24px;color:#17193a;line-height:1.6">Votre site tient la route. S'il ne vous ressemble plus, c'est peut-être l'image qu'il faut retravailler : c'est le cœur de mon métier.</p>
-<p style="margin:0 0 24px"><a href="${CALENDLY}" style="display:inline-block;background:#010d94;color:#ffffff;padding:12px 20px;border-radius:2px;text-decoration:none;font-weight:600">Parlons de votre image</a></p>`
-      : `<p style="margin:0 0 8px;color:#17193a;line-height:1.6"><strong>Ces priorités, je les corrige en une journée.</strong> C'est la journée Diurn : 350 € prix fixe, et un bilan avant/après chiffré le soir même.</p>
-<p style="margin:0 0 24px;color:#6b6d86;font-size:13px;line-height:1.6">Si votre site ne peut pas être corrigé en une journée, je vous le dis lors de l'appel, avant tout engagement.</p>
-<p style="margin:0 0 24px"><a href="${CALENDLY}" style="display:inline-block;background:#010d94;color:#ffffff;padding:12px 20px;border-radius:2px;text-decoration:none;font-weight:600">Réserver ma journée</a></p>`
-  }
+${finEmail(d)}
 <p style="margin:0;color:#6b6d86;font-size:13px;line-height:1.6">Jérémy Bendenoun · Diurn Studio · 06 50 94 96 15<br>Vous pouvez simplement répondre à cet e-mail.</p>
 </td></tr></table></td></tr></table></body></html>`;
 }
@@ -331,7 +371,7 @@ async function brevo(path, body) {
   }
 }
 
-async function envoyerBrevo({ email, prenom, lettre, metier, d }) {
+async function envoyerBrevo({ email, prenom, lettre, d }) {
   if (!BREVO_KEY) return false;
   await brevo("/smtp/email", {
     sender: { name: "Jérémy · Diurn Studio", email: BREVO_SENDER },
@@ -346,7 +386,7 @@ async function envoyerBrevo({ email, prenom, lettre, metier, d }) {
       email,
       listIds: [BREVO_LIST],
       updateEnabled: true,
-      attributes: { ...(prenom ? { PRENOM: prenom } : {}), SITE: d.site, NOTE_DIAGNOSTIC: d.note, ...(metier ? { METIER: metier } : {}) },
+      attributes: { ...(prenom ? { PRENOM: prenom } : {}), SITE: d.site, NOTE_DIAGNOSTIC: d.note },
     });
   return true;
 }
@@ -375,39 +415,57 @@ export default async function handler(req, res) {
   }
   if (body.botcheck) return res.status(200).json({ ok: false, erreur: "injoignable" });
 
-  const email = clean(body.email, 200);
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).json({ ok: false, erreur: "email" });
   const url = normaliser(body.site);
   if (!url) return res.status(400).json({ ok: false, erreur: "adresse" });
   if (plateformeDe(url.href)) return res.status(400).json({ ok: false, erreur: "plateforme" });
 
   const ip = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim() || "inconnue";
   const now = Date.now();
-  const recent = (hits.get(ip) || []).filter((t) => now - t < 10 * 60_000);
+  const action = body.action === "email" ? "email" : "diagnostic";
+  // limites séparées : lancer un diagnostic, puis demander l'e-mail
+  const cle = `${action}:${ip}`;
+  const recent = (hits.get(cle) || []).filter((t) => now - t < 10 * 60_000);
   if (recent.length >= 3) return res.status(429).json({ ok: false, erreur: "trop" });
-  hits.set(ip, [...recent, now]);
+  hits.set(cle, [...recent, now]);
 
-  const prenom = clean(body.prenom, 80);
-  const metier = clean(body.metier, 80);
   const ville = clean(body.ville, 80);
-  const lettre = body.lettre === true || body.lettre === "on" || body.lettre === "true";
 
+  // Résultat récent réutilisé (même site) : pas de nouvelle mesure Google
   let d;
   const enCache = cache.get(url.host);
   if (enCache && now - enCache.at < CACHE_MS && !ville) d = enCache.data;
   else {
-    d = await diagnostiquer(url, { metier, ville });
+    d = await diagnostiquer(url, { ville });
     if (!d.erreur) cache.set(url.host, { at: now, data: d });
   }
   if (d.erreur) return res.status(200).json({ ok: false, ...d });
 
-  // Notion et Brevo en parallèle : un échec n'empêche pas l'affichage
-  const [notion, mail] = await Promise.allSettled([
-    ajouterNotion({ nom: prenom, email, metier, ville, lettre, page: clean(body.page, 200) || "/diagnostic-site-gratuit", source: clean(body.source, 300), d }),
-    envoyerBrevo({ email, prenom, lettre, metier, d }),
-  ]);
-  if (notion.status === "rejected") console.error("diagnostic:", notion.reason?.message);
-  if (mail.status === "rejected") console.error("diagnostic:", mail.reason?.message);
+  // 1. Diagnostic : le résultat tout de suite, sans rien demander
+  if (action === "diagnostic") return res.status(200).json({ ok: true, ...d });
 
-  return res.status(200).json({ ok: true, ...d, emailEnvoye: mail.status === "fulfilled" && mail.value === true });
+  // 2. Le visiteur veut le résultat par e-mail : seulement maintenant, on
+  //    enregistre son contact (Notion) et on lui envoie (Brevo)
+  const email = clean(body.email, 200);
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).json({ ok: false, erreur: "email" });
+  const prenom = clean(body.prenom, 80);
+  const lettre = body.lettre === true || body.lettre === "on" || body.lettre === "true";
+
+  const mail = await envoyerBrevo({ email, prenom, lettre, d }).catch((err) => {
+    console.error("diagnostic:", err.message);
+    return false;
+  });
+  const notion = await ajouterNotion({
+    nom: prenom,
+    email,
+    lettre,
+    envoye: mail,
+    page: clean(body.page, 200) || "/diagnostic-site-gratuit",
+    source: clean(body.source, 300),
+    d,
+  }).catch((err) => {
+    console.error("diagnostic:", err.message);
+    return false;
+  });
+  if (!mail && !notion) return res.status(200).json({ ok: false, erreur: "enregistrement" });
+  return res.status(200).json({ ok: true, envoye: mail });
 }

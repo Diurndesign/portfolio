@@ -56,10 +56,10 @@
     },
     {
       "@type": "Question",
-      "name": "Pourquoi demander mon adresse e-mail ?",
+      "name": "Faut-il donner mon adresse e-mail ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Pour vous envoyer le résultat et, si vous le souhaitez, vous proposer une analyse détaillée. L'inscription à la lettre mensuelle est une case à part, que vous cochez ou non. Votre adresse n'est jamais revendue."
+        "text": "Non. Le résultat s'affiche tout de suite, sans inscription. Si vous voulez le garder, vous pouvez ensuite le recevoir par e-mail ; la lettre mensuelle est une case à part, que vous cochez ou non. Votre adresse n'est jamais revendue."
       }
     },
     {
@@ -67,7 +67,7 @@
       "name": "Et si je veux que ce soit corrigé ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "C'est l'objet de la journée Diurn : pour 350 €, prix fixe, je corrige en une journée les priorités relevées (vitesse, référencement Google, affichage sur téléphone) et je vous envoie un bilan avant/après chiffré le soir même."
+        "text": "Si les problèmes relevés se corrigent, c'est la journée Diurn : pour 350 €, prix fixe, je les corrige en une journée (vitesse, référencement Google, affichage sur téléphone) avec un bilan avant/après chiffré le soir même. Si votre site a des problèmes de fond, le diagnostic vous oriente vers une refonte, de 1 500 à 3 500 €. Un court appel confirme avant tout engagement."
       }
     },
     {
@@ -103,37 +103,17 @@
           <div class="article-wrap">
             <section class="diag" aria-labelledby="diag-titre">
               <h2 class="diag__title" id="diag-titre">Lancer le diagnostic</h2>
-              <form class="diag__form" id="diagnostic-form" novalidate>
+              <form class="diag__form diag__form--simple" id="diagnostic-form" novalidate>
                 <input type="checkbox" name="botcheck" class="contact__botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" aria-label="Ne pas remplir ce champ anti-spam" />
                 <div class="diag__field diag__field--wide">
                   <label for="dg-site">Adresse de votre site</label>
-                  <input type="text" inputmode="url" autocomplete="url" id="dg-site" name="site" required placeholder="Ex. : www.monsite.fr" aria-describedby="dg-site-aide" />
-                  <p class="diag__help" id="dg-site-aide">La page d'accueil suffit.</p>
+                  <div class="diag__row">
+                    <input type="text" inputmode="url" autocomplete="url" id="dg-site" name="site" required placeholder="Ex. : www.monsite.fr" aria-describedby="dg-site-aide" />
+                    <button type="submit" class="diag__submit">Lancer le diagnostic</button>
+                  </div>
+                  <p class="diag__help" id="dg-site-aide">Aucune inscription : le résultat s'affiche ici, tout de suite.</p>
                 </div>
-                <div class="diag__field">
-                  <label for="dg-email">Votre e-mail</label>
-                  <input type="email" id="dg-email" name="email" required autocomplete="email" />
-                </div>
-                <div class="diag__field">
-                  <label for="dg-prenom">Prénom (facultatif)</label>
-                  <input type="text" id="dg-prenom" name="prenom" autocomplete="given-name" />
-                </div>
-                <div class="diag__field">
-                  <label for="dg-metier">Votre métier (facultatif)</label>
-                  <input type="text" id="dg-metier" name="metier" placeholder="Ex. : architecte" />
-                </div>
-                <div class="diag__field">
-                  <label for="dg-ville">Votre ville (facultatif)</label>
-                  <input type="text" id="dg-ville" name="ville" autocomplete="address-level2" placeholder="Ex. : Nice" aria-describedby="dg-ville-aide" />
-                  <p class="diag__help" id="dg-ville-aide">Pour vérifier que Google vous associe à votre ville.</p>
-                </div>
-                <label class="diag__check diag__field--wide">
-                  <input type="checkbox" name="lettre" />
-                  <span>Je veux aussi recevoir la lettre mensuelle de Diurn Studio (un conseil, un projet, désinscription en un clic).</span>
-                </label>
-                <button type="submit" class="diag__submit">Lancer le diagnostic</button>
                 <p class="diag__status" role="status" aria-live="polite"></p>
-                <p class="diag__privacy diag__field--wide">Votre e-mail sert à vous envoyer le résultat et, si vous le souhaitez, à vous recontacter. Il n'est jamais revendu et il est conservé 3&nbsp;ans au plus. <button class="diag__legal" type="button" data-project="legal">Données personnelles</button></p>
               </form>
 
               <div class="diag__progress" id="diagnostic-progress" hidden>
@@ -161,8 +141,8 @@
         <section class="landing__section article-section" id="et-apres">
           <span class="article-section__num" aria-hidden="true">02</span>
           <h2>Et après&nbsp;?</h2>
-          <p>Le diagnostic vous dit ce qui freine. La <strong>journée Diurn</strong> le corrige&nbsp;: pour 350&nbsp;€, prix fixe, je consacre une journée à votre site (vitesse, référencement Google, affichage sur téléphone) et je vous envoie le soir même un bilan avant/après chiffré.</p>
-          <p>Si votre site ne peut pas être corrigé en une journée, je vous le dis lors de l'appel, avant tout engagement. Vous gardez la main&nbsp;: votre site reste le vôtre, chez votre hébergeur.</p>
+          <p>Le diagnostic vous dit ce qui freine, et ce qui convient à votre site. Si les problèmes se corrigent, la <strong>journée Diurn</strong> s'en charge&nbsp;: pour 350&nbsp;€, prix fixe, je consacre une journée à votre site (vitesse, référencement Google, affichage sur téléphone) et je vous envoie le soir même un bilan avant/après chiffré.</p>
+          <p>Si votre site a des problèmes de fond (pas adapté au téléphone, plateforme fermée, bases datées), une journée ne suffira pas&nbsp;: le diagnostic vous le dit, et vous oriente vers une <a href="/refonte-site-internet-nice">refonte</a>, de 1&nbsp;500 à 3&nbsp;500&nbsp;€. Dans tous les cas, c'est un court appel qui confirme, avant tout engagement.</p>
           <p>Et si une <a href="/refonte-site-internet-nice">refonte</a> s'impose, vous saurez à quoi vous attendre&nbsp;: voyez <a href="/combien-coute-site-internet-nice">le prix d'un site internet à Nice</a>.</p>
         </section>
         <section class="landing__section article-section" id="questions-frequentes">
@@ -178,12 +158,12 @@
               <p>La vitesse de votre page d'accueil sur un téléphone, les bases de son référencement, son accessibilité et les bonnes pratiques, mesurés avec l'outil officiel de Google (PageSpeed Insights). S'y ajoutent les essentiels d'un site d'entreprise : sécurité, affichage mobile, titre et description pour Google, numéro cliquable.</p>
             </details>
             <details class="landing__faq-item">
-              <summary>Pourquoi demander mon adresse e-mail&nbsp;?</summary>
-              <p>Pour vous envoyer le résultat et, si vous le souhaitez, vous proposer une analyse détaillée. L'inscription à la lettre mensuelle est une case à part, que vous cochez ou non. Votre adresse n'est jamais revendue.</p>
+              <summary>Faut-il donner mon adresse e-mail&nbsp;?</summary>
+              <p>Non. Le résultat s'affiche tout de suite, sans inscription. Si vous voulez le garder, vous pouvez ensuite le recevoir par e-mail ; la lettre mensuelle est une case à part, que vous cochez ou non. Votre adresse n'est jamais revendue.</p>
             </details>
             <details class="landing__faq-item">
               <summary>Et si je veux que ce soit corrigé&nbsp;?</summary>
-              <p>C'est l'objet de la journée Diurn : pour 350 €, prix fixe, je corrige en une journée les priorités relevées (vitesse, référencement Google, affichage sur téléphone) et je vous envoie un bilan avant/après chiffré le soir même.</p>
+              <p>Si les problèmes relevés se corrigent, c'est la journée Diurn : pour 350 €, prix fixe, je les corrige en une journée (vitesse, référencement Google, affichage sur téléphone) avec un bilan avant/après chiffré le soir même. Si votre site a des problèmes de fond, le diagnostic vous oriente vers une refonte, de 1 500 à 3 500 €. Un court appel confirme avant tout engagement.</p>
             </details>
             <details class="landing__faq-item">
               <summary>Mon site est sur Wix ou WordPress, est-ce que ça marche&nbsp;?</summary>
