@@ -35,10 +35,17 @@ function initHeroCard() {
     if (focus) (flipped ? backBtn : flipBtn).focus({ preventScroll: true });
   }
 
+  // Pendant la rotation, la carte garde son épaisseur (classe is-turning).
+  // Au repos, l'épaisseur repasse à zéro : les faces ne sont plus décalées
+  // en profondeur, le navigateur ne les agrandit plus, le texte reste net.
+  let restTimer = 0;
   function rotateTo(deg, animate = true) {
     angle = deg;
+    card.classList.add("is-turning");
+    clearTimeout(restTimer);
     flipper.style.transition = animate ? "" : "none";
     flipper.style.transform = `rotateY(${angle}deg)`;
+    if (animate) restTimer = setTimeout(() => card.classList.remove("is-turning"), 950);
   }
 
   flipBtn.addEventListener("click", () => {
@@ -140,6 +147,13 @@ function initTilt(card) {
     if (frame) return;
     frame = requestAnimationFrame(() => {
       frame = 0;
+      // Verso affiché : la carte reste à plat pour lire et cliquer les coordonnées
+      if (card.classList.contains("is-flipped")) {
+        card.style.setProperty("--tilt-x", "0deg");
+        card.style.setProperty("--tilt-y", "0deg");
+        card.style.setProperty("--glare-o", "0");
+        return;
+      }
       const r = card.getBoundingClientRect();
       const x = (e.clientX - r.left) / r.width; // 0 à 1
       const y = (e.clientY - r.top) / r.height;

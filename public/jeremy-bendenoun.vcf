@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Bendenoun;Jérémy;;;
+FN:Jérémy Bendenoun
+ORG:Diurn Studio
+TITLE:Designer et développeur web
+TEL;TYPE=WORK,VOICE:+33650949615
+EMAIL;TYPE=WORK,INTERNET:hello@diurnstudio.fr
+URL:https://www.diurnstudio.fr
+ADR;TYPE=WORK:;;;Nice;;;France
+NOTE:Création de site internet et identité de marque à Nice et sur la Côte d’Azur
+END:VCARD

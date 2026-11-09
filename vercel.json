@@ -79,6 +79,15 @@
           "value": "public, max-age=604800"
         }
       ]
+    },
+    {
+      "source": "/(.*)\\.vcf",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/vcard; charset=utf-8"
+        }
+      ]
     }
   ]
 }
