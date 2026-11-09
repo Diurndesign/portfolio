@@ -9,8 +9,8 @@
 //   3. calcule une note sur 100 et les 3 priorités, en mots simples ;
 //   4. ajoute la demande dans la base Notion « Prospects du site »
 //      (Formulaire : diagnostic) ;
-//   5. si Brevo est réglé, envoie le résultat par e-mail au visiteur et,
-//      s'il l'a accepté, l'inscrit à la lettre (liste Brevo).
+//   5. si Brevo est réglé, envoie le résultat par e-mail au visiteur
+//      (pas de newsletter : l'adresse ne sert qu'à cet envoi).
 // Le résultat s'affiche toujours à l'écran, même sans Notion ni Brevo.
 //
 // Réglages (Vercel, Settings, Environment Variables), tous facultatifs :
@@ -18,8 +18,6 @@
 //                    elle, Google limite fortement le nombre de mesures
 //   NOTION_TOKEN     déjà utilisé par /api/demande (ou NOTION_KEY)
 //   BREVO_API_KEY    clé API Brevo : active l'envoi du résultat par e-mail
-//   BREVO_LIST_ID    numéro de la liste Brevo de la lettre (inscription
-//                    seulement si la case est cochée)
 //   BREVO_SENDER     expéditeur validé dans Brevo (hello@diurnstudio.fr
 //                    par défaut)
 //
@@ -37,7 +35,6 @@ const DATABASE_ID = process.env.NOTION_DATABASE_ID || "fc3b659862bb47e59c288be61
 const NOTION_TOKEN = process.env.NOTION_TOKEN || process.env.NOTION_KEY;
 const PSI_KEY = process.env.PAGESPEED_KEY;
 const BREVO_KEY = process.env.BREVO_API_KEY;
-const BREVO_LIST = Number(process.env.BREVO_LIST_ID) || 0;
 const BREVO_SENDER = process.env.BREVO_SENDER || "hello@diurnstudio.fr";
 
 const ALLOWED = [/^https:\/\/(www\.)?diurnstudio\.fr$/, /^https:\/\/[a-z0-9-]+\.vercel\.app$/, /^http:\/\/localhost(:\d+)?$/];
@@ -276,7 +273,7 @@ export async function diagnostiquer(url, { metier = "", ville = "" } = {}) {
 // ---------------------------------------------------------------------
 //  Notion : le diagnostic arrive dans « Prospects du site »
 // ---------------------------------------------------------------------
-async function ajouterNotion({ nom, email, lettre, envoye, page, source, d }) {
+async function ajouterNotion({ nom, email, envoye, page, source, d }) {
   if (!NOTION_TOKEN) return false;
   const text = (v) => (v ? [{ type: "text", text: { content: String(v).slice(0, 1900) } }] : []);
   const para = (v) => ({ object: "block", type: "paragraph", paragraph: { rich_text: text(v) } });
@@ -305,7 +302,6 @@ async function ajouterNotion({ nom, email, lettre, envoye, page, source, d }) {
         ...(d.autres.length ? [para("Autres constats :"), ...d.autres.map(puce)] : []),
         para(`Proposé à la fin : ${{ image: "image de marque", journee: "journée Diurn (350 €)", refonte: "refonte" }[d.cas]}${d.motif ? ` (${d.motif})` : ""}`),
         para(`Résultat envoyé par e-mail : ${envoye ? "oui" : "non, à envoyer à la main"}`),
-        para(`Lettre mensuelle : ${lettre ? "oui, acceptée" : "non"}`),
       ],
     }),
   });
@@ -317,7 +313,7 @@ async function ajouterNotion({ nom, email, lettre, envoye, page, source, d }) {
 }
 
 // ---------------------------------------------------------------------
-//  Brevo : résultat par e-mail, et inscription à la lettre si acceptée
+//  Brevo : résultat par e-mail
 // ---------------------------------------------------------------------
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
@@ -374,7 +370,7 @@ async function brevo(path, body) {
   }
 }
 
-async function envoyerBrevo({ email, prenom, lettre, d }) {
+async function envoyerBrevo({ email, prenom, d }) {
   if (!BREVO_KEY) return false;
   await brevo("/smtp/email", {
     sender: { name: "Jérémy · Diurn Studio", email: BREVO_SENDER },
@@ -384,13 +380,6 @@ async function envoyerBrevo({ email, prenom, lettre, d }) {
     htmlContent: emailHtml(d, prenom),
     tags: ["diagnostic"],
   });
-  if (lettre && BREVO_LIST)
-    await brevo("/contacts", {
-      email,
-      listIds: [BREVO_LIST],
-      updateEnabled: true,
-      attributes: { ...(prenom ? { PRENOM: prenom } : {}), SITE: d.site, NOTE_DIAGNOSTIC: d.note },
-    });
   return true;
 }
 
@@ -399,7 +388,7 @@ async function envoyerBrevo({ email, prenom, lettre, d }) {
 // ---------------------------------------------------------------------
 export default async function handler(req, res) {
   if (req.method === "GET" && "check" in (req.query || {}))
-    return res.status(200).json({ pagespeed_cle: Boolean(PSI_KEY), notion: Boolean(NOTION_TOKEN), brevo: Boolean(BREVO_KEY), brevo_liste: Boolean(BREVO_LIST) });
+    return res.status(200).json({ pagespeed_cle: Boolean(PSI_KEY), notion: Boolean(NOTION_TOKEN), brevo: Boolean(BREVO_KEY) });
 
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
@@ -452,16 +441,14 @@ export default async function handler(req, res) {
   const email = clean(body.email, 200);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return res.status(400).json({ ok: false, erreur: "email" });
   const prenom = clean(body.prenom, 80);
-  const lettre = body.lettre === true || body.lettre === "on" || body.lettre === "true";
 
-  const mail = await envoyerBrevo({ email, prenom, lettre, d }).catch((err) => {
+  const mail = await envoyerBrevo({ email, prenom, d }).catch((err) => {
     console.error("diagnostic:", err.message);
     return false;
   });
   const notion = await ajouterNotion({
     nom: prenom,
     email,
-    lettre,
     envoye: mail,
     page: clean(body.page, 200) || "/diagnostic-site-gratuit",
     source: clean(body.source, 300),

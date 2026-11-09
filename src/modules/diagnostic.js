@@ -128,11 +128,7 @@ const blocEmail = `<form class="diag-mail" novalidate>
       <input type="email" id="dg-email" name="email" autocomplete="email" placeholder="votre@email.fr" required />
       <button type="submit" class="diag__submit diag__submit--ghost">Envoyer</button>
     </div>
-    <label class="diag__check">
-      <input type="checkbox" name="lettre" />
-      <span>Recevoir aussi la lettre mensuelle (un conseil, un projet, désinscription en un clic).</span>
-    </label>
-    <p class="diag__privacy">Votre e-mail sert à vous envoyer ce résultat et, si vous cochez la case, la lettre. Il n'est jamais revendu et il est conservé 3&nbsp;ans au plus. <button class="diag__legal" type="button" data-project="legal">Données personnelles</button></p>
+    <p class="diag__privacy">Votre e-mail sert seulement à vous envoyer ce résultat, sans newsletter. Il n'est jamais revendu et il est conservé 3&nbsp;ans au plus. <button class="diag__legal" type="button" data-project="legal">Données personnelles</button></p>
     <p class="diag__status" role="status" aria-live="polite"></p>
   </form>`;
 
@@ -266,14 +262,13 @@ function initDiagnostic() {
     btn.disabled = true;
     st.textContent = "Envoi…";
     try {
-      const r = await appeler({ action: "email", site: dernier.site, email, lettre: Boolean(data.lettre) });
+      const r = await appeler({ action: "email", site: dernier.site, email });
       btn.disabled = false;
       if (!r.ok) return erreur(st, r.erreur);
       st.textContent = r.envoye
         ? `C'est envoyé à ${email}. Pensez à regarder vos courriers indésirables.`
         : `Merci, c'est noté : je vous envoie le résultat moi-même sous 24 h.`;
       mail.querySelector(".diag__row").hidden = true;
-      mail.querySelector(".diag__check").hidden = true;
       mail.querySelector(".diag__privacy").hidden = true;
       // le bouton qui avait le focus vient d'être masqué : le focus va au message
       st.tabIndex = -1;
