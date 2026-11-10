@@ -1,5 +1,6 @@
-          <!-- Simulateur de budget (modules/simulator.js) : 5 questions, puis le
-               prénom et l'e-mail pour voir l'estimation. Les fourchettes viennent
+          <!-- Simulateur de budget (modules/simulator.js) : 5 questions, puis
+               l'estimation tout de suite ; le prénom et l'e-mail sont facultatifs,
+               demandés sous le résultat pour recevoir une proposition. Les fourchettes viennent
                des tarifs publiés sur /combien-coute-site-internet-nice. Masqué sans
                JavaScript (le tableau des tarifs reste disponible). -->
           <div class="sim" id="simulateur" data-simulator hidden>
@@ -58,18 +59,8 @@
                 </div>
               </fieldset>
 
-              <fieldset class="sim__step" data-step="contact" hidden>
-                <legend class="sim__question">Votre estimation est prête</legend>
-                <p class="sim__hint">Indiquez votre prénom et votre e-mail pour la voir. Je ne vous écrirai qu'au sujet de votre projet, sans newsletter.</p>
-                <div class="sim__fields">
-                  <label class="sim__field"><span>Prénom</span><input type="text" name="name" autocomplete="given-name" required /></label>
-                  <label class="sim__field"><span>E-mail</span><input type="email" name="email" autocomplete="email" required /></label>
-                </div>
-                <input type="checkbox" name="botcheck" class="contact__botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" aria-label="Ne pas remplir ce champ anti-spam" />
-                <p class="sim__privacy">Vos informations servent uniquement à vous répondre et ne sont jamais revendues.</p>
-                <p class="sim__error" role="alert" data-sim-error></p>
-              </fieldset>
 
+              <p class="sim__error" role="alert" data-sim-error></p>
               <div class="sim__nav">
                 <button class="sim__back" type="button" data-sim-back hidden>Retour</button>
                 <button class="sim__next" type="submit" data-sim-next>Suivant</button>

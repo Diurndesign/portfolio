@@ -386,3 +386,37 @@
     margin-top: 1.25rem;
   }
 }
+
+// Coordonnées facultatives, sous l'estimation
+.sim__lead {
+  margin-top: 2rem;
+
+  // les blocs masqués après l'envoi (grille, boutons) gardent sinon leur display
+  [hidden] {
+    display: none !important;
+  }
+
+  padding-top: 0.25rem;
+  border-top: 1px solid rgba(var(--c-fg), 0.14);
+
+  .sim__fields {
+    margin-top: 1rem;
+  }
+
+  .sim__actions--lead {
+    margin-top: 1rem;
+  }
+
+  .sim & .sim__done {
+    margin: 1rem 0 0;
+    padding: 0.8rem 1rem;
+    border-left: 2px solid rgb(var(--c-blue));
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: $color-text-soft;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}

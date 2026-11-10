@@ -1,12 +1,13 @@
 // ============================================================
 //  Simulateur de budget (partials/simulateur.html)
 // ============================================================
-// Cinq questions, une par écran, puis le prénom et l'e-mail pour voir
-// l'estimation. Les fourchettes sont celles des tarifs publiés sur la page
+// Cinq questions, une par écran, puis l'estimation tout de suite, sans rien
+// demander. Sous le résultat, le prénom et l'e-mail sont facultatifs : pour
+// recevoir une proposition détaillée. Les fourchettes sont celles des tarifs publiés sur la page
 // des prix ; une combinaison absente du tableau (site d'une page + logo,
 // par exemple) s'affiche « à partir de », somme des prix de départ publiés.
-// La demande part vers Notion (/api/demande) et par e-mail (Web3Forms), en
-// arrière-plan : l'estimation s'affiche même si l'envoi échoue.
+// Seulement si le visiteur laisse ses coordonnées, la demande part vers
+// Notion (/api/demande) et par e-mail (Web3Forms).
 
 import { track } from "./analytics.js";
 
@@ -114,9 +115,23 @@ function renderResult(answers, offre) {
     <p class="sim__note">Estimation indicative, établie à partir de mes tarifs publiés. Le prix exact est fixé dans un devis gratuit, après un échange de 30&nbsp;minutes.</p>
     <div class="sim__actions">
       <a class="sim__next" href="${CALENDLY}" target="_blank" rel="noopener" data-calendly>Réserver un appel de 30&nbsp;min</a>
-      <a class="sim__back sim__back--link" href="/combien-coute-site-internet-nice#contact">Recevoir un devis précis</a>
       <button class="sim__restart" type="button" data-sim-restart>Refaire l'estimation</button>
-    </div>`;
+    </div>
+    <form class="sim__lead" novalidate data-sim-lead>
+      <h3 class="sim__subtitle">Pas le temps d'un appel&nbsp;?</h3>
+      <p class="sim__text">Laissez votre prénom et votre e-mail&nbsp;: je relis vos réponses et je vous écris sous 24&nbsp;h avec une proposition adaptée. C'est facultatif, et sans newsletter.</p>
+      <div class="sim__fields">
+        <label class="sim__field"><span>Prénom</span><input type="text" name="name" autocomplete="given-name" required /></label>
+        <label class="sim__field"><span>E-mail</span><input type="email" name="email" autocomplete="email" required /></label>
+      </div>
+      <input type="checkbox" name="botcheck" class="contact__botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" aria-label="Ne pas remplir ce champ anti-spam" />
+      <p class="sim__error" role="alert" data-sim-lead-error></p>
+      <div class="sim__actions sim__actions--lead">
+        <button class="sim__back sim__back--link" type="submit">Recevoir ma proposition</button>
+      </div>
+      <p class="sim__privacy">Vos informations servent uniquement à vous répondre et ne sont jamais revendues.</p>
+      <p class="sim__done" tabindex="-1" data-sim-lead-done hidden></p>
+    </form>`;
 }
 
 function send(answers, offre, contact) {
@@ -176,6 +191,8 @@ function initSimulator(root) {
   const result = root.querySelector("[data-sim-result]");
   let current = 0;
 
+  let estimation = null; // dernières réponses et offre, pour l'envoi facultatif
+
   const answers = () => Object.fromEntries(new FormData(form));
   // Étapes utiles selon le projet : un logo seul saute « logo » et « contenus »
   const path = () =>
@@ -186,14 +203,13 @@ function initSimulator(root) {
     current = Math.max(0, Math.min(index, list.length - 1));
     steps.forEach((s) => (s.hidden = s !== list[current]));
     const step = list[current];
-    const isContact = step.dataset.step === "contact";
-    const questions = list.length - 1;
-    label.textContent = isContact ? "Dernière étape" : `Question ${current + 1} sur ${questions}`;
+    const last = current === list.length - 1;
+    label.textContent = `Question ${current + 1} sur ${list.length}`;
     bar.style.width = `${((current + 1) / list.length) * 100}%`;
     back.hidden = current === 0;
-    next.textContent = isContact ? "Voir mon estimation" : "Suivant";
-    next.disabled = !isContact && !step.querySelector("input:checked");
-    error.textContent = "";
+    next.textContent = last ? "Voir mon estimation" : "Suivant";
+    next.disabled = !step.querySelector("input:checked");
+    if (error) error.textContent = "";
     if (focus) (step.querySelector("input:checked") || step.querySelector("input"))?.focus({ preventScroll: true });
   }
 
@@ -204,7 +220,7 @@ function initSimulator(root) {
   });
   form.addEventListener("click", (e) => {
     const option = e.target.closest(".sim__option");
-    if (option && e.detail > 0) setTimeout(() => show(current + 1), 180);
+    if (option && e.detail > 0 && current < path().length - 1) setTimeout(() => show(current + 1), 180);
   });
 
   back.addEventListener("click", () => show(current - 1));
@@ -212,30 +228,47 @@ function initSimulator(root) {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     const step = path()[current];
-    if (step.dataset.step !== "contact") {
-      if (step.querySelector("input:checked")) show(current + 1);
-      return;
-    }
-    const nameInput = form.elements.name;
-    const emailInput = form.elements.email;
-    if (!nameInput.value.trim() || !emailInput.checkValidity() || !emailInput.value) {
-      error.textContent = "Indiquez votre prénom et une adresse e-mail valide.";
-      (nameInput.value.trim() ? emailInput : nameInput).focus();
-      return;
-    }
+    if (!step.querySelector("input:checked")) return;
+    if (current < path().length - 1) return show(current + 1);
+    // Dernière question : l'estimation tout de suite, sans rien demander
     const a = answers();
-    const offre = estimate(a);
-    if (!a.botcheck) send(a, offre, { name: nameInput.value.trim(), email: emailInput.value.trim() });
+    estimation = { a, offre: estimate(a) };
     form.hidden = true;
-    result.innerHTML = renderResult(a, offre);
+    result.innerHTML = renderResult(a, estimation.offre);
     result.hidden = false;
     result.focus({ preventScroll: true });
     result.scrollIntoView({ behavior: "smooth", block: "start" });
+    track("simulateur_termine", { projet: a.projet });
+  });
+
+  // Coordonnées facultatives, sous le résultat
+  result.addEventListener("submit", (e) => {
+    const lead = e.target.closest("[data-sim-lead]");
+    if (!lead || !estimation) return;
+    e.preventDefault();
+    const err = lead.querySelector("[data-sim-lead-error]");
+    const nameInput = lead.elements.name;
+    const emailInput = lead.elements.email;
+    err.textContent = "";
+    if (!nameInput.value.trim() || !emailInput.value.trim() || !emailInput.checkValidity()) {
+      err.textContent = "Indiquez votre prénom et une adresse e-mail valide.";
+      (nameInput.value.trim() ? emailInput : nameInput).focus();
+      return;
+    }
+    const contact = { name: nameInput.value.trim(), email: emailInput.value.trim() };
+    if (!lead.elements.botcheck.checked) send(estimation.a, estimation.offre, contact);
+    // La proposition sera écrite à la main : on remercie, sans attendre l'envoi
+    lead.querySelectorAll(".sim__fields, .sim__actions, .sim__privacy, .sim__text").forEach((el) => (el.hidden = true));
+    const done = lead.querySelector("[data-sim-lead-done]");
+    done.textContent = `Merci ${contact.name}, c'est noté : je vous écris sous 24 h à ${contact.email}.`;
+    done.hidden = false;
+    done.focus();
   });
 
   result.addEventListener("click", (e) => {
     if (!e.target.closest("[data-sim-restart]")) return;
     form.reset();
+    estimation = null;
     result.hidden = true;
     form.hidden = false;
     show(0);
