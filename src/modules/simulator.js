@@ -118,8 +118,8 @@ function renderResult(answers, offre) {
       <button class="sim__restart" type="button" data-sim-restart>Refaire l'estimation</button>
     </div>
     <form class="sim__lead" novalidate data-sim-lead>
-      <h3 class="sim__subtitle">Pas le temps d'un appel&nbsp;?</h3>
-      <p class="sim__text">Laissez votre prénom et votre e-mail&nbsp;: je relis vos réponses et je vous écris sous 24&nbsp;h avec une proposition adaptée. C'est facultatif, et sans newsletter.</p>
+      <h3 class="sim__subtitle">Vous préférez échanger par écrit&nbsp;?</h3>
+      <p class="sim__text">Laissez votre prénom et votre e-mail&nbsp;: je relis vos réponses et je vous envoie une proposition adaptée sous 24&nbsp;h. C'est facultatif, et sans newsletter.</p>
       <div class="sim__fields">
         <label class="sim__field"><span>Prénom</span><input type="text" name="name" autocomplete="given-name" required /></label>
         <label class="sim__field"><span>E-mail</span><input type="email" name="email" autocomplete="email" required /></label>
