@@ -339,10 +339,25 @@ function finEmail(d) {
   );
 }
 
+// Typographie française dans l'e-mail : espaces insécables avant « : € » et
+// dans les milliers, pour qu'un prix ne se coupe pas en fin de ligne
+// (« 3 / 500 € »). Ne touche que le texte : aucun style ni lien n'a ces motifs.
+const insecables = (html) =>
+  html
+    .replace(/(\d) (\d{3})(?!\d)/g, "$1&nbsp;$2")
+    .replace(/ (€|:|;|\?|!|»)/g, "&nbsp;$1")
+    .replace(/« /g, "«&nbsp;");
+
 export function emailHtml(d, prenom) {
   const ligne = (x) =>
     `<tr><td style="padding:6px 0;color:#17193a">${esc(x.label)}</td><td style="padding:6px 0;text-align:right;font-weight:600;color:#010d94">${x.note}/100</td></tr>`;
-  return `<!doctype html><html lang="fr"><body style="margin:0;background:#ebe6db;font-family:Helvetica,Arial,sans-serif">
+  // color-scheme « light » : la messagerie de l'iPhone garde les couleurs
+  // de la marque au lieu de les inverser en mode sombre.
+  // x-apple-data-detectors : pas de lien automatique sur les notes « 33/100 ».
+  return insecables(`<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<meta name="color-scheme" content="light"><meta name="supported-color-schemes" content="light">
+<style>:root{color-scheme:light;supported-color-schemes:light}a[x-apple-data-detectors]{color:inherit!important;text-decoration:none!important;font-size:inherit!important;font-family:inherit!important;font-weight:inherit!important;line-height:inherit!important}</style>
+</head><body style="margin:0;background:#ebe6db;font-family:Helvetica,Arial,sans-serif">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:32px 16px">
 <table role="presentation" width="100%" style="max-width:560px;background:#ffffff;border-radius:6px" cellpadding="0" cellspacing="0"><tr><td style="padding:32px">
 <p style="margin:0 0 4px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#6b6d86">Diagnostic express · Diurn Studio</p>
@@ -353,8 +368,8 @@ export function emailHtml(d, prenom) {
 <h2 style="margin:0 0 8px;font-size:17px;color:#17193a">Vos 3 priorités</h2>
 <ol style="margin:0 0 20px;padding-left:20px;color:#17193a;line-height:1.6">${d.priorites.map((p) => `<li style="margin-bottom:8px">${esc(p)}</li>`).join("") || "<li>Rien de bloquant relevé : bravo.</li>"}</ol>
 ${finEmail(d)}
-<p style="margin:0;color:#6b6d86;font-size:13px;line-height:1.6">Jérémy Bendenoun · Diurn Studio · 06 50 94 96 15<br>Vous pouvez simplement répondre à cet e-mail.</p>
-</td></tr></table></td></tr></table></body></html>`;
+<p style="margin:0;color:#6b6d86;font-size:13px;line-height:1.6">Jérémy Bendenoun · Diurn Studio · <a href="tel:+33650949615" style="color:#6b6d86;text-decoration:none;white-space:nowrap">06&nbsp;50&nbsp;94&nbsp;96&nbsp;15</a><br>Vous pouvez simplement répondre à cet e-mail.</p>
+</td></tr></table></td></tr></table></body></html>`);
 }
 
 async function brevo(path, body) {
