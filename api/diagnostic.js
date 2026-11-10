@@ -24,6 +24,7 @@
 // Contrôle : GET /api/diagnostic?check=1 indique ce qui est réglé (aucune
 // clé n'est montrée).
 
+import { adresseJetable, tropRapide } from "../src/data/antispam.js";
 import { lookup } from "node:dns/promises";
 import net from "node:net";
 import { analyserPage, plateformeDe, hostOf } from "./_prospection.js";
@@ -440,6 +441,13 @@ export default async function handler(req, res) {
   const ip = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim() || "inconnue";
   const now = Date.now();
   const action = body.action === "email" ? "email" : "diagnostic";
+  // Envoi par e-mail : adresse jetable refusée, et demande faite moins de
+  // 3 s après l'affichage du résultat = robot (on fait semblant, sans rien
+  // mesurer ni envoyer). Contrôlé avant toute mesure.
+  if (action === "email") {
+    if (adresseJetable(body.email)) return res.status(400).json({ ok: false, erreur: "jetable" });
+    if (tropRapide(body.duree)) return res.status(200).json({ ok: true, envoye: true });
+  }
   // limites séparées : lancer un diagnostic, puis demander l'e-mail
   const cle = `${action}:${ip}`;
   const recent = (hits.get(cle) || []).filter((t) => now - t < 10 * 60_000);

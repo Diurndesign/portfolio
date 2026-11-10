@@ -10,6 +10,7 @@
 // Notion (/api/demande) et par e-mail (Web3Forms).
 
 import { track } from "./analytics.js";
+import { adresseJetable, MESSAGE_JETABLE } from "../data/antispam.js";
 
 const ACCESS_KEY = "e5c89c34-54c5-4f3a-8c1f-6a8d4c359c75"; // Web3Forms (clé publique)
 const CALENDLY = "https://calendly.com/diurnstudio/appel-decouvert";
@@ -134,7 +135,7 @@ function renderResult(answers, offre) {
     </form>`;
 }
 
-function send(answers, offre, contact) {
+function send(answers, offre, contact, duree) {
   const resume = [
     LIBELLES.projet[answers.projet],
     LIBELLES.logo[answers.logo],
@@ -162,6 +163,7 @@ function send(answers, offre, contact) {
     subject: `Estimation : ${offre.label}`,
     message,
     form_name: "simulateur",
+    duree,
     page: location.pathname,
     source,
     projet: resume,
@@ -181,6 +183,7 @@ function send(answers, offre, contact) {
 }
 
 function initSimulator(root) {
+  const debut = Date.now(); // durée de remplissage, contrôlée côté serveur
   const form = root.querySelector(".sim__form");
   const steps = [...root.querySelectorAll(".sim__step")];
   const label = root.querySelector("[data-sim-label]");
@@ -255,8 +258,13 @@ function initSimulator(root) {
       (nameInput.value.trim() ? emailInput : nameInput).focus();
       return;
     }
+    if (adresseJetable(emailInput.value)) {
+      err.textContent = MESSAGE_JETABLE;
+      emailInput.focus();
+      return;
+    }
     const contact = { name: nameInput.value.trim(), email: emailInput.value.trim() };
-    if (!lead.elements.botcheck.checked) send(estimation.a, estimation.offre, contact);
+    if (!lead.elements.botcheck.checked) send(estimation.a, estimation.offre, contact, Date.now() - debut);
     // La proposition sera écrite à la main : on remercie, sans attendre l'envoi
     lead.querySelectorAll(".sim__fields, .sim__actions, .sim__privacy, .sim__text").forEach((el) => (el.hidden = true));
     const done = lead.querySelector("[data-sim-lead-done]");
