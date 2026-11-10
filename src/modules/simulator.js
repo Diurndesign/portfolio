@@ -9,6 +9,7 @@
 // arrière-plan : l'estimation s'affiche même si l'envoi échoue.
 
 import { track } from "./analytics.js";
+import { adresseJetable, MESSAGE_JETABLE } from "../data/antispam.js";
 
 const ACCESS_KEY = "e5c89c34-54c5-4f3a-8c1f-6a8d4c359c75"; // Web3Forms (clé publique)
 const CALENDLY = "https://calendly.com/diurnstudio/appel-decouvert";
@@ -119,7 +120,7 @@ function renderResult(answers, offre) {
     </div>`;
 }
 
-function send(answers, offre, contact) {
+function send(answers, offre, contact, duree) {
   const resume = [
     LIBELLES.projet[answers.projet],
     LIBELLES.logo[answers.logo],
@@ -147,6 +148,7 @@ function send(answers, offre, contact) {
     subject: `Estimation : ${offre.label}`,
     message,
     form_name: "simulateur",
+    duree,
     page: location.pathname,
     source,
     projet: resume,
@@ -166,6 +168,7 @@ function send(answers, offre, contact) {
 }
 
 function initSimulator(root) {
+  const debut = Date.now(); // durée de remplissage, contrôlée côté serveur
   const form = root.querySelector(".sim__form");
   const steps = [...root.querySelectorAll(".sim__step")];
   const label = root.querySelector("[data-sim-label]");
@@ -223,9 +226,14 @@ function initSimulator(root) {
       (nameInput.value.trim() ? emailInput : nameInput).focus();
       return;
     }
+    if (adresseJetable(emailInput.value)) {
+      error.textContent = MESSAGE_JETABLE;
+      emailInput.focus();
+      return;
+    }
     const a = answers();
     const offre = estimate(a);
-    if (!a.botcheck) send(a, offre, { name: nameInput.value.trim(), email: emailInput.value.trim() });
+    if (!a.botcheck) send(a, offre, { name: nameInput.value.trim(), email: emailInput.value.trim() }, Date.now() - debut);
     form.hidden = true;
     result.innerHTML = renderResult(a, offre);
     result.hidden = false;

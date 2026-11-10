@@ -12,6 +12,8 @@
 //                   « Prospects du site » y est créée à la première demande
 //   NOTION_DATABASE_ID (facultatif) pour viser une base existante
 
+import { adresseJetable, tropRapide, contientLien } from "../src/data/antispam.js";
+
 const NOTION = "https://api.notion.com/v1";
 const NOTION_VERSION = "2022-06-28";
 const DB_TITLE = "Prospects du site";
@@ -21,6 +23,7 @@ const ALLOWED = [/^https:\/\/(www\.)?diurnstudio\.fr$/, /^https:\/\/[a-z0-9-]+\.
 
 const STATUTS = [
   ["Nouveau", "blue"],
+  ["À vérifier", "red"],
   ["Contacté", "yellow"],
   ["Appel fait", "orange"],
   ["Devis envoyé", "purple"],
@@ -159,6 +162,17 @@ export default async function handler(req, res) {
     console.warn("demande: nom ou e-mail invalide");
     return res.status(400).json({ ok: false });
   }
+  // Robots : envoi en moins de 3 s (on fait semblant d'accepter) ou
+  // adresse jetable (refusée, le formulaire affiche pourquoi)
+  if (tropRapide(body.duree)) {
+    console.warn("demande: envoi trop rapide, ignoré");
+    return res.status(200).json({ ok: true });
+  }
+  if (adresseJetable(email)) {
+    console.warn("demande: adresse jetable refusée");
+    return res.status(400).json({ ok: false, erreur: "jetable" });
+  }
+  const aVerifier = contientLien(body.message, body.subject, body.company, body.name);
 
   if (!TOKEN) {
     console.error("demande: clé Notion absente (NOTION_TOKEN ou NOTION_KEY)");
@@ -182,7 +196,7 @@ export default async function handler(req, res) {
       properties: {
         ...extra,
         Nom: { title: text(name) },
-        Statut: { select: { name: "Nouveau" } },
+        Statut: { select: { name: aVerifier ? "À vérifier" : "Nouveau" } },
         Email: { email },
         Formulaire: { select: { name: formName } },
         Objet: { rich_text: text(clean(body.subject, 300)) },

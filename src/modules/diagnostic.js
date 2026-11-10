@@ -11,6 +11,7 @@
 // Le résultat reste lisible par les lecteurs d'écran (zone aria-live,
 // focus posé sur le titre du résultat).
 
+import { adresseJetable, MESSAGE_JETABLE } from "../data/antispam.js";
 import { track } from "./analytics.js";
 
 const CALENDLY = "https://calendly.com/diurnstudio/appel-decouvert";
@@ -26,6 +27,7 @@ const ETAPES = [
 
 const ERREURS = {
   email: "Vérifiez votre adresse e-mail.",
+  jetable: MESSAGE_JETABLE,
   adresse: "Cette adresse ne semble pas être celle d'un site public. Vérifiez-la (exemple : www.monsite.fr).",
   plateforme: "C'est une page de réseau social ou d'annuaire : le diagnostic porte sur un site à votre nom. Pas encore de site ? Parlons-en.",
   injoignable: "Je n'arrive pas à ouvrir ce site. Vérifiez l'adresse, ou réessayez dans quelques minutes.",
@@ -233,7 +235,7 @@ function initDiagnostic() {
       setBusy(false);
       if (!d.ok) return erreur(status, d.erreur);
 
-      dernier = d;
+      dernier = { ...d, affiche: Date.now() };
       form.hidden = true;
       if (title) title.textContent = "Votre diagnostic";
       result.innerHTML = rendu(d);
@@ -258,11 +260,12 @@ function initDiagnostic() {
     const data = Object.fromEntries(new FormData(mail));
     const email = String(data.email || "").trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return erreur(st, "email");
+    if (adresseJetable(email)) return erreur(st, "jetable");
 
     btn.disabled = true;
     st.textContent = "Envoi…";
     try {
-      const r = await appeler({ action: "email", site: dernier.site, email });
+      const r = await appeler({ action: "email", site: dernier.site, email, duree: Date.now() - (dernier.affiche || 0) });
       btn.disabled = false;
       if (!r.ok) return erreur(st, r.erreur);
       st.textContent = r.envoye

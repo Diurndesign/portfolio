@@ -9,6 +9,7 @@
 // Provenance du visiteur (site d'où il arrive, campagne), mémorisée pour
 // la session à l'arrivée sur le site, et jointe à sa demande seulement
 import { track } from "./analytics.js";
+import { adresseJetable, tropRapide, MESSAGE_JETABLE } from "../data/antispam.js";
 
 function rememberSource() {
   try {
@@ -47,6 +48,7 @@ function initContactForm() {
   const form = document.getElementById("contact-form");
   if (!form) return;
 
+  const debut = Date.now(); // durée de remplissage, contrôlée à l'envoi
   const status = form.querySelector(".contact__status");
   const submit = form.querySelector(".contact__submit");
   const defaultLabel = submit ? submit.innerHTML : "Envoyer";
@@ -56,6 +58,22 @@ function initContactForm() {
 
     // pot de miel : si coché, c'est un robot → on ignore silencieusement
     if (form.botcheck && form.botcheck.checked) return;
+
+    status.className = "contact__status";
+    const duree = Date.now() - debut;
+    // envoyé moins de 3 s après l'arrivée : un robot, on fait semblant
+    if (tropRapide(duree)) {
+      status.textContent = "Merci ! Votre message est bien parti, je vous réponds au plus vite.";
+      status.classList.add("is-success");
+      form.reset();
+      return;
+    }
+    if (adresseJetable(form.elements.email && form.elements.email.value)) {
+      status.textContent = MESSAGE_JETABLE;
+      status.classList.add("is-error");
+      form.elements.email.focus();
+      return;
+    }
 
     submit.disabled = true;
     submit.innerHTML = "Envoi…";
@@ -75,6 +93,7 @@ function initContactForm() {
         postJSON("/api/demande", {
           ...fields,
           form_name: form.dataset.formName || "contact",
+          duree,
           page: location.pathname,
           source: readSource(),
         }),
