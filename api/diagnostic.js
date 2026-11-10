@@ -40,6 +40,8 @@ const BREVO_SENDER = process.env.BREVO_SENDER || "hello@diurnstudio.fr";
 const ALLOWED = [/^https:\/\/(www\.)?diurnstudio\.fr$/, /^https:\/\/[a-z0-9-]+\.vercel\.app$/, /^http:\/\/localhost(:\d+)?$/];
 const UA = "Mozilla/5.0 (compatible; DiurnStudioDiagnostic/1.0; +https://www.diurnstudio.fr/diagnostic-site-gratuit)";
 const CALENDLY = "https://calendly.com/diurnstudio/appel-decouvert";
+// Logo de l'e-mail : PNG hébergé (les messageries n'affichent pas le SVG)
+const LOGO = "https://www.diurnstudio.fr/img/logo-diurn-email.png";
 
 // Anti-abus (par instance) : 3 diagnostics par 10 minutes et par adresse IP,
 // et un résultat récent réutilisé pour la même adresse de site.
@@ -360,7 +362,8 @@ export function emailHtml(d, prenom) {
 </head><body style="margin:0;background:#ebe6db;font-family:Helvetica,Arial,sans-serif">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:32px 16px">
 <table role="presentation" width="100%" style="max-width:560px;background:#ffffff;border-radius:6px" cellpadding="0" cellspacing="0"><tr><td style="padding:32px">
-<p style="margin:0 0 4px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#6b6d86">Diagnostic express · Diurn Studio</p>
+<p style="margin:0 0 24px"><a href="https://www.diurnstudio.fr/" style="text-decoration:none"><img src="${LOGO}" width="120" height="76" alt="Diurn Studio" style="display:block;border:0;width:120px;height:76px;color:#010d94;font-size:20px;font-weight:600"></a></p>
+<p style="margin:0 0 4px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#6b6d86">Diagnostic express</p>
 <h1 style="margin:0 0 16px;font-size:24px;color:#010d94">${esc(d.host)}${d.note === null ? " : premiers constats" : ` : ${d.note}/100`}</h1>
 <p style="margin:0 0 20px;color:#17193a;line-height:1.6">Bonjour${prenom ? " " + esc(prenom) : ""}, voici le résultat du diagnostic de votre site, mesuré sur mobile.</p>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #e3e0d8;border-bottom:1px solid #e3e0d8;margin-bottom:20px">${d.axes.map(ligne).join("")}</table>
@@ -368,7 +371,15 @@ export function emailHtml(d, prenom) {
 <h2 style="margin:0 0 8px;font-size:17px;color:#17193a">Vos 3 priorités</h2>
 <ol style="margin:0 0 20px;padding-left:20px;color:#17193a;line-height:1.6">${d.priorites.map((p) => `<li style="margin-bottom:8px">${esc(p)}</li>`).join("") || "<li>Rien de bloquant relevé : bravo.</li>"}</ol>
 ${finEmail(d)}
-<p style="margin:0;color:#6b6d86;font-size:13px;line-height:1.6">Jérémy Bendenoun · Diurn Studio · <a href="tel:+33650949615" style="color:#6b6d86;text-decoration:none;white-space:nowrap">06&nbsp;50&nbsp;94&nbsp;96&nbsp;15</a><br>Vous pouvez simplement répondre à cet e-mail.</p>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #e3e0d8"><tr>
+<td width="96" valign="top" style="padding:20px 16px 0 0"><img src="${LOGO}" width="80" height="51" alt="Diurn Studio" style="display:block;border:0;width:80px;height:51px;color:#010d94;font-size:14px;font-weight:600"></td>
+<td valign="top" style="padding:20px 0 0;font-size:14px;line-height:1.6;color:#17193a">
+<strong>Jérémy Bendenoun</strong><br>
+<span style="color:#6b6d86">Designer et développeur web à Nice</span><br>
+<a href="tel:+33650949615" style="color:#010d94;font-weight:600;text-decoration:none;white-space:nowrap">06&nbsp;50&nbsp;94&nbsp;96&nbsp;15</a><br>
+<a href="https://www.diurnstudio.fr/" style="color:#010d94;text-decoration:none">diurnstudio.fr</a>
+</td></tr></table>
+<p style="margin:20px 0 0;color:#6b6d86;font-size:13px;line-height:1.6">Une question sur votre résultat&nbsp;? Répondez simplement à cet e-mail, je vous lis personnellement.</p>
 </td></tr></table></td></tr></table></body></html>`);
 }
 
