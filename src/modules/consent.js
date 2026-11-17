@@ -17,8 +17,54 @@ const CONSENT_MAX_AGE = 182 * 24 * 60 * 60 * 1000;
 // (*.vercel.app) et le poste de travail ne faussent plus les statistiques.
 const IS_PRODUCTION = /(^|\.)diurnstudio\.fr$/.test(location.hostname);
 
+// Mes propres visites : ouvrir une fois diurnstudio.fr/?moi=1 sur un appareil
+// pour ne plus y être compté (Analytics et Clarity ne se chargent plus) ;
+// ?moi=0 pour annuler. Mémorisé dans ce navigateur, sans date d'expiration.
+const INTERNE_KEY = "diurn-interne";
+
+function visiteInterne() {
+  let interne = false;
+  try {
+    const moi = new URLSearchParams(location.search).get("moi");
+    if (moi === "1") localStorage.setItem(INTERNE_KEY, "1");
+    if (moi === "0") localStorage.removeItem(INTERNE_KEY);
+    interne = localStorage.getItem(INTERNE_KEY) === "1";
+    if (moi === "1" || moi === "0") {
+      // retire ?moi= de l'adresse, puis confirme à l'écran
+      const url = new URL(location.href);
+      url.searchParams.delete("moi");
+      history.replaceState(null, "", url.pathname + url.search + url.hash);
+      confirmer(
+        moi === "1"
+          ? "C'est noté : vos visites sur cet appareil ne sont plus comptées dans les statistiques."
+          : "Vos visites sur cet appareil sont de nouveau comptées dans les statistiques.",
+      );
+    }
+  } catch (e) {
+    /* stockage indisponible : on compte normalement */
+  }
+  return interne;
+}
+
+function confirmer(texte) {
+  const afficher = () => {
+    const el = document.createElement("p");
+    el.setAttribute("role", "status");
+    el.textContent = texte;
+    el.style.cssText =
+      "position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:9999;max-width:min(92vw,420px);margin:0;padding:12px 16px;border-radius:4px;background:#17193a;color:#fff;font:14px/1.45 system-ui,sans-serif;box-shadow:0 6px 24px rgba(0,0,0,.25)";
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 6000);
+  };
+  if (document.body) afficher();
+  else document.addEventListener("DOMContentLoaded", afficher);
+}
+
+// Mesure seulement sur le vrai site, et jamais pour mes propres visites
+const MESURE = IS_PRODUCTION && !visiteInterne();
+
 function loadGoogleAnalytics() {
-  if (!IS_PRODUCTION || window.__gaLoaded) return;
+  if (!MESURE || window.__gaLoaded) return;
   window.__gaLoaded = true;
 
   const s = document.createElement("script");
@@ -47,7 +93,7 @@ function loadGoogleAnalytics() {
 // (obligatoire pour les visiteurs européens). Tant que l'ID n'est pas
 // renseigné, rien n'est chargé.
 function loadClarity() {
-  if (!IS_PRODUCTION || !CLARITY_ID || CLARITY_ID === "A_REMPLACER") return;
+  if (!MESURE || !CLARITY_ID || CLARITY_ID === "A_REMPLACER") return;
 
   if (!window.__clarityLoaded) {
     window.__clarityLoaded = true;
