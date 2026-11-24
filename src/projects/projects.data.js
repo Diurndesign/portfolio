@@ -47,7 +47,7 @@ export const projects = [
         { heading: "Contexte", text: "Alexandra, esthéticienne depuis 20 ans et spécialiste de la dermopigmentation des sourcils, tient un institut à Nice. Ses clientes la découvraient sur Instagram et réservaient sur Planity, mais il lui manquait un site à elle." },
         { heading: "Objectifs", text: "Un site qui lui ressemble, qui rassure avant une prestation comme la dermopigmentation, qu'elle puisse mettre à jour seule, et qui l'aide à être mieux trouvée sur Google." },
         { heading: "Ce que j'ai réalisé", text: "Un site codé sur mesure à partir de son logo, des avant/après interactifs, la réservation reliée à Planity, ses avis Google mis en avant, et un espace d'administration sur Supabase pour gérer ses photos en toute autonomie." },
-        { heading: "Résultat", text: "Livré en deux semaines, le site est à son nom. L'institut est mieux positionné sur Google, et de nouvelles clientes sont venues grâce au site." },
+        { heading: "Résultat", text: "Livré en deux semaines, le site est à son nom et elle le met à jour seule. « Je suis ravie de mon site internet, à mon image et très complet », dit-elle dans son avis Google." },
       ],
       links: [{ href: "https://thebeautycornerbyalex.fr", label: "Voir le site en ligne" }],
       gallery: {
@@ -55,6 +55,7 @@ export const projects = [
         images: [
           { src: "/img/projets/bcorner-mockup.webp", alt: "Le site The Beauty Corner by Alex présenté sur ordinateur et mobile", width: 1080, height: 1080 },
           { src: "/img/projets/bcorner-2.webp", alt: "Section des prestations de l'institut, soirée beauté entre amies", width: 1543, height: 753 },
+          { src: "/img/projets/bcorner-avant-apres.webp", alt: "Comparateur avant/après du site The Beauty Corner, curseur à faire glisser", width: 974, height: 784 },
         ],
       },
     },
