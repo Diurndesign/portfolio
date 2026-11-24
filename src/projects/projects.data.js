@@ -29,6 +29,7 @@ export const projects = [
   {
     id: "beautycorner",
     kind: "modal",
+    cardHref: "/realisations/beauty-corner",
     title: "Beauty Corner",
     cat: "Site internet",
     tags: ["web"],
@@ -95,6 +96,7 @@ export const projects = [
   {
     id: "azureco",
     kind: "modal",
+    cardHref: "/realisations/pressing-azur-eco",
     title: "Azur Eco",
     cat: "Logo · Mascotte",
     tags: ["identite"],
@@ -128,6 +130,7 @@ export const projects = [
   {
     id: "tijm",
     kind: "modal",
+    cardHref: "/realisations/tournoi-judo-monaco",
     title: "TijM",
     cat: "Affiche & édition",
     tags: ["edition"],
