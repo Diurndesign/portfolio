@@ -62,6 +62,7 @@ export const caseStudies = [
         heading: "Le point de départ",
         paragraphs: [
           "Alexandra est esthéticienne depuis 20 ans et spécialiste de la dermopigmentation des sourcils. Ses clientes la découvraient sur Instagram et réservaient sur Planity, mais il lui manquait un site à elle.",
+          // À VÉRIFIER : phrase de reformulation, pas tirée telle quelle de la fiche.
           "Pour une prestation comme la dermopigmentation, une cliente veut être rassurée avant de réserver : voir le travail, lire des avis, comprendre comment se passe le rendez-vous. Le site devait répondre à ces questions.",
         ],
       },
@@ -71,8 +72,9 @@ export const caseStudies = [
         intro: "Un site codé sur mesure à partir de son logo, sans template, pensé pour qu'elle reste autonome.",
         cards: [
           {
-            title: "Des avant/après.",
-            text: "Les résultats des prestations sont montrés avant et après : la meilleure preuve du savoir-faire, bien plus parlante qu'un long texte.",
+            // À VÉRIFIER : fonctionnement du comparateur (curseur à faire glisser) supposé.
+            title: "Des avant/après interactifs.",
+            text: "La cliente fait glisser le curseur pour comparer le résultat d'une prestation : la meilleure preuve du savoir-faire, bien plus parlante qu'un long texte.",
           },
           {
             title: "La réservation reliée à Planity.",
