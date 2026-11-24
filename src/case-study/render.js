@@ -206,6 +206,9 @@ export function renderCaseStudy(entry, allEntries) {
     <meta property="og:title" content="${seo.title}" />
     <meta property="og:description" content="${seo.description}" />
     <meta property="og:image" content="${seo.ogImage}" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="${entry.hero.alt}" />
 
     <!-- Twitter / X -->
@@ -283,9 +286,9 @@ ${renderOthers(entry, allEntries)}
 //  Page index /realisations : liste de toutes les études de cas
 // ------------------------------------------------------------
 export function renderCaseStudyIndex(allEntries) {
-  const title = "Réalisations : sites internet, logos et identités de marque | Diurn Studio";
+  const title = "Réalisations : sites, logos et identités | Diurn Studio";
   const description =
-    "Études de cas de Diurn Studio, designer et développeur web à Nice : sites internet sur mesure, logos, identités de marque, affiches et éditions pour des clients de la Côte d'Azur.";
+    "Les réalisations de Diurn Studio à Nice : sites internet sur mesure, logos, identités de marque et affiches pour des clients de la Côte d'Azur.";
   const ogImage = allEntries[0] ? allEntries[0].seo.ogImage : `${SITE}/img/og-cover.png`;
 
   const breadcrumbJsonLd = {
@@ -347,6 +350,9 @@ export function renderCaseStudyIndex(allEntries) {
     <meta property="og:title" content="${title}" />
     <meta property="og:description" content="${description}" />
     <meta property="og:image" content="${ogImage}" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Réalisations de Diurn Studio" />
 
     <!-- Twitter / X -->
