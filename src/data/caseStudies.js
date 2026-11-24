@@ -29,6 +29,88 @@
 
 export const caseStudies = [
   {
+    slug: "beauty-corner",
+    lastmod: "2026-11-24",
+    seo: {
+      title: "Site internet d'un institut de beauté à Nice : The Beauty Corner | Diurn Studio",
+      description:
+        "Étude de cas : le site de The Beauty Corner by Alex, institut de beauté à Nice. Site codé sur mesure en deux semaines, avant/après interactifs, réservation Planity, avis Google et espace d'administration.",
+      ogImage: "https://www.diurnstudio.fr/img/projets/bcorner-mockup.webp",
+      canonical: "https://www.diurnstudio.fr/realisations/beauty-corner",
+    },
+    breadcrumb: "The Beauty Corner",
+    cat: "Site internet",
+    h1: "The Beauty Corner : le site sur mesure d'un institut de beauté à Nice",
+    intro:
+      "Alexandra tient The Beauty Corner, un institut de beauté à Nice. J'ai conçu et codé son site internet : un site à son image, qu'elle met à jour seule et qui l'aide à être trouvée sur Google.",
+    hero: {
+      src: "/img/projets/bcorner-mockup.webp",
+      alt: "Le site The Beauty Corner by Alex présenté sur ordinateur et mobile",
+      width: 1080,
+      height: 1080,
+    },
+    facts: [
+      { label: "Client", value: "The Beauty Corner by Alex" },
+      { label: "Secteur", value: "Institut de beauté, Nice" },
+      { label: "Prestations", value: "Design web · Développement · Espace admin · SEO local" },
+      { label: "Délai", value: "Deux semaines" },
+    ],
+    live: { url: "https://thebeautycornerbyalex.fr", label: "Voir le site en ligne" },
+    sections: [
+      {
+        type: "text",
+        heading: "Le point de départ",
+        paragraphs: [
+          "Alexandra est esthéticienne depuis 20 ans et spécialiste de la dermopigmentation des sourcils. Ses clientes la découvraient sur Instagram et réservaient sur Planity, mais il lui manquait un site à elle.",
+          // À VÉRIFIER : phrase de reformulation, pas tirée telle quelle de la fiche.
+          "Pour une prestation comme la dermopigmentation, une cliente veut être rassurée avant de réserver : voir le travail, lire des avis, comprendre comment se passe le rendez-vous. Le site devait répondre à ces questions.",
+        ],
+      },
+      {
+        type: "cards",
+        heading: "Ce que j'ai fait",
+        intro: "Un site codé sur mesure à partir de son logo, sans template, pensé pour qu'elle reste autonome.",
+        cards: [
+          {
+            // À VÉRIFIER : fonctionnement du comparateur (curseur à faire glisser) supposé.
+            title: "Des avant/après interactifs.",
+            text: "La cliente fait glisser le curseur pour comparer le résultat d'une prestation : la meilleure preuve du savoir-faire, bien plus parlante qu'un long texte.",
+          },
+          {
+            title: "La réservation reliée à Planity.",
+            text: "Alexandra garde son outil de réservation habituel. Le site y envoie directement, sans étape en plus pour la cliente.",
+          },
+          {
+            title: "Ses avis Google mis en avant.",
+            text: "Les avis de ses clientes sont affichés sur le site, là où une nouvelle cliente hésite encore.",
+          },
+          {
+            title: "Un espace d'administration sur Supabase.",
+            text: "Elle ajoute et change ses photos elle-même, sans passer par un développeur.",
+          },
+        ],
+      },
+      {
+        type: "gallery",
+        images: [
+          { src: "/img/projets/bcorner-2.webp", alt: "Section des prestations du site The Beauty Corner, soirée beauté entre amies", width: 1543, height: 753, full: true },
+        ],
+      },
+      {
+        type: "text",
+        heading: "Le résultat",
+        paragraphs: [
+          "Le site a été livré en deux semaines. Le site, l'hébergement et le nom de domaine sont au nom d'Alexandra : elle en est propriétaire.",
+          "L'institut est mieux positionné sur Google, et de nouvelles clientes sont venues grâce au site.",
+        ],
+      },
+    ],
+    cta: {
+      heading: "Vous tenez un institut ou un commerce à Nice ?",
+      text: "Je crée des sites sur mesure qui rassurent vos futures clientes, se relient à vos outils de réservation et vous aident à être trouvé sur Google. Parlons de votre projet lors d'un court appel.",
+    },
+  },
+  {
     slug: "gdunan",
     lastmod: "2026-11-10",
     seo: {
@@ -67,7 +149,7 @@ export const caseStudies = [
       {
         type: "cards",
         heading: "Ce que j'ai fait",
-        intro: "Tout le projet a été mené par la même personne, du premier croquis du logo à la mise en ligne du site.",
+        intro: "Tout le projet a été mené par la même personne, du premier croquis du logo à la livraison du site.",
         cards: [
           {
             title: "Un monogramme « GD » épuré.",
@@ -75,7 +157,7 @@ export const caseStudies = [
           },
           {
             title: "Un site internet codé sur mesure.",
-            text: "J'ai mené la conception et la direction artistique du site, puis son développement. Il est aussi soigné sur mobile que sur ordinateur.",
+            text: "J'ai mené la conception et la direction artistique du site, puis son développement. Il a été pensé aussi soigneusement pour le mobile que pour l'ordinateur.",
           },
           {
             title: "Une carte de visite gaufrée à froid.",
@@ -272,94 +354,13 @@ export const caseStudies = [
     },
   },
   // ----------------------------------------------------------------
-  // Les trois études ci-dessous ont été rédigées à partir des fiches
+  // Les études Beauty Corner (en tête de liste), Pressing Azur Eco et
+  // Tournoi de Judo de Monaco ont été rédigées à partir des fiches
   // existantes (src/projects/projects.data.js) et des pages de service.
   // Les passages marqués « À VÉRIFIER » sont des déductions ou des
   // formulations ajoutées : à relire et corriger avant de les considérer
   // comme définitifs.
   // ----------------------------------------------------------------
-  {
-    slug: "beauty-corner",
-    lastmod: "2026-11-24",
-    seo: {
-      title: "Site internet d'un institut de beauté à Nice : The Beauty Corner | Diurn Studio",
-      description:
-        "Étude de cas : le site de The Beauty Corner by Alex, institut de beauté à Nice. Site codé sur mesure en deux semaines, avant/après interactifs, réservation Planity, avis Google et espace d'administration.",
-      ogImage: "https://www.diurnstudio.fr/img/projets/bcorner-mockup.webp",
-      canonical: "https://www.diurnstudio.fr/realisations/beauty-corner",
-    },
-    breadcrumb: "The Beauty Corner",
-    cat: "Site internet",
-    h1: "The Beauty Corner : le site sur mesure d'un institut de beauté à Nice",
-    intro:
-      "Alexandra tient The Beauty Corner, un institut de beauté à Nice. J'ai conçu et codé son site internet : un site à son image, qu'elle met à jour seule et qui l'aide à être trouvée sur Google.",
-    hero: {
-      src: "/img/projets/bcorner-mockup.webp",
-      alt: "Le site The Beauty Corner by Alex présenté sur ordinateur et mobile",
-      width: 1080,
-      height: 1080,
-    },
-    facts: [
-      { label: "Client", value: "The Beauty Corner by Alex" },
-      { label: "Secteur", value: "Institut de beauté, Nice" },
-      { label: "Prestations", value: "Design web · Développement · Espace admin · SEO local" },
-      { label: "Délai", value: "Deux semaines" },
-    ],
-    live: { url: "https://thebeautycornerbyalex.fr", label: "Voir le site en ligne" },
-    sections: [
-      {
-        type: "text",
-        heading: "Le point de départ",
-        paragraphs: [
-          "Alexandra est esthéticienne depuis 20 ans et spécialiste de la dermopigmentation des sourcils. Ses clientes la découvraient sur Instagram et réservaient sur Planity, mais il lui manquait un site à elle.",
-          // À VÉRIFIER : phrase de reformulation, pas tirée telle quelle de la fiche.
-          "Pour une prestation comme la dermopigmentation, une cliente veut être rassurée avant de réserver : voir le travail, lire des avis, comprendre comment se passe le rendez-vous. Le site devait répondre à ces questions.",
-        ],
-      },
-      {
-        type: "cards",
-        heading: "Ce que j'ai fait",
-        intro: "Un site codé sur mesure à partir de son logo, sans template, pensé pour qu'elle reste autonome.",
-        cards: [
-          {
-            // À VÉRIFIER : fonctionnement du comparateur (curseur à faire glisser) supposé.
-            title: "Des avant/après interactifs.",
-            text: "La cliente fait glisser le curseur pour comparer le résultat d'une prestation : la meilleure preuve du savoir-faire, bien plus parlante qu'un long texte.",
-          },
-          {
-            title: "La réservation reliée à Planity.",
-            text: "Alexandra garde son outil de réservation habituel. Le site y envoie directement, sans étape en plus pour la cliente.",
-          },
-          {
-            title: "Ses avis Google mis en avant.",
-            text: "Les avis de ses clientes sont affichés sur le site, là où une nouvelle cliente hésite encore.",
-          },
-          {
-            title: "Un espace d'administration sur Supabase.",
-            text: "Elle ajoute et change ses photos elle-même, sans passer par un développeur.",
-          },
-        ],
-      },
-      {
-        type: "gallery",
-        images: [
-          { src: "/img/projets/bcorner-2.webp", alt: "Section des prestations du site The Beauty Corner, soirée beauté entre amies", width: 1543, height: 753, full: true },
-        ],
-      },
-      {
-        type: "text",
-        heading: "Le résultat",
-        paragraphs: [
-          "Le site a été livré en deux semaines. Le site, l'hébergement et le nom de domaine sont au nom d'Alexandra : elle en est propriétaire.",
-          "L'institut est mieux positionné sur Google, et de nouvelles clientes sont venues grâce au site.",
-        ],
-      },
-    ],
-    cta: {
-      heading: "Vous tenez un institut ou un commerce à Nice ?",
-      text: "Je crée des sites sur mesure qui rassurent vos futures clientes, se relient à vos outils de réservation et vous aident à être trouvé sur Google. Parlons de votre projet lors d'un court appel.",
-    },
-  },
   {
     slug: "pressing-azur-eco",
     lastmod: "2026-11-24",
