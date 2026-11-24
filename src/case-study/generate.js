@@ -1,7 +1,8 @@
 // ============================================================
 //  Études de cas — génération au build
 // ============================================================
-// Écrit une page HTML statique par étude de cas (realisations/<slug>.html) à
+// Écrit une page HTML statique par étude de cas (realisations/<slug>.html),
+// plus la page index (realisations/index.html), à
 // partir des données (src/data/caseStudies.js) et maintient le sitemap à jour.
 // Appelé depuis vite.config.js : la génération a lieu avant que Vite ne
 // résolve les entrées multi-pages, en dev comme au build.
@@ -19,13 +20,14 @@ import {
 } from "fs";
 import { resolve } from "path";
 import { caseStudies } from "../data/caseStudies.js";
-import { renderCaseStudy } from "./render.js";
+import { renderCaseStudy, renderCaseStudyIndex } from "./render.js";
 
 export function generateCaseStudies(root) {
   const dir = resolve(root, "realisations");
   mkdirSync(dir, { recursive: true });
 
   const wanted = new Set(caseStudies.map((e) => `${e.slug}.html`));
+  wanted.add("index.html");
 
   // Nettoie les pages orphelines (étude supprimée des données).
   for (const file of readdirSync(dir)) {
@@ -41,6 +43,11 @@ export function generateCaseStudies(root) {
     writeIfChanged(target, html);
     input[`caseStudy_${entry.slug.replace(/[^a-z0-9]/gi, "_")}`] = target;
   }
+
+  // Page index /realisations (realisations/index.html).
+  const indexFile = resolve(dir, "index.html");
+  writeIfChanged(indexFile, renderCaseStudyIndex(caseStudies));
+  input.caseStudyIndex = indexFile;
 
   patchSitemap(root);
 
@@ -62,7 +69,16 @@ function patchSitemap(root) {
   const re = /(<!-- case-studies:start -->)[\s\S]*?(<!-- case-studies:end -->)/;
   if (!re.test(xml)) return;
 
-  const block = caseStudies
+  // lastmod de l'index = date de l'étude la plus récente.
+  const latest = caseStudies.map((e) => e.lastmod).sort().pop();
+  const index = `  <url>
+    <loc>https://www.diurnstudio.fr/realisations</loc>
+    <lastmod>${latest}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>`;
+
+  const block = [index].concat(caseStudies
     .map(
       (e) => `  <url>
     <loc>https://www.diurnstudio.fr/realisations/${e.slug}</loc>
@@ -70,7 +86,7 @@ function patchSitemap(root) {
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>`
-    )
+    ))
     .join("\n");
 
   const next = xml.replace(re, `$1\n${block}\n  $2`);

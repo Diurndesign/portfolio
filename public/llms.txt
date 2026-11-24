@@ -23,6 +23,16 @@ Diurn Studio est dirigé par Jérémy Bendenoun, designer et développeur web ba
 - [Création de site internet à Monaco](https://www.diurnstudio.fr/creation-site-internet-monaco) : sites sur mesure pour la Principauté de Monaco.
 - [Diagnostic gratuit en 1 minute](https://www.diurnstudio.fr/diagnostic-site-gratuit) : note sur 100 et 3 priorités, mesurées automatiquement (vitesse mobile, référencement, accessibilité, essentiels).
 
+## Réalisations
+
+- [Toutes les réalisations](https://www.diurnstudio.fr/realisations) : études de cas détaillées (point de départ, travail réalisé, résultat).
+- [The Beauty Corner](https://www.diurnstudio.fr/realisations/beauty-corner) : site internet sur mesure d'un institut de beauté à Nice, livré en deux semaines.
+- [GdunaN](https://www.diurnstudio.fr/realisations/gdunan) : identité haut de gamme, du monogramme au site internet.
+- [Ewa FLR](https://www.diurnstudio.fr/realisations/ewa-flr) : identité de marque d'une cheffe.
+- [Elo Ab](https://www.diurnstudio.fr/realisations/elo-ab) : refonte du logo d'une couturière.
+- [Pressing Azur Eco](https://www.diurnstudio.fr/realisations/pressing-azur-eco) : logo-mascotte rétro pour un pressing.
+- [Tournoi International de Judo de Monaco](https://www.diurnstudio.fr/realisations/tournoi-judo-monaco) : affiche et magazine officiel de la 24e édition (2017).
+
 ## Guides
 
 - [Combien coûte un site internet à Nice ?](https://www.diurnstudio.fr/combien-coute-site-internet-nice) : prix réels par type de projet (one-page dès 900 €, site vitrine dès 1 800 €, logo dès 700 €, sur-mesure sur devis).
