@@ -62,7 +62,6 @@ export const caseStudies = [
         heading: "Le point de départ",
         paragraphs: [
           "Alexandra est esthéticienne depuis 20 ans et spécialiste de la dermopigmentation des sourcils. Ses clientes la découvraient sur Instagram et réservaient sur Planity, mais il lui manquait un site à elle.",
-          // À VÉRIFIER : phrase de reformulation, pas tirée telle quelle de la fiche.
           "Pour une prestation comme la dermopigmentation, une cliente veut être rassurée avant de réserver : voir le travail, lire des avis, comprendre comment se passe le rendez-vous. Le site devait répondre à ces questions.",
         ],
       },
@@ -72,9 +71,8 @@ export const caseStudies = [
         intro: "Un site codé sur mesure à partir de son logo, sans template, pensé pour qu'elle reste autonome.",
         cards: [
           {
-            // À VÉRIFIER : fonctionnement du comparateur (curseur à faire glisser) supposé.
             title: "Des avant/après interactifs.",
-            text: "La cliente fait glisser le curseur pour comparer le résultat d'une prestation : la meilleure preuve du savoir-faire, bien plus parlante qu'un long texte.",
+            text: "Dermopigmentation, rehaussement de cils, ongles, soin de la peau, détatouage : la cliente choisit une prestation et fait glisser le curseur sur la photo pour révéler le résultat. C'est la meilleure preuve du savoir-faire, bien plus parlante qu'un long texte.",
           },
           {
             title: "La réservation reliée à Planity.",
@@ -93,15 +91,23 @@ export const caseStudies = [
       {
         type: "gallery",
         images: [
+          { src: "/img/projets/bcorner-accueil.webp", alt: "Page d'accueil du site The Beauty Corner by Alex, institut de beauté à Nice, avec la note Google et le bouton de réservation", width: 1552, height: 703, full: true },
+          { src: "/img/projets/bcorner-avant-apres.webp", alt: "Comparateur avant/après du site The Beauty Corner : onglets par prestation et curseur à faire glisser sur une dermopigmentation des sourcils", width: 974, height: 784, full: true },
           { src: "/img/projets/bcorner-2.webp", alt: "Section des prestations du site The Beauty Corner, soirée beauté entre amies", width: 1543, height: 753, full: true },
         ],
+      },
+      {
+        type: "quote",
+        heading: "Ce qu'en dit Alexandra",
+        quote: "Merci à Jeremy pour ses compétences et son professionnalisme, toujours à l'écoute et dans la bienveillance. Je suis ravie de mon site internet, à mon image et très complet. Je recommande vivement.",
+        author: "Alexandra, The Beauty Corner by Alex · avis Google 5 étoiles",
       },
       {
         type: "text",
         heading: "Le résultat",
         paragraphs: [
-          "Le site a été livré en deux semaines. Le site, l'hébergement et le nom de domaine sont au nom d'Alexandra : elle en est propriétaire.",
-          "L'institut est mieux positionné sur Google, et de nouvelles clientes sont venues grâce au site.",
+          "Le site a été livré en deux semaines. Le site, l'hébergement et le nom de domaine sont au nom d'Alexandra : elle en est propriétaire, et elle change ses photos seule depuis son espace d'administration.",
+          "Une nouvelle cliente trouve au même endroit tout ce qui la décide : les prestations, les résultats en avant/après, les avis et le bouton pour réserver sur Planity.",
         ],
       },
     ],
