@@ -32,10 +32,10 @@ export const caseStudies = [
     slug: "beauty-corner",
     lastmod: "2026-11-24",
     seo: {
-      title: "Site internet d'un institut de beauté à Nice : The Beauty Corner | Diurn Studio",
+      title: "Site d'un institut de beauté à Nice : The Beauty Corner",
       description:
-        "Étude de cas : le site de The Beauty Corner by Alex, institut de beauté à Nice. Site codé sur mesure en deux semaines, avant/après interactifs, réservation Planity, avis Google et espace d'administration.",
-      ogImage: "https://www.diurnstudio.fr/img/projets/bcorner-mockup.webp",
+        "Le site sur mesure de The Beauty Corner, institut de beauté à Nice : livré en 2 semaines, avec avant/après, réservation Planity et avis Google.",
+      ogImage: "https://www.diurnstudio.fr/img/og/realisation-beauty-corner.jpg",
       canonical: "https://www.diurnstudio.fr/realisations/beauty-corner",
     },
     breadcrumb: "The Beauty Corner",
@@ -62,7 +62,6 @@ export const caseStudies = [
         heading: "Le point de départ",
         paragraphs: [
           "Alexandra est esthéticienne depuis 20 ans et spécialiste de la dermopigmentation des sourcils. Ses clientes la découvraient sur Instagram et réservaient sur Planity, mais il lui manquait un site à elle.",
-          // À VÉRIFIER : phrase de reformulation, pas tirée telle quelle de la fiche.
           "Pour une prestation comme la dermopigmentation, une cliente veut être rassurée avant de réserver : voir le travail, lire des avis, comprendre comment se passe le rendez-vous. Le site devait répondre à ces questions.",
         ],
       },
@@ -72,9 +71,8 @@ export const caseStudies = [
         intro: "Un site codé sur mesure à partir de son logo, sans template, pensé pour qu'elle reste autonome.",
         cards: [
           {
-            // À VÉRIFIER : fonctionnement du comparateur (curseur à faire glisser) supposé.
-            title: "Des avant/après interactifs.",
-            text: "La cliente fait glisser le curseur pour comparer le résultat d'une prestation : la meilleure preuve du savoir-faire, bien plus parlante qu'un long texte.",
+            title: "Des avant/après.",
+            text: "Les résultats des prestations sont montrés avant et après : la meilleure preuve du savoir-faire, bien plus parlante qu'un long texte.",
           },
           {
             title: "La réservation reliée à Planity.",
@@ -114,10 +112,10 @@ export const caseStudies = [
     slug: "gdunan",
     lastmod: "2026-11-10",
     seo: {
-      title: "Identité de marque et site internet haut de gamme : GdunaN | Diurn Studio",
+      title: "Identité de marque haut de gamme : GdunaN | Diurn Studio",
       description:
-        "Étude de cas : l'identité complète de GdunaN, marque haut de gamme. Monogramme GD, site internet codé sur mesure, carte de visite gaufrée à froid et shooting photo, par un seul interlocuteur.",
-      ogImage: "https://www.diurnstudio.fr/img/projets/gd-2.webp",
+        "L'identité complète de GdunaN, marque haut de gamme : monogramme GD, site codé sur mesure, carte de visite gaufrée et shooting photo.",
+      ogImage: "https://www.diurnstudio.fr/img/og/realisation-gdunan.jpg",
       canonical: "https://www.diurnstudio.fr/realisations/gdunan",
     },
     breadcrumb: "GdunaN",
@@ -199,8 +197,8 @@ export const caseStudies = [
     seo: {
       title: "Identité de marque pour une cheffe : Ewa FLR | Diurn Studio",
       description:
-        "Étude de cas : l'identité de marque d'Ewa FLR, cheffe. Logotype vertical, une couleur unique, le bleu béton, et une charte déclinée sur la papeterie, les cartes de visite et le tablier.",
-      ogImage: "https://www.diurnstudio.fr/img/projets/ewa-5.webp",
+        "L'identité de marque d'Ewa FLR, cheffe : logotype vertical, une seule couleur, le bleu béton, et une charte déclinée jusqu'au tablier.",
+      ogImage: "https://www.diurnstudio.fr/img/og/realisation-ewa-flr.jpg",
       canonical: "https://www.diurnstudio.fr/realisations/ewa-flr",
     },
     breadcrumb: "Ewa FLR",
@@ -278,10 +276,10 @@ export const caseStudies = [
     slug: "elo-ab",
     lastmod: "2026-11-10",
     seo: {
-      title: "Logo et refonte d'identité pour une couturière : Elo Ab | Diurn Studio",
+      title: "Logo d'une couturière : Elo Ab | Diurn Studio",
       description:
-        "Étude de cas : la refonte de l'identité d'Elo Ab, couturière. Un logotype tout en rondeurs où l'aiguille et le fil s'invitent dans les lettres, décliné jusqu'au ruban gansé griffé.",
-      ogImage: "https://www.diurnstudio.fr/img/projets/elo-2.webp",
+        "La refonte de l'identité d'Elo Ab, couturière : un logo tout en rondeurs, l'aiguille et le fil dans les lettres, jusqu'au ruban griffé.",
+      ogImage: "https://www.diurnstudio.fr/img/og/realisation-elo-ab.jpg",
       canonical: "https://www.diurnstudio.fr/realisations/elo-ab",
     },
     breadcrumb: "Elo Ab",
@@ -357,18 +355,15 @@ export const caseStudies = [
   // Les études Beauty Corner (en tête de liste), Pressing Azur Eco et
   // Tournoi de Judo de Monaco ont été rédigées à partir des fiches
   // existantes (src/projects/projects.data.js) et des pages de service.
-  // Les passages marqués « À VÉRIFIER » sont des déductions ou des
-  // formulations ajoutées : à relire et corriger avant de les considérer
-  // comme définitifs.
   // ----------------------------------------------------------------
   {
     slug: "pressing-azur-eco",
     lastmod: "2026-11-24",
     seo: {
-      title: "Logo et mascotte rétro pour un pressing : Pressing Azur Eco | Diurn Studio",
+      title: "Logo et mascotte rétro : Pressing Azur Eco | Diurn Studio",
       description:
-        "Étude de cas : le logo de Pressing Azur Eco. Une mascotte rétro inspirée du style « rubber hose » des années 30, un alphabet dessiné sur mesure et une palette sauge, bleu nuit et crème.",
-      ogImage: "https://www.diurnstudio.fr/img/projets/az-1.webp",
+        "Le logo de Pressing Azur Eco : une mascotte rétro façon « rubber hose » des années 30, un alphabet sur mesure et une palette sauge et crème.",
+      ogImage: "https://www.diurnstudio.fr/img/og/realisation-pressing-azur-eco.jpg",
       canonical: "https://www.diurnstudio.fr/realisations/pressing-azur-eco",
     },
     breadcrumb: "Pressing Azur Eco",
@@ -393,8 +388,7 @@ export const caseStudies = [
         type: "text",
         heading: "Le point de départ",
         paragraphs: [
-          // À VÉRIFIER : la fiche indique seulement l'objectif (un personnage joyeux et mémorable) ; le contexte du pressing est déduit.
-          "Un pressing est un commerce de proximité : on y passe souvent, on le choisit parce qu'on s'en souvient et qu'on lui fait confiance. Azur Eco voulait une image qui sorte du lot, loin des logos impersonnels du secteur.",
+          "Un pressing est un commerce de proximité : on y passe souvent, on le choisit parce qu'on s'en souvient et qu'on lui fait confiance.",
           "L'objectif : incarner le pressing par un personnage joyeux et mémorable, avec une typographie qui lui soit propre.",
         ],
       },
@@ -434,7 +428,6 @@ export const caseStudies = [
         heading: "Le résultat",
         paragraphs: [
           "Une mascotte qui incarne le pressing avec malice, dans une palette sauge, bleu nuit et crème.",
-          // À VÉRIFIER : conclusion rédigée pour la page, à confirmer ou adapter.
           "Un personnage se retient bien mieux qu'un simple nom : il donne aux clients une raison de sourire et de se souvenir de l'enseigne.",
         ],
       },
@@ -448,10 +441,10 @@ export const caseStudies = [
     slug: "tournoi-judo-monaco",
     lastmod: "2026-11-24",
     seo: {
-      title: "Affiche et magazine du Tournoi de Judo de Monaco | Diurn Studio",
+      title: "Affiche du Tournoi de Judo de Monaco | Diurn Studio",
       description:
-        "Étude de cas : l'identité visuelle du 24e Tournoi International de Judo de Monaco (2017). L'affiche, de l'abribus au Stade Louis II, puis le magazine officiel mis en page jusqu'au bon à tirer.",
-      ogImage: "https://www.diurnstudio.fr/img/projets/tijm-4.webp",
+        "L'identité du 24e Tournoi International de Judo de Monaco (2017) : l'affiche, de l'abribus au Stade Louis II, et le magazine officiel.",
+      ogImage: "https://www.diurnstudio.fr/img/og/realisation-tournoi-judo-monaco.jpg",
       canonical: "https://www.diurnstudio.fr/realisations/tournoi-judo-monaco",
     },
     breadcrumb: "Tournoi International de Judo de Monaco",
@@ -485,8 +478,7 @@ export const caseStudies = [
         cards: [
           {
             title: "Une affiche lisible de loin.",
-            // À VÉRIFIER : description du parti pris graphique déduite des visuels.
-            text: "Une image forte et une hiérarchie claire : le nom du tournoi et les dates se lisent en quelques secondes, à pied comme en voiture.",
+            text: "Une image forte et une hiérarchie claire, pour que le nom du tournoi et les dates se repèrent vite dans la rue.",
           },
           {
             title: "Le magazine officiel.",
@@ -515,7 +507,6 @@ export const caseStudies = [
         heading: "Le résultat",
         paragraphs: [
           "Une identité cohérente de l'affiche au magazine, menée jusqu'au bon à tirer.",
-          // À VÉRIFIER : phrase de transition vers les services, à garder ou non.
           "Concevoir pour un événement, c'est travailler pour des supports très différents et des délais fixes : la même exigence s'applique à un site internet qui doit être prêt pour une date de lancement.",
         ],
       },
