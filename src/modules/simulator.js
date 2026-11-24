@@ -20,13 +20,14 @@ const OFFRES = {
   onepage: { label: "Site d'une page sur mesure", min: 900, max: 1500, weeks: [2, 2] },
   vitrine: { label: "Site vitrine (4 à 6 pages)", min: 1800, max: 3200, weeks: [3, 5] },
   refonte: { label: "Refonte de votre site", min: 1500, max: 3500, weeks: [3, 6] },
+  boutique: { label: "Boutique en ligne Shopify sur mesure", min: 3000, max: 6000, weeks: [4, 8] },
   logo: { label: "Création de logo", min: 700, max: null, weeks: [1, 2] },
 };
 const LOGO_PRIX = 700;
 const LOGO_SEMAINES = [1, 2];
 
 const LIBELLES = {
-  projet: { onepage: "site d'une page", vitrine: "site vitrine", refonte: "refonte", logo: "logo seul" },
+  projet: { onepage: "site d'une page", vitrine: "site vitrine", refonte: "refonte", boutique: "boutique en ligne", logo: "logo seul" },
   logo: { ok: "logo existant", revoir: "logo à revoir", aucun: "pas de logo" },
   contenus: { tout: "contenus prêts", partie: "contenus en partie prêts", rien: "contenus à préparer" },
 };
@@ -69,6 +70,9 @@ function conseils(answers, offre) {
       `Commencer par un site d'une page (à partir de ${euros(900)}), puis ajouter des pages quand votre activité grandit&nbsp;: le site est conçu pour évoluer.`
     );
   }
+  if (answers.projet === "boutique") {
+    list.push("Démarrer avec vos produits phares, puis compléter le catalogue vous-même&nbsp;: vous ajoutez vos produits sans repasser par moi.");
+  }
   if (answers.logo === "revoir") {
     list.push("Si votre logo actuel reste lisible, on peut le garder et ne refaire que le site&nbsp;: c'est la première économie possible.");
   } else if (answers.logo === "aucun" && answers.projet !== "logo") {
@@ -82,7 +86,11 @@ function conseils(answers, offre) {
   if (answers.delai === "Dès que possible") {
     list.push("Pour tenir un délai court, le plus efficace est d'avoir vos textes et vos photos prêts dès le départ.");
   }
-  if (answers.projet !== "logo") {
+  if (answers.projet === "boutique") {
+    list.push(
+      "Le design et la mise en place se paient une fois&nbsp;; seul l'abonnement Shopify (environ 30 à 40&nbsp;€ par mois) se paie à part, directement à Shopify."
+    );
+  } else if (answers.projet !== "logo") {
     list.push(
       "Pas d'abonnement obligatoire&nbsp;: le site est à votre nom et se paie une fois, hors nom de domaine et hébergement (quelques dizaines d'euros par an)."
     );
@@ -102,7 +110,10 @@ function renderResult(answers, offre) {
   const inclus =
     answers.projet === "logo"
       ? ""
-      : `<h3 class="sim__subtitle">Inclus dans chaque site</h3>
+      : answers.projet === "boutique"
+        ? `<h3 class="sim__subtitle">Inclus dans chaque boutique</h3>
+        <p class="sim__text">Design sur mesure à vos couleurs, boutique adaptée au mobile, fiches produits, paiement et livraison configurés, référencement, mise en ligne, et 3&nbsp;mois de correctifs offerts.</p>`
+        : `<h3 class="sim__subtitle">Inclus dans chaque site</h3>
         <p class="sim__text">Design sur mesure, site adapté au mobile, à la tablette et à l'ordinateur, interface pour modifier vos textes et vos photos, formulaire de contact, référencement local, mise en ligne, et 3&nbsp;mois de correctifs offerts.</p>`;
   return `
     <p class="sim__progress-label">Votre estimation</p>
