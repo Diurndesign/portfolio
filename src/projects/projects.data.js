@@ -77,10 +77,10 @@ export const projects = [
     detail: {
       stack: ["Logo", "Site web", "Carte gaufrée", "Shooting photo"],
       sections: [
-        { heading: "Contexte", text: "Gdunan est une marque haut de gamme où la matière et le geste priment. Le projet couvre toute son image, du logo au site internet." },
+        { heading: "Contexte", text: "Gdunan est une marque haut de gamme qui met en avant la matière et le geste. Le projet couvre toute son image, du logo au site internet." },
         { heading: "Objectifs", text: "Une identité épurée et cohérente sur tous les supports, du web au print, qui met la matière au premier plan." },
         { heading: "Ce que j'ai réalisé", text: "Un monogramme « GD » épuré, la conception et la direction artistique du site internet, une carte de visite gaufrée à froid, sans encre, et un shooting photo dédié à son travail." },
-        { heading: "Résultat", text: "Une identité globale déclinée du site à la papeterie, avec des visuels sombres et texturés qui mettent la matière en lumière." },
+        { heading: "Résultat", text: "Une identité utilisée du site à la papeterie, avec des photos sombres et texturées centrées sur la matière." },
       ],
       gallery: {
         screens: false,
@@ -112,9 +112,9 @@ export const projects = [
       stack: ["Logo", "Mascotte", "Recherche typo", "Étiquette"],
       sections: [
         { heading: "Contexte", text: "Création du logo de Pressing Azur Eco, dans un univers de mascotte rétro inspiré du style « rubber hose » des années 30." },
-        { heading: "Objectifs", text: "Incarner le pressing par un personnage joyeux et mémorable, avec une typographie qui lui soit propre." },
+        { heading: "Objectifs", text: "Donner au pressing un personnage joyeux, facile à retenir, et une typographie à lui." },
         { heading: "Ce que j'ai réalisé", text: "Une recherche typographique (un alphabet display sur mesure), la création d'un personnage-boîte, chapeau et nœud papillon, et sa mise en situation, notamment sur l'étiquette." },
-        { heading: "Résultat", text: "Une mascotte qui incarne le pressing avec malice, dans une palette sauge, bleu nuit et crème." },
+        { heading: "Résultat", text: "Une mascotte malicieuse pour le pressing, dans une palette sauge, bleu nuit et crème." },
       ],
       gallery: {
         screens: false,
@@ -147,7 +147,7 @@ export const projects = [
       stack: ["Affiche", "Mise en page", "Magazine", "Direction artistique"],
       sections: [
         { heading: "Contexte", text: "Identité visuelle du 24<sup>e</sup> Tournoi International de Judo de Monaco (Trophée Gérard Bertrand, 2017)." },
-        { heading: "Objectifs", text: "Une affiche qui tienne aussi bien sur un panneau urbain de la Principauté que dans le hall du Stade Louis II, et un magazine officiel à la hauteur de l'événement." },
+        { heading: "Objectifs", text: "Une affiche qui tienne aussi bien sur un panneau urbain de la Principauté que dans le hall du Stade Louis II, et un magazine officiel pour accompagner l'événement." },
         { heading: "Ce que j'ai réalisé", text: "L'affiche, puis la conception et la mise en page du magazine officiel : doubles pages, hiérarchie typographique et intégration des photographies de combat." },
         { heading: "Résultat", text: "Une identité cohérente de l'affiche au magazine, menée jusqu'au bon à tirer." },
       ],
@@ -181,8 +181,8 @@ export const projects = [
       sections: [
         { heading: "Contexte", text: "Refonte de l'identité d'Elo Ab, couturière." },
         { heading: "Objectifs", text: "Une image à la fois artisanale et raffinée, qui parle directement de son métier." },
-        { heading: "Ce que j'ai réalisé", text: "Un logotype tout en rondeurs où l'aiguille et le fil s'invitent dans les lettres, sur une palette douce de crème et de noir, décliné jusqu'à un ruban gansé griffé « Elo »." },
-        { heading: "Résultat", text: "Une marque qui se décline avec délicatesse, entre compositions florales et matières textiles." },
+        { heading: "Ce que j'ai réalisé", text: "Un logotype arrondi où l'aiguille et le fil sont dessinés dans les lettres, sur une palette douce de crème et de noir, décliné jusqu'à un ruban gansé griffé « Elo »." },
+        { heading: "Résultat", text: "Une marque qui s'applique aussi bien aux compositions florales qu'aux tissus." },
       ],
       gallery: {
         screens: false,
