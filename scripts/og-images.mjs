@@ -134,6 +134,48 @@ const pages = [
     title: "Wix&nbsp;?",
     sub: "Propriété, SEO, performances et coût sur la durée",
   },
+  {
+    file: "site-one-page-nice",
+    theme: "blue",
+    eyebrow: "Dès 900&nbsp;€ · 2 semaines",
+    kicker: "Site one page à",
+    title: "Nice",
+    sub: "Une seule page, sur mesure, pensée pour Google",
+  },
+  {
+    file: "creation-site-e-commerce-nice",
+    theme: "cream",
+    eyebrow: "Shopify · design sur mesure",
+    kicker: "Site e-commerce à",
+    title: "Nice",
+    sub: "Boutique en ligne de 3&nbsp;000 à 6&nbsp;000&nbsp;€",
+  },
+  {
+    file: "creation-logo-nice",
+    theme: "cream",
+    eyebrow: "Dès 700&nbsp;€",
+    kicker: "Création de logo à",
+    title: "Nice",
+    sub: "Dessiné sur mesure · print &amp; web",
+  },
+  {
+    file: "refonte-charte-graphique",
+    theme: "blue",
+    eyebrow: "Identité visuelle",
+    kicker: "Refonte de",
+    title: "charte graphique",
+    titleSize: 120,
+    sub: "Moderniser sans perdre ce qui fait votre marque",
+  },
+  {
+    file: "wix-ou-squarespace",
+    theme: "blue",
+    eyebrow: "Comparatif",
+    kicker: "Lequel choisir&nbsp;?",
+    title: "Wix ou Squarespace",
+    titleSize: 120,
+    sub: "Prix, design, SEO, boutique, liberté de partir",
+  },
 ];
 
 const html = (p) => {

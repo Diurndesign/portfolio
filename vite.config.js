@@ -151,6 +151,11 @@ export default defineConfig(() => ({
         diagnosticGratuit: resolve(root, "diagnostic-site-gratuit.html"),
         guides: resolve(root, "guides.html"),
         refonteNice: resolve(root, "refonte-site-internet-nice.html"),
+        onePageNice: resolve(root, "site-one-page-nice.html"),
+        ecommerceNice: resolve(root, "creation-site-e-commerce-nice.html"),
+        logoNice: resolve(root, "creation-logo-nice.html"),
+        refonteCharte: resolve(root, "refonte-charte-graphique.html"),
+        wixOuSquarespace: resolve(root, "wix-ou-squarespace.html"),
         notFound: resolve(root, "404.html"),
         // Pages d'études de cas générées depuis src/data/caseStudies.js
         ...caseStudyInput,
