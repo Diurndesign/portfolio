@@ -25,6 +25,11 @@
       "source": "/audit-site-web-gratuit",
       "destination": "/diagnostic-site-gratuit",
       "permanent": true
+    },
+    {
+      "source": "/studio-design-nice",
+      "destination": "/webdesigner-nice",
+      "permanent": true
     }
   ],
   "headers": [
