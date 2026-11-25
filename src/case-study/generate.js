@@ -3,7 +3,8 @@
 // ============================================================
 // Écrit une page HTML statique par étude de cas (realisations/<slug>.html),
 // plus la page index (realisations/index.html), à
-// partir des données (src/data/caseStudies.js) et maintient le sitemap à jour.
+// partir des données (src/data/caseStudies.js). Le sitemap est produit à part
+// (src/sitemap/sitemap.js), à partir des entrées de Vite.
 // Appelé depuis vite.config.js : la génération a lieu avant que Vite ne
 // résolve les entrées multi-pages, en dev comme au build.
 //
@@ -37,10 +38,15 @@ export function generateCaseStudies(root) {
   }
 
   const input = {};
+  // Empreinte de chaque étude pour le sitemap : ses propres données + le
+  // gabarit, sans les textes des autres études (voir src/sitemap/sitemap.js).
+  const template = readFileSync(resolve(root, "src/case-study/render.js"), "utf8");
+  const fingerprints = {};
   for (const entry of caseStudies) {
     const html = renderCaseStudy(entry, caseStudies);
     const target = resolve(dir, `${entry.slug}.html`);
     writeIfChanged(target, html);
+    fingerprints[target] = JSON.stringify(entry) + template;
     input[`caseStudy_${entry.slug.replace(/[^a-z0-9]/gi, "_")}`] = target;
   }
 
@@ -49,46 +55,10 @@ export function generateCaseStudies(root) {
   writeIfChanged(indexFile, renderCaseStudyIndex(caseStudies));
   input.caseStudyIndex = indexFile;
 
-  patchSitemap(root);
-
-  return input;
+  return { input, fingerprints };
 }
 
 function writeIfChanged(file, content) {
   if (existsSync(file) && readFileSync(file, "utf8") === content) return;
   writeFileSync(file, content);
-}
-
-// Remplace le bloc entre les marqueurs du sitemap par les URLs des études de
-// cas. Idempotent (lastmod vient des données) : aucune modification parasite.
-function patchSitemap(root) {
-  const file = resolve(root, "public/sitemap.xml");
-  if (!existsSync(file)) return;
-
-  const xml = readFileSync(file, "utf8");
-  const re = /(<!-- case-studies:start -->)[\s\S]*?(<!-- case-studies:end -->)/;
-  if (!re.test(xml)) return;
-
-  // lastmod de l'index = date de l'étude la plus récente.
-  const latest = caseStudies.map((e) => e.lastmod).sort().pop();
-  const index = `  <url>
-    <loc>https://www.diurnstudio.fr/realisations</loc>
-    <lastmod>${latest}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>`;
-
-  const block = [index].concat(caseStudies
-    .map(
-      (e) => `  <url>
-    <loc>https://www.diurnstudio.fr/realisations/${e.slug}</loc>
-    <lastmod>${e.lastmod}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>`
-    ))
-    .join("\n");
-
-  const next = xml.replace(re, `$1\n${block}\n  $2`);
-  if (next !== xml) writeFileSync(file, next);
 }

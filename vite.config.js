@@ -4,12 +4,13 @@ import { resolve } from "path";
 import { fileURLToPath } from "url";
 import { readFileSync } from "fs";
 import { generateCaseStudies } from "./src/case-study/generate.js";
+import { sitemap } from "./src/sitemap/sitemap.js";
 
 const root = fileURLToPath(new URL(".", import.meta.url));
 
-// Génère les pages d'études de cas (realisations/<slug>.html) + l'entrée
-// sitemap à partir des données, AVANT que Vite ne résolve les entrées.
-const caseStudyInput = generateCaseStudies(root);
+// Génère les pages d'études de cas (realisations/<slug>.html) à partir
+// des données, AVANT que Vite ne résolve les entrées.
+const { input: caseStudyInput, fingerprints } = generateCaseStudies(root);
 
 // Inclusion de fragments HTML partagés (aucune dépendance npm).
 // Dans une page : <!--#include partials/footer.html--> est remplacé par le
@@ -125,7 +126,7 @@ function optimizeHtml() {
 export default defineConfig(() => ({
   // Le site est servi à la racine du domaine (Vercel).
   base: "/",
-  plugins: [react(), htmlPartials(), optimizeHtml()],
+  plugins: [react(), htmlPartials(), optimizeHtml(), sitemap({ root, fingerprints })],
   css: {
     preprocessorOptions: {
       scss: {
