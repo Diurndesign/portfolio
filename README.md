@@ -38,7 +38,7 @@ npm run preview  # prévisualise le build
 ```
 /                     Pages HTML (accueil + pages SEO locales), une par URL
 partials/             Fragments partagés : nav, footer, head (inclus via <!--#include-->)
-public/               Servi tel quel : img/, favicons, sitemap.xml, robots.txt
+public/               Servi tel quel : img/, favicons, robots.txt (sitemap.xml est généré au build)
 src/
   main.js             Point d'entrée : importe le CSS et les modules JS
   modules/            Modules JavaScript vanilla (une responsabilité par fichier)

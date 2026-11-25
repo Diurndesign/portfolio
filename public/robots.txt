@@ -1,5 +1,7 @@
 User-agent: *
 Allow: /
+# Points d'entrée techniques (formulaires, tâches planifiées) : rien à indexer.
+Disallow: /api/
 
 Sitemap: https://www.diurnstudio.fr/sitemap.xml
 

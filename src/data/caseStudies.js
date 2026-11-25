@@ -6,12 +6,11 @@
 // (voir src/case-study/generate.js + render.js). Pour AJOUTER UNE ÉTUDE :
 // copier un bloc ci-dessous, changer les valeurs, mettre les images dans
 // public/img/realisations/<slug>/, puis `git push`. Rien d'autre à toucher
-// (la page, l'entrée du sitemap et les liens « autres réalisations » se font
+// (la page, l'entrée du sitemap avec sa date et les liens « autres réalisations » se font
 // tout seuls).
 //
 // Champs d'une entrée :
 //   slug        : identifiant d'URL (/realisations/<slug>).
-//   lastmod     : date ISO pour le sitemap (AAAA-MM-JJ).
 //   seo         : { title, description, ogImage, canonical }.
 //   breadcrumb  : libellé de la page dans le fil d'Ariane.
 //   cat         : catégorie affichée sur la carte de la page /realisations.
@@ -30,7 +29,6 @@
 export const caseStudies = [
   {
     slug: "beauty-corner",
-    lastmod: "2026-11-24",
     seo: {
       title: "Site d'un institut de beauté à Nice : The Beauty Corner",
       description:
@@ -118,7 +116,6 @@ export const caseStudies = [
   },
   {
     slug: "gdunan",
-    lastmod: "2026-11-10",
     seo: {
       title: "Identité de marque haut de gamme : GdunaN | Diurn Studio",
       description:
@@ -201,7 +198,6 @@ export const caseStudies = [
   },
   {
     slug: "ewa-flr",
-    lastmod: "2026-11-10",
     seo: {
       title: "Identité de marque pour une cheffe : Ewa FLR | Diurn Studio",
       description:
@@ -282,7 +278,6 @@ export const caseStudies = [
   },
   {
     slug: "elo-ab",
-    lastmod: "2026-11-10",
     seo: {
       title: "Logo d'une couturière : Elo Ab | Diurn Studio",
       description:
@@ -366,7 +361,6 @@ export const caseStudies = [
   // ----------------------------------------------------------------
   {
     slug: "pressing-azur-eco",
-    lastmod: "2026-11-24",
     seo: {
       title: "Logo d'un pressing à Nice : Pressing Azur Eco",
       description:
@@ -447,7 +441,6 @@ export const caseStudies = [
   },
   {
     slug: "tournoi-judo-monaco",
-    lastmod: "2026-11-24",
     seo: {
       title: "Affiche du Tournoi de Judo de Monaco | Diurn Studio",
       description:
