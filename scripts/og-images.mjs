@@ -151,12 +151,12 @@ const pages = [
     sub: "Boutique en ligne de 3&nbsp;000 à 6&nbsp;000&nbsp;€",
   },
   {
-    file: "creation-logo-nice",
+    file: "creation-logo-nice-identite-site",
     theme: "cream",
-    eyebrow: "Dès 700&nbsp;€",
+    eyebrow: "Identité + site",
     kicker: "Création de logo à",
     title: "Nice",
-    sub: "Dessiné sur mesure · print &amp; web",
+    sub: "Le logo d'abord, puis le site, un seul interlocuteur",
   },
   {
     file: "refonte-charte-graphique",
