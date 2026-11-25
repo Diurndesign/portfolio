@@ -368,17 +368,17 @@ export const caseStudies = [
     slug: "pressing-azur-eco",
     lastmod: "2026-11-24",
     seo: {
-      title: "Logo et mascotte rétro : Pressing Azur Eco | Diurn Studio",
+      title: "Logo d'un pressing à Nice : Pressing Azur Eco",
       description:
-        "Le logo de Pressing Azur Eco : une mascotte rétro façon « rubber hose » des années 30, un alphabet sur mesure et une palette sauge et crème.",
+        "Le logo de Pressing Azur Eco, pressing à Nice : une mascotte rétro façon « rubber hose » des années 30, un alphabet sur mesure, une palette sauge.",
       ogImage: "https://www.diurnstudio.fr/img/og/realisation-pressing-azur-eco.jpg",
       canonical: "https://www.diurnstudio.fr/realisations/pressing-azur-eco",
     },
     breadcrumb: "Pressing Azur Eco",
     cat: "Logo · Mascotte",
-    h1: "Pressing Azur Eco : un logo-mascotte rétro pour un pressing",
+    h1: "Pressing Azur Eco : un logo-mascotte rétro pour un pressing à Nice",
     intro:
-      "Pour Pressing Azur Eco, j'ai créé un logo porté par une mascotte rétro, dans le style « rubber hose » des dessins animés des années 30, avec un alphabet dessiné sur mesure.",
+      "Pour Pressing Azur Eco, un pressing à Nice, j'ai créé un logo porté par une mascotte rétro, dans le style « rubber hose » des dessins animés des années 30, avec un alphabet dessiné sur mesure.",
     hero: {
       src: "/img/projets/az-1.webp",
       alt: "La mascotte du Pressing Azur Eco, personnage-boîte avec chapeau et nœud papillon",
@@ -387,7 +387,7 @@ export const caseStudies = [
     },
     facts: [
       { label: "Client", value: "Pressing Azur Eco" },
-      { label: "Secteur", value: "Pressing" },
+      { label: "Secteur", value: "Pressing, Nice" },
       { label: "Prestations", value: "Logo · Mascotte · Recherche typographique" },
       { label: "Supports", value: "Emblème, étiquette" },
     ],
@@ -396,7 +396,7 @@ export const caseStudies = [
         type: "text",
         heading: "Le point de départ",
         paragraphs: [
-          "Un pressing est un commerce de proximité : on y revient souvent, et on choisit celui dont on se souvient. Pour ce type de commerce, le logo fait une grande partie du travail, car c'est lui que le client revoit sur chaque étiquette.",
+          "Un pressing de quartier à Nice est un commerce de proximité : on y revient souvent, et on choisit celui dont on se souvient. Pour ce type de commerce, le logo fait une grande partie du travail, car c'est lui que le client revoit sur chaque étiquette.",
           "L'objectif : incarner le pressing par un personnage joyeux et mémorable, avec une typographie qui lui soit propre.",
         ],
       },
@@ -436,7 +436,7 @@ export const caseStudies = [
         heading: "Le résultat",
         paragraphs: [
           "Une mascotte qui incarne le pressing avec malice, dans une palette sauge, bleu nuit et crème.",
-          "Une mascotte donne un visage à l'enseigne. C'est ce que je cherche en <a href=\"/creation-logo-nice\">création de logo</a> pour un commerce : une image qu'on reconnaît d'un coup d'œil et qui se décline ensuite sur tous les supports, du papier au site internet.",
+          "Une mascotte donne un visage à l'enseigne. C'est ce que je cherche en <a href=\"/creation-logo-nice\">création de logo</a> pour un commerce : une image qu'on reconnaît d'un coup d'œil et qui se décline ensuite sur tous les supports, de l'étiquette au site internet, le jour où le commerce en a besoin.",
         ],
       },
     ],
