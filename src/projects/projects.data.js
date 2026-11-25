@@ -236,7 +236,7 @@ export const projects = [
     tags: ["web"],
     tone: "bleu",
     img: {
-      src: "/img/projets-mosaique/sophie-bluel-bleu.webp",
+      src: "/img/projets-mosaique/atelier-chaux-bleu.webp",
       alt: "Atelier Chaux : galerie de projets d'architecture intérieure, filtrable par type",
       width: 1280,
       height: 960,
@@ -260,10 +260,10 @@ export const projects = [
       gallery: {
         screens: true,
         images: [
-          { src: "/img/projets/sophiebluel-galerie.webp", alt: "Atelier Chaux : galerie publique filtrable par type de projet", width: 1440, height: 950 },
-          { src: "/img/projets/sophiebluel-admin.webp", alt: "Atelier Chaux : mode édition après connexion", width: 1440, height: 950 },
-          { src: "/img/projets/sophiebluel-modal.webp", alt: "Atelier Chaux : fenêtre de gestion des projets publiés", width: 1440, height: 950 },
-          { src: "/img/projets/sophiebluel-login.webp", alt: "Atelier Chaux : page de connexion de l'espace atelier", width: 1440, height: 900 },
+          { src: "/img/projets/atelier-chaux-galerie.webp", alt: "Atelier Chaux : galerie publique filtrable par type de projet", width: 1440, height: 950 },
+          { src: "/img/projets/atelier-chaux-edition.webp", alt: "Atelier Chaux : mode édition après connexion", width: 1440, height: 950 },
+          { src: "/img/projets/atelier-chaux-gestion.webp", alt: "Atelier Chaux : fenêtre de gestion des projets publiés", width: 1440, height: 950 },
+          { src: "/img/projets/atelier-chaux-connexion.webp", alt: "Atelier Chaux : page de connexion de l'espace atelier", width: 1440, height: 900 },
         ],
       },
     },
