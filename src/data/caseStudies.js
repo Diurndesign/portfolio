@@ -70,7 +70,7 @@ export const caseStudies = [
         cards: [
           {
             title: "Des avant/après interactifs.",
-            text: "Dermopigmentation, rehaussement de cils, ongles, soin de la peau, détatouage : la cliente choisit une prestation et fait glisser le curseur sur la photo pour révéler le résultat. C'est la meilleure preuve du savoir-faire, bien plus parlante qu'un long texte.",
+            text: "Dermopigmentation, rehaussement de cils, ongles, soin de la peau, détatouage : la cliente choisit une prestation et fait glisser le curseur sur la photo pour révéler le résultat. Une nouvelle cliente voit le résultat de ses propres yeux, sans avoir à lire une description.",
           },
           {
             title: "La réservation reliée à Planity.",
@@ -127,7 +127,7 @@ export const caseStudies = [
     cat: "Identité · Site web",
     h1: "GdunaN : une identité haut de gamme, du monogramme au site internet",
     intro:
-      "GdunaN est une marque haut de gamme où la matière et le geste priment. J'ai conçu toute son image : le logo, le site internet, la carte de visite et les photos.",
+      "GdunaN est une marque haut de gamme qui met en avant la matière et le geste. J'ai conçu toute son image : le logo, le site internet, la carte de visite et les photos.",
     hero: {
       src: "/img/projets/gd-2.webp",
       alt: "Site internet GdunaN présenté sur un ordinateur portable",
@@ -145,7 +145,7 @@ export const caseStudies = [
         type: "text",
         heading: "Le point de départ",
         paragraphs: [
-          "GdunaN met en avant la matière et le travail de la main. La marque avait besoin d'une image à la hauteur de ce positionnement, cohérente partout où elle apparaît : à l'écran comme sur le papier.",
+          "GdunaN met en avant la matière et le travail de la main. Il lui fallait une image haut de gamme, la même à l'écran et sur le papier.",
           "L'objectif : une identité épurée, qui laisse la place à la matière au lieu de la couvrir d'effets.",
         ],
       },
@@ -164,7 +164,7 @@ export const caseStudies = [
           },
           {
             title: "Une carte de visite gaufrée à froid.",
-            text: "Le monogramme est imprimé en relief, sans encre : on le voit à la lumière et on le sent sous les doigts. La carte parle de matière avant même d'être lue.",
+            text: "Le monogramme est imprimé en relief, sans encre : on le voit à la lumière et on le sent sous les doigts. On remarque le relief avant même de lire la carte.",
           },
           {
             title: "Un shooting photo dédié.",
@@ -186,14 +186,14 @@ export const caseStudies = [
         type: "text",
         heading: "Le résultat",
         paragraphs: [
-          "Une identité globale, déclinée du site à la papeterie, où chaque support raconte la même histoire. Les visuels sombres et texturés mettent la matière en lumière, et le monogramme relie l'ensemble.",
+          "Une identité utilisée du site à la papeterie, avec le monogramme comme point commun. Les photos, sombres et texturées, montrent la matière de près.",
           "C'est l'intérêt de confier l'identité et le site à la même personne : rien ne se perd entre le graphiste et le développeur, parce qu'il n'y en a qu'un.",
         ],
       },
     ],
     cta: {
       heading: "Votre marque mérite la même cohérence ?",
-      text: "Logo, site internet et supports imprimés : je les conçois ensemble, pour qu'ils parlent d'une seule voix. Parlons de votre projet lors d'un court appel.",
+      text: "Logo, site internet et supports imprimés : je les conçois ensemble, pour qu'ils se ressemblent. Parlons de votre projet lors d'un court appel.",
     },
   },
   {
@@ -245,11 +245,11 @@ export const caseStudies = [
           },
           {
             title: "Un univers minimal et végétal.",
-            text: "Beaucoup d'espace, peu d'éléments, et les légumes de saison en guise de décor : l'identité laisse parler les produits.",
+            text: "Beaucoup d'espace, peu d'éléments, et les légumes de saison en guise de décor : les produits restent au premier plan.",
           },
           {
             title: "Une charte déclinée sur tous les supports.",
-            text: "Cartes de visite recto-verso, menu, tablier et tote bag : chaque support reprend les mêmes règles, pour une image cohérente du premier contact jusqu'au service.",
+            text: "Cartes de visite recto-verso, menu, tablier et tote bag : chaque support reprend les mêmes règles, de la carte de visite jusqu'au service.",
           },
         ],
       },
@@ -267,7 +267,7 @@ export const caseStudies = [
         heading: "Le résultat",
         paragraphs: [
           "Une charte complète et facile à appliquer : une typographie, une couleur, des règles claires. Ewa peut faire imprimer un nouveau menu ou un nouveau support sans repartir de zéro.",
-          "Une identité pensée de cette façon se prolonge naturellement sur un site internet, quand le moment est venu.",
+          "Le jour où Ewa voudra un site, cette identité pourra s'y appliquer telle quelle.",
         ],
       },
     ],
@@ -289,7 +289,7 @@ export const caseStudies = [
     cat: "Refonte · Couture",
     h1: "Elo Ab : la refonte du logo d'une couturière",
     intro:
-      "Elo Ab est couturière. J'ai refondu son identité autour d'un logotype tout en rondeurs où l'aiguille et le fil se glissent dans les lettres.",
+      "Elo Ab est couturière. J'ai refondu son identité autour d'un logotype tout en rondeurs où l'aiguille et le fil sont dessinés dans les lettres.",
     hero: {
       src: "/img/projets/elo-2.webp",
       alt: "Logo Elo posé sur du marbre avec un ruban gansé griffé",
@@ -307,7 +307,7 @@ export const caseStudies = [
         type: "text",
         heading: "Le point de départ",
         paragraphs: [
-          "Elo avait déjà une identité, mais elle ne racontait pas son métier. Pour une couturière, le logo doit dire d'un coup d'œil ce qu'elle fait, avec la même délicatesse que son travail.",
+          "Elo avait déjà une identité, mais on ne voyait pas qu'elle était couturière. Son logo devait le montrer d'un coup d'œil.",
           "L'objectif : une image à la fois artisanale et raffinée, qui parle directement de couture.",
         ],
       },
@@ -321,7 +321,7 @@ export const caseStudies = [
           },
           {
             title: "L'aiguille et le fil dans les lettres.",
-            text: "Les outils du métier sont intégrés au dessin des lettres : le logo raconte la couture sans avoir besoin d'une illustration à côté.",
+            text: "Les outils du métier sont intégrés au dessin des lettres : on comprend que c'est de la couture sans avoir besoin d'une illustration à côté.",
           },
           {
             title: "Une palette douce de crème et de noir.",
@@ -344,8 +344,8 @@ export const caseStudies = [
         type: "text",
         heading: "Le résultat",
         paragraphs: [
-          "Une marque qui se décline avec délicatesse, entre compositions florales et matières textiles. Le logo fonctionne aussi bien sur un écran que cousu sur un vêtement.",
-          "Une refonte réussie ne repart pas de rien : elle garde ce qui fait l'identité d'une personne et le rend enfin lisible.",
+          "Une marque qui s'applique aussi bien aux compositions florales qu'aux tissus. Le logo fonctionne aussi bien sur un écran que cousu sur un vêtement.",
+          "Une refonte ne repart pas de rien : on garde ce qui fait l'identité de la personne et on le rend plus lisible.",
         ],
       },
     ],
@@ -391,7 +391,7 @@ export const caseStudies = [
         heading: "Le point de départ",
         paragraphs: [
           "Un pressing de quartier à Nice est un commerce de proximité : on y revient souvent, et on choisit celui dont on se souvient. Pour ce type de commerce, le logo fait une grande partie du travail, car c'est lui que le client revoit sur chaque étiquette.",
-          "L'objectif : incarner le pressing par un personnage joyeux et mémorable, avec une typographie qui lui soit propre.",
+          "L'objectif : donner au pressing un personnage joyeux, facile à retenir, et une typographie à lui.",
         ],
       },
       {
@@ -429,7 +429,7 @@ export const caseStudies = [
         type: "text",
         heading: "Le résultat",
         paragraphs: [
-          "Une mascotte qui incarne le pressing avec malice, dans une palette sauge, bleu nuit et crème.",
+          "Une mascotte malicieuse pour le pressing, dans une palette sauge, bleu nuit et crème.",
           "Une mascotte donne un visage à l'enseigne. C'est ce que je cherche en <a href=\"/creation-logo-nice\">création de logo</a> pour un commerce : une image qu'on reconnaît d'un coup d'œil et qui se décline ensuite sur tous les supports, de l'étiquette au site internet, le jour où le commerce en a besoin.",
         ],
       },
@@ -470,7 +470,7 @@ export const caseStudies = [
         type: "text",
         heading: "Le point de départ",
         paragraphs: [
-          "Un tournoi international se joue aussi dans la rue. L'affiche devait tenir aussi bien sur un panneau urbain de la Principauté que dans le hall du Stade Louis II, et le magazine officiel devait être à la hauteur de l'événement.",
+          "Un tournoi international se voit aussi dans la rue. L'affiche devait tenir aussi bien sur un panneau urbain de la Principauté que dans le hall du Stade Louis II, et le magazine officiel devait accompagner l'événement.",
         ],
       },
       {
