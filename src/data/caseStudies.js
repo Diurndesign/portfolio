@@ -62,7 +62,7 @@ export const caseStudies = [
         heading: "Le point de départ",
         paragraphs: [
           "Alexandra est esthéticienne depuis 20 ans et spécialiste de la dermopigmentation des sourcils. Ses clientes la découvraient sur Instagram et réservaient sur Planity, mais il lui manquait un site à elle.",
-          "Pour une prestation comme la dermopigmentation, une cliente veut être rassurée avant de réserver : voir le travail, lire des avis, comprendre comment se passe le rendez-vous. Le site devait répondre à ces questions.",
+          "Avant de réserver une dermopigmentation des sourcils, une cliente veut être rassurée : voir des résultats, lire des avis, savoir comment se passe le rendez-vous. Le site internet de l'institut devait répondre à ces questions, et aider les personnes qui cherchent un institut de beauté à Nice à trouver The Beauty Corner.",
         ],
       },
       {
@@ -396,7 +396,7 @@ export const caseStudies = [
         type: "text",
         heading: "Le point de départ",
         paragraphs: [
-          "Un pressing est un commerce de proximité : on y passe souvent, on le choisit parce qu'on s'en souvient et qu'on lui fait confiance.",
+          "Un pressing est un commerce de proximité : on y revient souvent, et on choisit celui dont on se souvient. Pour ce type de commerce, le logo fait une grande partie du travail, car c'est lui que le client revoit sur chaque étiquette.",
           "L'objectif : incarner le pressing par un personnage joyeux et mémorable, avec une typographie qui lui soit propre.",
         ],
       },
@@ -436,7 +436,7 @@ export const caseStudies = [
         heading: "Le résultat",
         paragraphs: [
           "Une mascotte qui incarne le pressing avec malice, dans une palette sauge, bleu nuit et crème.",
-          "Un personnage se retient bien mieux qu'un simple nom : il donne aux clients une raison de sourire et de se souvenir de l'enseigne.",
+          "Une mascotte donne un visage à l'enseigne. C'est ce que je cherche en <a href=\"/creation-logo-nice\">création de logo</a> pour un commerce : une image qu'on reconnaît d'un coup d'œil et qui se décline ensuite sur tous les supports, du papier au site internet.",
         ],
       },
     ],
@@ -486,7 +486,7 @@ export const caseStudies = [
         cards: [
           {
             title: "Une affiche lisible de loin.",
-            text: "Une image forte et une hiérarchie claire, pour que le nom du tournoi et les dates se repèrent vite dans la rue.",
+            text: "Une prise de judo en noir et blanc sur le rouge et blanc de Monaco, puis trois informations bien détachées : le nom du tournoi, la date du dimanche 10 décembre 2017 et la salle omnisports du Stade Louis II.",
           },
           {
             title: "Le magazine officiel.",
@@ -515,7 +515,7 @@ export const caseStudies = [
         heading: "Le résultat",
         paragraphs: [
           "Une identité cohérente de l'affiche au magazine, menée jusqu'au bon à tirer.",
-          "Concevoir pour un événement, c'est travailler pour des supports très différents et des délais fixes : la même exigence s'applique à un site internet qui doit être prêt pour une date de lancement.",
+          "Un événement impose une date qui ne bouge pas et des supports très différents à tenir ensemble. C'est la même méthode que j'applique en <a href=\"/creation-site-internet-monaco\">création de site internet à Monaco</a> et sur la Côte d'Azur, quand un site doit être en ligne pour un lancement.",
         ],
       },
     ],
