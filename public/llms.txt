@@ -6,11 +6,11 @@ Diurn Studio est dirigé par Jérémy Bendenoun, designer et développeur web ba
 
 ## Services
 
-- Création de sites internet sur mesure (vitrine, one-page, application web), codés main en HTML, CSS, JavaScript et React. Un site one-page démarre à 900 €, un site vitrine multi-pages à partir de 1 800 €, un logo à partir de 700 €, une application web sur devis.
+- Création de sites internet sur mesure (vitrine, one-page, application web), codés main en HTML, CSS, JavaScript et React. Un site one-page démarre à 900 €, un site vitrine multi-pages à partir de 1 800 €, une identité visuelle essentielle (logo, couleurs, typographies, mini-charte) à partir de 1 500 €, une application web sur devis.
 - Refonte de site internet (de 1 500 à 3 500 €, 3 à 6 semaines) : nouveau design sur mesure, sortie de Wix, Squarespace ou WordPress, référencement Google conservé grâce aux redirections. Page : https://www.diurnstudio.fr/refonte-site-internet-nice
 - Site one page sur mesure (900 à 1 500 €, 2 semaines). Page : https://www.diurnstudio.fr/site-one-page-nice
 - Boutique en ligne Shopify au design sur mesure (3 000 à 6 000 €, 4 à 8 semaines ; abonnement Shopify d'environ 30 à 40 € par mois payé par le client). Page : https://www.diurnstudio.fr/creation-site-e-commerce-nice
-- Identité de marque et design graphique : logo, charte graphique, système visuel complet, déclinaisons print et numériques. Le logo est proposé comme première étape du site : identité + site vitrine de 2 800 à 4 500 € en 5 à 8 semaines, ou logo seul dès 700 € (https://www.diurnstudio.fr/creation-logo-nice) et refonte de charte graphique (https://www.diurnstudio.fr/refonte-charte-graphique).
+- Identité de marque et design graphique : logo, charte graphique, système visuel complet, déclinaisons print et numériques. Le logo est proposé comme première étape du site : identité + site vitrine de 2 800 à 4 500 € en 5 à 8 semaines, ou identité essentielle dès 1 500 € (https://www.diurnstudio.fr/creation-logo-nice) et refonte de charte graphique (https://www.diurnstudio.fr/refonte-charte-graphique).
 - Référencement local (SEO) intégré dès la conception, pour être visible sur Nice et la Côte d'Azur.
 - Direction photo et production de contenu pour nourrir la marque une fois le site en ligne.
 
@@ -38,7 +38,7 @@ Diurn Studio est dirigé par Jérémy Bendenoun, designer et développeur web ba
 
 ## Guides
 
-- [Combien coûte un site internet à Nice ?](https://www.diurnstudio.fr/combien-coute-site-internet-nice) : prix réels par type de projet (one-page dès 900 €, site vitrine dès 1 800 €, logo dès 700 €, sur-mesure sur devis).
+- [Combien coûte un site internet à Nice ?](https://www.diurnstudio.fr/combien-coute-site-internet-nice) : prix réels par type de projet (one-page dès 900 €, site vitrine dès 1 800 €, identité visuelle dès 1 500 €, sur-mesure sur devis).
 - [Coder son site ou utiliser Wix ou Squarespace ?](https://www.diurnstudio.fr/site-sur-mesure-ou-wix-squarespace) : propriété, SEO, performances et coût sur la durée.
 - [Wix ou Squarespace : lequel choisir ?](https://www.diurnstudio.fr/wix-ou-squarespace) : prise en main, design, prix, SEO, boutique et liberté de partir.
 - [Faire son site avec l'IA ou un développeur ?](https://www.diurnstudio.fr/site-avec-ia-ou-developpeur) : limites du vibe coding, rôle du professionnel.
