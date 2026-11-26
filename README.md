@@ -65,6 +65,7 @@ Un projet (carte **et** fiche détaillée) est décrit dans **un seul objet** de
   title: "Mon projet",
   cat: "Site internet",
   tags: ["web"],                 // filtres : web · identite · edition
+  // group: "labo",              // projet perso ou de formation → section « Labo »
   img: { src: "/img/projets/mon-projet.webp", alt: "…", width: 1080, height: 1080 },
   detail: {
     stack: ["React", "Sass"],

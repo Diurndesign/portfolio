@@ -6,6 +6,11 @@
 // strictement identiques au HTML statique (mêmes classes, mêmes attributs
 // data-project), de sorte que le CSS et l'ouverture des modals (délégation
 // d'événements dans modal.js) fonctionnent sans y toucher.
+//
+// Deux listes : les projets clients d'abord, puis la section « Labo »
+// (projets personnels et de formation, group: "labo" dans les données).
+// Les filtres s'appliquent aux deux ; la section Labo disparaît si aucun
+// de ses projets ne correspond au filtre choisi.
 
 import { useMemo, useState } from "react";
 import { filters, projects } from "./projects.data.js";
@@ -69,6 +74,24 @@ function Card({ project }) {
   );
 }
 
+// Une grille de cartes. `offset` décale le départ de l'animation en
+// cascade, pour que la grille Labo enchaîne après celle des clients.
+function Grid({ items, offset = 0 }) {
+  return (
+    <ul className="projets__grid projets__grid--enhanced">
+      {items.map((project, i) => (
+        <li
+          className={"card card--" + (project.tone || "bleu")}
+          key={project.id}
+          style={{ animationDelay: `${(offset + i) * 45}ms` }}
+        >
+          <Card project={project} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export default function Projects() {
   const [active, setActive] = useState("all");
 
@@ -79,6 +102,9 @@ export default function Projects() {
         : projects.filter((p) => p.tags.includes(active)),
     [active]
   );
+
+  const clients = visible.filter((p) => p.group !== "labo");
+  const labo = visible.filter((p) => p.group === "labo");
 
   return (
     <>
@@ -108,19 +134,20 @@ export default function Projects() {
         {visible.length > 1 ? "s" : ""}
       </p>
 
-      {/* key={active} : la liste se remonte à chaque filtre, rejouant
+      {/* key : la liste se remonte à chaque filtre, rejouant
           l'animation d'apparition en cascade des cartes. */}
-      <ul className="projets__grid projets__grid--enhanced" key={active}>
-        {visible.map((project, i) => (
-          <li
-            className={"card card--" + (project.tone || "bleu")}
-            key={project.id}
-            style={{ animationDelay: `${i * 45}ms` }}
-          >
-            <Card project={project} />
-          </li>
-        ))}
-      </ul>
+      <Grid key={"clients-" + active} items={clients} />
+
+      {labo.length > 0 && (
+        <section className="projets__labo" id="labo" aria-labelledby="labo-title">
+          <header className="projets__labo-head">
+            <h3 className="projets__labo-title" id="labo-title">
+              Labo <span className="projets__labo-sub">— projets personnels et de formation</span>
+            </h3>
+          </header>
+          <Grid key={"labo-" + active} items={labo} offset={clients.length} />
+        </section>
+      )}
     </>
   );
 }

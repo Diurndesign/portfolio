@@ -8,6 +8,9 @@
 //
 // Champs d'une carte : id, kind, title, cat, tags, img.
 //   - tags  : catégories de filtre (voir `filters` plus bas).
+//   - group : (optionnel) "labo" pour un projet personnel ou de formation.
+//             Il s'affiche alors dans la section « Labo », après les
+//             projets clients. Sans `group`, c'est un projet client.
 //   - kind "modal" → ouvre la fiche `detail` ci-dessous.
 //   - kind "link"  → renvoie vers une section de la page (ex. Murmure).
 //
@@ -231,6 +234,7 @@ export const projects = [
   {
     id: "sophiebluel",
     kind: "modal",
+    group: "labo",
     title: "Atelier Chaux",
     cat: "Concept · Site et back-office",
     tags: ["web"],
@@ -271,6 +275,7 @@ export const projects = [
   {
     id: "ninacarducci",
     kind: "modal",
+    group: "labo",
     title: "Nina Carducci",
     cat: "Projet de formation · SEO",
     tags: ["web"],
@@ -310,6 +315,7 @@ export const projects = [
   {
     id: "murmure",
     kind: "modal",
+    group: "labo",
     desc: "Une question anonyme par jour, conçue et développée seul.",
     title: "Murmure",
     cat: "Application web · React",

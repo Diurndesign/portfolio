@@ -446,46 +446,58 @@
               </a>
             </li>
 
-            <li class="card card--bleu">
-              <button class="card__btn" type="button" data-project="sophiebluel" aria-haspopup="dialog">
-                <span class="card__media">
-                  <img src="/img/projets-mosaique/atelier-chaux-bleu.webp" alt="Atelier Chaux : galerie de projets d'architecture intérieure, filtrable par type" loading="lazy" width="1280" height="960" />
-                  <span class="card__overlay">
-                    <span class="card__cat">Concept · Site et back-office</span>
-                    <span class="card__title">Atelier Chaux</span>
-                    <span class="card__cta" aria-hidden="true">Découvrir</span>
-                  </span>
-                </span>
-              </button>
-            </li>
-
-            <li class="card card--nb">
-              <button class="card__btn" type="button" data-project="ninacarducci" aria-haspopup="dialog">
-                <span class="card__media">
-                  <img src="/img/projets-mosaique/nina-carducci-nb.webp" alt="Site de Nina Carducci : page d'accueil, illustrée ici avec des photos d'architecture" loading="lazy" width="1280" height="960" />
-                  <span class="card__overlay">
-                    <span class="card__cat">Optimisation SEO · Performance</span>
-                    <span class="card__title">Nina Carducci</span>
-                    <span class="card__cta" aria-hidden="true">Découvrir</span>
-                  </span>
-                </span>
-              </button>
-            </li>
-
-            <li class="card card--creme">
-              <button class="card__btn" type="button" data-project="murmure" aria-haspopup="dialog">
-                <span class="card__media">
-                  <img src="/img/projets-mosaique/murmure-app-creme.webp" alt="L'application Murmure ouverte sur un téléphone" loading="lazy" width="1000" height="724" />
-                  <span class="card__overlay">
-                    <span class="card__cat">Application web · React</span>
-                    <span class="card__title">Murmure</span>
-                    <span class="card__desc">Une question anonyme par jour, conçue et développée seul.</span>
-                    <span class="card__cta" aria-hidden="true">Découvrir</span>
-                  </span>
-                </span>
-              </button>
-            </li>
           </ul>
+
+          <!-- Labo : projets personnels et de formation, après les projets
+               clients (même section dans la grille React, voir Projects.jsx). -->
+          <section class="projets__labo" id="labo" aria-labelledby="labo-title">
+            <header class="projets__labo-head">
+              <h3 class="projets__labo-title" id="labo-title">
+                Labo <span class="projets__labo-sub">— projets personnels et de formation</span>
+              </h3>
+            </header>
+            <ul class="projets__grid">
+              <li class="card card--bleu">
+                <button class="card__btn" type="button" data-project="sophiebluel" aria-haspopup="dialog">
+                  <span class="card__media">
+                    <img src="/img/projets-mosaique/atelier-chaux-bleu.webp" alt="Atelier Chaux : galerie de projets d'architecture intérieure, filtrable par type" loading="lazy" width="1280" height="960" />
+                    <span class="card__overlay">
+                      <span class="card__cat">Concept · Site et back-office</span>
+                      <span class="card__title">Atelier Chaux</span>
+                      <span class="card__cta" aria-hidden="true">Découvrir</span>
+                    </span>
+                  </span>
+                </button>
+              </li>
+
+              <li class="card card--nb">
+                <button class="card__btn" type="button" data-project="ninacarducci" aria-haspopup="dialog">
+                  <span class="card__media">
+                    <img src="/img/projets-mosaique/nina-carducci-nb.webp" alt="Site de Nina Carducci : page d'accueil, illustrée ici avec des photos d'architecture" loading="lazy" width="1280" height="960" />
+                    <span class="card__overlay">
+                      <span class="card__cat">Optimisation SEO · Performance</span>
+                      <span class="card__title">Nina Carducci</span>
+                      <span class="card__cta" aria-hidden="true">Découvrir</span>
+                    </span>
+                  </span>
+                </button>
+              </li>
+
+              <li class="card card--creme">
+                <button class="card__btn" type="button" data-project="murmure" aria-haspopup="dialog">
+                  <span class="card__media">
+                    <img src="/img/projets-mosaique/murmure-app-creme.webp" alt="L'application Murmure ouverte sur un téléphone" loading="lazy" width="1000" height="724" />
+                    <span class="card__overlay">
+                      <span class="card__cat">Application web · React</span>
+                      <span class="card__title">Murmure</span>
+                      <span class="card__desc">Une question anonyme par jour, conçue et développée seul.</span>
+                      <span class="card__cta" aria-hidden="true">Découvrir</span>
+                    </span>
+                  </span>
+                </button>
+              </li>
+            </ul>
+          </section>
           </div>
         </div>
 

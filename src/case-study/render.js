@@ -400,7 +400,7 @@ ${cards}
           <div class="guide-grid">
 ${list}
           </div>
-          <p class="landing__work-more"><a href="/#projets">Voir aussi les projets personnels et de formation <span aria-hidden="true">→</span></a></p>
+          <p class="landing__work-more"><a href="/#labo">Voir aussi les projets personnels et de formation <span aria-hidden="true">→</span></a></p>
         </section>
 
         <section class="landing__section landing__cta case-study__final">
