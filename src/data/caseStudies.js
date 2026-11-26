@@ -117,26 +117,26 @@ export const caseStudies = [
   {
     slug: "gdunan",
     seo: {
-      title: "Identité de marque haut de gamme : GdunaN | Diurn Studio",
+      title: "Identité visuelle d'architecte d'intérieur à Nice : Gdunan | Diurn Studio",
       description:
-        "L'identité complète de GdunaN, marque haut de gamme : monogramme GD, site codé sur mesure, carte de visite gaufrée et shooting photo.",
+        "L'identité complète de Gdunan, architecte d'intérieur à Nice : monogramme GD, site codé sur mesure, carte de visite gaufrée et shooting photo.",
       ogImage: "https://www.diurnstudio.fr/img/og/realisation-gdunan.jpg",
       canonical: "https://www.diurnstudio.fr/realisations/gdunan",
     },
-    breadcrumb: "GdunaN",
+    breadcrumb: "Gdunan",
     cat: "Identité · Site web",
-    h1: "GdunaN : une identité haut de gamme, du monogramme au site internet",
+    h1: "Gdunan : l'identité d'un architecte d'intérieur, du monogramme au site internet",
     intro:
-      "GdunaN est une marque haut de gamme qui met en avant la matière et le geste. J'ai conçu toute son image : le logo, le site internet, la carte de visite et les photos.",
+      "Gdunan est la marque d'un architecte d'intérieur installé à Nice, qui travaille sur des appartements, des commerces et des rénovations, en mettant en avant la matière et le geste. J'ai conçu toute son image : le logo, le site internet, la carte de visite et les photos.",
     hero: {
       src: "/img/projets/gd-2.webp",
-      alt: "Site internet GdunaN présenté sur un ordinateur portable",
+      alt: "Site internet Gdunan présenté sur un ordinateur portable",
       width: 1000,
       height: 1000,
     },
     facts: [
-      { label: "Client", value: "GdunaN" },
-      { label: "Secteur", value: "Marque haut de gamme" },
+      { label: "Client", value: "Gdunan" },
+      { label: "Secteur", value: "Architecture d'intérieur" },
       { label: "Prestations", value: "Logo · Site internet · Carte gaufrée · Shooting photo" },
       { label: "Supports", value: "Web et print" },
     ],
@@ -145,7 +145,7 @@ export const caseStudies = [
         type: "text",
         heading: "Le point de départ",
         paragraphs: [
-          "GdunaN met en avant la matière et le travail de la main. Il lui fallait une image haut de gamme, la même à l'écran et sur le papier.",
+          "Gdunan met en avant la matière et le travail de la main. Il lui fallait une image haut de gamme, la même à l'écran et sur le papier.",
           "L'objectif : une identité épurée, qui laisse la place à la matière au lieu de la couvrir d'effets.",
         ],
       },
@@ -175,11 +175,11 @@ export const caseStudies = [
       {
         type: "gallery",
         images: [
-          { src: "/img/projets/gd-1.webp", alt: "Composition de marque GdunaN avec le monogramme GD", width: 1000, height: 1250 },
-          { src: "/img/projets/gd-5.webp", alt: "Macro du travail de la matière, shooting photo GdunaN", width: 1000, height: 1250 },
-          { src: "/img/projets/gd-3.webp", alt: "Site internet GdunaN affiché sur mobile", width: 1000, height: 563, full: true },
+          { src: "/img/projets/gd-1.webp", alt: "Composition de marque Gdunan avec le monogramme GD", width: 1000, height: 1250 },
+          { src: "/img/projets/gd-5.webp", alt: "Macro du travail de la matière, shooting photo Gdunan", width: 1000, height: 1250 },
+          { src: "/img/projets/gd-3.webp", alt: "Site internet Gdunan affiché sur mobile", width: 1000, height: 563, full: true },
           { src: "/img/projets/gd-4.webp", alt: "Carte de visite gaufrée à froid avec le monogramme GD", width: 1000, height: 1000 },
-          { src: "/img/projets/gd-2.webp", alt: "Site internet GdunaN sur ordinateur portable", width: 1000, height: 1000 },
+          { src: "/img/projets/gd-2.webp", alt: "Site internet Gdunan sur ordinateur portable", width: 1000, height: 1000 },
         ],
       },
       {

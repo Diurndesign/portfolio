@@ -121,17 +121,134 @@ ${items}
         </section>`;
   }
 
-  if (section.type === "quote") {
+  if (section.type === "quote" || section.type === "testimonial") {
+    const author = section.author
+      ? `\n            <figcaption class="case-study__quote-author">${section.author}</figcaption>`
+      : "";
     return `        <section class="landing__section">
-          <h2>${section.heading}</h2>
+          <h2>${section.heading || PARTS.temoignage.heading}</h2>
           <figure class="case-study__quote">
-            <blockquote class="case-study__quote-text">${section.quote}</blockquote>
-            <figcaption class="case-study__quote-author">${section.author}</figcaption>
+            <blockquote class="case-study__quote-text">${section.quote}</blockquote>${author}
           </figure>
         </section>`;
   }
 
+  // « Le système » : la planche de l'identité (logo, couleurs, typographies,
+  // déclinaisons). Images en pleine largeur par défaut (full: false pour
+  // une demi-largeur), légende facultative sous chaque image.
+  if (section.type === "system") {
+    const intro = section.intro ? `          ${p(section.intro)}\n` : "";
+    const figs = section.images
+      .map((im) => {
+        const caption = im.caption
+          ? `\n            <figcaption class="case-study__caption">${im.caption}</figcaption>`
+          : "";
+        return `          <figure class="case-study__fig${im.full === false ? "" : " case-study__fig--full"}">
+            <img src="${im.src}" alt="${im.alt}" loading="lazy" width="${im.width}" height="${im.height}" />${caption}
+          </figure>`;
+      })
+      .join("\n");
+    return `        <section class="landing__section case-study__system">
+          <h2>${section.heading || PARTS.systeme.heading}</h2>
+${intro}          <div class="case-study__gallery">
+${figs}
+          </div>
+        </section>`;
+  }
+
   return "";
+}
+
+// ------------------------------------------------------------
+//  Trame commune des études de cas
+// ------------------------------------------------------------
+// Chaque étude suit la même trame : L'enjeu → Ce que j'ai fait → Le système
+// (planche) → Le résultat → Témoignage. Une partie sans contenu n'est PAS
+// affichée (aucun bloc vide en ligne) : le gabarit laisse à sa place un
+// commentaire HTML « À COMPLÉTER », invisible pour le visiteur, qui dit quoi
+// ajouter dans src/data/caseStudies.js. Rien n'est inventé ici : le contenu
+// vient uniquement des données.
+const PARTS = {
+  enjeu: {
+    heading: "L'enjeu",
+    todo: "L'enjeu. Le problème du client avant le projet, en deux ou trois phrases (ses propres mots si possible). À ajouter dans src/data/caseStudies.js : { type: \"text\", part: \"enjeu\", heading: \"L'enjeu\", paragraphs: [ ... ] }",
+  },
+  systeme: {
+    heading: "Le système",
+    todo: "Le système (planche). La planche de l'identité : logo et déclinaisons, couleurs, typographies, règles d'usage. À ajouter dans src/data/caseStudies.js, après « Ce que j'ai fait » : { type: \"system\", heading: \"Le système\", intro: \"...\", images: [ { src, alt, width, height, caption } ] }",
+  },
+  resultat: {
+    heading: "Le résultat",
+    todo: "Le résultat. Ce qui a changé pour le client, avec des faits vérifiables (uniquement des chiffres réels). À ajouter dans src/data/caseStudies.js : { type: \"text\", part: \"resultat\", heading: \"Le résultat\", paragraphs: [ ... ] }",
+  },
+  temoignage: {
+    heading: "Témoignage",
+    todo: "Témoignage. Une citation réelle du client, avec son accord (jamais inventée). À ajouter dans src/data/caseStudies.js : { type: \"testimonial\", quote: \"...\", author: \"Prénom, entreprise\" }",
+  },
+};
+
+// Partie de la trame couverte par une section : champ « part » explicite,
+// sinon déduit du type ou du titre (« Le point de départ » = l'enjeu).
+function partOf(section) {
+  if (section.part) return section.part;
+  if (section.type === "system") return "systeme";
+  if (section.type === "quote" || section.type === "testimonial") return "temoignage";
+  if (section.type === "text") {
+    const h = section.heading || "";
+    if (/point de départ|enjeu/i.test(h)) return "enjeu";
+    if (/résultat/i.test(h)) return "resultat";
+  }
+  return null;
+}
+
+// Une section n'est affichée que si elle a du contenu.
+const filled = (t) => typeof t === "string" && t.trim() !== "";
+function hasContent(section) {
+  switch (section.type) {
+    case "text":
+      return (section.paragraphs || []).some(filled);
+    case "cards":
+      return (section.cards || []).length > 0;
+    case "gallery":
+    case "system":
+      return (section.images || []).length > 0;
+    case "faq":
+      return (section.items || []).length > 0;
+    case "quote":
+    case "testimonial":
+      return filled(section.quote);
+    default:
+      return false;
+  }
+}
+
+const todoComment = (key) => `        <!-- À COMPLÉTER : ${PARTS[key].todo} -->`;
+
+// Sections de l'étude dans l'ordre des données, plus un commentaire
+// « À COMPLÉTER » pour chaque partie de la trame absente : l'enjeu en tête,
+// le système après « Ce que j'ai fait », le résultat et le témoignage à la fin.
+function renderSections(entry) {
+  const list = (entry.sections || [])
+    .filter(hasContent)
+    .map((s) => (s.type === "text" ? { ...s, paragraphs: s.paragraphs.filter(filled) } : s));
+  const present = new Set(list.map(partOf).filter(Boolean));
+  const out = [];
+
+  if (!present.has("enjeu")) out.push(todoComment("enjeu"));
+
+  let systemDone = present.has("systeme");
+  for (const section of list) {
+    out.push(renderSection(section));
+    if (!systemDone && section.type === "cards") {
+      out.push(todoComment("systeme"));
+      systemDone = true;
+    }
+  }
+  if (!systemDone) out.push(todoComment("systeme"));
+  if (!present.has("resultat")) out.push(todoComment("resultat"));
+  if (!present.has("temoignage")) out.push(todoComment("temoignage"));
+
+  return out.join("\n\n");
 }
 
 function renderOthers(entry, allEntries) {
@@ -183,7 +300,7 @@ export function renderCaseStudy(entry, allEntries) {
     ],
   };
 
-  const sections = (entry.sections || []).map(renderSection).join("\n\n");
+  const sections = renderSections(entry);
 
   return `<!DOCTYPE html>
 <html lang="fr">
@@ -400,7 +517,7 @@ ${cards}
           <div class="guide-grid">
 ${list}
           </div>
-          <p class="landing__work-more"><a href="/#projets">Voir aussi les projets personnels et de formation <span aria-hidden="true">→</span></a></p>
+          <p class="landing__work-more"><a href="/#labo">Voir aussi les projets personnels et de formation <span aria-hidden="true">→</span></a></p>
         </section>
 
         <section class="landing__section landing__cta case-study__final">

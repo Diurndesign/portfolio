@@ -21,13 +21,13 @@ const OFFRES = {
   vitrine: { label: "Site vitrine (4 à 6 pages)", min: 1800, max: 3200, weeks: [3, 5] },
   refonte: { label: "Refonte de votre site", min: 1500, max: 3500, weeks: [3, 6] },
   boutique: { label: "Boutique en ligne Shopify sur mesure", min: 3000, max: 6000, weeks: [4, 8] },
-  logo: { label: "Création de logo", min: 700, max: null, weeks: [1, 2] },
+  logo: { label: "Identité visuelle essentielle", min: 1500, max: null, weeks: [2, 3] },
 };
-const LOGO_PRIX = 700;
-const LOGO_SEMAINES = [1, 2];
+const LOGO_PRIX = 1500;
+const LOGO_SEMAINES = [2, 3];
 
 const LIBELLES = {
-  projet: { onepage: "site d'une page", vitrine: "site vitrine", refonte: "refonte", boutique: "boutique en ligne", logo: "logo seul" },
+  projet: { onepage: "site d'une page", vitrine: "site vitrine", refonte: "refonte", boutique: "boutique en ligne", logo: "identité essentielle" },
   logo: { ok: "logo existant", revoir: "logo à revoir", aucun: "pas de logo" },
   contenus: { tout: "contenus prêts", partie: "contenus en partie prêts", rien: "contenus à préparer" },
 };
@@ -52,7 +52,7 @@ export function estimate(answers) {
     offre = { label: "Site vitrine et identité de marque", min: 2800, max: 4500, weeks: [5, 8] };
   } else if (withLogo) {
     offre = {
-      label: `${base.label} et logo`,
+      label: `${base.label} et identité visuelle`,
       min: base.min + LOGO_PRIX,
       max: null,
       weeks: [base.weeks[0] + LOGO_SEMAINES[0], base.weeks[1] + LOGO_SEMAINES[1]],

@@ -144,6 +144,7 @@ export default defineConfig(() => ({
         creationAntibes: resolve(root, "creation-site-internet-antibes.html"),
         creationMonaco: resolve(root, "creation-site-internet-monaco.html"),
         graphisteNice: resolve(root, "graphiste-nice.html"),
+        studioDesignNice: resolve(root, "studio-design-nice.html"),
         webdesignerNice: resolve(root, "webdesigner-nice.html"),
         coutSiteNice: resolve(root, "combien-coute-site-internet-nice.html"),
         codeVsPlateforme: resolve(root, "site-sur-mesure-ou-wix-squarespace.html"),

@@ -138,7 +138,7 @@
             "priceSpecification": {
               "@type": "PriceSpecification",
               "priceCurrency": "EUR",
-              "minPrice": "700"
+              "minPrice": "1500"
             }
           },
           {
@@ -159,7 +159,7 @@
         "@type": "FAQPage",
         "@id": "https://www.diurnstudio.fr/#faq",
         "mainEntity": [
-          { "@type": "Question", "name": "Faites-vous un devis ? Combien coûte un projet ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, chaque projet fait l'objet d'un devis gratuit et sans engagement. Pour vous donner des repères : un site one-page sur mesure démarre à 900 €, un site vitrine à 1 800 €, et un logo à 700 €. Design, développement et référencement local sont inclus. Toutes les fourchettes sont détaillées sur la page prix d'un site internet à Nice." } },
+          { "@type": "Question", "name": "Faites-vous un devis ? Combien coûte un projet ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui, chaque projet fait l'objet d'un devis gratuit et sans engagement. Pour vous donner des repères : un site one-page sur mesure démarre à 900 €, un site vitrine à 1 800 €, et une identité visuelle essentielle (logo, couleurs, typographies, mini-charte) à 1 500 €. Design, développement et référencement local sont inclus. Toutes les fourchettes sont détaillées sur la page prix d'un site internet à Nice." } },
           { "@type": "Question", "name": "Créez-vous des sites pour les architectes ?", "acceptedAnswer": { "@type": "Answer", "text": "Oui. Le site d'un cabinet d'architecture doit d'abord montrer vos réalisations : de grandes photos, une fiche par projet (lieu, année, surface, mission, photographe) et un classement par type de projet. Je le conçois sobre et rapide, pour que vos images restent nettes sans ralentir la page, et vous ajoutez vous-même vos nouveaux projets depuis votre interface d'administration." } },
           { "@type": "Question", "name": "Faut-il déjà avoir un logo ou une identité pour lancer un site ?", "acceptedAnswer": { "@type": "Answer", "text": "Non, ce n'est pas un prérequis. Je peux créer votre identité (logo, couleurs, typographies) puis construire le site autour, ou partir de votre charte si vous en avez déjà une." } },
           { "@type": "Question", "name": "Combien de temps faut-il pour créer un site ?", "acceptedAnswer": { "@type": "Answer", "text": "Comptez 2 semaines pour un site one-page, 3 à 5 semaines pour un site vitrine, et 5 à 8 semaines pour un site avec identité de marque, selon l'ampleur du projet et la rapidité des retours. Dès le premier échange, vous recevez un rétroplanning clair." } },
@@ -185,6 +185,7 @@
 
       <ul class="nav__side nav__side--left" id="nav-menu">
         <li><a href="#projets" class="nav__link">Projets</a></li>
+        <li><a href="/realisations" class="nav__link">Réalisations</a></li>
         <li><a href="#a-propos" class="nav__link">À propos</a></li>
         <li><a href="#contact" class="nav__link">Contact</a></li>
         <li><a href="/guides" class="nav__link">Guides</a></li>
@@ -269,14 +270,33 @@
           </div>
           <ul class="hero__proof">
             <li>
-              <a href="https://share.google/iNXmDD4h4sXeVodC5" target="_blank" rel="noopener">
+              <a href="https://www.google.com/search?kgmid=/g/11z4t_zzhk" target="_blank" rel="noopener">
                 <span class="hero__proof-stars" aria-hidden="true">★★★★★</span>
                 5,0 · 5 avis Google
               </a>
             </li>
-            <li><a href="/combien-coute-site-internet-nice">Sites dès 900&nbsp;€</a></li>
             <li><a href="/diagnostic-site-gratuit">Testez votre site en 1&nbsp;minute →</a></li>
           </ul>
+
+          <!-- PROPOSITION À VALIDER (audit branding, nov. 2026) : remplace le
+               lien « Sites dès 900 € » par la phrase de positionnement et le
+               projet phare. Les prix restent sur /combien-coute-site-internet-nice
+               et sur les pages villes. Pour revenir en arrière : git revert. -->
+          <div class="hero__feature">
+            <p class="hero__statement">
+              Studio de marque et de web à Nice. Des identités claires,
+              dessinées et codées par la même main.
+            </p>
+            <a class="hero__showcase" href="/realisations/gdunan">
+              <img class="hero__showcase-img" src="/img/projets/gd-1.webp" alt="" width="1000" height="1250" />
+              <span class="hero__showcase-text">
+                <span class="hero__showcase-kicker">Projet phare</span>
+                <span class="hero__showcase-title">Gdunan</span>
+                <span class="hero__showcase-desc">Logo, site internet et carte gaufrée</span>
+              </span>
+              <span class="hero__showcase-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
 
         <!-- Carte de visite à retourner : recto « Diurn Studio » gaufré,
@@ -386,7 +406,7 @@
                   <img src="/img/projets-mosaique/gd-2-nb.webp" alt="Site internet Gdunan présenté sur un ordinateur portable" loading="lazy" width="1000" height="1000" />
                   <span class="card__overlay">
                     <span class="card__cat">Identité · Site web</span>
-                    <span class="card__title">GdunaN</span>
+                    <span class="card__title">Gdunan</span>
                     <span class="card__cta" aria-hidden="true">Découvrir</span>
                   </span>
                 </span>
@@ -445,46 +465,58 @@
               </a>
             </li>
 
-            <li class="card card--bleu">
-              <button class="card__btn" type="button" data-project="sophiebluel" aria-haspopup="dialog">
-                <span class="card__media">
-                  <img src="/img/projets-mosaique/atelier-chaux-bleu.webp" alt="Atelier Chaux : galerie de projets d'architecture intérieure, filtrable par type" loading="lazy" width="1280" height="960" />
-                  <span class="card__overlay">
-                    <span class="card__cat">Concept · Site et back-office</span>
-                    <span class="card__title">Atelier Chaux</span>
-                    <span class="card__cta" aria-hidden="true">Découvrir</span>
-                  </span>
-                </span>
-              </button>
-            </li>
-
-            <li class="card card--nb">
-              <button class="card__btn" type="button" data-project="ninacarducci" aria-haspopup="dialog">
-                <span class="card__media">
-                  <img src="/img/projets-mosaique/nina-carducci-nb.webp" alt="Site de Nina Carducci : page d'accueil, illustrée ici avec des photos d'architecture" loading="lazy" width="1280" height="960" />
-                  <span class="card__overlay">
-                    <span class="card__cat">Optimisation SEO · Performance</span>
-                    <span class="card__title">Nina Carducci</span>
-                    <span class="card__cta" aria-hidden="true">Découvrir</span>
-                  </span>
-                </span>
-              </button>
-            </li>
-
-            <li class="card card--creme">
-              <button class="card__btn" type="button" data-project="murmure" aria-haspopup="dialog">
-                <span class="card__media">
-                  <img src="/img/projets-mosaique/murmure-app-creme.webp" alt="L'application Murmure ouverte sur un téléphone" loading="lazy" width="1000" height="724" />
-                  <span class="card__overlay">
-                    <span class="card__cat">Application web · React</span>
-                    <span class="card__title">Murmure</span>
-                    <span class="card__desc">Une question anonyme par jour, conçue et développée seul.</span>
-                    <span class="card__cta" aria-hidden="true">Découvrir</span>
-                  </span>
-                </span>
-              </button>
-            </li>
           </ul>
+
+          <!-- Labo : projets personnels et de formation, après les projets
+               clients (même section dans la grille React, voir Projects.jsx). -->
+          <section class="projets__labo" id="labo" aria-labelledby="labo-title">
+            <header class="projets__labo-head">
+              <h3 class="projets__labo-title" id="labo-title">
+                Labo <span class="projets__labo-sub">— projets personnels et de formation</span>
+              </h3>
+            </header>
+            <ul class="projets__grid">
+              <li class="card card--bleu">
+                <button class="card__btn" type="button" data-project="sophiebluel" aria-haspopup="dialog">
+                  <span class="card__media">
+                    <img src="/img/projets-mosaique/atelier-chaux-bleu.webp" alt="Atelier Chaux : galerie de projets d'architecture intérieure, filtrable par type" loading="lazy" width="1280" height="960" />
+                    <span class="card__overlay">
+                      <span class="card__cat">Concept · Site et back-office</span>
+                      <span class="card__title">Atelier Chaux</span>
+                      <span class="card__cta" aria-hidden="true">Découvrir</span>
+                    </span>
+                  </span>
+                </button>
+              </li>
+
+              <li class="card card--nb">
+                <button class="card__btn" type="button" data-project="ninacarducci" aria-haspopup="dialog">
+                  <span class="card__media">
+                    <img src="/img/projets-mosaique/nina-carducci-nb.webp" alt="Site de Nina Carducci : page d'accueil, illustrée ici avec des photos d'architecture" loading="lazy" width="1280" height="960" />
+                    <span class="card__overlay">
+                      <span class="card__cat">Optimisation SEO · Performance</span>
+                      <span class="card__title">Nina Carducci</span>
+                      <span class="card__cta" aria-hidden="true">Découvrir</span>
+                    </span>
+                  </span>
+                </button>
+              </li>
+
+              <li class="card card--creme">
+                <button class="card__btn" type="button" data-project="murmure" aria-haspopup="dialog">
+                  <span class="card__media">
+                    <img src="/img/projets-mosaique/murmure-app-creme.webp" alt="L'application Murmure ouverte sur un téléphone" loading="lazy" width="1000" height="724" />
+                    <span class="card__overlay">
+                      <span class="card__cat">Application web · React</span>
+                      <span class="card__title">Murmure</span>
+                      <span class="card__desc">Une question anonyme par jour, conçue et développée seul.</span>
+                      <span class="card__cta" aria-hidden="true">Découvrir</span>
+                    </span>
+                  </span>
+                </button>
+              </li>
+            </ul>
+          </section>
           </div>
         </div>
 
@@ -631,7 +663,7 @@
           <div class="landing__faq" aria-label="Questions fréquentes">
             <details class="landing__faq-item" open>
               <summary>Faites-vous un devis&nbsp;? Combien coûte un projet&nbsp;?</summary>
-              <p>Oui, chaque projet fait l'objet d'un devis gratuit et sans engagement. Pour vous donner des repères&nbsp;: un site one-page sur mesure démarre à 900&nbsp;€, un site vitrine à 1&nbsp;800&nbsp;€, et un logo à 700&nbsp;€. Design, développement et référencement local sont inclus. Toutes les fourchettes sont détaillées sur la page <a href="/combien-coute-site-internet-nice">prix d'un site internet à Nice</a>.</p>
+              <p>Oui, chaque projet fait l'objet d'un devis gratuit et sans engagement. Pour vous donner des repères&nbsp;: un site one-page sur mesure démarre à 900&nbsp;€, un site vitrine à 1&nbsp;800&nbsp;€, et une identité visuelle essentielle (logo, couleurs, typographies, mini-charte) à 1&nbsp;500&nbsp;€. Design, développement et référencement local sont inclus. Toutes les fourchettes sont détaillées sur la page <a href="/combien-coute-site-internet-nice">prix d'un site internet à Nice</a>.</p>
             </details>
             <details class="landing__faq-item">
               <summary>Créez-vous des sites pour les architectes&nbsp;?</summary>
@@ -742,7 +774,7 @@
                 <div class="proof__head">
                   <span class="proof__score">5,0</span>
                   <span class="proof__stars" aria-hidden="true">★★★★★</span>
-                  <a class="proof__source" href="https://share.google/iNXmDD4h4sXeVodC5" target="_blank" rel="noopener">5 avis Google</a>
+                  <a class="proof__source" href="https://www.google.com/search?kgmid=/g/11z4t_zzhk" target="_blank" rel="noopener">5 avis Google</a>
                 </div>
                 <figure class="proof__item">
                   <blockquote>Une personne très professionnelle, sérieuse et amicale&nbsp;!</blockquote>

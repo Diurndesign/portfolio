@@ -32,6 +32,19 @@
 
   &__side--left {
     left: 0;
+
+    // Écrans peu hauts (portable 13", fenêtre réduite) : les six liens
+    // verticaux doivent tenir dans la hauteur, sinon les premiers sortent
+    // de l'écran (la barre est fixe, ils deviendraient inaccessibles).
+    // On resserre l'espacement, puis la taille des lettres.
+    @media (min-width: $bp-md) and (max-height: 820px) {
+      gap: clamp(0.9rem, 2.6vh, 1.5rem);
+
+      .nav__link {
+        font-size: 0.66rem;
+        letter-spacing: 0.14em;
+      }
+    }
   }
 
   &__side--right {

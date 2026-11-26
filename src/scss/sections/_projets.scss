@@ -96,6 +96,38 @@
   }
 }
 
+// --- Section Labo : projets personnels et de formation -------
+// Placée après les projets clients et annoncée par son propre titre : les
+// projets d'école et les projets perso restent visibles, sans se mêler aux
+// réalisations pour des clients.
+.projets__labo {
+  margin-top: clamp(3.5rem, 9vh, 6rem);
+}
+
+.projets__labo-head {
+  margin-bottom: clamp(1.5rem, 4vh, 2.5rem);
+}
+
+.projets__labo-title {
+  font-family: $font-display;
+  font-weight: 500;
+  font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+  line-height: 1.1;
+  color: $color-ink;
+}
+
+// Sous-titre sur sa propre ligne, au style des filtres (petites capitales)
+.projets__labo-sub {
+  display: block;
+  margin-top: 0.6rem;
+  font-family: $font-body;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(var(--c-ink), 0.7);
+}
+
 // Apparition en cascade des cartes de la grille enrichie (React) : rejouée
 // à chaque changement de filtre (la liste est remontée via sa clé).
 @keyframes card-in {

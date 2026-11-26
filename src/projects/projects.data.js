@@ -8,6 +8,9 @@
 //
 // Champs d'une carte : id, kind, title, cat, tags, img.
 //   - tags  : catégories de filtre (voir `filters` plus bas).
+//   - group : (optionnel) "labo" pour un projet personnel ou de formation.
+//             Il s'affiche alors dans la section « Labo », après les
+//             projets clients. Sans `group`, c'est un projet client.
 //   - kind "modal" → ouvre la fiche `detail` ci-dessous.
 //   - kind "link"  → renvoie vers une section de la page (ex. Murmure).
 //
@@ -64,7 +67,7 @@ export const projects = [
     id: "gdunan",
     kind: "modal",
     cardHref: "/realisations/gdunan",
-    title: "GdunaN",
+    title: "Gdunan",
     cat: "Identité · Site web",
     tags: ["web", "identite"],
     tone: "nb",
@@ -77,7 +80,7 @@ export const projects = [
     detail: {
       stack: ["Logo", "Site web", "Carte gaufrée", "Shooting photo"],
       sections: [
-        { heading: "Contexte", text: "Gdunan est une marque haut de gamme qui met en avant la matière et le geste. Le projet couvre toute son image, du logo au site internet." },
+        { heading: "Contexte", text: "Gdunan est la marque d'un architecte d'intérieur niçois (appartements, commerces, rénovations) qui met en avant la matière et le geste. Le projet couvre toute son image, du logo au site internet." },
         { heading: "Objectifs", text: "Une identité épurée et cohérente sur tous les supports, du web au print, qui met la matière au premier plan." },
         { heading: "Ce que j'ai réalisé", text: "Un monogramme « GD » épuré, la conception et la direction artistique du site internet, une carte de visite gaufrée à froid, sans encre, et un shooting photo dédié à son travail." },
         { heading: "Résultat", text: "Une identité utilisée du site à la papeterie, avec des photos sombres et texturées centrées sur la matière." },
@@ -231,6 +234,7 @@ export const projects = [
   {
     id: "sophiebluel",
     kind: "modal",
+    group: "labo",
     title: "Atelier Chaux",
     cat: "Concept · Site et back-office",
     tags: ["web"],
@@ -271,6 +275,7 @@ export const projects = [
   {
     id: "ninacarducci",
     kind: "modal",
+    group: "labo",
     title: "Nina Carducci",
     cat: "Projet de formation · SEO",
     tags: ["web"],
@@ -310,6 +315,7 @@ export const projects = [
   {
     id: "murmure",
     kind: "modal",
+    group: "labo",
     desc: "Une question anonyme par jour, conçue et développée seul.",
     title: "Murmure",
     cat: "Application web · React",
