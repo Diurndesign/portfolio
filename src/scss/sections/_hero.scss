@@ -859,7 +859,7 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
   }
 }
 
-// Preuves : avis, prix d'appel, diagnostic gratuit
+// Preuves : avis, diagnostic gratuit
 .hero__proof {
   display: flex;
   flex-wrap: wrap;
@@ -900,11 +900,92 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
   font-size: 0.8em;
 }
 
+// Positionnement + projet phare (proposition à valider, audit nov. 2026) :
+// une phrase qui dit ce qu'est le studio, puis la preuve, Gdunan.
+.hero__feature {
+  max-width: 46ch;
+  margin-top: clamp(1.4rem, 3.5vh, 2rem);
+  padding-top: clamp(1.1rem, 2.5vh, 1.4rem);
+  border-top: 1px solid rgba(var(--c-fg), 0.18);
+  animation: hero-reveal 1s $ease both;
+  animation-delay: 0.6s;
+}
+
+.hero__statement {
+  font-size: clamp(0.98rem, 1.15vw, 1.08rem);
+  font-weight: 500;
+  line-height: 1.55;
+  color: $color-white;
+  text-wrap: pretty;
+}
+
+.hero__showcase {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-top: 1rem;
+  color: $color-text-soft;
+  transition: color $transition;
+
+  &:hover,
+  &:focus-visible {
+    color: $color-white;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-white;
+    outline-offset: 4px;
+  }
+}
+
+.hero__showcase-img {
+  flex: none;
+  width: 48px;
+  height: 60px;
+  object-fit: cover;
+}
+
+.hero__showcase-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  text-align: left;
+}
+
+.hero__showcase-kicker {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: $color-text-muted;
+}
+
+.hero__showcase-title {
+  font-family: $font-display;
+  font-size: 1.2rem;
+  line-height: 1.1;
+  color: $color-white;
+}
+
+.hero__showcase-desc {
+  font-size: 0.84rem;
+}
+
+.hero__showcase-arrow {
+  transition: transform $transition;
+}
+
+.hero__showcase:hover .hero__showcase-arrow,
+.hero__showcase:focus-visible .hero__showcase-arrow {
+  transform: translateX(3px);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero__kicker,
   .hero__headline,
   .hero__lead,
-  .hero__proof {
+  .hero__proof,
+  .hero__feature {
     animation: none;
   }
 }
@@ -968,6 +1049,13 @@ $card-paper: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' w
     justify-content: center;
     margin-top: 1rem;
     font-size: 0.82rem;
+  }
+
+  .hero__feature {
+    order: 5;
+    width: min(760px, calc(0.9 * (100vw - 2.5rem)));
+    margin-top: 1.75rem;
+    text-align: center;
   }
 }
 
