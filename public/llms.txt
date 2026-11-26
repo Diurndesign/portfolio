@@ -30,7 +30,7 @@ Diurn Studio est dirigé par Jérémy Bendenoun, designer et développeur web ba
 
 - [Toutes les réalisations](https://www.diurnstudio.fr/realisations) : études de cas détaillées (point de départ, travail réalisé, résultat).
 - [The Beauty Corner](https://www.diurnstudio.fr/realisations/beauty-corner) : site internet sur mesure d'un institut de beauté à Nice, livré en deux semaines.
-- [GdunaN](https://www.diurnstudio.fr/realisations/gdunan) : identité haut de gamme, du monogramme au site internet.
+- [Gdunan](https://www.diurnstudio.fr/realisations/gdunan) : identité d'un architecte d'intérieur, du monogramme au site internet.
 - [Ewa FLR](https://www.diurnstudio.fr/realisations/ewa-flr) : identité de marque d'une cheffe.
 - [Elo Ab](https://www.diurnstudio.fr/realisations/elo-ab) : refonte du logo d'une couturière.
 - [Pressing Azur Eco](https://www.diurnstudio.fr/realisations/pressing-azur-eco) : logo-mascotte rétro pour un pressing.
