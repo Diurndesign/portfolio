@@ -40,8 +40,8 @@ export const projects = [
     img: {
       src: "/img/projets-mosaique/bcorner-mockup-bleu.webp",
       alt: "Aperçu du site The Beauty Corner by Alex, institut de beauté à Nice, sur ordinateur et mobile",
-      width: 1080,
-      height: 1080,
+      width: 2160,
+      height: 2160,
     },
     detail: {
       cat: "Site internet · Sur mesure",
@@ -74,8 +74,8 @@ export const projects = [
     img: {
       src: "/img/projets-mosaique/gd-2-nb.webp",
       alt: "Site internet Gdunan présenté sur un ordinateur portable",
-      width: 1000,
-      height: 1000,
+      width: 1600,
+      height: 1600,
     },
     detail: {
       stack: ["Logo", "Site web", "Carte gaufrée", "Shooting photo"],
@@ -108,8 +108,8 @@ export const projects = [
     img: {
       src: "/img/projets-mosaique/az-5-creme.webp",
       alt: "Emblème du Pressing Azur Eco",
-      width: 1000,
-      height: 1250,
+      width: 1600,
+      height: 2000,
     },
     detail: {
       stack: ["Logo", "Mascotte", "Recherche typo", "Étiquette"],
@@ -142,8 +142,8 @@ export const projects = [
     img: {
       src: "/img/projets-mosaique/tijm-4-bleu.webp",
       alt: "Combat de judo en noir et blanc, Tournoi International de Judo de Monaco",
-      width: 1000,
-      height: 666,
+      width: 2400,
+      height: 1598,
     },
     detail: {
       title: "TijM 2017",
@@ -176,8 +176,8 @@ export const projects = [
     img: {
       src: "/img/projets-mosaique/elo-2-creme.webp",
       alt: "Logo Elo posé sur du marbre avec un ruban gansé griffé",
-      width: 1000,
-      height: 770,
+      width: 1818,
+      height: 1400,
     },
     detail: {
       stack: ["Logo", "Refonte", "Couture", "Direction artistique"],
@@ -208,8 +208,8 @@ export const projects = [
     img: {
       src: "/img/projets-mosaique/ewa-5-nb.webp",
       alt: "Univers de marque Ewa FLR : tote bag, menu et légumes de saison",
-      width: 1000,
-      height: 666,
+      width: 2102,
+      height: 1400,
     },
     detail: {
       stack: ["Logo", "Charte graphique", "Papeterie", "Direction artistique"],
@@ -242,8 +242,8 @@ export const projects = [
     img: {
       src: "/img/projets-mosaique/atelier-chaux-bleu.webp",
       alt: "Atelier Chaux : galerie de projets d'architecture intérieure, filtrable par type",
-      width: 1280,
-      height: 960,
+      width: 2400,
+      height: 1800,
     },
     detail: {
       cat: "Concept · Site et back-office",
@@ -283,8 +283,8 @@ export const projects = [
     img: {
       src: "/img/projets-mosaique/nina-carducci-nb.webp",
       alt: "Site de Nina Carducci : page d'accueil, illustrée ici avec des photos d'architecture",
-      width: 1280,
-      height: 960,
+      width: 1867,
+      height: 1400,
     },
     detail: {
       cat: "Projet de formation · SEO, performance, accessibilité",
@@ -324,8 +324,8 @@ export const projects = [
     img: {
       src: "/img/projets-mosaique/murmure-app-creme.webp",
       alt: "L'application Murmure ouverte sur un téléphone",
-      width: 1000,
-      height: 724,
+      width: 1934,
+      height: 1400,
     },
     detail: {
       cat: "Projet personnel · React + Supabase",
