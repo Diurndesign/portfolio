@@ -85,6 +85,14 @@ const pages = [
     sub: "Sortir de Wix ou WordPress sans perdre sa place sur Google",
   },
   {
+    file: "studio-design-nice",
+    theme: "blue",
+    eyebrow: "Identité · design · web",
+    kicker: "Studio de design à",
+    title: "Nice",
+    sub: "De la stratégie à la mise en ligne · un seul interlocuteur",
+  },
+  {
     file: "webdesigner-nice",
     theme: "blue",
     eyebrow: "Design · code · SEO",

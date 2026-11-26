@@ -37,7 +37,7 @@ projet », « Tester votre site » ou « Réserver un appel ».
 └── /refonte-site-et-charte-graphique
 /diagnostic-site-gratuit            Diagnostic en 1 minute (offre d'appel)
 /creation-site-internet-{nice,cannes,antibes,monaco}   Pages SEO locales
-/graphiste-nice, /webdesigner-nice                     Pages SEO métier
+/graphiste-nice, /studio-design-nice, /webdesigner-nice  Pages SEO métier
 ```
 
 ### Correspondance avec la navigation suggérée par le brief

@@ -19,6 +19,7 @@ Diurn Studio est dirigé par Jérémy Bendenoun, designer et développeur web ba
 - [Accueil](https://www.diurnstudio.fr/) : présentation du studio, projets réalisés, à propos, FAQ et contact.
 - [Création de site internet à Nice](https://www.diurnstudio.fr/creation-site-internet-nice) : sites sur mesure à Nice, du design au référencement.
 - [Graphiste à Nice, identité de marque](https://www.diurnstudio.fr/graphiste-nice) : logo, charte graphique et identité visuelle complète.
+- [Studio de design à Nice](https://www.diurnstudio.fr/studio-design-nice) : design global, de la marque au site.
 - [Webdesigner à Nice](https://www.diurnstudio.fr/webdesigner-nice) : le site dessiné puis codé sur mesure, par la même personne.
 - [Création de site internet à Cannes](https://www.diurnstudio.fr/creation-site-internet-cannes) : sites sur mesure pour les entreprises de Cannes.
 - [Création de site internet à Antibes](https://www.diurnstudio.fr/creation-site-internet-antibes) : sites sur mesure sur le bassin d'Antibes.
