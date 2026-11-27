@@ -343,14 +343,26 @@
   }
 
   &__story {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
     max-width: 58ch;
-    margin: 0;
-    font-size: clamp(1.05rem, 1.45vw, 1.25rem);
-    line-height: 1.7;
-    color: $color-text-soft;
+
+    p {
+      margin: 0;
+      font-size: clamp(1.05rem, 1.45vw, 1.25rem);
+      line-height: 1.7;
+      color: $color-text-soft;
+    }
 
     strong {
       color: $color-white;
+      font-weight: 600;
+    }
+
+    // La promesse, mise en avant entre la définition et le parcours
+    &-key {
+      color: $color-white !important;
       font-weight: 600;
     }
   }
