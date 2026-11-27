@@ -333,61 +333,25 @@
     }
   }
 
-  // Textes : une phrase d'accroche en grand, puis quatre blocs courts
-  // titrés (parcours, nom, approche, cible) sur deux colonnes.
+  // Texte : un seul paragraphe, le récit du studio
   &__cols {
     grid-column: 2;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: clamp(1.75rem, 3.5vw, 3.5rem);
-    row-gap: clamp(1.75rem, 4vh, 2.5rem);
-    align-items: start;
 
     @include until($bp-lg) {
       grid-column: 1;
     }
-
-    @include until($bp-md) {
-      grid-template-columns: 1fr;
-      row-gap: 1.75rem;
-    }
   }
 
-  &__lead {
-    grid-column: 1 / -1;
-    max-width: 36ch;
-    margin: 0 0 clamp(0.25rem, 1.5vh, 1rem);
-    font-family: $font-display;
-    font-weight: 400;
-    font-size: clamp(1.3rem, 2.1vw, 1.85rem);
-    line-height: 1.25;
-    letter-spacing: -0.01em;
-    color: $color-white;
-  }
-
-  &__block {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    padding-top: 1rem;
-    border-top: 1px solid rgba(var(--c-fg), 0.18);
-
-    p {
-      margin: 0;
-      font-size: 0.95rem;
-      line-height: 1.65;
-      color: $color-text-soft;
-    }
+  &__story {
+    max-width: 58ch;
+    margin: 0;
+    font-size: clamp(1.05rem, 1.45vw, 1.25rem);
+    line-height: 1.7;
+    color: $color-text-soft;
 
     strong {
       color: $color-white;
       font-weight: 600;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: underline;
-      text-underline-offset: 0.18em;
     }
   }
 
