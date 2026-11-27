@@ -333,36 +333,36 @@
     }
   }
 
+  // Texte : un seul paragraphe, le récit du studio
   &__cols {
     grid-column: 2;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(1.5rem, 3vw, 2.75rem);
-    align-items: start;
 
     @include until($bp-lg) {
       grid-column: 1;
     }
-
-    @include until($bp-md) {
-      grid-template-columns: 1fr;
-    }
   }
 
-  &__bio,
-  &__approach-body {
+  &__story {
     display: flex;
     flex-direction: column;
-    gap: 0.9rem;
+    gap: 1.1rem;
+    max-width: 58ch;
 
     p {
-      font-size: 0.9rem;
-      line-height: 1.65;
+      margin: 0;
+      font-size: clamp(1.05rem, 1.45vw, 1.25rem);
+      line-height: 1.7;
       color: $color-text-soft;
     }
 
     strong {
       color: $color-white;
+      font-weight: 600;
+    }
+
+    // La promesse, mise en avant entre la définition et le parcours
+    &-key {
+      color: $color-white !important;
       font-weight: 600;
     }
   }
